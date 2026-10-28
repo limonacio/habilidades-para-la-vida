@@ -1,0 +1,187 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Habilidades para la Vida — Maqueta</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400&family=Fraunces:opsz,wght@9..144,500;9..144,700&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#FAF6F0;--surface:#FFFFFF;--text:#2E2A26;--muted:#6E665E;--line:#E8E0D5;
+--violeta:#6B4E9B;--terracota:#B85C38;--salvia:#5E7F5B;--violeta-bg:#F0EAF7;--terracota-bg:#FAEDE6;--salvia-bg:#EAF1E8;
+--shadow:0 1px 2px rgba(46,42,38,.06),0 4px 16px rgba(46,42,38,.06)}
+:root[data-theme="dark"]{--bg:#1C1A1F;--surface:#26232A;--text:#EDE8E1;--muted:#A9A199;--line:#38343D;
+--violeta:#B39DDB;--terracota:#E59A78;--salvia:#9CC29A;--violeta-bg:#2E2838;--terracota-bg:#382A24;--salvia-bg:#26302A;
+--shadow:0 1px 2px rgba(0,0,0,.3),0 4px 16px rgba(0,0,0,.25)}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--text);font:17px/1.65 "Atkinson Hyperlegible",system-ui,sans-serif;transition:background .2s,color .2s}
+h1,h2,h3{font-family:Fraunces,Georgia,serif;line-height:1.2;margin:0 0 .5em}
+a{color:inherit}
+.wrap{max-width:1120px;margin:0 auto;padding:0 20px}
+header{position:sticky;top:0;z-index:10;background:color-mix(in srgb,var(--bg) 88%,transparent);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+header .wrap{display:flex;align-items:center;gap:20px;height:64px}
+.logo{font-family:Fraunces,serif;font-weight:700;font-size:1.15rem;text-decoration:none;display:flex;align-items:center;gap:10px}
+.logo span{width:28px;height:28px;border-radius:50%;background:conic-gradient(var(--violeta) 0 33%,var(--terracota) 0 66%,var(--salvia) 0)}
+header nav{margin-left:auto;display:flex;gap:18px;font-size:.95rem}
+header nav a{text-decoration:none;color:var(--muted)} header nav a:hover{color:var(--text)}
+.toggle{border:1px solid var(--line);background:var(--surface);color:var(--text);border-radius:999px;width:40px;height:40px;cursor:pointer;font-size:1.1rem}
+.hero{padding:72px 0 40px;text-align:center}
+.hero h1{font-size:clamp(2.2rem,5vw,3.4rem)}
+.hero p{max-width:640px;margin:0 auto 28px;color:var(--muted);font-size:1.1rem}
+.search{max-width:560px;margin:0 auto 18px;display:flex;background:var(--surface);border:1px solid var(--line);border-radius:14px;box-shadow:var(--shadow);padding:4px 6px 4px 16px}
+.search input{flex:1;border:0;background:transparent;color:var(--text);font:inherit;padding:10px 0;outline:none}
+.chips{display:flex;gap:8px;justify-content:center;flex-wrap:wrap}
+.chip{border:1px solid var(--line);background:var(--surface);color:var(--text);border-radius:999px;padding:6px 14px;font:inherit;font-size:.9rem;cursor:pointer}
+.chip.on{background:var(--text);color:var(--bg);border-color:var(--text)}
+.eje{margin:48px 0}
+.eje-head{display:flex;align-items:baseline;gap:12px;margin-bottom:16px;border-bottom:2px solid var(--c);padding-bottom:8px}
+.eje-head h2{font-size:1.5rem;color:var(--c)} .eje-head small{color:var(--muted)}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:16px}
+.card{background:var(--surface);border:1px solid var(--line);border-top:4px solid var(--c);border-radius:14px;padding:18px;box-shadow:var(--shadow);text-decoration:none;display:flex;flex-direction:column;gap:6px;transition:transform .15s}
+.card:hover{transform:translateY(-3px)}
+.card h3{font-size:1.15rem;margin:0} .card p{margin:0;color:var(--muted);font-size:.95rem}
+.card .meta{margin-top:auto;padding-top:8px;font-size:.8rem;color:var(--c);font-weight:700}
+.g{--c:var(--violeta);--cbg:var(--violeta-bg)} .e{--c:var(--terracota);--cbg:var(--terracota-bg)} .h{--c:var(--salvia);--cbg:var(--salvia-bg)}
+.ejercicios{background:var(--surface);border:1px solid var(--line);border-radius:20px;padding:32px;margin:48px 0}
+.ej-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px;margin-top:16px}
+.ej{background:var(--cbg);border-radius:14px;padding:20px}
+.ej b{display:block;font-family:Fraunces,serif;font-size:1.1rem;margin:8px 0 4px}
+.ayuda{display:flex;gap:16px;align-items:center;background:var(--violeta-bg);border-left:5px solid var(--violeta);border-radius:12px;padding:18px 22px;margin:40px 0}
+.ayuda strong{font-size:1.6rem;font-family:Fraunces,serif;color:var(--violeta)}
+footer{border-top:1px solid var(--line);padding:32px 0;color:var(--muted);font-size:.9rem}
+footer .wrap{display:flex;flex-wrap:wrap;gap:12px;justify-content:space-between}
+/* tema */
+.crumbs{font-size:.9rem;color:var(--muted);margin:32px 0 12px}
+.tag{display:inline-block;background:var(--cbg);color:var(--c);font-weight:700;font-size:.8rem;border-radius:999px;padding:4px 12px;margin-bottom:10px}
+.tema-head h1{font-size:clamp(2rem,4.5vw,3rem)} .tema-head p{color:var(--muted);font-size:1.1rem;max-width:680px}
+.layout{display:grid;grid-template-columns:220px 1fr;gap:48px;margin:32px 0 56px}
+.toc{position:sticky;top:88px;align-self:start;font-size:.92rem}
+.toc b{display:block;text-transform:uppercase;letter-spacing:.06em;font-size:.75rem;color:var(--muted);margin-bottom:8px}
+.toc a{display:block;padding:5px 0 5px 12px;border-left:2px solid var(--line);text-decoration:none;color:var(--muted)}
+.toc a.on{border-color:var(--c);color:var(--text);font-weight:700}
+article{max-width:700px} article h2{font-size:1.6rem;margin-top:1.6em}
+.clave{background:var(--cbg);border-radius:14px;padding:18px 22px;margin:20px 0}
+.clave small{display:block;font-weight:700;color:var(--c);text-transform:uppercase;letter-spacing:.06em;font-size:.75rem}
+ol.lista li{margin-bottom:8px}
+.fuentes{border:1px dashed var(--line);border-radius:14px;padding:16px 20px;font-size:.92rem;margin-top:28px}
+.cta{display:inline-block;margin-top:20px;background:var(--c);color:var(--bg);padding:10px 18px;border-radius:999px;text-decoration:none;font-weight:700}
+.pager{display:flex;justify-content:space-between;gap:16px;border-top:1px solid var(--line);padding-top:24px;margin-top:40px}
+.pager a{text-decoration:none;color:var(--muted)} .pager a b{display:block;color:var(--text)}
+.maqueta-nav{position:fixed;bottom:16px;right:16px;background:var(--text);color:var(--bg);border-radius:12px;padding:10px 14px;font-size:.85rem;z-index:20;box-shadow:var(--shadow)}
+.maqueta-nav a{color:var(--bg);margin-left:8px}
+.view{display:none}.view.on{display:block}
+@media (max-width:760px){header nav{display:none}.toggle{margin-left:auto}.layout{grid-template-columns:1fr}.toc{position:static;border:1px solid var(--line);border-radius:12px;padding:12px}}
+@media (prefers-reduced-motion:reduce){*{transition:none!important}}
+</style>
+</head>
+<body>
+<header><div class="wrap">
+  <a class="logo" href="#inicio"><span></span>Habilidades para la Vida</a>
+  <nav><a href="#inicio">Temas</a><a href="#inicio">Ejercicios</a><a href="#inicio">Acerca</a></nav>
+  <button class="toggle" id="toggle" aria-label="Cambiar modo claro u oscuro">☾</button>
+</div></header>
+
+<!-- ============ INICIO ============ -->
+<main id="inicio" class="view on"><div class="wrap">
+  <section class="hero">
+    <h1>Herramientas para vivir y convivir mejor</h1>
+    <p>Una guía abierta sobre emociones, vínculos, género y derechos, explicada en simple y con las fuentes de cada idea.</p>
+    <div class="search"><input id="q" type="search" placeholder="Buscar un tema: ira, límites, micromachismos…" aria-label="Buscar un tema"></div>
+    <div class="chips" id="chips">
+      <button class="chip on" data-f="all">Todos</button>
+      <button class="chip" data-f="g">Género y derechos</button>
+      <button class="chip" data-f="e">Emociones y pensamiento</button>
+      <button class="chip" data-f="h">Habilidades y bienestar</button>
+    </div>
+  </section>
+  <div id="ejes"></div>
+
+  <section class="ejercicios">
+    <h2>Ejercicios para practicar</h2>
+    <p style="color:var(--muted);margin:0">Herramientas interactivas. Lo que escribas queda solo en tu navegador.</p>
+    <div class="ej-grid">
+      <div class="ej h"><span>🌬️</span><b>Respiración guiada</b>Seguí el círculo para respirar con el diafragma.</div>
+      <div class="ej e"><span>🌡️</span><b>Escala del enojo</b>Ubicá tu enojo del 1 al 10 y mirá qué podés hacer.</div>
+      <div class="ej e"><span>📓</span><b>Diario de pensamientos</b>Registrá situaciones y revisá cuánto creés en cada pensamiento.</div>
+    </div>
+  </section>
+
+  <aside class="ayuda" role="note"><strong>144</strong><div><b>¿Necesitás ayuda o querés orientar a alguien?</b><br>Línea 144: atención a situaciones de violencia de género. Gratuita, las 24 h, en todo el país. En una emergencia, llamá al 911.</div></aside>
+</div></main>
+
+<!-- ============ TEMA ============ -->
+<main id="tema" class="view e"><div class="wrap">
+  <div class="crumbs"><a href="#inicio">Inicio</a> › Emociones y pensamiento › Pensamientos automáticos</div>
+  <div class="tema-head">
+    <span class="tag">Emociones y pensamiento</span>
+    <h1>Pensamientos automáticos</h1>
+    <p>Aprender a reconocerlos para prevenir el malestar y la violencia. · 6 min de lectura</p>
+  </div>
+  <div class="layout">
+    <nav class="toc" aria-label="En esta página"><b>En esta página</b>
+      <a class="on" href="#t1">Qué son</a><a href="#t2">Características</a><a href="#t3">La visión de túnel</a><a href="#t4">Cómo reconocerlos</a><a href="#t5">El diario de pensamientos</a></nav>
+    <article>
+      <h2 id="t1">Qué son</h2>
+      <p>Todo el tiempo nos describimos el mundo a nosotros mismos: etiquetamos cada situación como buena o mala, peligrosa o segura. Ese diálogo interno corre en cascada y casi nunca lo notamos, pero puede generar emociones muy intensas.</p>
+      <div class="clave"><small>Idea clave</small>Se viven como un reflejo: aparecen sin razonamiento previo y los tomamos como verdaderos.</div>
+      <h2 id="t2">Características</h2>
+      <ol class="lista">
+        <li><b>Son mensajes breves y específicos</b>: "ella no te quiere".</li>
+        <li><b>Parecen taquigráficos</b>: unas pocas palabras o una imagen fugaz.</li>
+        <li><b>Casi siempre los creemos</b>, por irracionales que sean.</li>
+        <li><b>Se expresan como "debería"</b>, y cada "debería" trae culpa.</li>
+        <li><b>Tienden a dramatizar</b>: suponen siempre lo peor.</li>
+      </ol>
+      <p style="color:var(--muted)">[…el resto del contenido del tema…]</p>
+      <a class="cta" href="#inicio">📓 Probá el diario de pensamientos</a>
+      <div class="fuentes"><b>Fuentes de este tema</b><br>Basado en el enfoque cognitivo de los pensamientos automáticos (Aaron Beck) y la terapia racional emotiva de Albert Ellis. <i>Referencias completas en la versión final.</i></div>
+      <div class="pager"><a href="#inicio">← Anterior<b>Abordaje emocional (IFS)</b></a><a href="#inicio" style="text-align:right">Siguiente →<b>Pensar correctamente</b></a></div>
+    </article>
+  </div>
+</div></main>
+
+<footer><div class="wrap">
+  <span>© 2026 Limonacio · Contenido bajo licencia CC BY-SA 4.0</span>
+  <span>No reemplaza la consulta con un profesional · <a href="#inicio">Bibliografía</a> · <a href="https://www.limonacio.com">← limonacio.com</a></span>
+</div></footer>
+
+<div class="maqueta-nav">MAQUETA · ver: <a href="#inicio">Inicio</a> <a href="#tema">Página de tema</a></div>
+
+<script>
+const TEMAS=[
+ ['g','El modelo ecológico','Bronfenbrenner · Heise','Por qué la violencia es un problema social, analizado en niveles.'],
+ ['g','Violencia de género','Ley 26.485','Tipos, modalidades y el iceberg de la violencia.'],
+ ['g','Femicidio, igualdad y no discriminación','CIDH · CEDAW','Interseccionalidad y obligaciones de los Estados.'],
+ ['g','Micromachismos','Luis Bonino','Las formas cotidianas y sutiles de dominación.'],
+ ['g','Legislación','CEDAW · Belém do Pará','Los tratados y leyes que protegen a las mujeres.'],
+ ['g','Patriarcado y masculinidades','T. Real · K. Duarte','Cómo se aprende a "ser hombre" y qué cuesta.'],
+ ['g','Diversidad sexual','Leyes 26.618 y 26.743','Conceptos básicos y derechos LGBTI+ en Argentina.'],
+ ['e','Entendimiento de la ira','Manejo del enojo','Mitos, escala del enojo y el ciclo de agresión.'],
+ ['e','El cerebro y las emociones','MacLean','Emociones primarias, secundarias y ambivalencia.'],
+ ['e','Abordaje emocional (IFS)','Richard Schwartz','La mente como una familia interna de partes.'],
+ ['e','Pensamientos automáticos','Beck · Ellis','Reconocer el diálogo interno que nos hace sufrir.'],
+ ['e','Pensar correctamente','Albert Ellis','El ABC emocional y las ideas irracionales.'],
+ ['e','Personalidad','Terapia cognitiva','Creencias, amenazas y estrategias de cada estilo.'],
+ ['h','Habilidades interpersonales','Comunicación asertiva','Pasividad, agresión y equilibrio en los vínculos.'],
+ ['h','Límites y negociación','Asertividad','Cómo decir que no y negociar sin perder.'],
+ ['h','Relajación avanzada','Respiración y palabra clave','Técnicas para bajar la tensión en el día a día.']];
+const EJES={g:'Género, violencia y derechos',e:'Emociones y pensamiento',h:'Habilidades y bienestar'};
+let filtro='all';
+function render(){
+  const q=document.getElementById('q').value.toLowerCase();
+  document.getElementById('ejes').innerHTML=Object.entries(EJES).filter(([k])=>filtro==='all'||filtro===k).map(([k,n])=>{
+    const ts=TEMAS.filter(t=>t[0]===k&&(t[1]+t[2]+t[3]).toLowerCase().includes(q));
+    if(!ts.length) return '';
+    return `<section class="eje ${k}"><div class="eje-head"><h2>${n}</h2><small>${ts.length} temas</small></div><div class="grid">${
+      ts.map(t=>`<a class="card" href="#tema"><h3>${t[1]}</h3><p>${t[3]}</p><span class="meta">${t[2]}</span></a>`).join('')}</div></section>`}).join('')||'<p style="text-align:center;color:var(--muted)">No hay temas con esa búsqueda.</p>';
+}
+document.getElementById('q').addEventListener('input',render);
+document.getElementById('chips').addEventListener('click',e=>{if(!e.target.dataset.f)return;filtro=e.target.dataset.f;
+  document.querySelectorAll('.chip').forEach(c=>c.classList.toggle('on',c===e.target));render();});
+const t=document.getElementById('toggle');
+t.onclick=()=>{const d=document.documentElement.dataset.theme==='dark';document.documentElement.dataset.theme=d?'light':'dark';t.textContent=d?'☾':'☀';};
+function route(){const v=location.hash==='#tema'?'tema':'inicio';document.querySelectorAll('.view').forEach(x=>x.classList.toggle('on',x.id===v));scrollTo(0,0);}
+addEventListener('hashchange',route);route();render();
+</script>
+</body>
+</html>

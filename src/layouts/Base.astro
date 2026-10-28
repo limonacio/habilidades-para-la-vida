@@ -1,0 +1,101 @@
+---
+import '../styles/global.css';
+
+interface Props {
+  title: string;
+  description?: string;
+}
+const { title, description = 'Guía abierta sobre emociones, vínculos, género y derechos, con las fuentes de cada idea.' } = Astro.props;
+const fullTitle = title === 'Inicio' ? 'Habilidades para la Vida' : `${title} · Habilidades para la Vida`;
+---
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content={description} />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <title>{fullTitle}</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400&family=Fraunces:opsz,wght@9..144,500;9..144,700&display=swap" rel="stylesheet" />
+    <!-- Aplica el tema guardado ANTES de pintar la página, para evitar un "parpadeo" de colores -->
+    <script is:inline>
+      (() => {
+        let t = null;
+        try { t = localStorage.getItem('tema'); } catch (e) {}
+        if (!t) t = matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+        document.documentElement.dataset.theme = t;
+      })();
+    </script>
+  </head>
+  <body>
+    <a class="sr-only" href="#contenido">Saltar al contenido</a>
+    <header>
+      <div class="wrap bar">
+        <a class="logo" href="/"><span aria-hidden="true"></span>Habilidades para la Vida</a>
+        <nav aria-label="Principal">
+          <a href="/#temas">Temas</a>
+          <a href="/#ejercicios">Ejercicios</a>
+          <a href="/acerca/">Acerca</a>
+        </nav>
+        <button class="toggle" id="toggle" type="button" aria-label="Cambiar entre modo claro y oscuro">☾</button>
+      </div>
+    </header>
+
+    <main id="contenido"><slot /></main>
+
+    <footer>
+      <div class="wrap foot">
+        <span>
+          © 2026 Limonacio · Contenido bajo licencia
+          <a href="https://creativecommons.org/licenses/by-sa/4.0/deed.es" rel="license">CC BY-SA 4.0</a>
+        </span>
+        <span>
+          No reemplaza la consulta con un profesional · <a href="/acerca/#bibliografia">Bibliografía</a> ·
+          <a href="https://www.limonacio.com">← limonacio.com</a>
+        </span>
+      </div>
+    </footer>
+
+    <script>
+      // Botón de modo claro/oscuro: cambia el atributo data-theme y lo recuerda.
+      const btn = document.getElementById('toggle')!;
+      const pintar = () => (btn.textContent = document.documentElement.dataset.theme === 'dark' ? '☀' : '☾');
+      pintar();
+      btn.addEventListener('click', () => {
+        const nuevo = document.documentElement.dataset.theme === 'dark' ? 'light' : 'dark';
+        document.documentElement.dataset.theme = nuevo;
+        try { localStorage.setItem('tema', nuevo); } catch (e) {}
+        pintar();
+      });
+    </script>
+
+    <style>
+      header {
+        position: sticky; top: 0; z-index: 10;
+        background: color-mix(in srgb, var(--bg) 88%, transparent);
+        backdrop-filter: blur(8px); border-bottom: 1px solid var(--line);
+      }
+      .bar { display: flex; align-items: center; gap: 20px; height: 64px; }
+      .logo { font-family: Fraunces, serif; font-weight: 700; font-size: 1.15rem; text-decoration: none; display: flex; align-items: center; gap: 10px; white-space: nowrap; }
+      .logo span { width: 28px; height: 28px; border-radius: 50%; flex: none;
+        background: conic-gradient(var(--violeta) 0 33%, var(--terracota) 0 66%, var(--salvia) 0); }
+      nav { margin-left: auto; display: flex; gap: 18px; font-size: .95rem; }
+      nav a { text-decoration: none; color: var(--muted); }
+      nav a:hover { color: var(--text); }
+      .toggle { border: 1px solid var(--line); background: var(--surface); color: var(--text);
+        border-radius: 999px; width: 40px; height: 40px; cursor: pointer; font-size: 1.1rem; flex: none; }
+      footer { border-top: 1px solid var(--line); padding: 32px 0; color: var(--muted); font-size: .9rem; margin-top: 40px; }
+      .foot { display: flex; flex-wrap: wrap; gap: 12px; justify-content: space-between; }
+      .sr-only:focus { position: fixed; top: 8px; left: 8px; width: auto; height: auto; clip: auto; background: var(--text); color: var(--bg); padding: 8px 12px; z-index: 30; }
+      @media (max-width: 760px) {
+        .logo { font-size: 1rem; }
+        .bar { gap: 12px; }
+        nav { gap: 12px; font-size: .85rem; }
+        nav a:nth-child(2) { display: none; }
+      }
+      @media (max-width: 420px) { .logo { font-size: 0; gap: 0; } }
+    </style>
+  </body>
+</html>

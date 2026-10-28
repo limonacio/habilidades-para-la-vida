@@ -1,0 +1,35 @@
+/* ===== Tokens de diseño (colores) =====
+   Modo claro por defecto; [data-theme="dark"] los reemplaza. */
+:root {
+  --bg: #FAF6F0; --surface: #FFFFFF; --text: #2E2A26; --muted: #6E665E; --line: #E8E0D5;
+  --violeta: #6B4E9B; --terracota: #B85C38; --salvia: #5E7F5B;
+  --violeta-bg: #F0EAF7; --terracota-bg: #FAEDE6; --salvia-bg: #EAF1E8;
+  --shadow: 0 1px 2px rgba(46,42,38,.06), 0 4px 16px rgba(46,42,38,.06);
+  color-scheme: light;
+}
+:root[data-theme="dark"] {
+  --bg: #1C1A1F; --surface: #26232A; --text: #EDE8E1; --muted: #A9A199; --line: #38343D;
+  --violeta: #B39DDB; --terracota: #E59A78; --salvia: #9CC29A;
+  --violeta-bg: #2E2838; --terracota-bg: #382A24; --salvia-bg: #26302A;
+  --shadow: 0 1px 2px rgba(0,0,0,.3), 0 4px 16px rgba(0,0,0,.25);
+  color-scheme: dark;
+}
+/* Cada eje define su color con dos variables: --c (principal) y --cbg (fondo suave) */
+.g { --c: var(--violeta); --cbg: var(--violeta-bg); }
+.e { --c: var(--terracota); --cbg: var(--terracota-bg); }
+.h { --c: var(--salvia); --cbg: var(--salvia-bg); }
+
+/* ===== Base ===== */
+*, *::before, *::after { box-sizing: border-box; }
+html { scroll-padding-top: 88px; }
+body {
+  margin: 0; background: var(--bg); color: var(--text);
+  font: 17px/1.65 "Atkinson Hyperlegible", system-ui, sans-serif;
+  transition: background .2s, color .2s;
+}
+h1, h2, h3 { font-family: Fraunces, Georgia, serif; line-height: 1.2; margin: 0 0 .5em; text-wrap: balance; }
+a { color: inherit; }
+:focus-visible { outline: 3px solid var(--violeta); outline-offset: 2px; border-radius: 4px; }
+.wrap { max-width: 1120px; margin: 0 auto; padding: 0 20px; }
+.sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+@media (prefers-reduced-motion: reduce) { * { transition: none !important; animation: none !important; } }

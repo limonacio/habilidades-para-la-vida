@@ -1,0 +1,100 @@
+---
+import { getCollection, render } from 'astro:content';
+import Base from '../../layouts/Base.astro';
+import Ayuda144 from '../../components/Ayuda144.astro';
+import { EJES } from '../../ejes';
+
+// getStaticPaths le dice a Astro qué páginas generar: una por cada tema.
+export async function getStaticPaths() {
+  const temas = (await getCollection('temas')).sort((a, b) => a.data.orden - b.data.orden);
+  return temas.map((tema, i) => ({
+    params: { slug: tema.id },
+    props: { tema, anterior: temas[i - 1], siguiente: temas[i + 1] },
+  }));
+}
+
+const { tema, anterior, siguiente } = Astro.props;
+const { Content, headings } = await render(tema);
+const indice = headings.filter((h) => h.depth === 2); // solo los títulos "##"
+const eje = EJES[tema.data.eje];
+---
+<Base title={tema.data.title} description={tema.data.descripcion}>
+  <div class={`wrap ${tema.data.eje}`}>
+    <nav class="crumbs" aria-label="Ruta"><a href="/">Inicio</a> › {eje.nombre} › {tema.data.title}</nav>
+    <header class="tema-head">
+      <span class="tag">{eje.corto}</span>
+      <h1>{tema.data.title}</h1>
+      <p>{tema.data.descripcion} · {tema.data.lectura} min de lectura</p>
+    </header>
+
+    <div class="layout">
+      <nav class="toc" aria-label="En esta página">
+        <b>En esta página</b>
+        {indice.map((h) => <a href={`#${h.slug}`} data-id={h.slug}>{h.text}</a>)}
+      </nav>
+
+      <article>
+        <div class="prosa"><Content /></div>
+
+        <section class="fuentes" aria-labelledby="fuentes-t">
+          <h2 id="fuentes-t">Fuentes de este tema</h2>
+          <ul>{tema.data.fuentes.map((f) => <li set:html={f.replace(/\*(.+?)\*/g, '<i>$1</i>')} />)}</ul>
+        </section>
+
+        {tema.data.eje === 'g' && <Ayuda144 />}
+
+        <nav class="pager" aria-label="Otros temas">
+          {anterior ? <a href={`/temas/${anterior.id}/`}>← Anterior<b>{anterior.data.title}</b></a> : <span />}
+          {siguiente && <a class="der" href={`/temas/${siguiente.id}/`}>Siguiente →<b>{siguiente.data.title}</b></a>}
+        </nav>
+      </article>
+    </div>
+  </div>
+</Base>
+
+<script>
+  // Resalta en el índice la sección que se está leyendo.
+  const links = document.querySelectorAll<HTMLAnchorElement>('.toc a');
+  const obs = new IntersectionObserver(
+    (entradas) => {
+      entradas.forEach((e) => {
+        if (e.isIntersecting) links.forEach((l) => l.classList.toggle('on', l.dataset.id === e.target.id));
+      });
+    },
+    { rootMargin: '-90px 0px -70% 0px' },
+  );
+  links.forEach((l) => { const h = document.getElementById(l.dataset.id!); if (h) obs.observe(h); });
+</script>
+
+<style>
+  .crumbs { font-size: .9rem; color: var(--muted); margin: 32px 0 12px; }
+  .tag { display: inline-block; background: var(--cbg); color: var(--c); font-weight: 700; font-size: .8rem; border-radius: 999px; padding: 4px 12px; margin-bottom: 10px; }
+  .tema-head h1 { font-size: clamp(2rem, 4.5vw, 3rem); }
+  .tema-head p { color: var(--muted); font-size: 1.1rem; max-width: 680px; }
+  .layout { display: grid; grid-template-columns: 230px 1fr; gap: 48px; margin: 32px 0 56px; }
+  .toc { position: sticky; top: 88px; align-self: start; font-size: .92rem; max-height: calc(100vh - 110px); overflow: auto; }
+  .toc b { display: block; text-transform: uppercase; letter-spacing: .06em; font-size: .75rem; color: var(--muted); margin-bottom: 8px; }
+  .toc a { display: block; padding: 5px 0 5px 12px; border-left: 2px solid var(--line); text-decoration: none; color: var(--muted); }
+  .toc a.on { border-color: var(--c); color: var(--text); font-weight: 700; }
+  article { max-width: 720px; min-width: 0; }
+  .fuentes { border: 1px dashed var(--line); border-radius: 14px; padding: 16px 20px; font-size: .92rem; margin-top: 40px; }
+  .fuentes h2 { font-size: 1.1rem; margin: 0 0 8px; }
+  .fuentes ul { margin: 0; padding-left: 20px; }
+  .pager { display: flex; justify-content: space-between; gap: 16px; border-top: 1px solid var(--line); padding-top: 24px; margin-top: 40px; }
+  .pager a { text-decoration: none; color: var(--muted); }
+  .pager a b { display: block; color: var(--text); }
+  .pager .der { text-align: right; }
+  /* Estilos del contenido Markdown (usamos :global porque el HTML lo genera <Content />) */
+  .prosa :global(h2) { font-size: 1.6rem; margin-top: 1.6em; color: var(--text); }
+  .prosa :global(h3) { font-size: 1.2rem; margin-top: 1.4em; }
+  .prosa :global(li) { margin-bottom: 6px; }
+  .prosa :global(strong) { color: var(--text); }
+  .prosa :global(table) { width: 100%; border-collapse: collapse; font-size: .9rem; display: block; overflow-x: auto; }
+  .prosa :global(th), .prosa :global(td) { border: 1px solid var(--line); padding: 8px 10px; text-align: left; vertical-align: top; }
+  .prosa :global(th) { background: var(--cbg); }
+  .prosa :global(a) { color: var(--c); }
+  @media (max-width: 860px) {
+    .layout { grid-template-columns: 1fr; gap: 24px; }
+    .toc { position: static; max-height: none; border: 1px solid var(--line); border-radius: 12px; padding: 12px; }
+  }
+</style>
