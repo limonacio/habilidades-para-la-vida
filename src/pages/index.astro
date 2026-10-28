@@ -45,17 +45,18 @@ const ejes = Object.keys(EJES) as Eje[];
         );
       })}
       <p id="vacio" class="vacio" hidden>No hay temas con esa búsqueda.</p>
+
+      <section class="ejercicios" id="ejercicios">
+        <h2>Ejercicios para practicar</h2>
+        <p class="sub">Herramientas interactivas. Lo que escribas va a quedar solo en tu navegador. <b>Próximamente.</b></p>
+        <div class="ej-grid">
+          <div class="ej h"><span aria-hidden="true">🌬️</span><b>Respiración guiada</b>Seguí el círculo para respirar con el diafragma.</div>
+          <div class="ej e"><span aria-hidden="true">🌡️</span><b>Escala del enojo</b>Ubicá tu enojo del 1 al 10 y mirá qué podés hacer.</div>
+          <div class="ej e"><span aria-hidden="true">📓</span><b>Diario de pensamientos</b>Registrá situaciones y revisá cuánto creés en cada pensamiento.</div>
+        </div>
+      </section>
     </div>
 
-    <section class="ejercicios" id="ejercicios">
-      <h2>Ejercicios para practicar</h2>
-      <p class="sub">Herramientas interactivas. Lo que escribas va a quedar solo en tu navegador. <b>Próximamente.</b></p>
-      <div class="ej-grid">
-        <div class="ej h"><span aria-hidden="true">🌬️</span><b>Respiración guiada</b>Seguí el círculo para respirar con el diafragma.</div>
-        <div class="ej e"><span aria-hidden="true">🌡️</span><b>Escala del enojo</b>Ubicá tu enojo del 1 al 10 y mirá qué podés hacer.</div>
-        <div class="ej e"><span aria-hidden="true">📓</span><b>Diario de pensamientos</b>Registrá situaciones y revisá cuánto creés en cada pensamiento.</div>
-      </div>
-    </section>
 
     <Ayuda144 />
   </div>
@@ -127,6 +128,14 @@ const ejes = Object.keys(EJES) as Eje[];
   .ej-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 16px; margin-top: 16px; }
   .ej { background: var(--cbg); border-radius: 14px; padding: 20px; }
   .ej b { display: block; font-family: Fraunces, serif; font-size: 1.1rem; margin: 8px 0 4px; }
+  /* Escritorio: tablero de 2 x 2 → Género | Emociones / Habilidades | Ejercicios */
+  @media (min-width: 1000px) {
+    #temas { display: grid; grid-template-columns: repeat(2, 1fr); gap: 24px; align-items: start; margin: 40px 0 56px; }
+    .eje, .ejercicios { margin: 0; }
+    .lista { grid-template-columns: 1fr; }
+    .vacio { grid-column: 1 / -1; order: -1; }
+    .ej-grid { grid-template-columns: 1fr; }
+  }
   @media (max-width: 600px) {
     .hero { padding: 40px 0 16px; }
     .eje { padding: 18px 14px; margin: 40px 0; }
