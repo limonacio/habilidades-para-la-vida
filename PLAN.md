@@ -142,14 +142,14 @@ Para v2: test de mitos irracionales (Nro. 15) e iceberg de la violencia interact
 - [x] 1.1 Crear la carpeta del proyecto
 - [x] 1.2 Plan y wireframes (este archivo)
 - [x] 1.3 Maqueta visual aprobada
-- [x] 1.4 Crear el proyecto Astro (Git y GitHub: pendiente, lo hace Limonacio)
+- [x] 1.4 Crear el proyecto Astro + repo en GitHub (limonacio/habilidades-para-la-vida)
 - [x] 1.5 Layout base: header, footer, modo claro/oscuro, tipografías, colores
 - [x] 1.6 Pasar los 16 temas a Markdown, reescritos y con autores y fuentes
-- [x] 1.7 Página de inicio: ejes, tarjetas, buscador y filtros
-- [x] 1.8 Plantilla de tema: índice lateral, "idea clave", fuentes, anterior/siguiente
+- [x] 1.7 Página de inicio: ejes en tablero 2x2, temas plegables y buscador simple
+- [x] 1.8 Plantilla de tema: índice lateral, fuentes, anterior/siguiente
 - [x] 1.9 Página /acerca: qué es la guía, autoría, bibliografía, licencia y aviso
 - [x] 1.10 Recuadro de ayuda (Línea 144)
-- [ ] 1.11 Revisión: celular, accesibilidad, ortografía y verificación de citas
+- [ ] 1.11 Revisión de contenido: destacados "Idea clave", ortografía y verificación de citas (sobre todo Ira, Cerebro, Habilidades, Límites, Relajación y Personalidad)
 - [x] 1.12 Deploy en Vercel → https://habilidades-para-la-vida.vercel.app (dominio propio: a definir)
 - [ ] 1.13 Enlazar desde la sección Misceláneos del portfolio
 
