@@ -150,7 +150,7 @@ Para v2: test de mitos irracionales (Nro. 15) e iceberg de la violencia interact
 - [x] 1.9 Página /acerca: qué es la guía, autoría, bibliografía, licencia y aviso
 - [x] 1.10 Recuadro de ayuda (Línea 144)
 - [ ] 1.11 Revisión: celular, accesibilidad, ortografía y verificación de citas
-- [ ] 1.12 Deploy en Vercel (dominio a definir, ej.: guia.limonacio.com)
+- [x] 1.12 Deploy en Vercel → https://habilidades-para-la-vida.vercel.app (dominio propio: a definir)
 - [ ] 1.13 Enlazar desde la sección Misceláneos del portfolio
 
 ### Etapa 2 — Ejercicios interactivos

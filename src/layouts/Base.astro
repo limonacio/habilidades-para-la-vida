@@ -47,14 +47,12 @@ const fullTitle = title === 'Inicio' ? 'Habilidades para la Vida' : `${title} ·
 
     <footer>
       <div class="wrap foot">
-        <span>
-          © 2026 Limonacio · Contenido bajo licencia
-          <a href="https://creativecommons.org/licenses/by-sa/4.0/deed.es" rel="license">CC BY-SA 4.0</a>
-        </span>
-        <span>
-          No reemplaza la consulta con un profesional · <a href="/acerca/#bibliografia">Bibliografía</a> ·
-          <a href="https://www.limonacio.com">← limonacio.com</a>
-        </span>
+        <p>
+          © 2026 · Contenido bajo licencia
+          <a href="https://creativecommons.org/licenses/by-sa/4.0/deed.es" rel="license">CC BY-SA 4.0</a>.
+          Algunos derechos reservados.
+        </p>
+        <a class="firma" href="https://www.limonacio.com">Desarrollado por Limonacio</a>
       </div>
     </footer>
 
@@ -87,7 +85,10 @@ const fullTitle = title === 'Inicio' ? 'Habilidades para la Vida' : `${title} ·
       .toggle { border: 1px solid var(--line); background: var(--surface); color: var(--text);
         border-radius: 999px; width: 40px; height: 40px; cursor: pointer; font-size: 1.1rem; flex: none; }
       footer { border-top: 1px solid var(--line); padding: 32px 0; color: var(--muted); font-size: .9rem; margin-top: 40px; }
-      .foot { display: flex; flex-wrap: wrap; gap: 12px; justify-content: space-between; }
+      .foot { display: flex; flex-direction: column; align-items: center; gap: 14px; text-align: center; }
+      .foot p { margin: 0; }
+      .firma { color: var(--muted); text-decoration: underline; text-underline-offset: 4px; }
+      .firma:hover { color: var(--text); }
       .sr-only:focus { position: fixed; top: 8px; left: 8px; width: auto; height: auto; clip: auto; background: var(--text); color: var(--bg); padding: 8px 12px; z-index: 30; }
       @media (max-width: 760px) {
         .logo { font-size: 1rem; }
