@@ -1,20 +1,28 @@
 ---
 import '../styles/global.css';
+import { UI, LOCALES, NOMBRES_IDIOMA, HTML_LANG, prefijo, rutaSinIdioma, type Lang } from '../i18n/ui';
 
 interface Props {
+  lang: Lang;
   title: string;
   description?: string;
 }
-const { title, description = 'Guía abierta sobre emociones, vínculos, género y derechos, con las fuentes de cada idea.' } = Astro.props;
-const fullTitle = title === 'Inicio' ? 'Habilidades para la Vida' : `${title} · Habilidades para la Vida`;
+const { lang, title, description } = Astro.props;
+const t = UI[lang];
+const fullTitle = title === t.sitio ? t.sitio : `${title} · ${t.sitio}`;
+const base = prefijo(lang);
+// La misma página en los otros idiomas (los temas usan el mismo nombre de archivo en los tres)
+const resto = rutaSinIdioma(Astro.url.pathname);
+const enlaceIdioma = (l: Lang) => `${prefijo(l)}${resto}`;
 ---
 <!doctype html>
-<html lang="es">
+<html lang={HTML_LANG[lang]}>
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="description" content={description} />
+    <meta name="description" content={description ?? t.descripcion} />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    {LOCALES.map((l) => <link rel="alternate" hreflang={HTML_LANG[l]} href={enlaceIdioma(l)} />)}
     <title>{fullTitle}</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -30,16 +38,42 @@ const fullTitle = title === 'Inicio' ? 'Habilidades para la Vida' : `${title} ·
     </script>
   </head>
   <body>
-    <a class="sr-only" href="#contenido">Saltar al contenido</a>
+    <a class="sr-only" href="#contenido">{t.saltar}</a>
     <header>
       <div class="wrap bar">
-        <a class="logo" href="/"><span aria-hidden="true"></span>Habilidades para la Vida</a>
-        <nav aria-label="Principal">
-          <a href="/#temas">Temas</a>
-          <a href="/#ejercicios">Ejercicios</a>
-          <a href="/acerca/">Acerca</a>
+        <a class="logo" href={`${base}/`}><span aria-hidden="true"></span>{t.sitio}</a>
+        <nav class="nav-desktop" aria-label={t.sitio}>
+          <a href={`${base}/#temas`}>{t.nav.temas}</a>
+          <a href={`${base}/#ejercicios`}>{t.nav.ejercicios}</a>
+          <a href={`${base}/acerca/`}>{t.nav.acerca}</a>
         </nav>
-        <button class="toggle" id="toggle" type="button" aria-label="Cambiar entre modo claro y oscuro">☾</button>
+
+        <!-- Menú hamburguesa: modo claro/oscuro, idioma y (en celular) los enlaces -->
+        <div class="menu">
+          <button class="hamburguesa" id="menu-btn" type="button" aria-expanded="false" aria-controls="menu-panel"
+                  data-abrir={t.menu.abrir} data-cerrar={t.menu.cerrar} aria-label={t.menu.abrir}>
+            <span></span><span></span><span></span>
+          </button>
+          <div class="panel" id="menu-panel" hidden>
+            <nav class="nav-movil" aria-label={t.sitio}>
+              <a href={`${base}/#temas`}>{t.nav.temas}</a>
+              <a href={`${base}/#ejercicios`}>{t.nav.ejercicios}</a>
+              <a href={`${base}/acerca/`}>{t.nav.acerca}</a>
+            </nav>
+            <p class="grupo">{t.menu.modo}</p>
+            <div class="opciones" role="group" aria-label={t.menu.modo}>
+              <button type="button" class="opcion" data-tema="light">☀ {t.menu.claro}</button>
+              <button type="button" class="opcion" data-tema="dark">☾ {t.menu.oscuro}</button>
+            </div>
+            <p class="grupo">{t.menu.idioma}</p>
+            <div class="opciones idiomas">
+              {LOCALES.map((l) => (
+                <a class="opcion" href={enlaceIdioma(l)} hreflang={HTML_LANG[l]} lang={HTML_LANG[l]}
+                   aria-current={l === lang ? 'true' : undefined}>{NOMBRES_IDIOMA[l]}</a>
+              ))}
+            </div>
+          </div>
+        </div>
       </div>
     </header>
 
@@ -48,25 +82,39 @@ const fullTitle = title === 'Inicio' ? 'Habilidades para la Vida' : `${title} ·
     <footer>
       <div class="wrap foot">
         <p>
-          © 2026 · Contenido bajo licencia
-          <a href="https://creativecommons.org/licenses/by-sa/4.0/deed.es" rel="license">CC BY-SA 4.0</a>.
-          Algunos derechos reservados.
+          © 2026 · {t.footer.licencia}
+          <a href={t.ccUrl} rel="license">CC BY-SA 4.0</a>.
+          {t.footer.reservados}
         </p>
-        <a class="firma" href="https://www.limonacio.com">Desarrollado por Limonacio</a>
+        <a class="firma" href="https://www.limonacio.com">{t.footer.firma}</a>
       </div>
     </footer>
 
     <script>
-      // Botón de modo claro/oscuro: cambia el atributo data-theme y lo recuerda.
-      const btn = document.getElementById('toggle')!;
-      const pintar = () => (btn.textContent = document.documentElement.dataset.theme === 'dark' ? '☀' : '☾');
-      pintar();
-      btn.addEventListener('click', () => {
-        const nuevo = document.documentElement.dataset.theme === 'dark' ? 'light' : 'dark';
-        document.documentElement.dataset.theme = nuevo;
-        try { localStorage.setItem('tema', nuevo); } catch (e) {}
-        pintar();
-      });
+      // ----- Menú hamburguesa -----
+      const btn = document.getElementById('menu-btn') as HTMLButtonElement;
+      const panel = document.getElementById('menu-panel') as HTMLElement;
+      const abrir = (si: boolean) => {
+        panel.hidden = !si;
+        btn.setAttribute('aria-expanded', String(si));
+        btn.setAttribute('aria-label', si ? btn.dataset.cerrar! : btn.dataset.abrir!);
+      };
+      btn.addEventListener('click', () => abrir(panel.hidden));
+      // Se cierra al tocar afuera o con la tecla Escape
+      document.addEventListener('click', (e) => { if (!panel.hidden && !(e.target as Element).closest('.menu')) abrir(false); });
+      document.addEventListener('keydown', (e) => { if (e.key === 'Escape' && !panel.hidden) { abrir(false); btn.focus(); } });
+      // Los enlaces internos (#temas, #ejercicios) cierran el menú al tocarlos
+      panel.querySelectorAll('.nav-movil a').forEach((a) => a.addEventListener('click', () => abrir(false)));
+
+      // ----- Modo claro / oscuro -----
+      const opciones = panel.querySelectorAll<HTMLButtonElement>('[data-tema]');
+      const marcar = () => opciones.forEach((o) => o.setAttribute('aria-pressed', String(o.dataset.tema === document.documentElement.dataset.theme)));
+      marcar();
+      opciones.forEach((o) => o.addEventListener('click', () => {
+        document.documentElement.dataset.theme = o.dataset.tema!;
+        try { localStorage.setItem('tema', o.dataset.tema!); } catch (e) {}
+        marcar();
+      }));
     </script>
 
     <style>
@@ -89,11 +137,32 @@ const fullTitle = title === 'Inicio' ? 'Habilidades para la Vida' : `${title} ·
         transition: transform .3s;
       }
       .logo:hover span { transform: rotate(120deg); }
-      nav { margin-left: auto; display: flex; gap: 18px; font-size: .95rem; }
-      nav a { text-decoration: none; color: var(--muted); }
-      nav a:hover { color: var(--text); }
-      .toggle { border: 1px solid var(--line); background: var(--surface); color: var(--text);
-        border-radius: 999px; width: 40px; height: 40px; cursor: pointer; font-size: 1.1rem; flex: none; }
+      .nav-desktop { margin-left: auto; display: flex; gap: 18px; font-size: .95rem; }
+      .nav-desktop a { text-decoration: none; color: var(--muted); }
+      .nav-desktop a:hover { color: var(--text); }
+
+      /* Botón hamburguesa: tres rayitas que se convierten en una X al abrir */
+      .menu { position: relative; flex: none; }
+      .hamburguesa { width: 42px; height: 42px; border: 1px solid var(--line); background: var(--surface); border-radius: 12px;
+        cursor: pointer; display: grid; place-content: center; gap: 4px; padding: 0; }
+      .hamburguesa span { display: block; width: 18px; height: 2px; background: var(--text); border-radius: 2px; transition: transform .2s, opacity .2s; }
+      .hamburguesa[aria-expanded="true"] span:nth-child(1) { transform: translateY(6px) rotate(45deg); }
+      .hamburguesa[aria-expanded="true"] span:nth-child(2) { opacity: 0; }
+      .hamburguesa[aria-expanded="true"] span:nth-child(3) { transform: translateY(-6px) rotate(-45deg); }
+
+      .panel { position: absolute; right: 0; top: calc(100% + 10px); width: 250px; background: var(--surface);
+        border: 1px solid var(--line); border-radius: 14px; box-shadow: var(--shadow), 0 12px 32px rgba(0,0,0,.12); padding: 14px; }
+      .panel[hidden] { display: none; }
+      .grupo { margin: 4px 0 8px; font-size: .75rem; font-weight: 700; text-transform: uppercase; letter-spacing: .06em; color: var(--muted); }
+      .opciones { display: flex; gap: 6px; margin-bottom: 14px; flex-wrap: wrap; }
+      .opciones:last-child { margin-bottom: 0; }
+      .opcion { flex: 1; text-align: center; border: 1px solid var(--line); background: var(--bg); color: var(--text);
+        border-radius: 10px; padding: 8px 10px; font: inherit; font-size: .9rem; cursor: pointer; text-decoration: none; white-space: nowrap; }
+      .opcion:hover { border-color: var(--text); }
+      .opcion[aria-pressed="true"], .opcion[aria-current="true"] { background: var(--text); color: var(--bg); border-color: var(--text); font-weight: 700; }
+      .idiomas { flex-direction: column; }
+      .nav-movil { display: none; }
+
       footer { border-top: 1px solid var(--line); padding: 32px 0; color: var(--muted); font-size: .9rem; margin-top: 40px; }
       .foot { display: flex; flex-direction: column; align-items: center; gap: 14px; text-align: center; }
       .foot p { margin: 0; }
@@ -103,10 +172,11 @@ const fullTitle = title === 'Inicio' ? 'Habilidades para la Vida' : `${title} ·
       @media (max-width: 760px) {
         .logo { font-size: 1rem; }
         .bar { gap: 12px; }
-        nav { gap: 12px; font-size: .85rem; }
-        nav a:nth-child(2) { display: none; }
+        .nav-desktop { display: none; }
+        .menu { margin-left: auto; }
+        .nav-movil { display: flex; flex-direction: column; border-bottom: 1px solid var(--line); margin-bottom: 12px; padding-bottom: 8px; }
+        .nav-movil a { padding: 8px 4px; text-decoration: none; font-weight: 700; }
       }
-      @media (max-width: 420px) { .logo { font-size: 0; gap: 0; } }
     </style>
   </body>
 </html>

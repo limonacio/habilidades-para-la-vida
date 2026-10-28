@@ -1,35 +1,42 @@
 ---
 import { getCollection, render } from 'astro:content';
-import Base from '../../layouts/Base.astro';
-import Ayuda144 from '../../components/Ayuda144.astro';
-import { EJES } from '../../ejes';
+import Base from '../../../layouts/Base.astro';
+import Ayuda144 from '../../../components/Ayuda144.astro';
+import { UI, LOCALES, DEFAULT_LANG, prefijo, type Lang } from '../../../i18n/ui';
 
-// getStaticPaths le dice a Astro qué páginas generar: una por cada tema.
+// getStaticPaths le dice a Astro qué páginas generar: una por tema y por idioma.
 export async function getStaticPaths() {
-  const temas = (await getCollection('temas')).sort((a, b) => a.data.orden - b.data.orden);
-  return temas.map((tema, i) => ({
-    params: { slug: tema.id },
-    props: { tema, anterior: temas[i - 1], siguiente: temas[i + 1] },
-  }));
+  const todos = await getCollection('temas');
+  return LOCALES.flatMap((lang) => {
+    const temas = todos.filter((e) => e.id.startsWith(`${lang}/`)).sort((a, b) => a.data.orden - b.data.orden);
+    return temas.map((tema, i) => ({
+      params: { lang: lang === DEFAULT_LANG ? undefined : lang, slug: tema.id.split('/')[1] },
+      props: { lang, tema, anterior: temas[i - 1], siguiente: temas[i + 1] },
+    }));
+  });
 }
 
-const { tema, anterior, siguiente } = Astro.props;
+const { lang, tema, anterior, siguiente } = Astro.props as { lang: Lang; tema: any; anterior?: any; siguiente?: any };
+const t = UI[lang];
+const base = prefijo(lang);
+const slug = (id: string) => id.split('/')[1];
 const { Content, headings } = await render(tema);
 const indice = headings.filter((h) => h.depth === 2); // solo los títulos "##"
-const eje = EJES[tema.data.eje];
+const eje = t.ejes[tema.data.eje as 'g' | 'e' | 'h'];
 ---
-<Base title={tema.data.title} description={tema.data.descripcion}>
+<Base lang={lang} title={tema.data.title} description={tema.data.descripcion}>
   <div class={`wrap ${tema.data.eje}`}>
-    <nav class="crumbs" aria-label="Ruta"><a href="/">Inicio</a> › {eje.nombre} › {tema.data.title}</nav>
+    <nav class="crumbs" aria-label={t.tema.ruta}><a href={`${base}/`}>{t.tema.inicio}</a> › {eje} › {tema.data.title}</nav>
     <header class="tema-head">
-      <span class="tag">{eje.corto}</span>
+      <span class="tag">{eje}</span>
       <h1>{tema.data.title}</h1>
       <p>{tema.data.descripcion}</p>
+      {t.tema.traduccion && <p class="trad">{t.tema.traduccion}</p>}
     </header>
 
     <div class="layout">
-      <nav class="toc" aria-label="En esta página">
-        <b>En esta página</b>
+      <nav class="toc" aria-label={t.tema.indice}>
+        <b>{t.tema.indice}</b>
         {indice.map((h) => <a href={`#${h.slug}`} data-id={h.slug}>{h.text}</a>)}
       </nav>
 
@@ -37,15 +44,15 @@ const eje = EJES[tema.data.eje];
         <div class="prosa"><Content /></div>
 
         <section class="fuentes" aria-labelledby="fuentes-t">
-          <h2 id="fuentes-t">Fuentes de este tema</h2>
+          <h2 id="fuentes-t">{t.tema.fuentes}</h2>
           <ul>{tema.data.fuentes.map((f) => <li set:html={f.replace(/\*(.+?)\*/g, '<i>$1</i>')} />)}</ul>
         </section>
 
-        {tema.data.eje === 'g' && <Ayuda144 />}
+        {tema.data.eje === 'g' && <Ayuda144 lang={lang} />}
 
-        <nav class="pager" aria-label="Otros temas">
-          {anterior ? <a href={`/temas/${anterior.id}/`}>← Anterior<b>{anterior.data.title}</b></a> : <span />}
-          {siguiente && <a class="der" href={`/temas/${siguiente.id}/`}>Siguiente →<b>{siguiente.data.title}</b></a>}
+        <nav class="pager" aria-label={t.tema.otros}>
+          {anterior ? <a href={`${base}/temas/${slug(anterior.id)}/`}>← {t.tema.anterior}<b>{anterior.data.title}</b></a> : <span />}
+          {siguiente && <a class="der" href={`${base}/temas/${slug(siguiente.id)}/`}>{t.tema.siguiente} →<b>{siguiente.data.title}</b></a>}
         </nav>
       </article>
     </div>
@@ -71,6 +78,7 @@ const eje = EJES[tema.data.eje];
   .tag { display: inline-block; background: var(--cbg); color: var(--c); font-weight: 700; font-size: .8rem; border-radius: 999px; padding: 4px 12px; margin-bottom: 10px; }
   .tema-head h1 { font-size: clamp(2rem, 4.5vw, 3rem); }
   .tema-head p { color: var(--muted); font-size: 1.1rem; max-width: 680px; }
+  .tema-head .trad { font-size: .85rem; font-style: italic; margin-top: -6px; }
   .layout { display: grid; grid-template-columns: 230px 1fr; gap: 48px; margin: 32px 0 56px; }
   .toc { position: sticky; top: 88px; align-self: start; font-size: .92rem; max-height: calc(100vh - 110px); overflow: auto; }
   .toc b { display: block; text-transform: uppercase; letter-spacing: .06em; font-size: .75rem; color: var(--muted); margin-bottom: 8px; }

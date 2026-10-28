@@ -1,42 +1,49 @@
 ---
 import { getCollection } from 'astro:content';
-import Base from '../layouts/Base.astro';
-import Ayuda144 from '../components/Ayuda144.astro';
-import { EJES, type Eje } from '../ejes';
+import Base from '../../layouts/Base.astro';
+import Ayuda144 from '../../components/Ayuda144.astro';
+import { UI, prefijo, pathsIdioma, type Lang, type Eje } from '../../i18n/ui';
 
-// Traemos todos los temas y los ordenamos por el campo "orden".
-const temas = (await getCollection('temas')).sort((a, b) => a.data.orden - b.data.orden);
-const ejes = Object.keys(EJES) as Eje[];
+// Una versión de esta página por idioma: /, /en/, /pt/
+export const getStaticPaths = pathsIdioma;
+const { lang } = Astro.props as { lang: Lang };
+const t = UI[lang];
+const base = prefijo(lang);
+
+// Temas de este idioma, ordenados por el campo "orden".
+const temas = (await getCollection('temas', (e) => e.id.startsWith(`${lang}/`))).sort((a, b) => a.data.orden - b.data.orden);
+const slug = (id: string) => id.split('/')[1];
+const ejes: Eje[] = ['g', 'e', 'h'];
 ---
-<Base title="Inicio">
+<Base lang={lang} title={t.sitio}>
   <div class="wrap">
     <section class="hero">
-      <h1>Herramientas para vivir y convivir mejor</h1>
-      <p>Una guía abierta sobre emociones, vínculos, género y derechos, explicada en simple y con las fuentes de cada idea.</p>
+      <h1>{t.hero.titulo}</h1>
+      <p>{t.hero.bajada}</p>
       <label class="search">
         <svg aria-hidden="true" viewBox="0 0 24 24" width="20" height="20"><circle cx="11" cy="11" r="7" fill="none" stroke="currentColor" stroke-width="2"/><path d="m20 20-4-4" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
-        <span class="sr-only">Buscar un tema</span>
-        <input id="q" type="search" placeholder="Buscar un tema…" autocomplete="off" />
+        <span class="sr-only">{t.buscar.label}</span>
+        <input id="q" type="search" placeholder={t.buscar.placeholder} autocomplete="off" />
       </label>
     </section>
 
     <div id="temas">
       {ejes.map((k) => {
-        const lista = temas.filter((t) => t.data.eje === k);
+        const lista = temas.filter((x) => x.data.eje === k);
         return (
           <section class={`eje ${k}`}>
-            <h2>{EJES[k].nombre}</h2>
+            <h2>{t.ejes[k]}</h2>
             <div class="lista">
-              {lista.map((t) => (
-                <details class="tema" data-texto={`${t.data.title} ${t.data.descripcion} ${t.data.autores}`}>
+              {lista.map((tema) => (
+                <details class="tema" data-texto={`${tema.data.title} ${tema.data.descripcion} ${tema.data.autores}`}>
                   <summary>
-                    <span>{t.data.title}</span>
+                    <span>{tema.data.title}</span>
                     <svg class="chev" aria-hidden="true" viewBox="0 0 24 24" width="20" height="20"><path d="m6 9 6 6 6-6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
                   </summary>
                   <div class="detalle">
-                    <p>{t.data.descripcion}</p>
-                    <p class="meta">{t.data.autores}</p>
-                    <a class="leer" href={`/temas/${t.id}/`}>Leer el tema</a>
+                    <p>{tema.data.descripcion}</p>
+                    <p class="meta">{tema.data.autores}</p>
+                    <a class="leer" href={`${base}/temas/${slug(tema.id)}/`}>{t.leer}</a>
                   </div>
                 </details>
               ))}
@@ -44,21 +51,21 @@ const ejes = Object.keys(EJES) as Eje[];
           </section>
         );
       })}
-      <p id="vacio" class="vacio" hidden>No hay temas con esa búsqueda.</p>
+      <p id="vacio" class="vacio" hidden>{t.buscar.vacio}</p>
 
       <section class="ejercicios" id="ejercicios">
-        <h2>Ejercicios para practicar</h2>
-        <p class="sub">Herramientas interactivas. Lo que escribas va a quedar solo en tu navegador. <b>Próximamente.</b></p>
+        <h2>{t.ejercicios.titulo}</h2>
+        <p class="sub">{t.ejercicios.bajada} <b>{t.ejercicios.pronto}</b></p>
         <div class="ej-grid">
-          <div class="ej h"><span aria-hidden="true">🌬️</span><b>Respiración guiada</b>Seguí el círculo para respirar con el diafragma.</div>
-          <div class="ej e"><span aria-hidden="true">🌡️</span><b>Escala del enojo</b>Ubicá tu enojo del 1 al 10 y mirá qué podés hacer.</div>
-          <div class="ej e"><span aria-hidden="true">📓</span><b>Diario de pensamientos</b>Registrá situaciones y revisá cuánto creés en cada pensamiento.</div>
+          {t.ejercicios.items.map(([titulo, texto], i) => (
+            <div class={`ej ${i === 0 ? 'h' : 'e'}`}><span aria-hidden="true">{['🌬️', '🌡️', '📓'][i]}</span><b>{titulo}</b>{texto}</div>
+          ))}
         </div>
       </section>
     </div>
 
 
-    <Ayuda144 />
+    <Ayuda144 lang={lang} />
   </div>
 </Base>
 

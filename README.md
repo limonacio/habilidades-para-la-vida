@@ -17,13 +17,15 @@ npm run preview  # muestra esa versión final localmente
 
 ```
 src/
-  content/temas/      ← un archivo .md por tema (el contenido)
+  content/temas/es/   ← un archivo .md por tema, en español (original)
+  content/temas/en/   ← los mismos temas en inglés (mismo nombre de archivo)
+  content/temas/pt/   ← los mismos temas en portugués de Brasil
   content.config.ts   ← qué campos lleva cada tema (frontmatter)
-  ejes.ts             ← nombres de los 3 ejes
-  layouts/Base.astro  ← header, footer y modo claro/oscuro
-  components/         ← piezas reutilizables (recuadro Línea 144)
-  pages/              ← cada archivo es una página (rutas)
-    index.astro           → /
+  i18n/ui.ts          ← textos de la interfaz en los 3 idiomas y ayudas de rutas
+  layouts/Base.astro  ← header con menú hamburguesa (modo + idioma) y footer
+  components/         ← piezas reutilizables (recuadro de ayuda)
+  pages/[...lang]/    ← una carpeta para los 3 idiomas: "/" (es), "/en/", "/pt/"
+    index.astro           → inicio
     acerca.astro          → /acerca/
     temas/[slug].astro    → /temas/<nombre-del-tema>/
   styles/global.css   ← colores y estilos generales
@@ -32,7 +34,7 @@ public/               ← archivos que se sirven tal cual (favicon)
 
 ## Agregar o editar un tema
 
-1. Creá o editá un archivo en `src/content/temas/`.
+1. Creá o editá un archivo en `src/content/temas/es/` y su traducción con el mismo nombre en `en/` y `pt/`.
 2. Completá el encabezado (`title`, `eje`, `orden`, `descripcion`, `autores`, `lectura`, `fecha`, `fuentes`).
 3. Escribí el contenido en Markdown usando `##` para las secciones (arman el índice lateral).
 

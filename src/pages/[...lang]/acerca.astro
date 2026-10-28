@@ -1,0 +1,47 @@
+---
+import { getCollection } from 'astro:content';
+import Base from '../../layouts/Base.astro';
+import Ayuda144 from '../../components/Ayuda144.astro';
+import { UI, pathsIdioma, type Lang } from '../../i18n/ui';
+
+export const getStaticPaths = pathsIdioma;
+const { lang } = Astro.props as { lang: Lang };
+const t = UI[lang].acerca;
+
+// Bibliografía general: juntamos las fuentes de los temas de este idioma, sin repetir, en orden alfabético.
+const temas = await getCollection('temas', (e) => e.id.startsWith(`${lang}/`));
+const biblio = [...new Set(temas.flatMap((x) => x.data.fuentes))].sort((a, b) => a.localeCompare(b, lang));
+const cursiva = (s: string) => s.replace(/\*(.+?)\*/g, '<i>$1</i>');
+---
+<Base lang={lang} title={t.titulo} description={t.meta}>
+  <div class="wrap acerca">
+    <h1>{t.titulo}</h1>
+
+    <h2>{t.queEs}</h2>
+    <p set:html={t.queEs1} />
+    <p set:html={t.queEs2} />
+
+    <h2>{t.quien}</h2>
+    <p set:html={t.quien1} />
+
+    <h2>{t.aviso}</h2>
+    <p set:html={t.aviso1} />
+    <Ayuda144 lang={lang} />
+
+    <h2>{t.licencia}</h2>
+    <p set:html={t.licencia1} />
+
+    <h2 id="bibliografia">{t.biblio}</h2>
+    {t.traduccion && <p class="nota">{t.traduccion}</p>}
+    <ul class="biblio">{biblio.map((f) => <li set:html={cursiva(f)} />)}</ul>
+  </div>
+</Base>
+
+<style>
+  .acerca { max-width: 760px; padding-top: 48px; }
+  .acerca h1 { font-size: clamp(2rem, 4.5vw, 3rem); }
+  .acerca h2 { font-size: 1.5rem; margin-top: 1.6em; }
+  .biblio { padding-left: 20px; font-size: .95rem; }
+  .biblio li { margin-bottom: 8px; }
+  .nota { color: var(--muted); font-size: .92rem; }
+</style>

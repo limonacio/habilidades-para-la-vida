@@ -2,7 +2,8 @@ import { defineCollection } from 'astro:content';
 import { glob } from 'astro/loaders';
 import { z } from 'astro/zod';
 
-// Cada tema es un archivo .md en src/content/temas.
+// Cada tema es un archivo .md en src/content/temas/<idioma>/ (es, en, pt).
+// El mismo nombre de archivo en los tres idiomas = el mismo tema traducido.
 // El "schema" valida el encabezado (frontmatter) de cada archivo:
 // si falta un campo o tiene un tipo incorrecto, el build avisa con un error.
 const temas = defineCollection({

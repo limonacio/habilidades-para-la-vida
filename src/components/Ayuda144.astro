@@ -1,13 +1,12 @@
 ---
-// Recuadro de ayuda. Se muestra en el inicio y en los temas de género y violencia.
+// Recuadro de ayuda. Se muestra en el inicio, en Acerca y en los temas de género y violencia.
+import { UI, type Lang } from '../i18n/ui';
+const { lang } = Astro.props as { lang: Lang };
+const t = UI[lang].ayuda;
 ---
-<aside class="ayuda" role="note" aria-label="Líneas de ayuda">
+<aside class="ayuda" role="note">
   <strong aria-hidden="true">144</strong>
-  <div>
-    <b>¿Necesitás ayuda o querés orientar a alguien?</b><br />
-    <a href="tel:144">Línea 144</a>: atención a situaciones de violencia de género. Gratuita, las 24 h, en todo el país.
-    En una emergencia, llamá al <a href="tel:911">911</a>.
-  </div>
+  <div><b>{t.titulo}</b><br />{t.texto}</div>
 </aside>
 
 <style>
