@@ -77,8 +77,18 @@ const fullTitle = title === 'Inicio' ? 'Habilidades para la Vida' : `${title} ·
       }
       .bar { display: flex; align-items: center; gap: 20px; height: 64px; }
       .logo { font-family: Fraunces, serif; font-weight: 700; font-size: 1.15rem; text-decoration: none; display: flex; align-items: center; gap: 10px; white-space: nowrap; }
-      .logo span { width: 28px; height: 28px; border-radius: 50%; flex: none;
-        background: conic-gradient(var(--violeta) 0 33%, var(--terracota) 0 66%, var(--salvia) 0); }
+      .logo span {
+        width: 30px; height: 30px; border-radius: 50%; flex: none;
+        /* Capa 1: brillo blanco arriba a la izquierda (da sensación de luz y volumen).
+           Capa 2: los tres colores de los ejes, en versión más viva que la del texto. */
+        background:
+          radial-gradient(circle at 30% 28%, rgba(255,255,255,.65), rgba(255,255,255,0) 50%),
+          conic-gradient(from -30deg, #8A5CE6 0 33.3%, #F07A45 0 66.6%, #5DB85A 0);
+        /* Resplandor suave alrededor + borde fino para que el círculo quede nítido */
+        box-shadow: 0 0 0 1px rgba(255,255,255,.35) inset, 0 0 12px rgba(240,122,69,.45), 0 0 18px rgba(138,92,230,.3);
+        transition: transform .3s;
+      }
+      .logo:hover span { transform: rotate(120deg); }
       nav { margin-left: auto; display: flex; gap: 18px; font-size: .95rem; }
       nav a { text-decoration: none; color: var(--muted); }
       nav a:hover { color: var(--text); }

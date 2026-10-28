@@ -1,17 +1,19 @@
 /* ===== Tokens de diseño (colores) =====
    Modo claro por defecto; [data-theme="dark"] los reemplaza. */
 :root {
-  --bg: #FAF6F0; --surface: #FFFFFF; --text: #2E2A26; --muted: #6E665E; --line: #E8E0D5;
-  --violeta: #6B4E9B; --terracota: #B85C38; --salvia: #5E7F5B;
-  --violeta-bg: #F0EAF7; --terracota-bg: #FAEDE6; --salvia-bg: #EAF1E8;
-  --shadow: 0 1px 2px rgba(46,42,38,.06), 0 4px 16px rgba(46,42,38,.06);
+  /* Modo claro suavizado: fondo crema más cálido y superficies que no son blanco puro */
+  --bg: #EFE8DD; --surface: #FBF8F3; --text: #2B2622; --muted: #5F574F; --line: #D9CFC2;
+  --violeta: #5E4291; --terracota: #A44E2C; --salvia: #4D6E4A;
+  --violeta-bg: #E3D9F0; --terracota-bg: #F2DCCF; --salvia-bg: #D9E6D5;
+  --shadow: 0 1px 2px rgba(43,38,34,.08), 0 4px 14px rgba(43,38,34,.08);
   color-scheme: light;
 }
 :root[data-theme="dark"] {
-  --bg: #1C1A1F; --surface: #26232A; --text: #EDE8E1; --muted: #A9A199; --line: #38343D;
-  --violeta: #B39DDB; --terracota: #E59A78; --salvia: #9CC29A;
-  --violeta-bg: #2E2838; --terracota-bg: #382A24; --salvia-bg: #26302A;
-  --shadow: 0 1px 2px rgba(0,0,0,.3), 0 4px 16px rgba(0,0,0,.25);
+  /* Modo oscuro suavizado: gris cálido en lugar de casi negro */
+  --bg: #2A2730; --surface: #37333E; --text: #F0EBE4; --muted: #BDB5AC; --line: #4A4552;
+  --violeta: #C4AEEA; --terracota: #F0A886; --salvia: #A9D0A6;
+  --violeta-bg: #3E3552; --terracota-bg: #4A3630; --salvia-bg: #334234;
+  --shadow: 0 1px 2px rgba(0,0,0,.25), 0 4px 14px rgba(0,0,0,.2);
   color-scheme: dark;
 }
 /* Cada eje define su color con dos variables: --c (principal) y --cbg (fondo suave) */
