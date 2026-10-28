@@ -8,7 +8,7 @@ lectura: 3
 fecha: 2026-10-28
 fuentes:
   - "MacLean, P. D. (1990). *The Triune Brain in Evolution*. Plenum Press."
-  - "McKay, M., Wood, J. C. y Brantley, J. (2007). *Manual práctico de terapia dialéctica conductual*. Desclée de Brouwer (ed. en español)."
+  - "McKay, M., Wood, J. C. y Brantley, J. (2007). *Manual práctico de terapia dialéctico conductual*. Desclée de Brouwer (ed. en español)."
   - "Linehan, M. M. (1993). *Manual de tratamiento de los trastornos de personalidad límite* (habilidades DBT)."
 ---
 
@@ -16,6 +16,10 @@ fuentes:
 
 - El cerebro humano es el sistema más complejo conocido; para entenderlo hay que buscar patrones y explicaciones simples.
 - La evolución humana comenzó hace al menos 6 millones de años, cuando una población de primates africanos se dividió en dos linajes.
+
+> **Idea clave**
+>
+> Las emociones secundarias, los “sentimientos de los sentimientos”, suelen causar más problemas que las primarias.
 
 ## El modelo de los tres cerebros (MacLean)
 

@@ -8,8 +8,8 @@ lectura: 3
 fecha: 2026-10-28
 fuentes:
   - "Rivera, G. *Cinco ensayos para repensar el ser hombre en el patriarcado*."
-  - "Real, T. (1998). *No quiero hablar de ello: superar el secreto legado de la depresión masculina*."
-  - "Holloway, K. *La masculinidad está matando a los hombres*."
+  - "Real, T. (1997). *I Don't Want to Talk About It: Overcoming the Secret Legacy of Male Depression*. Scribner. (En español: *No quiero hablar de ello*.)"
+  - "Holloway, K. (2015). Toxic masculinity is killing men: The roots of male trauma. *AlterNet* / *Salon*."
   - "Duarte, K. (citado en Rivera)."
   - "Coontz, S.; Allen, M. (citados en Holloway)."
 ---
@@ -19,7 +19,11 @@ fuentes:
 - Aunque el patriarcado también oprime a los hombres, estos conservan intactos sus privilegios (mejor salario, ejercer violencia naturalizada, etc.). Mientras no los suelten, no puede hablarse de "empate" entre hombres y mujeres.
 - Klaudio Duarte: los hombres aprenden a ser hombres; no se nace machista. Se reproduce el patriarcado mediante el sexismo, la homofobia, el falocentrismo y la heteronormatividad, y eso puede desaprenderse: es una lucha política.
 
-## "La masculinidad está matando a los hombres" (Kali Halloway)
+> **Idea clave**
+>
+> No se nace machista: se aprende. Y lo aprendido se puede desaprender.
+
+## "La masculinidad está matando a los hombres" (Kali Holloway, 2015)
 
 - Las palabras más dañinas que recibe un niño: "sé un hombre".
 - La construcción de lo femenino exige a las mujeres ser delgadas, bellas y serviciales; la de lo masculino obliga a los hombres a demostrar constantemente lo que son.
@@ -27,7 +31,7 @@ fuentes:
 
 ## La masculinización empieza en la primera infancia
 
-- Terry Real ("No quiero hablar de ello", 1998): padres y madres proyectan en los bebés varones una masculinidad innata y, por lo tanto, menor necesidad de confort y afecto.
+- Terry Real ("No quiero hablar de ello", 1997): padres y madres proyectan en los bebés varones una masculinidad innata y, por lo tanto, menor necesidad de confort y afecto.
 - En realidad, los bebés varones son más sensibles y expresivos: lloran más y se frustran más cuando el cuidador se va.
 - Experimento con 204 adultos: ante el mismo bebé llorando, lo describieron como "miedoso" si creían que era nena y "colérico" si creían que era varón.
 - A los varones se les habla menos, se los reconforta menos y se los alimenta menos: los recortes emocionales comienzan en el momento más vulnerable.

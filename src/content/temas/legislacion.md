@@ -21,6 +21,10 @@ fuentes:
 - Estas normas son interdependientes e indivisibles: no se pueden garantizar unos derechos a costa de otros.
 - Su preámbulo expresa preocupación porque, en la pobreza, la mujer tiene acceso mínimo a alimentación, salud, enseñanza, capacitación y empleo; y sostiene que un orden económico basado en la equidad y la eliminación del racismo, el colonialismo y la dominación extranjera son indispensables para la igualdad.
 
+> **Idea clave**
+>
+> Los derechos humanos son interdependientes e indivisibles: no se puede garantizar unos a costa de otros.
+
 ## Convención de Belém do Pará
 
 Los Estados parte, en el preámbulo:

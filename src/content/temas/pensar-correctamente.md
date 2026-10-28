@@ -18,6 +18,10 @@ fuentes:
 - **C – Consecuencia:** la reacción emocional.
 - **D:** donde se encuentra la solución al problema.
 
+> **Idea clave**
+>
+> No es el acontecimiento (A) lo que causa la emoción (C), sino lo que creemos sobre él (B).
+
 ## Los mitos irracionales
 
 Ideas prevalentes en la cultura occidental que generan pensamientos problemáticos y emociones negativas:

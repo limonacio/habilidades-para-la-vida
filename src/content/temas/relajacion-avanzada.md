@@ -8,7 +8,7 @@ lectura: 2
 fecha: 2026-10-28
 fuentes:
   - "Jacobson, E. (1938). *Progressive Relaxation*. University of Chicago Press."
-  - "Davis, M., Eshelman, E. R. y McKay, M. (2008). *Técnicas de autocontrol emocional* / *The Relaxation and Stress Reduction Workbook*. New Harbinger."
+  - "Davis, M., McKay, M. y Eshelman, E. R. *Técnicas de autocontrol emocional*. Martínez Roca (ed. en español de *The Relaxation and Stress Reduction Workbook*)."
 ---
 
 ## Respiración profunda (diafragmática)
@@ -16,6 +16,10 @@ fuentes:
 - Colocar una mano en el pecho y otra en el abdomen; inspirar profundo llevando el aire hasta el estómago.
 - Imagen de ayuda: llenar una cantimplora, de abajo hacia arriba. La mano del abdomen sube; la del pecho casi no se mueve.
 - Cada respiración estira y relaja el abdomen y envía al cerebro el mensaje de que todo va bien.
+
+> **Idea clave**
+>
+> Cada respiración profunda le envía al cerebro el mensaje de que todo va bien.
 
 ## Respiración con escenas de estrés
 

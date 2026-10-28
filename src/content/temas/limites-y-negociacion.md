@@ -8,7 +8,7 @@ lectura: 2
 fecha: 2026-10-28
 fuentes:
   - "McKay, M., Davis, M. y Fanning, P. (1983). *Messages: The Communication Skills Book*. New Harbinger."
-  - "McKay, M., Wood, J. C. y Brantley, J. (2007). *Manual práctico de terapia dialéctica conductual*."
+  - "McKay, M., Wood, J. C. y Brantley, J. (2007). *Manual práctico de terapia dialéctico conductual*. Desclée de Brouwer (ed. en español)."
 ---
 
 ## Aprender a establecer límites
@@ -20,6 +20,10 @@ Tres pautas básicas:
 1. **Reconocer las necesidades de la otra persona:** pedir más información con preguntas directas y, si no se entiende el pedido, reformularlo y repetirlo para comprobar que se escuchó bien.
 2. **Expresar la propia posición:** dar la razón del límite incluyendo sentimientos y preferencias, sin pedir disculpas, con confianza y asertividad. Ej.: "Este fin de semana necesito descansar".
 3. **Decir "no":** es la esencia del límite: "no, gracias", "no quiero hacer eso", "he decidido no ir".
+
+> **Idea clave**
+>
+> En una negociación las necesidades del otro son tan importantes como las propias: la idea es que nadie pierda.
 
 ## Consejos para decir "no"
 

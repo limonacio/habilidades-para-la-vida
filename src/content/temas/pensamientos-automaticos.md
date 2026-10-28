@@ -20,6 +20,10 @@ fuentes:
 - Se viven como un reflejo, sin razonamiento previo, y se toman como válidos. El concepto se asocia a la terapia cognitiva de Aaron Beck; Albert Ellis trabajó ideas cercanas desde la terapia racional emotiva.
 - Hablamos distinto con los demás (de forma racional) que con nosotros mismos (a veces con virulencia o desprecio). Ej.: tras perder el empleo, "soy un fracasado", "nadie me contratará".
 
+> **Idea clave**
+>
+> Los pensamientos automáticos se viven como un reflejo: aparecen sin razonamiento previo y los tomamos como verdaderos.
+
 ## Características
 
 1. **Son mensajes específicos y discretos:** ej.: "Ella no te quiere".

@@ -149,7 +149,8 @@ Para v2: test de mitos irracionales (Nro. 15) e iceberg de la violencia interact
 - [x] 1.8 Plantilla de tema: índice lateral, fuentes, anterior/siguiente
 - [x] 1.9 Página /acerca: qué es la guía, autoría, bibliografía, licencia y aviso
 - [x] 1.10 Recuadro de ayuda (Línea 144)
-- [ ] 1.11 Revisión de contenido: destacados "Idea clave", ortografía y verificación de citas (sobre todo Ira, Cerebro, Habilidades, Límites, Relajación y Personalidad)
+- [x] 1.11 Revisión de contenido: "Idea clave" en los 16 temas, ortografía (hunspell es_AR) y verificación de citas y datos
+  - Pendiente menor: confirmar con los libros que el contenido de Límites (Messages), Relajación (Davis y cols.) y los ejercicios de Cerebro/Habilidades (McKay, Wood y Brantley) coincide con esas obras
 - [x] 1.12 Deploy en Vercel → https://habilidades-para-la-vida.vercel.app (dominio propio: a definir)
 - [ ] 1.13 Enlazar desde la sección Misceláneos del portfolio
 

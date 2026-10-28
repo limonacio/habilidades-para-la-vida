@@ -21,6 +21,10 @@ Atribuye motivos ocultos a los demás y desconfía de que usen la información p
 - **Estrategia:** vigilancia permanente, cautela y suspicacia.
 - **Afecto:** cólera por el presunto abuso y ansiedad constante por las amenazas percibidas (suele ser el motivo de consulta).
 
+> **Idea clave**
+>
+> Cada estilo de personalidad se organiza alrededor de creencias sobre uno mismo y sobre los demás, y de una estrategia para protegerse de lo que más teme.
+
 ## Personalidad obsesivo-compulsiva
 
 Se caracteriza por el "control" y el "deber"; hace una virtud del orden. Suele haberse criado en un ambiente rígido y controlador, no tiene relaciones estrechas, su profesión es técnica y detallista, y carece de actividades de tiempo libre.

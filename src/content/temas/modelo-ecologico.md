@@ -17,6 +17,10 @@ fuentes:
 
 La Teoría Ecológica de los Sistemas de Urie Bronfenbrenner es un enfoque ambiental sobre el desarrollo del individuo a través de los distintos ambientes en los que se desenvuelve, que influyen en su cambio y en su desarrollo.
 
+> **Idea clave**
+>
+> La violencia no es un fenómeno individual sino social: para erradicarla hace falta la intervención del Estado junto con la sociedad civil.
+
 ## Por qué es importante un modelo
 
 - Un modelo es una representación abstracta, conceptual, gráfica o visual de fenómenos, sistemas o procesos interconectados; sirve para analizar, describir, explicar, simular y explorar los elementos de un fenómeno.
@@ -32,7 +36,7 @@ La Teoría Ecológica de los Sistemas de Urie Bronfenbrenner es un enfoque ambie
 
 Instrumentos que recoge el modelo:
 
-- Convención de Belém do Pará (1995): Convención Interamericana para Prevenir, Sancionar y Erradicar la Violencia contra la Mujer.
+- Convención de Belém do Pará (1994): Convención Interamericana para Prevenir, Sancionar y Erradicar la Violencia contra la Mujer.
 - Declaración sobre la Eliminación de la Violencia contra la Mujer (Naciones Unidas, 1993).
 - Declaración de Bogotá: Ciudades seguras para mujeres y niñas (2004).
 - A nivel nacional: Ley 26.485 y Decreto Reglamentario 1011/10.
@@ -44,7 +48,7 @@ Instrumentos que recoge el modelo:
 
 ## El enfoque ecológico de Heise y los niveles de análisis
 
-Heise (1994) instituyó el enfoque ecológico para la atención de la violencia a partir de Bronfenbrenner (1979). Supone que cada persona está inmersa en múltiples niveles relacionales (individual, familiar, comunitario y social) donde pueden producirse distintas expresiones de violencia. La OMS lo asumió desde 2003.
+Lori Heise (1998) propuso el enfoque ecológico para la atención de la violencia a partir de Bronfenbrenner (1979). Supone que cada persona está inmersa en múltiples niveles relacionales (individual, familiar, comunitario y social) donde pueden producirse distintas expresiones de violencia. La OMS lo asumió desde 2003.
 
 - **Nivel microsocial – plano individual:** factores biosociales de la historia personal: edad, sexo, nivel educativo, empleo, ingresos. Factores de riesgo: antecedentes de conductas agresivas o de autodesvalorización, trastornos de la personalidad, adicciones, crisis por pérdida de empleo, frustraciones profesionales o fracaso escolar.
 - **Nivel microsocial – plano relacional:** relaciones más próximas: familia, pareja, amistades cercanas. Vivir en ambientes familiares violentos, sufrir agresiones o presenciar actos de violencia puede predisponer a sufrir o perpetrar violencia en la adolescencia, la juventud y la adultez.

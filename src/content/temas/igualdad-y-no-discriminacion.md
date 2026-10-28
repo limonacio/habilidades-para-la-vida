@@ -18,6 +18,10 @@ fuentes:
 - El sistema interamericano usa el concepto de "interseccionalidad" para analizar la discriminación cuando confluyen varios factores de vulnerabilidad (por ejemplo: ser niña, mujer, vivir en situación de pobreza y con VIH).
 - La intersección de identidades y riesgos acentúa las violaciones de derechos humanos contra personas y grupos históricamente discriminados.
 
+> **Idea clave**
+>
+> Cuando se cruzan varias condiciones de vulnerabilidad (ser niña, mujer, vivir en la pobreza, vivir con VIH), las violaciones de derechos se agravan.
+
 ## Obligaciones de los Estados
 
 - Prevenir y erradicar la violencia y la discriminación, y actuar con debida diligencia.
@@ -49,4 +53,4 @@ Ley de protección integral para prevenir, sancionar y erradicar la violencia co
 
 ## Dato estadístico
 
-En Argentina hubo 133 femicidios durante el primer cuatrimestre de 2019 (Observatorio de Femicidios).
+En Argentina hubo 133 femicidios durante el primer cuatrimestre de 2019, según el Observatorio de las Violencias de Género "Ahora que sí nos ven".

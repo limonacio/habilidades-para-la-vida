@@ -8,13 +8,17 @@ lectura: 4
 fecha: 2026-10-28
 fuentes:
   - "Schwartz, R. C. (1995). *Internal Family Systems Therapy*. Guilford Press."
-  - "Schwartz, R. C. (2021). *No hay partes malas*. Eleftheria (ed. en español)."
+  - "Schwartz, R. C. (2021). *No hay partes malas: sanar el trauma y recobrar la plenitud con el modelo Sistemas de Familia Interna*. Eleftheria (ed. en español)."
   - "Earley, J. (2009). *Self-Therapy*. Pattern System Books."
 ---
 
 ## Punto de partida
 
 Las personas a veces tenemos sentimientos muy dolorosos o impulsos destructivos que dificultan la vida afectiva y relacional. Esas emociones "intentan" manejar situaciones complejas, pero producen sentimientos irracionales que solemos reprimir o censurar. El IFS es un modelo para entender cómo funciona la mente.
+
+> **Idea clave**
+>
+> Cada parte de nosotros, incluso la que más problemas trae, intenta protegernos de algún daño.
 
 ## La mente como familia interna
 

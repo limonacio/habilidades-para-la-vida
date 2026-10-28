@@ -8,7 +8,7 @@ lectura: 2
 fecha: 2026-10-28
 fuentes:
   - "Linehan, M. M. (1993). Habilidades de efectividad interpersonal (DBT)."
-  - "McKay, M., Wood, J. C. y Brantley, J. (2007). *Manual práctico de terapia dialéctica conductual*."
+  - "McKay, M., Wood, J. C. y Brantley, J. (2007). *Manual práctico de terapia dialéctico conductual*. Desclée de Brouwer (ed. en español)."
   - "Organización Mundial de la Salud (1993). *Life Skills Education in Schools* (Habilidades para la vida)."
   - "D'Zurilla, T. J. y Goldfried, M. R. (1971). Problem solving and behavior modification. *Journal of Abnormal Psychology*, 78(1)."
 ---
@@ -17,6 +17,10 @@ fuentes:
 
 - Las relaciones nos dan capacidad de amar, compañía y apoyo; para sostenerlas hay que aprender habilidades interpersonales.
 - Las más importantes: asertividad, saber pedir, saber decir no y negociar el conflicto sin perjudicar la relación.
+
+> **Idea clave**
+>
+> Tanto la pasividad como la agresión dañan los vínculos; la asertividad permite cuidar lo propio sin pasar por encima del otro.
 
 ## Prestar atención
 

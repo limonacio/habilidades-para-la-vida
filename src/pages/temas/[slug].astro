@@ -93,6 +93,11 @@ const eje = EJES[tema.data.eje];
   .prosa :global(th), .prosa :global(td) { border: 1px solid var(--line); padding: 8px 10px; text-align: left; vertical-align: top; }
   .prosa :global(th) { background: var(--cbg); }
   .prosa :global(a) { color: var(--c); }
+  /* Destacado "Idea clave": se escribe en Markdown como una cita (>) */
+  .prosa :global(blockquote) { background: var(--cbg); border-left: 5px solid var(--c); border-radius: 12px; margin: 28px 0; padding: 16px 22px; }
+  .prosa :global(blockquote p) { margin: 0; font-size: 1.05rem; color: var(--text); }
+  .prosa :global(blockquote p:first-child) { margin-bottom: 4px; }
+  .prosa :global(blockquote p:first-child strong) { color: var(--c); text-transform: uppercase; letter-spacing: .06em; font-size: .78rem; }
   @media (max-width: 860px) {
     .layout { grid-template-columns: 1fr; gap: 24px; }
     .toc { position: static; max-height: none; border: 1px solid var(--line); border-radius: 12px; padding: 12px; }

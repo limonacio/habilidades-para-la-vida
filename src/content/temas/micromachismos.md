@@ -7,7 +7,7 @@ autores: "Luis Bonino"
 lectura: 3
 fecha: 2026-10-28
 fuentes:
-  - "Bonino, L. *Micromachismos: la violencia invisible en la pareja*."
+  - "Bonino Méndez, L. (1998). *Micromachismos: la violencia invisible en la pareja*. Madrid."
   - "Fernández, R. D. (2021). *Micromachismos: formas de control y dominación hacia las mujeres, desaprendiendo la violencia*."
   - "Bourdieu, P. (1998). *La dominación masculina*. Anagrama (ed. en español, 2000)."
   - "Godelier, M. (1982). *La producción de grandes hombres*. Akal (ed. en español, 1986)."
@@ -19,6 +19,10 @@ fuentes:
 - Sus conclusiones ayudan a comprender los modos habituales y ocultos de situarse "por arriba" de las mujeres en la pareja.
 - La mayoría de los varones no ha abandonado totalmente los códigos de dominación y exclusión transmitidos de generación en generación.
 - Otros autores (Miller, Bourdieu, Glick, Castañeda) los llamaron pequeñas tiranías, terrorismo íntimo, violencia "blanda", machismo invisible o sexismo benévolo. Luis Bonino los denominó "micromachismos" (mM) en los años 90.
+
+> **Idea clave**
+>
+> Los micromachismos son comportamientos sutiles y cotidianos que buscan, sobre todo, frenar el cambio de las mujeres y sostener una relación desigual.
 
 ## Tipos de poder
 

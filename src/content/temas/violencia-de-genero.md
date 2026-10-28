@@ -16,6 +16,10 @@ fuentes:
 
 Violencia contra las mujeres es toda conducta, por acción u omisión, basada en razones de género, que de manera directa o indirecta, en el ámbito público o privado, en el espacio analógico o digital, basada en una relación desigual de poder, afecte su vida, libertad, dignidad, integridad física, psicológica, sexual, económica o patrimonial, su participación política y su seguridad personal. Incluye las perpetradas desde el Estado o por sus agentes.
 
+> **Idea clave**
+>
+> Las violencias por motivos de género no son un problema individual ni “de pareja”: son un problema social, cultural y político.
+
 ## Violencias por motivos de género e interseccionalidad
 
 - Son una manifestación de relaciones de poder históricamente desiguales entre los géneros: un problema social, cultural y político, no individual, de pareja o intrafamiliar.

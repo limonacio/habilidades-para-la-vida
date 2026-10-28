@@ -10,13 +10,19 @@ fuentes:
   - "Ley 26.618 de Matrimonio Igualitario (2010)."
   - "Ley 26.743 de Identidad de Género (2012)."
   - "Ley 26.791 (2012), modificación del art. 80 del Código Penal."
-  - "Ley 14.783 de la Provincia de Buenos Aires, 'Diana Sacayán' (2015)."
+  - "Ley 14.783 de la Provincia de Buenos Aires, de cupo laboral travesti trans, conocida como Ley Diana Sacayán (2015), reglamentada por Decreto 1473/2019."
   - "Observatorio Nacional de Crímenes de Odio LGBT+, informe del primer semestre de 2025."
+  - "Ley Electoral 5.109 de la Provincia de Buenos Aires (1946), art. 3, inc. L; derogado por Ley 11.019 (1990)."
+  - "Decreto 214/2006, Convenio Colectivo de Trabajo General para la Administración Pública Nacional."
 ---
 
 ## ¿Qué es la diversidad sexual?
 
 Es el conjunto de identidades, orientaciones y expresiones sexuales que existen en las personas. El concepto reconoce que no hay una única forma "correcta" de ser: la sexualidad humana es diversa y se manifiesta de muchas maneras.
+
+> **Idea clave**
+>
+> No hay una única forma “correcta” de ser: la sexualidad humana es diversa y se manifiesta de muchas maneras.
 
 ## Sexo y género
 
@@ -49,15 +55,15 @@ Es el sentimiento interno y personal de cada individuo sobre cuál es su género
 
 ## Recorrido histórico y legal en Argentina
 
-- **1946:** decreto del gobernador bonaerense Domingo Mercante que no permitía votar a personas homosexuales; derogado recién en la década de 1980 (nunca se aplicó estrictamente).
+- **1946:** la Ley Electoral 5.109 de la provincia de Buenos Aires, promulgada por el gobernador Domingo Mercante, excluía del voto a las personas homosexuales "por razones de indignidad". Esa prohibición se derogó recién en 1990, con la Ley 11.019.
 - **1951:** una enmienda al Código de Justicia Militar prohibió el ingreso de homosexuales al Ejército.
 - **2003:** la Ciudad de Buenos Aires y Río Negro establecen la unión civil con independencia del sexo.
-- **2006:** Decreto 214: se prohíbe en el sector público la discriminación laboral por orientación sexual (desde 2020, también por identidad de género y su expresión).
+- **2006:** el convenio colectivo de la Administración Pública Nacional (Decreto 214/2006) prohíbe la discriminación laboral por orientación sexual.
 - **2010:** Ley 26.618 de Matrimonio Igualitario: mismos derechos conyugales, incluida la adopción y el reconocimiento de la familia homoparental.
 - **2012:** Ley 26.743 de Identidad de Género: las personas trans pueden registrar en sus documentos el nombre y el sexo con que se identifican.
 - **2012:** Ley 26.791: modifica el art. 80 inc. 4 del Código Penal y agrava con prisión perpetua los crímenes de odio por orientación sexual, identidad de género o su expresión.
 - **2015:** el nuevo Código Civil y Comercial iguala el acceso de las parejas del mismo o distinto sexo a las figuras legales.
-- **2016:** comienza la reglamentación de la Ley Diana Sacayán (14.783/2015): cupo laboral del 1 % en la Administración Pública Provincial para personas travestis, transexuales y transgénero.
+- **2015 y 2019:** la provincia de Buenos Aires sanciona la Ley 14.783, conocida como Ley Diana Sacayán (2015), que fija un cupo laboral de al menos el 1 % en la administración pública provincial para personas travestis, transexuales y transgénero. Se reglamentó en 2019.
 
 ## Situación actual: violencia y crímenes de odio
 

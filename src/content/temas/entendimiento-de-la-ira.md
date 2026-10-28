@@ -7,7 +7,7 @@ autores: "Manejo del enojo"
 lectura: 2
 fecha: 2026-10-28
 fuentes:
-  - "Reilly, P. M. y Shopshire, M. S. (2002). *Manejo de la ira para clientes con abuso de sustancias y problemas de salud mental* (manual). SAMHSA."
+  - "Reilly, P. M., Shopshire, M. S., Durazzo, T. C. y Campbell, T. A. (2006). *Programa para el manejo del enojo en clientes con problemas de abuso de sustancias y trastornos de salud mental: cuaderno de ejercicios para el participante*. SAMHSA (versión original en inglés, 2002)."
   - "McKay, M., Rogers, P. D. y McKay, J. (1989). *When Anger Hurts: Quieting the Storm Within*. New Harbinger."
 ---
 
@@ -18,6 +18,10 @@ fuentes:
 - **Capta la atención de los demás:** gritar hace que intenten calmarnos, pero con el tiempo los demás se vuelven inmunes, se ponen a la defensiva y aparece el resentimiento.
 - **Sirve como castigo y venganza:** da alivio breve, pero convierte en enemigos a las personas que más se quiere y necesita.
 - **Ayuda a cambiar a los demás:** en familias disfuncionales se aprende a usar la ira para extorsionar; a la larga los demás se alejan.
+
+> **Idea clave**
+>
+> La forma de expresar el enojo se aprende; por eso también se pueden aprender formas más sanas de expresarlo.
 
 ## Mitos sobre el enojo
 
