@@ -14,29 +14,31 @@ const ejes = Object.keys(EJES) as Eje[];
       <h1>Herramientas para vivir y convivir mejor</h1>
       <p>Una guía abierta sobre emociones, vínculos, género y derechos, explicada en simple y con las fuentes de cada idea.</p>
       <label class="search">
+        <svg aria-hidden="true" viewBox="0 0 24 24" width="20" height="20"><circle cx="11" cy="11" r="7" fill="none" stroke="currentColor" stroke-width="2"/><path d="m20 20-4-4" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
         <span class="sr-only">Buscar un tema</span>
-        <input id="q" type="search" placeholder="Buscar un tema: ira, límites, micromachismos…" autocomplete="off" />
+        <input id="q" type="search" placeholder="Buscar un tema…" autocomplete="off" />
       </label>
-      <div class="chips" id="chips" role="group" aria-label="Filtrar por eje">
-        <button type="button" class="chip on" data-f="all" aria-pressed="true">Todos</button>
-        {ejes.map((k) => <button type="button" class="chip" data-f={k} aria-pressed="false">{EJES[k].corto}</button>)}
-      </div>
     </section>
 
     <div id="temas">
       {ejes.map((k) => {
         const lista = temas.filter((t) => t.data.eje === k);
         return (
-          <section class={`eje ${k}`} data-eje={k}>
-            <div class="eje-head"><h2>{EJES[k].nombre}</h2><small><span class="n">{lista.length}</span> <span class="pl">{lista.length === 1 ? 'tema' : 'temas'}</span></small></div>
-            <div class="grid">
+          <section class={`eje ${k}`}>
+            <h2>{EJES[k].nombre}</h2>
+            <div class="lista">
               {lista.map((t) => (
-                <a class="card" href={`/temas/${t.id}/`}
-                   data-texto={`${t.data.title} ${t.data.descripcion} ${t.data.autores}`.toLowerCase()}>
-                  <h3>{t.data.title}</h3>
-                  <p>{t.data.descripcion}</p>
-                  <span class="meta">{t.data.autores} · {t.data.lectura} min</span>
-                </a>
+                <details class="tema" data-texto={`${t.data.title} ${t.data.descripcion} ${t.data.autores}`}>
+                  <summary>
+                    <span>{t.data.title}</span>
+                    <svg class="chev" aria-hidden="true" viewBox="0 0 24 24" width="20" height="20"><path d="m6 9 6 6 6-6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                  </summary>
+                  <div class="detalle">
+                    <p>{t.data.descripcion}</p>
+                    <p class="meta">{t.data.autores} · {t.data.lectura} min de lectura</p>
+                    <a class="leer" href={`/temas/${t.id}/`}>Leer el tema</a>
+                  </div>
+                </details>
               ))}
             </div>
           </section>
@@ -60,72 +62,74 @@ const ejes = Object.keys(EJES) as Eje[];
 </Base>
 
 <script>
-  // Buscador y filtros: todo ocurre en el navegador, sin servidor.
-  // Cada tarjeta tiene su texto en data-texto; mostramos u ocultamos según lo escrito.
+  // Buscador: muestra solo los temas cuyo título, descripción o autores contienen lo escrito.
+  // "normalizar" saca tildes y mayúsculas, así "limite" encuentra "Límites".
   const q = document.getElementById('q') as HTMLInputElement;
-  const chips = document.querySelectorAll<HTMLButtonElement>('.chip');
-  let filtro = 'all';
-
   const normalizar = (s: string) => s.toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g, '');
 
-  function aplicar() {
+  q.addEventListener('input', () => {
     const texto = normalizar(q.value.trim());
     let total = 0;
     document.querySelectorAll<HTMLElement>('.eje').forEach((sec) => {
       let visibles = 0;
-      sec.querySelectorAll<HTMLElement>('.card').forEach((card) => {
-        const ok = normalizar(card.dataset.texto ?? '').includes(texto);
-        card.hidden = !ok;
+      sec.querySelectorAll<HTMLElement>('.tema').forEach((t) => {
+        const ok = normalizar(t.dataset.texto ?? '').includes(texto);
+        t.hidden = !ok;
         if (ok) visibles++;
       });
-      const mostrar = (filtro === 'all' || filtro === sec.dataset.eje) && visibles > 0;
-      sec.hidden = !mostrar;
-      sec.querySelector('.n')!.textContent = String(visibles);
-      sec.querySelector('.pl')!.textContent = visibles === 1 ? 'tema' : 'temas';
-      if (mostrar) total += visibles;
+      sec.hidden = visibles === 0;
+      total += visibles;
     });
     document.getElementById('vacio')!.hidden = total > 0;
-  }
-
-  q.addEventListener('input', aplicar);
-  chips.forEach((c) =>
-    c.addEventListener('click', () => {
-      filtro = c.dataset.f!;
-      chips.forEach((x) => { x.classList.toggle('on', x === c); x.setAttribute('aria-pressed', String(x === c)); });
-      aplicar();
-    }),
-  );
+  });
 </script>
 
 <style>
-  .hero { padding: 72px 0 40px; text-align: center; }
+  .hero { padding: 64px 0 24px; text-align: center; }
   .hero h1 { font-size: clamp(2.2rem, 5vw, 3.4rem); }
   .hero p { max-width: 640px; margin: 0 auto 28px; color: var(--muted); font-size: 1.1rem; }
-  .search { max-width: 560px; margin: 0 auto 18px; display: flex; background: var(--surface); border: 1px solid var(--line);
-    border-radius: 14px; box-shadow: var(--shadow); padding: 4px 16px; }
-  .search input { flex: 1; border: 0; background: transparent; color: var(--text); font: inherit; padding: 10px 0; outline: none; }
-  .search:focus-within { outline: 3px solid var(--violeta); outline-offset: 2px; }
-  .chips { display: flex; gap: 8px; justify-content: center; flex-wrap: wrap; }
-  .chip { border: 1px solid var(--line); background: var(--surface); color: var(--text); border-radius: 999px;
-    padding: 6px 14px; font: inherit; font-size: .9rem; cursor: pointer; }
-  .chip.on { background: var(--text); color: var(--bg); border-color: var(--text); }
-  .eje { margin: 48px 0; }
-  .eje[hidden], .card[hidden] { display: none; }
-  .eje-head { display: flex; align-items: baseline; gap: 12px; margin-bottom: 16px; border-bottom: 2px solid var(--c); padding-bottom: 8px; }
-  .eje-head h2 { font-size: 1.5rem; color: var(--c); margin: 0; }
-  .eje-head small { color: var(--muted); white-space: nowrap; }
-  .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 16px; }
-  .card { background: var(--surface); border: 1px solid var(--line); border-top: 4px solid var(--c); border-radius: 14px;
-    padding: 18px; box-shadow: var(--shadow); text-decoration: none; display: flex; flex-direction: column; gap: 6px; transition: transform .15s; }
-  .card:hover { transform: translateY(-3px); }
-  .card h3 { font-size: 1.15rem; margin: 0; }
-  .card p { margin: 0; color: var(--muted); font-size: .95rem; }
-  .card .meta { margin-top: auto; padding-top: 8px; font-size: .8rem; color: var(--c); font-weight: 700; }
-  .vacio { text-align: center; color: var(--muted); }
-  .ejercicios { background: var(--surface); border: 1px solid var(--line); border-radius: 20px; padding: 32px; margin: 48px 0; }
+
+  /* Buscador: borde marcado para que se lea claramente como "lugar para escribir" */
+  .search {
+    max-width: 520px; margin: 0 auto; display: flex; align-items: center; gap: 10px;
+    background: var(--surface); border: 2px solid color-mix(in srgb, var(--text) 35%, transparent);
+    border-radius: 12px; padding: 4px 14px; color: var(--muted); cursor: text;
+  }
+  .search:focus-within { border-color: var(--text); outline: 3px solid color-mix(in srgb, var(--violeta) 45%, transparent); outline-offset: 2px; }
+  .search input { flex: 1; border: 0; background: transparent; color: var(--text); font: inherit; font-size: 1.05rem; padding: 10px 0; outline: none; min-width: 0; }
+  .search input::placeholder { color: var(--muted); }
+
+  /* Cada eje es un bloque con fondo propio y aire alrededor, para que no se vea "un solo edificio" */
+  .eje { background: var(--cbg); border-radius: 20px; padding: 24px; margin: 56px 0; }
+  .eje[hidden], .tema[hidden] { display: none; }
+  .eje h2 { font-size: 1.45rem; color: var(--c); margin: 0 0 16px; }
+  .lista { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 10px; align-items: start; }
+
+  /* Tema plegable: se ve solo el título; al tocarlo se despliega la descripción */
+  .tema { background: var(--surface); border-radius: 12px; border-left: 4px solid var(--c); box-shadow: var(--shadow); }
+  .tema summary {
+    list-style: none; cursor: pointer; display: flex; align-items: center; justify-content: space-between; gap: 12px;
+    padding: 14px 16px; font-family: Fraunces, Georgia, serif; font-weight: 700; font-size: 1.08rem;
+  }
+  .tema summary::-webkit-details-marker { display: none; }
+  .chev { flex: none; color: var(--c); transition: transform .2s; }
+  .tema[open] .chev { transform: rotate(180deg); }
+  .detalle { padding: 0 16px 16px; }
+  .detalle p { margin: 0 0 8px; color: var(--muted); font-size: .95rem; }
+  .detalle .meta { font-size: .82rem; font-weight: 700; color: var(--c); }
+  .leer { display: inline-block; margin-top: 4px; background: var(--c); color: var(--surface); text-decoration: none; font-weight: 700; font-size: .92rem; padding: 8px 16px; border-radius: 999px; }
+  .leer::after { content: ' →'; }
+
+  .vacio { text-align: center; color: var(--muted); margin: 40px 0; }
+  .ejercicios { background: var(--surface); border: 1px solid var(--line); border-radius: 20px; padding: 32px; margin: 56px 0; }
   .sub { color: var(--muted); margin: 0; }
   .ej-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 16px; margin-top: 16px; }
   .ej { background: var(--cbg); border-radius: 14px; padding: 20px; }
   .ej b { display: block; font-family: Fraunces, serif; font-size: 1.1rem; margin: 8px 0 4px; }
-  @media (max-width: 600px) { .hero { padding: 48px 0 24px; } .ejercicios { padding: 20px; } }
+  @media (max-width: 600px) {
+    .hero { padding: 40px 0 16px; }
+    .eje { padding: 18px 14px; margin: 40px 0; }
+    .lista { grid-template-columns: 1fr; }
+    .ejercicios { padding: 20px; }
+  }
 </style>
