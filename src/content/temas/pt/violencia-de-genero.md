@@ -49,6 +49,8 @@ fuentes:
 - **No espaço público:** condutas ou expressões de conotação sexual em lugares públicos ou de acesso público que ferem a dignidade e geram um ambiente hostil.
 - **Pública-política:** intimidação, assédio, descrédito ou ameaças que impedem ou limitam a vida política.
 
+<a class="video" id="video-acoso" href="https://www.youtube.com/watch?v=zc400b3_Y60" target="_blank" rel="noopener"><img src="https://i.ytimg.com/vi/zc400b3_Y60/hqdefault.jpg" alt="" loading="lazy" width="480" height="360"><span><b>Assédio e violência no espaço público: “Llegué viva” (Cheguei viva)</b>▶ Colectivas Deseantes · Ver o vídeo no YouTube (em espanhol)</span></a>
+
 ## Como reconhecê-las: o iceberg da violência
 
 Algumas formas de violência são explícitas e outras são menos evidentes ou não são reconhecidas como violência. As formas extremas são as mais punidas; com as demais há mais tolerância, embora façam parte do mesmo sistema de valores e mandatos. A Anistia Internacional representa isso como um iceberg:

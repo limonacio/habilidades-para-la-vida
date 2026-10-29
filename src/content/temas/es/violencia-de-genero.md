@@ -49,6 +49,8 @@ Violencia contra las mujeres es toda conducta, por acción u omisión, basada en
 - **En el espacio público:** conductas o expresiones con connotación sexual en lugares públicos o de acceso público que dañan la dignidad y generan un ambiente hostil.
 - **Pública-política:** intimidación, hostigamiento, descrédito o amenazas que impiden o limitan la vida política.
 
+<a class="video" id="video-acoso" href="https://www.youtube.com/watch?v=zc400b3_Y60" target="_blank" rel="noopener"><img src="https://i.ytimg.com/vi/zc400b3_Y60/hqdefault.jpg" alt="" loading="lazy" width="480" height="360"><span><b>Acoso y violencia en el espacio público: «Llegué viva»</b>▶ Colectivas Deseantes · Ver el video en YouTube</span></a>
+
 ## Cómo reconocerlas: el iceberg de la violencia
 
 Algunas formas de violencia son explícitas y otras son menos evidentes o no se reconocen como violencia. Las formas extremas son las más penalizadas; con las demás hay mayor permisividad, aunque forman parte del mismo sistema de valores y mandatos. Amnistía Internacional lo representa como un iceberg:

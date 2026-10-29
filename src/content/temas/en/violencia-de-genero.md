@@ -49,6 +49,8 @@ fuentes:
 - **In public spaces:** sexual conduct or remarks in public places, or places open to the public, that harm dignity and create a hostile environment.
 - **Public-political:** intimidation, harassment, discrediting or threats that prevent or limit political life.
 
+<a class="video" id="video-acoso" href="https://www.youtube.com/watch?v=zc400b3_Y60" target="_blank" rel="noopener"><img src="https://i.ytimg.com/vi/zc400b3_Y60/hqdefault.jpg" alt="" loading="lazy" width="480" height="360"><span><b>Harassment and violence in public spaces: “Llegué viva” (I made it home alive)</b>▶ Colectivas Deseantes · Watch the video on YouTube (in Spanish)</span></a>
+
 ## How to recognize it: the iceberg of violence
 
 Some forms of violence are explicit, while others are less obvious or not recognized as violence. The most extreme forms are the most punished; there is more tolerance for the rest, even though they are part of the same system of values and mandates. Amnesty International represents this as an iceberg:

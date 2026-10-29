@@ -30,6 +30,7 @@ export const UI = {
         ['🧊', 'El iceberg de la violencia', 'Lo que se ve y lo que queda oculto bajo la superficie.', '/temas/violencia-de-genero/#iceberg'],
         ['🔄', 'El ciclo de la violencia', 'Las cuatro fases que se repiten en una pareja violenta.', '/temas/ciclo-de-la-violencia/'],
         ['▶️', 'Violencia simbólica en un video', 'Un ejemplo para reconocerla en lo cotidiano.', '/temas/violencia-de-genero/#video'],
+        ['🎬', 'Acoso en el espacio público', '«Llegué viva»: el miedo cotidiano de volver a casa.', '/temas/violencia-de-genero/#video-acoso'],
       ],
     },
     ejercicios: {
@@ -84,6 +85,7 @@ export const UI = {
         ['🧊', 'The iceberg of violence', 'What we can see, and what stays hidden below the surface.', '/temas/violencia-de-genero/#iceberg'],
         ['🔄', 'The cycle of violence', 'The four phases that repeat in a violent relationship.', '/temas/ciclo-de-la-violencia/'],
         ['▶️', 'Symbolic violence in a video', 'An example to help recognize it in everyday life.', '/temas/violencia-de-genero/#video'],
+        ['🎬', 'Harassment in public spaces', '“Llegué viva”: the everyday fear of getting home.', '/temas/violencia-de-genero/#video-acoso'],
       ],
     },
     ejercicios: {
@@ -138,6 +140,7 @@ export const UI = {
         ['🧊', 'O iceberg da violência', 'O que se vê e o que fica escondido debaixo da superfície.', '/temas/violencia-de-genero/#iceberg'],
         ['🔄', 'O ciclo da violência', 'As quatro fases que se repetem num relacionamento violento.', '/temas/ciclo-de-la-violencia/'],
         ['▶️', 'Violência simbólica em vídeo', 'Um exemplo para reconhecê-la no dia a dia.', '/temas/violencia-de-genero/#video'],
+        ['🎬', 'Assédio no espaço público', '“Llegué viva”: o medo cotidiano de voltar para casa.', '/temas/violencia-de-genero/#video-acoso'],
       ],
     },
     ejercicios: {
