@@ -35,3 +35,56 @@ a { color: inherit; }
 .wrap { max-width: 1120px; margin: 0 auto; padding: 0 20px; }
 .sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
 @media (prefers-reduced-motion: reduce) { * { transition: none !important; animation: none !important; } }
+
+/* ===== Gráficos dentro de los temas (se escriben como HTML dentro del .md) ===== */
+
+/* Iceberg de la violencia: punta visible, línea de agua y parte sumergida */
+.iceberg { margin: 28px 0; display: grid; gap: 0; text-align: center; }
+.iceberg h4 { margin: 0 0 6px; font-size: .72rem; letter-spacing: .08em; text-transform: uppercase; }
+.iceberg ul { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; justify-content: center; gap: 6px 14px; font-weight: 700; font-size: .92rem; }
+.iceberg li { margin: 0 !important; }
+.ice-punta { background: var(--surface); color: var(--text); padding: 22px 0 16px; clip-path: polygon(30% 0, 70% 0, 90% 100%, 10% 100%); }
+.ice-punta > * { max-width: 42%; margin-left: auto !important; margin-right: auto !important; }
+.ice-agua { height: 6px; background: linear-gradient(90deg, #3d8fa8, #6fb7c9, #3d8fa8); border-radius: 3px; }
+.ice-medio, .ice-base { color: #fff; }
+.ice-medio { background: #5b7d9c; padding: 18px 10% 16px; clip-path: polygon(0 0, 100% 0, 94% 100%, 6% 100%); }
+.ice-base { background: #3f5c78; padding: 16px 0 56px; clip-path: polygon(6% 0, 94% 0, 68% 100%, 32% 100%); }
+.ice-base > * { max-width: 62%; margin-left: auto !important; margin-right: auto !important; }
+@media (max-width: 560px) { .ice-base { padding-bottom: 70px; } .ice-base > * { max-width: 52%; } .iceberg ul { font-size: .85rem; } }
+.ice-medio h4, .ice-base h4 { color: #dce9f2; }
+.iceberg figcaption { margin-top: 10px; font-size: .82rem; color: var(--muted); }
+:root[data-theme="dark"] .ice-medio { background: #4a6a88; }
+:root[data-theme="dark"] .ice-base { background: #33506b; }
+
+/* Ciclo de la violencia: cuatro fases en círculo (2 x 2), con flechas en sentido horario */
+.ciclo { margin: 28px 0; }
+.ciclo ol { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: 1fr 1fr; gap: 34px; counter-reset: fase; }
+.ciclo li { counter-increment: fase; position: relative; margin: 0 !important; border-radius: 16px; padding: 16px 18px 18px; color: #fff; min-height: 150px; }
+.ciclo li::before { content: counter(fase); position: absolute; right: 14px; top: 6px; font: 700 2.6rem/1 Fraunces, serif; opacity: .35; }
+.ciclo li b { display: block; font-family: Fraunces, serif; font-size: 1.1rem; margin-bottom: 4px; padding-right: 36px; }
+.ciclo li:nth-child(1) { background: #3f7d46; } .ciclo li:nth-child(2) { background: #b8611f; }
+.ciclo li:nth-child(3) { background: #a23a32; } .ciclo li:nth-child(4) { background: #66398a; }
+/* orden visual horario: 1 arriba izq, 2 arriba der, 3 abajo der, 4 abajo izq */
+.ciclo li:nth-child(1) { grid-area: 1 / 1; } .ciclo li:nth-child(2) { grid-area: 1 / 2; }
+.ciclo li:nth-child(3) { grid-area: 2 / 2; } .ciclo li:nth-child(4) { grid-area: 2 / 1; }
+.ciclo li::after { position: absolute; font-size: 1.6rem; color: var(--muted); line-height: 1; }
+.ciclo li:nth-child(1)::after { content: '→'; right: -28px; top: 50%; transform: translateY(-50%); }
+.ciclo li:nth-child(2)::after { content: '↓'; bottom: -31px; left: 50%; transform: translateX(-50%); }
+.ciclo li:nth-child(3)::after { content: '←'; left: -28px; top: 50%; transform: translateY(-50%); }
+.ciclo li:nth-child(4)::after { content: '↑'; top: -31px; left: 50%; transform: translateX(-50%); }
+.ciclo figcaption { margin-top: 12px; text-align: center; font-size: .82rem; color: var(--muted); }
+@media (max-width: 560px) {
+  .ciclo ol { grid-template-columns: 1fr; gap: 30px; }
+  .ciclo li:nth-child(n) { grid-area: auto; min-height: 0; }
+  .ciclo li::after { content: '↓' !important; left: 50% !important; right: auto !important; top: auto !important; bottom: -27px !important; transform: translateX(-50%) !important; }
+  .ciclo li:nth-child(4)::after { content: '↺' !important; }
+  .ciclo figcaption { margin-top: 36px; }
+}
+
+/* Tarjeta de video: miniatura + enlace (no carga YouTube hasta que se hace clic) */
+.video { display: flex; gap: 16px; align-items: center; margin: 24px 0; padding: 12px; background: var(--surface); border: 1px solid var(--line); border-radius: 14px; text-decoration: none; color: var(--text); box-shadow: var(--shadow); }
+.video img { width: 180px; height: auto; aspect-ratio: 16 / 9; object-fit: cover; border-radius: 10px; flex: none; }
+.video b { display: block; font-family: Fraunces, serif; font-size: 1.05rem; margin-bottom: 4px; }
+.video span { color: var(--c, var(--violeta)); font-weight: 700; font-size: .92rem; }
+.video:hover { border-color: var(--c, var(--violeta)); }
+@media (max-width: 480px) { .video { flex-direction: column; align-items: stretch; } .video img { width: 100%; } }

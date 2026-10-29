@@ -7,6 +7,7 @@ autores: "Ley 26.485"
 lectura: 3
 fecha: 2026-10-28
 fuentes:
+  - "Amnistía Internacional España. *El iceberg de la violencia de género* (infografía)."
   - "Ley 26.485 de Protección Integral a las Mujeres (texto actualizado, incluidas las modificaciones de las leyes 27.533 y 27.736). Infoleg."
   - "Ley 25.673 de Salud Sexual y Procreación Responsable."
   - "Ley 25.929 de Parto Humanizado."
@@ -35,6 +36,8 @@ Violencia contra las mujeres es toda conducta, por acción u omisión, basada en
 - **Simbólica:** patrones estereotipados, mensajes, valores o signos que reproducen dominación y naturalizan la subordinación.
 - **Política:** menoscaba o impide la participación política en condiciones de igualdad.
 
+<a class="video" id="video" href="https://www.youtube.com/watch?v=4P1VktEk0vc" target="_blank" rel="noopener"><img src="https://i.ytimg.com/vi/4P1VktEk0vc/hqdefault.jpg" alt="" loading="lazy" width="480" height="360"><span><b>Un ejemplo de violencia simbólica</b>▶ Ver el video en YouTube</span></a>
+
 ## Modalidades (art. 6)
 
 - **Doméstica:** ejercida por un integrante del grupo familiar (parentesco, matrimonio, uniones de hecho, parejas o noviazgos, vigentes o finalizados), sin requisito de convivencia.
@@ -48,10 +51,17 @@ Violencia contra las mujeres es toda conducta, por acción u omisión, basada en
 
 ## Cómo reconocerlas: el iceberg de la violencia
 
-- Algunas formas son explícitas (violencia física, abuso sexual, amenazas); otras son menos evidentes (humor sexista, actitudes de control, publicidades).
-- Las formas extremas son las más penalizadas; hay mayor permisividad con las demás, que forman parte del mismo sistema de valores y mandatos.
-- Punta visible del iceberg: asesinato, agresión física, violación, abuso, gritos, amenazas, insultos.
-- Base invisible: humillaciones, desprecio, chantaje emocional, culpa, humor sexista, anulación.
+Algunas formas de violencia son explícitas y otras son menos evidentes o no se reconocen como violencia. Las formas extremas son las más penalizadas; con las demás hay mayor permisividad, aunque forman parte del mismo sistema de valores y mandatos. Amnistía Internacional lo representa como un iceberg:
+
+<figure class="iceberg" id="iceberg">
+<div class="ice-punta"><h4>Visible · formas explícitas</h4><ul><li>Asesinato</li><li>Agresión física</li><li>Violación</li><li>Abuso sexual</li><li>Gritar</li><li>Insultar</li><li>Amenazar</li></ul></div>
+<div class="ice-agua"></div>
+<div class="ice-medio"><h4>Bajo la superficie · formas explícitas que no se ven</h4><ul><li>Humillar</li><li>Desvalorizar</li><li>Despreciar</li><li>Ignorar</li><li>Culpabilizar</li><li>Chantaje emocional</li></ul></div>
+<div class="ice-base"><h4>En la base · formas sutiles</h4><ul><li>Humor sexista</li><li>Controlar</li><li>Publicidad sexista</li><li>Invisibilización</li><li>Lenguaje sexista</li><li>Anulación</li><li>Micromachismos</li></ul></div>
+<figcaption>Gráfico basado en el iceberg de la violencia de género de Amnistía Internacional España.</figcaption>
+</figure>
+
+Lo que está bajo el agua sostiene a lo que se ve: por eso prevenir implica trabajar también sobre las formas sutiles.
 
 ## Violencias extremas: femicidios, travesticidios y transfemicidios
 

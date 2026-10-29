@@ -7,6 +7,7 @@ autores: "Law 26,485"
 lectura: 3
 fecha: 2026-10-28
 fuentes:
+  - "Amnistía Internacional España. *El iceberg de la violencia de género* (infographic)."
   - "Ley 26.485 de Protección Integral a las Mujeres (texto actualizado, incluidas las modificaciones de las leyes 27.533 y 27.736). Infoleg."
   - "Ley 25.673 de Salud Sexual y Procreación Responsable."
   - "Ley 25.929 de Parto Humanizado."
@@ -35,6 +36,8 @@ fuentes:
 - **Symbolic:** stereotyped patterns, messages, values or signs that reproduce domination and normalize subordination.
 - **Political:** undermines or prevents political participation on equal terms.
 
+<a class="video" id="video" href="https://www.youtube.com/watch?v=4P1VktEk0vc" target="_blank" rel="noopener"><img src="https://i.ytimg.com/vi/4P1VktEk0vc/hqdefault.jpg" alt="" loading="lazy" width="480" height="360"><span><b>An example of symbolic violence</b>▶ Watch the video on YouTube (in Spanish)</span></a>
+
 ## Forms or settings (art. 6)
 
 - **Domestic:** committed by a family member (kinship, marriage, cohabitation, partners or dating relationships, current or past), whether or not they live together.
@@ -48,10 +51,17 @@ fuentes:
 
 ## How to recognize it: the iceberg of violence
 
-- Some forms are explicit (physical violence, sexual abuse, threats); others are less obvious (sexist humor, controlling behavior, advertising).
-- The most extreme forms are the most punished; there is more tolerance for the others, which are part of the same system of values and mandates.
-- The visible tip of the iceberg: murder, physical assault, rape, abuse, shouting, threats, insults.
-- The invisible base: humiliation, contempt, emotional blackmail, guilt, sexist humor, being put down.
+Some forms of violence are explicit, while others are less obvious or not recognized as violence. The most extreme forms are the most punished; there is more tolerance for the rest, even though they are part of the same system of values and mandates. Amnesty International represents this as an iceberg:
+
+<figure class="iceberg" id="iceberg">
+<div class="ice-punta"><h4>Visible · explicit forms</h4><ul><li>Murder</li><li>Physical assault</li><li>Rape</li><li>Sexual abuse</li><li>Shouting</li><li>Insulting</li><li>Threatening</li></ul></div>
+<div class="ice-agua"></div>
+<div class="ice-medio"><h4>Below the surface · explicit forms that go unseen</h4><ul><li>Humiliating</li><li>Devaluing</li><li>Belittling</li><li>Ignoring</li><li>Blaming</li><li>Emotional blackmail</li></ul></div>
+<div class="ice-base"><h4>At the base · subtle forms</h4><ul><li>Sexist humor</li><li>Controlling</li><li>Sexist advertising</li><li>Making women invisible</li><li>Sexist language</li><li>Putting someone down</li><li>Micro-machismos</li></ul></div>
+<figcaption>Graphic based on the iceberg of gender-based violence by Amnesty International Spain.</figcaption>
+</figure>
+
+What lies under the water holds up what we can see: that is why prevention also means working on the subtle forms.
 
 ## Extreme violence: femicides, travesticides and transfemicides
 

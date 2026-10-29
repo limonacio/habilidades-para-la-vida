@@ -24,6 +24,14 @@ export const UI = {
       e: 'Emociones y pensamiento',
       h: 'Habilidades y bienestar',
     } as Record<Eje, string>,
+    destacados: {
+      titulo: 'Recursos destacados',
+      items: [
+        ['🧊', 'El iceberg de la violencia', 'Lo que se ve y lo que queda oculto bajo la superficie.', '/temas/violencia-de-genero/#iceberg'],
+        ['🔄', 'El ciclo de la violencia', 'Las cuatro fases que se repiten en una pareja violenta.', '/temas/ciclo-de-la-violencia/'],
+        ['▶️', 'Violencia simbólica en un video', 'Un ejemplo para reconocerla en lo cotidiano.', '/temas/violencia-de-genero/#video'],
+      ],
+    },
     ejercicios: {
       titulo: 'Ejercicios para practicar',
       bajada: 'Herramientas interactivas. Lo que escribas va a quedar solo en tu navegador.',
@@ -70,6 +78,14 @@ export const UI = {
       e: 'Emotions and thinking',
       h: 'Skills and well-being',
     } as Record<Eje, string>,
+    destacados: {
+      titulo: 'Featured resources',
+      items: [
+        ['🧊', 'The iceberg of violence', 'What we can see, and what stays hidden below the surface.', '/temas/violencia-de-genero/#iceberg'],
+        ['🔄', 'The cycle of violence', 'The four phases that repeat in a violent relationship.', '/temas/ciclo-de-la-violencia/'],
+        ['▶️', 'Symbolic violence in a video', 'An example to help recognize it in everyday life.', '/temas/violencia-de-genero/#video'],
+      ],
+    },
     ejercicios: {
       titulo: 'Exercises to practice',
       bajada: 'Interactive tools. Whatever you write will stay only in your browser.',
@@ -116,6 +132,14 @@ export const UI = {
       e: 'Emoções e pensamento',
       h: 'Habilidades e bem-estar',
     } as Record<Eje, string>,
+    destacados: {
+      titulo: 'Recursos em destaque',
+      items: [
+        ['🧊', 'O iceberg da violência', 'O que se vê e o que fica escondido debaixo da superfície.', '/temas/violencia-de-genero/#iceberg'],
+        ['🔄', 'O ciclo da violência', 'As quatro fases que se repetem num relacionamento violento.', '/temas/ciclo-de-la-violencia/'],
+        ['▶️', 'Violência simbólica em vídeo', 'Um exemplo para reconhecê-la no dia a dia.', '/temas/violencia-de-genero/#video'],
+      ],
+    },
     ejercicios: {
       titulo: 'Exercícios para praticar',
       bajada: 'Ferramentas interativas. O que você escrever ficará apenas no seu navegador.',

@@ -27,6 +27,16 @@ const ejes: Eje[] = ['g', 'e', 'h'];
       </label>
     </section>
 
+    <!-- Accesos rápidos a los recursos más visuales -->
+    <section class="destacados" aria-labelledby="destacados-t">
+      <h2 id="destacados-t">{t.destacados.titulo}</h2>
+      <div class="dest-grid">
+        {t.destacados.items.map(([icono, titulo, texto, ruta]) => (
+          <a class="dest g" href={`${base}${ruta}`}><span aria-hidden="true">{icono}</span><b>{titulo}</b>{texto}</a>
+        ))}
+      </div>
+    </section>
+
     <div id="temas">
       {ejes.map((k) => {
         const lista = temas.filter((x) => x.data.eje === k);
@@ -129,6 +139,16 @@ const ejes: Eje[] = ['g', 'e', 'h'];
   .leer { display: inline-block; margin-top: 4px; background: var(--c); color: var(--surface); text-decoration: none; font-weight: 700; font-size: .92rem; padding: 8px 16px; border-radius: 999px; }
   .leer::after { content: ' →'; }
 
+  .destacados { margin: 8px 0 0; }
+  .destacados h2 { font-size: 1.3rem; margin: 0 0 12px; }
+  .dest-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; }
+  .dest { display: grid; grid-template-columns: auto 1fr; column-gap: 12px; align-items: start; background: var(--surface);
+    border: 1px solid color-mix(in srgb, var(--c) 35%, transparent); border-radius: 14px; padding: 14px 16px; text-decoration: none;
+    color: var(--muted); font-size: .9rem; box-shadow: var(--shadow); transition: transform .15s; }
+  .dest:hover { transform: translateY(-2px); border-color: var(--c); }
+  .dest span { grid-row: span 2; font-size: 1.6rem; line-height: 1.2; }
+  .dest b { color: var(--text); font-family: Fraunces, serif; font-size: 1.05rem; }
+  @media (max-width: 760px) { .dest-grid { grid-template-columns: 1fr; } }
   .vacio { text-align: center; color: var(--muted); margin: 40px 0; }
   .ejercicios { background: var(--surface); border: 1px solid var(--line); border-radius: 20px; padding: 32px; margin: 56px 0; }
   .sub { color: var(--muted); margin: 0; }
