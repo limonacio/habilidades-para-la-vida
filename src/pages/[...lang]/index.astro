@@ -23,8 +23,10 @@ const ejes: Eje[] = ['g', 'e', 'h'];
       <label class="search">
         <svg aria-hidden="true" viewBox="0 0 24 24" width="20" height="20"><circle cx="11" cy="11" r="7" fill="none" stroke="currentColor" stroke-width="2"/><path d="m20 20-4-4" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
         <span class="sr-only">{t.buscar.label}</span>
-        <input id="q" type="search" placeholder={t.buscar.placeholder} autocomplete="off" />
+        <input id="q" type="search" placeholder={t.buscar.placeholder} autocomplete="off" data-indice={`${base}/buscar.json`} data-vacio={t.buscar.vacio} />
       </label>
+      <!-- Resultados justo debajo del campo, para verlos sin moverse -->
+      <ul id="res" class="res" hidden></ul>
     </section>
 
     <!-- Accesos rápidos a los recursos más visuales -->
@@ -45,7 +47,7 @@ const ejes: Eje[] = ['g', 'e', 'h'];
             <h2>{t.ejes[k]}</h2>
             <div class="lista">
               {lista.map((tema) => (
-                <details class="tema" data-slug={slug(tema.id)} data-texto={`${tema.data.title} ${tema.data.descripcion} ${tema.data.autores}`}>
+                <details class="tema" data-slug={slug(tema.id)}>
                   <summary>
                     <span>{tema.data.title}</span>
                     <svg class="chev" aria-hidden="true" viewBox="0 0 24 24" width="20" height="20"><path d="m6 9 6 6 6-6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
@@ -61,7 +63,6 @@ const ejes: Eje[] = ['g', 'e', 'h'];
           </section>
         );
       })}
-      <p id="vacio" class="vacio" hidden>{t.buscar.vacio}</p>
 
       <section class="ejercicios" id="ejercicios">
         <h2>{t.ejercicios.titulo}</h2>
@@ -80,10 +81,91 @@ const ejes: Eje[] = ['g', 'e', 'h'];
 </Base>
 
 <script>
-  // Buscador: muestra solo los temas cuyo título, descripción o autores contienen lo escrito.
-  // "normalizar" saca tildes y mayúsculas, así "limite" encuentra "Límites".
+  // ── Buscador ─────────────────────────────────────────────────────────
+  // Busca en los destacados, los temas, sus subtítulos y su texto, y muestra
+  // hasta 6 resultados debajo del campo, con enlace directo a esa parte.
+  type Entrada = { t: string; c: string; u: string; x?: string; w: number; nt: string; nx: string };
   const q = document.getElementById('q') as HTMLInputElement;
-  const normalizar = (s: string) => s.toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g, '');
+  const res = document.getElementById('res') as HTMLUListElement;
+
+  // Sin tildes ni mayúsculas, y todo lo que no sea letra o número pasa a ser espacio.
+  // Cambia cada carácter por uno solo, así las posiciones coinciden con el texto original.
+  const normalizar = (s: string) => s.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '').replace(/[^a-z0-9]/g, ' ');
+
+  // Palabras "vacías": no ayudan a encontrar nada ("iceberg de la violencia" = "iceberg violencia").
+  const VACIAS = new Set('de la el los las del al lo y e o u a en un una con por para que se the of and to in an da do das dos na no nos um uma com os as'.split(' '));
+
+  // El índice se descarga recién la primera vez que alguien usa el buscador.
+  let indice: Entrada[] = [];
+  let carga: Promise<void> | undefined;
+  const cargar = () => (carga ??= fetch(q.dataset.indice!).then((r) => r.json()).then((d: Entrada[]) => {
+    indice = d.map((e) => ({ ...e, nt: ' ' + normalizar(e.t), nx: ' ' + normalizar(e.x ?? '') }));
+  }));
+  q.addEventListener('focus', cargar, { once: true });
+
+  function buscar(texto: string) {
+    let palabras = normalizar(texto).split(' ').filter(Boolean);
+    const utiles = palabras.filter((p) => !VACIAS.has(p));
+    if (utiles.length) palabras = utiles;
+    const mejores = new Map<string, { e: Entrada; puntos: number; pos: number; largo: number }>();
+    for (const e of indice) {
+      let puntos = 0, pos = -1, largo = 0;
+      for (const p of palabras) {
+        // " " + palabra = la palabra tiene que EMPEZAR así ("ice" encuentra "iceberg")
+        if (e.nt.includes(' ' + p)) { puntos += 3; continue; }
+        const i = e.nx.indexOf(' ' + p);
+        if (i >= 0) { puntos += 1; if (pos < 0) { pos = i; largo = p.length; } continue; }
+        puntos = -1; break; // falta una palabra: no sirve
+      }
+      if (puntos < 0) continue;
+      puntos *= e.w;
+      const previo = mejores.get(e.u); // si hay dos entradas con el mismo enlace, queda la mejor
+      if (!previo || previo.puntos < puntos) mejores.set(e.u, { e, puntos, pos, largo });
+    }
+    return [...mejores.values()].sort((a, b) => b.puntos - a.puntos).slice(0, 6);
+  }
+
+  // Un fragmento del texto alrededor de la palabra, con la palabra resaltada.
+  function fragmento(x: string, pos: number, largo: number) {
+    const desde = Math.max(0, pos - 40), hasta = Math.min(x.length, pos + largo + 60);
+    const small = document.createElement('small');
+    const mark = document.createElement('mark');
+    mark.textContent = x.slice(pos, pos + largo);
+    small.append((desde > 0 ? '…' : '') + x.slice(desde, pos), mark, x.slice(pos + largo, hasta) + (hasta < x.length ? '…' : ''));
+    return small;
+  }
+
+  async function mostrar() {
+    const texto = q.value.trim();
+    if (!texto) { res.hidden = true; return; }
+    await cargar();
+    const encontrados = buscar(texto);
+    res.replaceChildren(...encontrados.map(({ e, pos, largo }) => {
+      const li = document.createElement('li');
+      const a = document.createElement('a');
+      a.href = e.u;
+      const b = document.createElement('b');
+      b.textContent = e.t;
+      const c = document.createElement('small');
+      c.textContent = e.c;
+      a.append(b, pos >= 0 && e.x ? fragmento(e.x, pos, largo) : c);
+      li.append(a);
+      return li;
+    }));
+    if (!encontrados.length) {
+      const li = document.createElement('li');
+      li.className = 'nada';
+      li.textContent = q.dataset.vacio!;
+      res.append(li);
+    }
+    res.hidden = false;
+  }
+
+  q.addEventListener('input', mostrar);
+  q.addEventListener('keydown', (ev) => {
+    if (ev.key === 'Enter') { const a = res.querySelector('a'); if (a) location.href = a.href; }
+    if (ev.key === 'Escape') { q.value = ''; res.hidden = true; }
+  });
 
   // Si venís desde un tema (?desde=slug), dejamos ese tema abierto y resaltado en su sección
   const desde = new URLSearchParams(location.search).get('desde');
@@ -91,22 +173,6 @@ const ejes: Eje[] = ['g', 'e', 'h'];
     const d = document.querySelector<HTMLDetailsElement>(`details.tema[data-slug="${CSS.escape(desde)}"]`);
     if (d) { d.open = true; d.classList.add('resaltado'); setTimeout(() => d.classList.remove('resaltado'), 2000); }
   }
-
-  q.addEventListener('input', () => {
-    const texto = normalizar(q.value.trim());
-    let total = 0;
-    document.querySelectorAll<HTMLElement>('.eje').forEach((sec) => {
-      let visibles = 0;
-      sec.querySelectorAll<HTMLElement>('.tema').forEach((t) => {
-        const ok = normalizar(t.dataset.texto ?? '').includes(texto);
-        t.hidden = !ok;
-        if (ok) visibles++;
-      });
-      sec.hidden = visibles === 0;
-      total += visibles;
-    });
-    document.getElementById('vacio')!.hidden = total > 0;
-  });
 </script>
 
 <style>
@@ -124,9 +190,18 @@ const ejes: Eje[] = ['g', 'e', 'h'];
   .search input { flex: 1; border: 0; background: transparent; color: var(--text); font: inherit; font-size: 1.05rem; padding: 10px 0; outline: none; min-width: 0; }
   .search input::placeholder { color: var(--muted); }
 
+  /* Lista de resultados: sobria, una línea de título y una de contexto */
+  .res { max-width: 520px; margin: 10px auto 0; padding: 6px; list-style: none; text-align: left; background: var(--surface); border: 1px solid var(--line); border-radius: 12px; }
+  .res[hidden] { display: none; }
+  .res :global(a) { display: block; padding: 10px 12px; border-radius: 8px; color: var(--text); text-decoration: none; }
+  .res :global(a:hover), .res :global(a:focus-visible) { background: color-mix(in srgb, var(--violeta) 12%, transparent); }
+  .res :global(b) { display: block; font-weight: 600; }
+  .res :global(small) { display: block; color: var(--muted); font-size: .85rem; margin-top: 2px; }
+  .res :global(mark) { background: color-mix(in srgb, var(--violeta) 22%, transparent); color: inherit; border-radius: 3px; }
+  .res :global(.nada) { padding: 10px 12px; color: var(--muted); text-align: center; }
+
   /* Cada eje es un bloque con fondo propio y aire alrededor, para que no se vea "un solo edificio" */
   .eje { background: var(--cbg); border: 1px solid color-mix(in srgb, var(--c) 30%, transparent); border-radius: 20px; padding: 24px; margin: 56px 0; }
-  .eje[hidden], .tema[hidden] { display: none; }
   .eje h2 { font-size: 1.45rem; color: var(--c); margin: 0 0 20px; }
   .lista { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 12px; align-items: start; }
 
@@ -160,7 +235,6 @@ const ejes: Eje[] = ['g', 'e', 'h'];
   .dest span { grid-row: span 2; font-size: 1.6rem; line-height: 1.2; }
   .dest b { color: var(--text); font-family: Fraunces, serif; font-size: 1.05rem; }
   @media (max-width: 760px) { .dest-grid { grid-template-columns: 1fr; } }
-  .vacio { text-align: center; color: var(--muted); margin: 40px 0; }
   .ejercicios { background: var(--surface); border: 1px solid var(--line); border-radius: 20px; padding: 32px; margin: 56px 0; }
   .sub { color: var(--muted); margin: 0; }
   .ej-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 16px; margin-top: 16px; }
@@ -171,7 +245,6 @@ const ejes: Eje[] = ['g', 'e', 'h'];
     #temas { display: grid; grid-template-columns: repeat(2, 1fr); gap: 36px; align-items: start; margin: 64px 0 72px; }
     .eje, .ejercicios { margin: 0; }
     .lista { grid-template-columns: 1fr; }
-    .vacio { grid-column: 1 / -1; order: -1; }
     .ej-grid { grid-template-columns: 1fr; }
   }
   @media (max-width: 600px) {
@@ -179,5 +252,11 @@ const ejes: Eje[] = ['g', 'e', 'h'];
     .eje { padding: 18px 14px; margin: 40px 0; }
     .lista { grid-template-columns: 1fr; }
     .ejercicios { padding: 20px; }
+    /* En el celular, los destacados bajan al final (antes del recuadro de ayuda)
+       para no tapar los temas ni los resultados de búsqueda. */
+    .wrap { display: flex; flex-direction: column; }
+    .hero { order: -2; }
+    #temas { order: -1; }
+    .destacados { margin-top: 24px; }
   }
 </style>

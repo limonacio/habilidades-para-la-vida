@@ -168,6 +168,9 @@ Para v2: test de mitos irracionales (Nro. 15) e iceberg de la violencia interact
 - [ ] 3.3 RSS
 - [ ] 3.4 Primera entrada nueva (a definir)
 
+**Material guardado para el blog** (disparadores de reflexión):
+- Cortometraje: https://www.youtube.com/watch?v=rS1_Bej32Og — título y créditos a confirmar
+
 ### Etapa 4 — Comentarios y conexiones
 - [ ] 4.1 Cuenta y base de datos en Supabase (la crea Limonacio)
 - [ ] 4.2 Tablas, reglas de acceso (RLS) y API de comentarios
