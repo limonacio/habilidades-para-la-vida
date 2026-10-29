@@ -34,6 +34,7 @@ const niveles = Object.entries(q.niveles) as [Nivel, { nombre: string; texto: st
 
     <!-- 2. Pregunta (se completa con JavaScript) -->
     <section id="juego" class="juego" hidden>
+      <button id="salir" class="salir">← {q.textos.otroNivel}</button>
       <p class="progreso"><span id="num"></span><span class="barra"><span id="avance"></span></span></p>
       <h2 id="pregunta"></h2>
       <div id="respuestas" class="respuestas"></div>
@@ -67,7 +68,15 @@ const niveles = Object.entries(q.niveles) as [Nivel, { nombre: string; texto: st
 
   let nivel = '', ronda: P[] = [], i = 0, aciertos = 0;
 
+  // Volver a la lista de niveles. "desdeHistorial" = lo pidió el botón Atrás del navegador o del celular.
+  function aNiveles(desdeHistorial = false) {
+    $('juego').hidden = true; $('final').hidden = true; $('niveles').hidden = false;
+    if (!desdeHistorial && history.state?.quiz) history.back();
+  }
+
   function empezar(n: string) {
+    // Guardamos un paso en el historial: así el botón Atrás vuelve a los niveles en vez de salir del quiz
+    if (!history.state?.quiz) history.pushState({ quiz: true }, '');
     nivel = n; i = 0; aciertos = 0;
     ronda = mezclar(preguntas[n]);
     $('niveles').hidden = true; $('final').hidden = true; $('juego').hidden = false;
@@ -125,7 +134,9 @@ const niveles = Object.entries(q.niveles) as [Nivel, { nombre: string; texto: st
   document.querySelectorAll<HTMLButtonElement>('.nivel').forEach((b) => b.addEventListener('click', () => empezar(b.dataset.nivel!)));
   $('siguiente').addEventListener('click', () => { i++; if (i < ronda.length) mostrar(); else terminar(); });
   $('repetir').addEventListener('click', () => empezar(nivel));
-  $('volver').addEventListener('click', () => { $('final').hidden = true; $('niveles').hidden = false; });
+  $('volver').addEventListener('click', () => aNiveles());
+  $('salir').addEventListener('click', () => aNiveles());
+  window.addEventListener('popstate', () => aNiveles(true));
 </script>
 
 <style>
@@ -139,6 +150,8 @@ const niveles = Object.entries(q.niveles) as [Nivel, { nombre: string; texto: st
   .nivel b { display: block; font-family: Fraunces, serif; font-size: 1.3rem; color: var(--c); margin-bottom: 4px; }
   .nivel:hover { outline: 2px solid var(--c); }
 
+  .salir { font: inherit; font-size: .9rem; font-weight: 600; color: var(--muted); background: none; border: 0; padding: 0; margin-bottom: 16px; cursor: pointer; }
+  .salir:hover { color: var(--text); }
   .progreso { display: flex; align-items: center; gap: 14px; color: var(--muted); font-size: .9rem; }
   .barra { flex: 1; height: 6px; background: var(--line); border-radius: 99px; overflow: hidden; }
   .barra span { display: block; height: 100%; background: var(--violeta); transition: width .3s; }
