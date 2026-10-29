@@ -74,7 +74,27 @@ const OG_LOCALE: Record<Lang, string> = { es: 'es_AR', en: 'en_US', pt: 'pt_BR' 
     <a class="sr-only" href="#contenido">{t.saltar}</a>
     <header>
       <div class="wrap bar">
-        <a class="logo" href={`${base}/`}><span aria-hidden="true"></span>{t.sitio}</a>
+        <a class="logo" href={`${base}/`}>
+          <!-- Logo: los tres ejes (violeta, terracota, salvia) con un contorno fino.
+               stroke="currentColor" = la línea toma el color del texto, así cambia sola con el modo claro/oscuro. -->
+          <svg aria-hidden="true" viewBox="0 0 32 32" width="30" height="30">
+            <defs>
+              <radialGradient id="logo-brillo" cx="30%" cy="28%" r="50%">
+                <stop offset="0" stop-color="#fff" stop-opacity=".28" />
+                <stop offset="1" stop-color="#fff" stop-opacity="0" />
+              </radialGradient>
+            </defs>
+            <circle cx="16" cy="16" r="15" fill="#579B54" />
+            <path d="M16 16 L8.5 3.01 A15 15 0 0 1 31 16 Z" fill="#7650C2" />
+            <path d="M16 16 L31 16 A15 15 0 0 1 8.5 28.99 Z" fill="#D86A3F" />
+            <circle cx="16" cy="16" r="15" fill="url(#logo-brillo)" />
+            <g fill="none" stroke="currentColor" stroke-width="1" stroke-linejoin="round">
+              <path d="M8.5 3.01 L16 16 L31 16 M16 16 L8.5 28.99" />
+              <circle cx="16" cy="16" r="14.5" />
+            </g>
+          </svg>
+          {t.sitio}
+        </a>
         <nav class="nav-desktop" aria-label={t.sitio}>
           <a href={`${base}/#temas`}>{t.nav.temas}</a>
           <a href={`${base}/#ejercicios`}>{t.nav.ejercicios}</a>
@@ -158,18 +178,8 @@ const OG_LOCALE: Record<Lang, string> = { es: 'es_AR', en: 'en_US', pt: 'pt_BR' 
       }
       .bar { display: flex; align-items: center; gap: 20px; height: 64px; }
       .logo { font-family: Fraunces, serif; font-weight: 700; font-size: 1.15rem; text-decoration: none; display: flex; align-items: center; gap: 10px; white-space: nowrap; }
-      .logo span {
-        width: 30px; height: 30px; border-radius: 50%; flex: none;
-        /* Capa 1: brillo blanco arriba a la izquierda (da sensación de luz y volumen).
-           Capa 2: los tres colores de los ejes, en versión más viva que la del texto. */
-        background:
-          radial-gradient(circle at 30% 28%, rgba(255,255,255,.28), rgba(255,255,255,0) 45%),
-          conic-gradient(from -30deg, #7650C2 0 33.3%, #D86A3F 0 66.6%, #579B54 0);
-        /* Borde fino y una sombra mínima para que el círculo quede nítido */
-        box-shadow: 0 0 0 1px rgba(255,255,255,.18) inset, 0 1px 3px rgba(0,0,0,.2);
-        transition: transform .3s;
-      }
-      .logo:hover span { transform: rotate(120deg); }
+      .logo svg { flex: none; transition: transform .3s; }
+      .logo:hover svg { transform: rotate(120deg); }
       .nav-desktop { margin-left: auto; display: flex; gap: 18px; font-size: .95rem; }
       .nav-desktop a { text-decoration: none; color: var(--muted); }
       .nav-desktop a:hover { color: var(--text); }
