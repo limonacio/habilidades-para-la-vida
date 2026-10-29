@@ -36,7 +36,7 @@ Violencia contra las mujeres es toda conducta, por acción u omisión, basada en
 - **Simbólica:** patrones estereotipados, mensajes, valores o signos que reproducen dominación y naturalizan la subordinación.
 - **Política:** menoscaba o impide la participación política en condiciones de igualdad.
 
-<a class="video" id="video" href="https://www.youtube.com/watch?v=4P1VktEk0vc" target="_blank" rel="noopener"><img src="https://i.ytimg.com/vi/4P1VktEk0vc/hqdefault.jpg" alt="" loading="lazy" width="480" height="360"><span><b>Un ejemplo de violencia simbólica</b>▶ Ver el video en YouTube</span></a>
+<a class="video" id="video" href="https://www.youtube.com/watch?v=4P1VktEk0vc" target="_blank" rel="noopener"><img src="https://i.ytimg.com/vi/4P1VktEk0vc/hqdefault.jpg" alt="" loading="lazy" width="480" height="360"><span><b>Violencia simbólica en las canciones</b>▶ Ver el video en YouTube</span></a>
 
 ## Modalidades (art. 6)
 

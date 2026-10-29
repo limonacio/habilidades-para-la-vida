@@ -36,7 +36,7 @@ fuentes:
 - **Symbolic:** stereotyped patterns, messages, values or signs that reproduce domination and normalize subordination.
 - **Political:** undermines or prevents political participation on equal terms.
 
-<a class="video" id="video" href="https://www.youtube.com/watch?v=4P1VktEk0vc" target="_blank" rel="noopener"><img src="https://i.ytimg.com/vi/4P1VktEk0vc/hqdefault.jpg" alt="" loading="lazy" width="480" height="360"><span><b>An example of symbolic violence</b>▶ Watch the video on YouTube (in Spanish)</span></a>
+<a class="video" id="video" href="https://www.youtube.com/watch?v=4P1VktEk0vc" target="_blank" rel="noopener"><img src="https://i.ytimg.com/vi/4P1VktEk0vc/hqdefault.jpg" alt="" loading="lazy" width="480" height="360"><span><b>Symbolic violence in songs</b>▶ Watch the video on YouTube (in Spanish)</span></a>
 
 ## Forms or settings (art. 6)
 

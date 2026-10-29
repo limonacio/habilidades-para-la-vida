@@ -36,7 +36,7 @@ fuentes:
 - **Simbólica:** padrões estereotipados, mensagens, valores ou signos que reproduzem a dominação e naturalizam a subordinação.
 - **Política:** prejudica ou impede a participação política em condições de igualdade.
 
-<a class="video" id="video" href="https://www.youtube.com/watch?v=4P1VktEk0vc" target="_blank" rel="noopener"><img src="https://i.ytimg.com/vi/4P1VktEk0vc/hqdefault.jpg" alt="" loading="lazy" width="480" height="360"><span><b>Um exemplo de violência simbólica</b>▶ Ver o vídeo no YouTube (em espanhol)</span></a>
+<a class="video" id="video" href="https://www.youtube.com/watch?v=4P1VktEk0vc" target="_blank" rel="noopener"><img src="https://i.ytimg.com/vi/4P1VktEk0vc/hqdefault.jpg" alt="" loading="lazy" width="480" height="360"><span><b>Violência simbólica nas canções</b>▶ Ver o vídeo no YouTube (em espanhol)</span></a>
 
 ## Modalidades (art. 6)
 
