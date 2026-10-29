@@ -41,11 +41,11 @@ const ejes: Eje[] = ['g', 'e', 'h'];
       {ejes.map((k) => {
         const lista = temas.filter((x) => x.data.eje === k);
         return (
-          <section class={`eje ${k}`}>
+          <section class={`eje ${k}`} id={`eje-${k}`}>
             <h2>{t.ejes[k]}</h2>
             <div class="lista">
               {lista.map((tema) => (
-                <details class="tema" data-texto={`${tema.data.title} ${tema.data.descripcion} ${tema.data.autores}`}>
+                <details class="tema" data-slug={slug(tema.id)} data-texto={`${tema.data.title} ${tema.data.descripcion} ${tema.data.autores}`}>
                   <summary>
                     <span>{tema.data.title}</span>
                     <svg class="chev" aria-hidden="true" viewBox="0 0 24 24" width="20" height="20"><path d="m6 9 6 6 6-6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
@@ -84,6 +84,13 @@ const ejes: Eje[] = ['g', 'e', 'h'];
   // "normalizar" saca tildes y mayúsculas, así "limite" encuentra "Límites".
   const q = document.getElementById('q') as HTMLInputElement;
   const normalizar = (s: string) => s.toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g, '');
+
+  // Si venís desde un tema (?desde=slug), dejamos ese tema abierto y resaltado en su sección
+  const desde = new URLSearchParams(location.search).get('desde');
+  if (desde) {
+    const d = document.querySelector<HTMLDetailsElement>(`details.tema[data-slug="${CSS.escape(desde)}"]`);
+    if (d) { d.open = true; d.classList.add('resaltado'); setTimeout(() => d.classList.remove('resaltado'), 2000); }
+  }
 
   q.addEventListener('input', () => {
     const texto = normalizar(q.value.trim());
@@ -131,6 +138,8 @@ const ejes: Eje[] = ['g', 'e', 'h'];
     padding: 14px 16px; font-family: Fraunces, Georgia, serif; font-weight: 700; font-size: 1.08rem;
   }
   .tema summary::-webkit-details-marker { display: none; }
+  .eje { scroll-margin-top: 84px; }
+  .tema.resaltado { outline: 3px solid var(--c); outline-offset: 2px; transition: outline-color 1s; }
   .chev { flex: none; color: var(--c); transition: transform .2s; }
   .tema[open] .chev { transform: rotate(180deg); }
   .detalle { padding: 0 16px 16px; }

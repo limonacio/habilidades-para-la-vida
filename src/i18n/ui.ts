@@ -46,7 +46,7 @@ export const UI = {
       titulo: '¿Necesitás ayuda o querés orientar a alguien?',
       texto: 'Línea 144: atención a situaciones de violencia de género en Argentina. Gratuita, las 24 h, en todo el país. En una emergencia, llamá al 911.',
     },
-    tema: { inicio: 'Inicio', indice: 'En esta página', fuentes: 'Fuentes de este tema', anterior: 'Anterior', siguiente: 'Siguiente', otros: 'Otros temas', ruta: 'Ruta', traduccion: '' },
+    tema: { inicio: 'Inicio', indice: 'En esta página', fuentes: 'Fuentes de este tema', anterior: 'Anterior', siguiente: 'Siguiente', otros: 'Otros temas', ruta: 'Ruta', verEje: 'Ver todos los temas de esta sección', masEje: 'Más temas de esta sección', traduccion: '' },
     footer: { licencia: 'Contenido bajo licencia', reservados: 'Algunos derechos reservados.', firma: 'Desarrollado por Limonacio' },
     acerca: {
       titulo: 'Acerca de esta guía', meta: 'Qué es esta guía, quién la hizo, bibliografía y licencia.',
@@ -100,7 +100,7 @@ export const UI = {
       titulo: 'Do you need help, or want to guide someone?',
       texto: 'In Argentina, Line 144 offers support for gender-based violence: free, 24/7, nationwide. In an emergency, call 911. If you live in another country, contact your local helpline.',
     },
-    tema: { inicio: 'Home', indice: 'On this page', fuentes: 'Sources for this topic', anterior: 'Previous', siguiente: 'Next', otros: 'Other topics', ruta: 'Breadcrumb', traduccion: 'Translated from the original Spanish version.' },
+    tema: { inicio: 'Home', indice: 'On this page', fuentes: 'Sources for this topic', anterior: 'Previous', siguiente: 'Next', otros: 'Other topics', ruta: 'Breadcrumb', verEje: 'See all topics in this section', masEje: 'More topics in this section', traduccion: 'Translated from the original Spanish version.' },
     footer: { licencia: 'Content licensed under', reservados: 'Some rights reserved.', firma: 'Developed by Limonacio' },
     acerca: {
       titulo: 'About this guide', meta: 'What this guide is, who made it, bibliography and license.',
@@ -154,7 +154,7 @@ export const UI = {
       titulo: 'Precisa de ajuda ou quer orientar alguém?',
       texto: 'Na Argentina, a Linha 144 atende situações de violência de gênero: gratuita, 24 horas, em todo o país. Em uma emergência, ligue para o 911. No Brasil, ligue para a Central de Atendimento à Mulher (180) ou, em emergência, para o 190.',
     },
-    tema: { inicio: 'Início', indice: 'Nesta página', fuentes: 'Fontes deste tema', anterior: 'Anterior', siguiente: 'Próximo', otros: 'Outros temas', ruta: 'Caminho', traduccion: 'Traduzido da versão original em espanhol.' },
+    tema: { inicio: 'Início', indice: 'Nesta página', fuentes: 'Fontes deste tema', anterior: 'Anterior', siguiente: 'Próximo', otros: 'Outros temas', ruta: 'Caminho', verEje: 'Ver todos os temas desta seção', masEje: 'Mais temas desta seção', traduccion: 'Traduzido da versão original em espanhol.' },
     footer: { licencia: 'Conteúdo sob licença', reservados: 'Alguns direitos reservados.', firma: 'Desenvolvido por Limonacio' },
     acerca: {
       titulo: 'Sobre este guia', meta: 'O que é este guia, quem o fez, bibliografia e licença.',

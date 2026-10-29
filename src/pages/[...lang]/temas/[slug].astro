@@ -11,34 +11,43 @@ export async function getStaticPaths() {
     const temas = todos.filter((e) => e.id.startsWith(`${lang}/`)).sort((a, b) => a.data.orden - b.data.orden);
     return temas.map((tema, i) => ({
       params: { lang: lang === DEFAULT_LANG ? undefined : lang, slug: tema.id.split('/')[1] },
-      props: { lang, tema, anterior: temas[i - 1], siguiente: temas[i + 1] },
+      // hermanos: los temas del mismo eje, para cambiar de tema sin volver al inicio
+      props: { lang, tema, anterior: temas[i - 1], siguiente: temas[i + 1], hermanos: temas.filter((x) => x.data.eje === tema.data.eje) },
     }));
   });
 }
 
-const { lang, tema, anterior, siguiente } = Astro.props as { lang: Lang; tema: any; anterior?: any; siguiente?: any };
+const { lang, tema, anterior, siguiente, hermanos } = Astro.props as { lang: Lang; tema: any; anterior?: any; siguiente?: any; hermanos: any[] };
 const t = UI[lang];
 const base = prefijo(lang);
 const slug = (id: string) => id.split('/')[1];
 const { Content, headings } = await render(tema);
 const indice = headings.filter((h) => h.depth === 2); // solo los títulos "##"
 const eje = t.ejes[tema.data.eje as 'g' | 'e' | 'h'];
+// Enlace de vuelta a la sección en el inicio; "desde" sirve para dejar abierto el tema del que venís
+const volver = `${base}/?desde=${slug(tema.id)}#eje-${tema.data.eje}`;
 ---
 <Base lang={lang} title={tema.data.title} description={tema.data.descripcion}>
   <div class={`wrap ${tema.data.eje}`}>
-    <nav class="crumbs" aria-label={t.tema.ruta}><a href={`${base}/`}>{t.tema.inicio}</a> › {eje} › {tema.data.title}</nav>
+    <nav class="crumbs" aria-label={t.tema.ruta}><a href={`${base}/`}>{t.tema.inicio}</a> › <a href={volver}>{eje}</a> › {tema.data.title}</nav>
     <header class="tema-head">
-      <span class="tag">{eje}</span>
+      <a class="tag" href={volver} title={t.tema.verEje}>← {eje}</a>
       <h1>{tema.data.title}</h1>
       <p>{tema.data.descripcion}</p>
       {t.tema.traduccion && <p class="trad">{t.tema.traduccion}</p>}
     </header>
 
     <div class="layout">
-      <nav class="toc" aria-label={t.tema.indice}>
-        <b>{t.tema.indice}</b>
-        {indice.map((h) => <a href={`#${h.slug}`} data-id={h.slug}>{h.text}</a>)}
-      </nav>
+      <aside class="lateral">
+        <nav class="toc" aria-label={t.tema.indice}>
+          <b>{t.tema.indice}</b>
+          {indice.map((h) => <a href={`#${h.slug}`} data-id={h.slug}>{h.text}</a>)}
+        </nav>
+        <nav class="hermanos solo-desktop" aria-label={t.tema.masEje}>
+          <b>{t.tema.masEje}</b>
+          {hermanos.map((h) => <a href={`${base}/temas/${slug(h.id)}/`} aria-current={h.id === tema.id ? 'page' : undefined}>{h.data.title}</a>)}
+        </nav>
+      </aside>
 
       <article>
         <div class="prosa"><Content /></div>
@@ -49,6 +58,12 @@ const eje = t.ejes[tema.data.eje as 'g' | 'e' | 'h'];
         </section>
 
         {tema.data.eje === 'g' && <Ayuda144 lang={lang} />}
+
+        <nav class="hermanos solo-movil" aria-label={t.tema.masEje}>
+          <b>{t.tema.masEje}</b>
+          {hermanos.map((h) => <a href={`${base}/temas/${slug(h.id)}/`} aria-current={h.id === tema.id ? 'page' : undefined}>{h.data.title}</a>)}
+          <a class="todos" href={volver}>← {t.tema.verEje}</a>
+        </nav>
 
         <nav class="pager" aria-label={t.tema.otros}>
           {anterior ? <a href={`${base}/temas/${slug(anterior.id)}/`}>← {t.tema.anterior}<b>{anterior.data.title}</b></a> : <span />}
@@ -75,12 +90,23 @@ const eje = t.ejes[tema.data.eje as 'g' | 'e' | 'h'];
 
 <style>
   .crumbs { font-size: .9rem; color: var(--muted); margin: 32px 0 12px; }
+  a.tag { text-decoration: none; }
+  a.tag:hover { outline: 2px solid var(--c); }
+  .crumbs a:hover { color: var(--c); }
   .tag { display: inline-block; background: var(--cbg); color: var(--c); font-weight: 700; font-size: .8rem; border-radius: 999px; padding: 4px 12px; margin-bottom: 10px; }
   .tema-head h1 { font-size: clamp(2rem, 4.5vw, 3rem); }
   .tema-head p { color: var(--muted); font-size: 1.1rem; max-width: 680px; }
   .tema-head .trad { font-size: .85rem; font-style: italic; margin-top: -6px; }
   .layout { display: grid; grid-template-columns: 230px 1fr; gap: 48px; margin: 32px 0 56px; }
-  .toc { position: sticky; top: 88px; align-self: start; font-size: .92rem; max-height: calc(100vh - 110px); overflow: auto; }
+  .lateral { position: sticky; top: 88px; align-self: start; max-height: calc(100vh - 110px); overflow: auto; display: grid; gap: 28px; }
+  .toc { font-size: .92rem; }
+  .hermanos { font-size: .9rem; }
+  .hermanos b { display: block; text-transform: uppercase; letter-spacing: .06em; font-size: .75rem; color: var(--c); margin-bottom: 8px; }
+  .hermanos a { display: block; padding: 6px 10px; border-radius: 8px; text-decoration: none; color: var(--muted); }
+  .hermanos a:hover { background: var(--cbg); color: var(--text); }
+  .hermanos a[aria-current='page'] { background: var(--cbg); color: var(--text); font-weight: 700; }
+  .hermanos .todos { margin-top: 6px; color: var(--c); font-weight: 700; }
+  .solo-movil { display: none; }
   .toc b { display: block; text-transform: uppercase; letter-spacing: .06em; font-size: .75rem; color: var(--muted); margin-bottom: 8px; }
   .toc a { display: block; padding: 5px 0 5px 12px; border-left: 2px solid var(--line); text-decoration: none; color: var(--muted); }
   .toc a.on { border-color: var(--c); color: var(--text); font-weight: 700; }
@@ -108,6 +134,9 @@ const eje = t.ejes[tema.data.eje as 'g' | 'e' | 'h'];
   .prosa :global(blockquote p:first-child strong) { color: var(--c); text-transform: uppercase; letter-spacing: .06em; font-size: .78rem; }
   @media (max-width: 860px) {
     .layout { grid-template-columns: 1fr; gap: 24px; }
-    .toc { position: static; max-height: none; border: 1px solid var(--line); border-radius: 12px; padding: 12px; }
+    .lateral { position: static; max-height: none; }
+    .toc { border: 1px solid var(--line); border-radius: 12px; padding: 12px; }
+    .solo-desktop { display: none; }
+    .solo-movil { display: block; border: 1px solid color-mix(in srgb, var(--c) 35%, transparent); background: var(--surface); border-radius: 14px; padding: 14px; margin-top: 32px; }
   }
 </style>
