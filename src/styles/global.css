@@ -39,7 +39,7 @@ a { color: inherit; }
 /* ===== Gráficos dentro de los temas (se escriben como HTML dentro del .md) ===== */
 
 /* Iceberg de la violencia: punta visible, línea de agua y parte sumergida */
-.iceberg { margin: 28px 0; display: grid; gap: 0; text-align: center; }
+.iceberg { margin: 44px 0; display: grid; gap: 0; text-align: center; }
 .iceberg h4 { margin: 0 0 6px; font-size: .72rem; letter-spacing: .08em; text-transform: uppercase; }
 .iceberg ul { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; justify-content: center; gap: 6px 14px; font-weight: 700; font-size: .92rem; }
 .iceberg li { margin: 0 !important; }
@@ -57,7 +57,7 @@ a { color: inherit; }
 :root[data-theme="dark"] .ice-base { background: #33506b; }
 
 /* Ciclo de la violencia: cuatro fases en círculo (2 x 2), con flechas en sentido horario */
-.ciclo { margin: 28px 0; }
+.ciclo { margin: 44px 0; }
 .ciclo ol { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: 1fr 1fr; gap: 34px; counter-reset: fase; }
 .ciclo li { counter-increment: fase; position: relative; margin: 0 !important; border-radius: 16px; padding: 16px 18px 18px; color: #fff; min-height: 150px; }
 .ciclo li::before { content: counter(fase); position: absolute; right: 14px; top: 6px; font: 700 2.6rem/1 Fraunces, serif; opacity: .35; }
@@ -82,8 +82,9 @@ a { color: inherit; }
 }
 
 /* Tarjeta de video: miniatura + enlace (no carga YouTube hasta que se hace clic) */
-.video { display: flex; gap: 16px; align-items: center; margin: 24px 0; padding: 12px; background: var(--surface); border: 1px solid var(--line); border-radius: 14px; text-decoration: none; color: var(--text); box-shadow: var(--shadow); }
+.video { display: flex; gap: 16px; align-items: center; margin: 40px 0; padding: 12px; background: var(--surface); border: 1px solid var(--line); border-radius: 14px; text-decoration: none; color: var(--text); box-shadow: var(--shadow); }
 .video img { width: 180px; height: auto; aspect-ratio: 16 / 9; object-fit: cover; border-radius: 10px; flex: none; }
+.video em { display: block; font-style: normal; color: var(--muted); font-weight: 400; margin-bottom: 6px; }
 .video b { display: block; font-family: Fraunces, serif; font-size: 1.05rem; margin-bottom: 4px; }
 .video span { color: var(--c, var(--violeta)); font-weight: 700; font-size: .92rem; }
 .video:hover { border-color: var(--c, var(--violeta)); }

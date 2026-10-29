@@ -127,8 +127,8 @@ const ejes: Eje[] = ['g', 'e', 'h'];
   /* Cada eje es un bloque con fondo propio y aire alrededor, para que no se vea "un solo edificio" */
   .eje { background: var(--cbg); border: 1px solid color-mix(in srgb, var(--c) 30%, transparent); border-radius: 20px; padding: 24px; margin: 56px 0; }
   .eje[hidden], .tema[hidden] { display: none; }
-  .eje h2 { font-size: 1.45rem; color: var(--c); margin: 0 0 16px; }
-  .lista { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 10px; align-items: start; }
+  .eje h2 { font-size: 1.45rem; color: var(--c); margin: 0 0 20px; }
+  .lista { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 12px; align-items: start; }
 
   /* Tema plegable: se ve solo el título; al tocarlo se despliega la descripción */
   .tema { background: var(--surface); border-radius: 12px; border: 1px solid color-mix(in srgb, var(--c) 35%, transparent); border-left: 5px solid var(--c); box-shadow: var(--shadow); }
@@ -148,7 +148,8 @@ const ejes: Eje[] = ['g', 'e', 'h'];
   .leer { display: inline-block; margin-top: 4px; background: var(--c); color: var(--surface); text-decoration: none; font-weight: 700; font-size: .92rem; padding: 8px 16px; border-radius: 999px; }
   .leer::after { content: ' →'; }
 
-  .destacados { margin: 8px 0 0; }
+  .destacados { margin: 16px 0 0; }
+  .destacados h2 { margin-bottom: 16px !important; }
   .destacados h2 { font-size: 1.3rem; margin: 0 0 12px; }
   .dest-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; }
   @media (max-width: 1060px) { .dest-grid { grid-template-columns: repeat(2, 1fr); } }
@@ -167,7 +168,7 @@ const ejes: Eje[] = ['g', 'e', 'h'];
   .ej b { display: block; font-family: Fraunces, serif; font-size: 1.1rem; margin: 8px 0 4px; }
   /* Escritorio: tablero de 2 x 2 → Género | Emociones / Habilidades | Ejercicios */
   @media (min-width: 1000px) {
-    #temas { display: grid; grid-template-columns: repeat(2, 1fr); gap: 24px; align-items: start; margin: 40px 0 56px; }
+    #temas { display: grid; grid-template-columns: repeat(2, 1fr); gap: 36px; align-items: start; margin: 64px 0 72px; }
     .eje, .ejercicios { margin: 0; }
     .lista { grid-template-columns: 1fr; }
     .vacio { grid-column: 1 / -1; order: -1; }
