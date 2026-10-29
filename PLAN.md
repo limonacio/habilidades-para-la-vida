@@ -151,7 +151,7 @@ Para v2: test de mitos irracionales (Nro. 15) e iceberg de la violencia interact
 - [x] 1.10 Recuadro de ayuda (Línea 144)
 - [x] 1.11 Revisión de contenido: "Idea clave" en los 16 temas, ortografía (hunspell es_AR) y verificación de citas y datos
   - Pendiente menor: confirmar con los libros que el contenido de Límites (Messages), Relajación (Davis y cols.) y los ejercicios de Cerebro/Habilidades (McKay, Wood y Brantley) coincide con esas obras
-- [x] 1.12 Deploy en Vercel → https://habilidades-para-la-vida.vercel.app (dominio propio: a definir)
+- [x] 1.12 Deploy en Vercel → https://tallerhabilidades.vercel.app (principal; habilidades-para-la-vida.vercel.app redirige)
 - [x] 1.14 Menú hamburguesa (modo e idioma) y traducción completa al inglés y al portugués de Brasil (leyes con aviso de traducción no oficial)
 - [x] 1.15 Nuevo tema "El ciclo de la violencia" (Walker), gráfico del iceberg (Amnistía Internacional), video de violencia simbólica y "Recursos destacados" en el inicio
 - [ ] 1.16 Tema "Relajación I": el PDF llegó vacío (0 bytes), falta volver a copiarlo
