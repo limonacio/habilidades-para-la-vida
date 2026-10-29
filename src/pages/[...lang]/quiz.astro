@@ -1,0 +1,166 @@
+---
+import { getCollection } from 'astro:content';
+import Base from '../../layouts/Base.astro';
+import { LOCALES, DEFAULT_LANG, prefijo, type Lang } from '../../i18n/ui';
+import { QUIZ, type Nivel } from '../../data/quiz';
+
+// Solo se genera en los idiomas que ya tienen preguntas.
+export function getStaticPaths() {
+  return LOCALES.filter((l) => QUIZ[l]).map((l) => ({ params: { lang: l === DEFAULT_LANG ? undefined : l }, props: { lang: l } }));
+}
+const { lang } = Astro.props as { lang: Lang };
+const q = QUIZ[lang]!;
+const base = prefijo(lang);
+
+// Le sumamos a cada pregunta el título y el enlace del tema, para el "Leer más".
+const temas = await getCollection('temas', (e) => e.id.startsWith(`${lang}/`));
+const titulo = Object.fromEntries(temas.map((x) => [x.id.split('/')[1], x.data.title]));
+const datos = Object.fromEntries(
+  (Object.keys(q.preguntas) as Nivel[]).map((n) => [n, q.preguntas[n].map((x) => ({ ...x, tt: titulo[x.t], tu: `${base}/temas/${x.t}/` }))]),
+);
+const niveles = Object.entries(q.niveles) as [Nivel, { nombre: string; texto: string }][];
+---
+<Base lang={lang} title={q.titulo} description={q.bajada}>
+  <div class="wrap quiz">
+    <h1>{q.titulo}</h1>
+    <p class="bajada">{q.bajada}</p>
+
+    <!-- 1. Elegir nivel -->
+    <div id="niveles" class="niveles">
+      {niveles.map(([n, { nombre, texto }], i) => (
+        <button class={`nivel ${['h', 'e', 'g'][i]}`} data-nivel={n}><b>{nombre}</b>{texto}</button>
+      ))}
+    </div>
+
+    <!-- 2. Pregunta (se completa con JavaScript) -->
+    <section id="juego" class="juego" hidden>
+      <p class="progreso"><span id="num"></span><span class="barra"><span id="avance"></span></span></p>
+      <h2 id="pregunta"></h2>
+      <div id="respuestas" class="respuestas"></div>
+      <div id="feedback" class="feedback" hidden>
+        <p><b id="veredicto"></b> <span id="explicacion"></span></p>
+        <a id="leer" class="leer"></a>
+      </div>
+      <button id="siguiente" class="boton" hidden></button>
+    </section>
+
+    <!-- 3. Resultado -->
+    <section id="final" class="final" hidden>
+      <p class="puntaje" id="puntaje"></p>
+      <p id="mensaje"></p>
+      <div class="acciones">
+        <button id="repetir" class="boton">{q.textos.otraVez}</button>
+        <button id="volver" class="boton secundario">{q.textos.otroNivel}</button>
+      </div>
+    </section>
+  </div>
+  <script type="application/json" id="quiz-datos" set:html={JSON.stringify({ preguntas: datos, textos: q.textos })} />
+</Base>
+
+<script>
+  type P = { p: string; o: string[]; c: number; e: string; tt: string; tu: string };
+  const { preguntas, textos } = JSON.parse(document.getElementById('quiz-datos')!.textContent!) as { preguntas: Record<string, P[]>; textos: Record<string, any> };
+  const $ = (id: string) => document.getElementById(id)!;
+
+  // Mezcla al azar (algoritmo de Fisher-Yates): cada orden posible tiene la misma probabilidad.
+  const mezclar = <T,>(a: T[]) => { a = [...a]; for (let i = a.length - 1; i > 0; i--) { const j = Math.floor(Math.random() * (i + 1)); [a[i], a[j]] = [a[j], a[i]]; } return a; };
+
+  let nivel = '', ronda: P[] = [], i = 0, aciertos = 0;
+
+  function empezar(n: string) {
+    nivel = n; i = 0; aciertos = 0;
+    ronda = mezclar(preguntas[n]);
+    $('niveles').hidden = true; $('final').hidden = true; $('juego').hidden = false;
+    mostrar();
+  }
+
+  function mostrar() {
+    const x = ronda[i];
+    $('num').textContent = `${textos.pregunta} ${i + 1} ${textos.de} ${ronda.length}`;
+    ($('avance') as HTMLElement).style.width = `${(i / ronda.length) * 100}%`;
+    $('pregunta').textContent = x.p;
+    $('feedback').hidden = true; $('siguiente').hidden = true;
+    // Mezclamos las opciones, pero recordamos cuál era la correcta
+    const ops = mezclar(x.o.map((texto, k) => ({ texto, ok: k === x.c })));
+    $('respuestas').replaceChildren(...ops.map(({ texto, ok }) => {
+      const b = document.createElement('button');
+      b.className = 'respuesta';
+      b.textContent = texto;
+      b.dataset.ok = String(ok);
+      b.addEventListener('click', () => responder(b));
+      return b;
+    }));
+    $('pregunta').focus();
+  }
+
+  function responder(elegida: HTMLButtonElement) {
+    const x = ronda[i];
+    const ok = elegida.dataset.ok === 'true';
+    if (ok) aciertos++;
+    // Bloqueamos las opciones y marcamos la correcta (y la elegida, si estaba mal)
+    $('respuestas').querySelectorAll<HTMLButtonElement>('.respuesta').forEach((b) => {
+      b.disabled = true;
+      if (b.dataset.ok === 'true') b.classList.add('bien');
+    });
+    if (!ok) elegida.classList.add('mal');
+    $('veredicto').textContent = ok ? textos.correcto : textos.incorrecto;
+    $('veredicto').className = ok ? 'bien' : 'mal';
+    $('explicacion').textContent = x.e;
+    const a = $('leer') as HTMLAnchorElement;
+    a.href = x.tu; a.textContent = `${textos.leerMas}: ${x.tt} →`;
+    $('feedback').hidden = false;
+    const s = $('siguiente');
+    s.textContent = i === ronda.length - 1 ? textos.resultado : textos.siguiente;
+    s.hidden = false;
+    s.focus();
+  }
+
+  function terminar() {
+    $('juego').hidden = true; $('final').hidden = false;
+    $('puntaje').textContent = `${aciertos} / ${ronda.length}`;
+    const r = aciertos / ronda.length;
+    $('mensaje').textContent = textos.finales[r < 0.5 ? 0 : r < 0.8 ? 1 : 2];
+  }
+
+  document.querySelectorAll<HTMLButtonElement>('.nivel').forEach((b) => b.addEventListener('click', () => empezar(b.dataset.nivel!)));
+  $('siguiente').addEventListener('click', () => { i++; if (i < ronda.length) mostrar(); else terminar(); });
+  $('repetir').addEventListener('click', () => empezar(nivel));
+  $('volver').addEventListener('click', () => { $('final').hidden = true; $('niveles').hidden = false; });
+</script>
+
+<style>
+  .quiz { max-width: 720px; padding-top: 48px; padding-bottom: 72px; }
+  .quiz h1 { font-size: clamp(2rem, 4.5vw, 3rem); }
+  .bajada { color: var(--muted); font-size: 1.1rem; margin-bottom: 32px; }
+  [hidden] { display: none !important; }
+
+  .niveles { display: grid; gap: 16px; }
+  .nivel { text-align: left; font: inherit; color: var(--text); background: var(--cbg); border: 1px solid color-mix(in srgb, var(--c) 35%, transparent); border-radius: 16px; padding: 20px 22px; cursor: pointer; }
+  .nivel b { display: block; font-family: Fraunces, serif; font-size: 1.3rem; color: var(--c); margin-bottom: 4px; }
+  .nivel:hover { outline: 2px solid var(--c); }
+
+  .progreso { display: flex; align-items: center; gap: 14px; color: var(--muted); font-size: .9rem; }
+  .barra { flex: 1; height: 6px; background: var(--line); border-radius: 99px; overflow: hidden; }
+  .barra span { display: block; height: 100%; background: var(--violeta); transition: width .3s; }
+  .juego h2 { font-size: 1.4rem; line-height: 1.35; margin: 20px 0 24px; outline: none; }
+
+  .respuestas { display: grid; gap: 12px; }
+  /* Las respuestas se crean con JavaScript: por eso van con :global (si no, Astro no les aplica el estilo) */
+  .respuestas :global(.respuesta) { text-align: left; font: inherit; color: var(--text); background: var(--surface); border: 2px solid var(--line); border-radius: 12px; padding: 14px 16px; cursor: pointer; }
+  .respuestas :global(.respuesta:hover:not(:disabled)) { border-color: var(--text); }
+  .respuestas :global(.respuesta:disabled) { cursor: default; opacity: .7; }
+  .respuestas :global(.respuesta.bien) { border-color: var(--salvia); background: var(--salvia-bg); opacity: 1; }
+  .respuestas :global(.respuesta.mal) { border-color: var(--terracota); background: var(--terracota-bg); opacity: 1; }
+
+  .feedback { margin-top: 24px; padding: 18px 20px; background: var(--surface); border: 1px solid var(--line); border-radius: 12px; }
+  .feedback p { margin: 0 0 10px; }
+  .feedback .bien { color: var(--salvia); }
+  .feedback .mal { color: var(--terracota); }
+  .leer { font-weight: 600; }
+
+  .boton { margin-top: 24px; font: inherit; font-weight: 700; color: var(--bg); background: var(--text); border: 0; border-radius: 12px; padding: 12px 22px; cursor: pointer; }
+  .boton.secundario { color: var(--text); background: transparent; border: 2px solid var(--line); }
+  .final { text-align: center; padding: 40px 0; }
+  .puntaje { font-family: Fraunces, serif; font-size: 3.5rem; font-weight: 700; margin: 0; }
+  .acciones { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
+</style>

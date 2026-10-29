@@ -1,6 +1,7 @@
 ---
 import '../styles/global.css';
 import { UI, LOCALES, NOMBRES_IDIOMA, HTML_LANG, prefijo, rutaSinIdioma, type Lang } from '../i18n/ui';
+import { QUIZ } from '../data/quiz';
 
 interface Props {
   lang: Lang;
@@ -99,6 +100,7 @@ const OG_LOCALE: Record<Lang, string> = { es: 'es_AR', en: 'en_US', pt: 'pt_BR' 
         <nav class="nav-desktop" aria-label={t.sitio}>
           <a href={`${base}/#temas`}>{t.nav.temas}</a>
           <a href={`${base}/#ejercicios`}>{t.nav.ejercicios}</a>
+          {QUIZ[lang] && <a href={`${base}/quiz/`}>{QUIZ[lang].titulo}</a>}
           <a href={`${base}/acerca/`}>{t.nav.acerca}</a>
         </nav>
 
@@ -112,6 +114,7 @@ const OG_LOCALE: Record<Lang, string> = { es: 'es_AR', en: 'en_US', pt: 'pt_BR' 
             <nav class="nav-movil" aria-label={t.sitio}>
               <a href={`${base}/#temas`}>{t.nav.temas}</a>
               <a href={`${base}/#ejercicios`}>{t.nav.ejercicios}</a>
+              {QUIZ[lang] && <a href={`${base}/quiz/`}>{QUIZ[lang].titulo}</a>}
               <a href={`${base}/acerca/`}>{t.nav.acerca}</a>
             </nav>
             <p class="grupo">{t.menu.modo}</p>
