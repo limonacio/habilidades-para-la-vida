@@ -18,7 +18,22 @@ const titulo = Object.fromEntries(temas.map((x) => [x.id.split('/')[1], x.data.t
 const datos = Object.fromEntries(
   (Object.keys(q.preguntas) as Nivel[]).map((n) => [n, q.preguntas[n].map((x) => ({ ...x, tt: titulo[x.t], tu: `${base}/temas/${x.t}/` }))]),
 );
-const niveles = Object.entries(q.niveles) as [Nivel, { nombre: string; texto: string }][];
+const niveles = Object.entries(q.niveles) as [Nivel, { nombre: string; texto: string; cantidad: number }][];
+const cantidad = Object.fromEntries(niveles.map(([n, v]) => [n, v.cantidad]));
+
+// Control de calidad al construir el sitio: avisa si en una pregunta la correcta es
+// bastante más larga que las incorrectas (sería una pista para adivinar sin saber).
+for (const [n, lista] of Object.entries(q.preguntas)) {
+  for (const x of lista) {
+    const c = x.c ?? 0;
+    const largoCorrecta = x.o[c].length;
+    const otras = x.o.filter((_, k) => k !== c).map((o) => o.length);
+    const promedio = otras.reduce((a, b) => a + b, 0) / otras.length;
+    if (largoCorrecta > Math.max(...otras) && largoCorrecta > promedio * 1.25 + 4) {
+      console.warn(`[quiz ${lang}/${n}] la correcta es mucho más larga que las otras: "${x.p}"`);
+    }
+  }
+}
 ---
 <Base lang={lang} title={q.titulo} description={q.bajada}>
   <div class="wrap quiz">
@@ -55,12 +70,12 @@ const niveles = Object.entries(q.niveles) as [Nivel, { nombre: string; texto: st
       </div>
     </section>
   </div>
-  <script type="application/json" id="quiz-datos" set:html={JSON.stringify({ preguntas: datos, textos: q.textos })} />
+  <script type="application/json" id="quiz-datos" set:html={JSON.stringify({ preguntas: datos, textos: q.textos, cantidad })} />
 </Base>
 
 <script>
-  type P = { p: string; o: string[]; c: number; e: string; tt: string; tu: string };
-  const { preguntas, textos } = JSON.parse(document.getElementById('quiz-datos')!.textContent!) as { preguntas: Record<string, P[]>; textos: Record<string, any> };
+  type P = { p: string; o: string[]; c?: number; e: string; tt: string; tu: string };
+  const { preguntas, textos, cantidad } = JSON.parse(document.getElementById('quiz-datos')!.textContent!) as { preguntas: Record<string, P[]>; textos: Record<string, any>; cantidad: Record<string, number> };
   const $ = (id: string) => document.getElementById(id)!;
 
   // Mezcla al azar (algoritmo de Fisher-Yates): cada orden posible tiene la misma probabilidad.
@@ -78,7 +93,8 @@ const niveles = Object.entries(q.niveles) as [Nivel, { nombre: string; texto: st
     // Guardamos un paso en el historial: así el botón Atrás vuelve a los niveles en vez de salir del quiz
     if (!history.state?.quiz) history.pushState({ quiz: true }, '');
     nivel = n; i = 0; aciertos = 0;
-    ronda = mezclar(preguntas[n]);
+    // Del banco del nivel se sortean solo las que se juegan en esta partida
+    ronda = mezclar(preguntas[n]).slice(0, cantidad[n]);
     $('niveles').hidden = true; $('final').hidden = true; $('juego').hidden = false;
     mostrar();
   }
@@ -90,7 +106,7 @@ const niveles = Object.entries(q.niveles) as [Nivel, { nombre: string; texto: st
     $('pregunta').textContent = x.p;
     $('feedback').hidden = true; $('siguiente').hidden = true;
     // Mezclamos las opciones, pero recordamos cuál era la correcta
-    const ops = mezclar(x.o.map((texto, k) => ({ texto, ok: k === x.c })));
+    const ops = mezclar(x.o.map((texto, k) => ({ texto, ok: k === (x.c ?? 0) })));
     $('respuestas').replaceChildren(...ops.map(({ texto, ok }) => {
       const b = document.createElement('button');
       b.className = 'respuesta';

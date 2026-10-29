@@ -1,19 +1,23 @@
 import type { Lang } from '../i18n/ui';
+import { basica } from './quiz/es-basica';
 
 // ── Quiz ────────────────────────────────────────────────────────────────
 // Cada pregunta sale de un tema de la guía (campo "t" = nombre del archivo del tema),
 // así la explicación puede llevar a "leer más". Nada inventado: todo está en los temas.
 //
-// p = pregunta · o = opciones · c = posición de la correcta (0 a 3) · e = explicación
-// Las preguntas y las opciones se mezclan al azar en cada partida.
+// p = pregunta · o = opciones · e = explicación · t = tema
+// c = posición de la correcta (0 a 3). Si no está, la correcta es la PRIMERA opción
+//     (es la convención de los bancos nuevos, en la carpeta quiz/).
+// Cada nivel es un banco de preguntas: en cada partida se sortean "cantidad" de ellas
+// y se mezclan también las opciones, así casi nunca se repite una partida.
 
 export type Nivel = 'basica' | 'media' | 'instruida';
-export type Pregunta = { p: string; o: [string, string, string, string]; c: number; e: string; t: string };
+export type Pregunta = { p: string; o: [string, string, string, string]; c?: number; e: string; t: string };
 
 type QuizIdioma = {
   titulo: string;
   bajada: string;
-  niveles: Record<Nivel, { nombre: string; texto: string }>;
+  niveles: Record<Nivel, { nombre: string; texto: string; cantidad: number }>;
   preguntas: Record<Nivel, Pregunta[]>;
   textos: { pregunta: string; de: string; correcto: string; incorrecto: string; leerMas: string; siguiente: string; resultado: string; otraVez: string; otroNivel: string; finales: [string, string, string] };
 };
@@ -22,9 +26,9 @@ const es: QuizIdioma = {
   titulo: 'Quiz',
   bajada: 'Probá lo que sabés. Cada respuesta trae una explicación y el tema donde leer más.',
   niveles: {
-    basica: { nombre: 'Básica', texto: '10 preguntas para empezar' },
-    media: { nombre: 'Media', texto: '15 preguntas para afinar' },
-    instruida: { nombre: 'Instruida', texto: '20 preguntas con autores, leyes y fechas' },
+    basica: { nombre: 'Básica', texto: '10 preguntas para empezar', cantidad: 10 },
+    media: { nombre: 'Media', texto: '15 preguntas para afinar', cantidad: 15 },
+    instruida: { nombre: 'Instruida', texto: '20 preguntas con autores, leyes y fechas', cantidad: 20 },
   },
   textos: {
     pregunta: 'Pregunta', de: 'de',
@@ -34,18 +38,7 @@ const es: QuizIdioma = {
     finales: ['Buen comienzo: los temas te esperan para seguir aprendiendo.', '¡Muy bien! Ya tenés una base sólida.', '¡Excelente! Dominás este nivel.'],
   },
   preguntas: {
-    basica: [
-      { p: '¿Qué tipo de violencia busca degradar o controlar mediante humillación, aislamiento, vigilancia o celos excesivos?', o: ['Psicológica', 'Física', 'Política', 'Institucional'], c: 0, e: 'Según la Ley 26.485 (art. 5), la violencia psicológica causa daño emocional y disminuye la autoestima; busca degradar o controlar.', t: 'violencia-de-genero' },
-      { p: 'En el ciclo de la violencia, ¿qué significan las etapas de calma y de promesas de cambio?', o: ['Que la violencia terminó', 'Que forman parte del mismo ciclo', 'Que fue una pelea aislada', 'Que la pareja ya no corre riesgo'], c: 1, e: 'Lenore Walker describió que la violencia sigue un ciclo que se repite: la calma y las promesas no significan que la violencia terminó.', t: 'ciclo-de-la-violencia' },
-      { p: 'Según Klaudio Duarte, el machismo…', o: ['Es hereditario', 'Es parte de la naturaleza masculina', 'Se aprende, y por eso se puede desaprender', 'Aparece recién en la adultez'], c: 2, e: '“No se nace machista”: los hombres aprenden a ser hombres, y lo aprendido se puede desaprender.', t: 'patriarcado-y-masculinidades' },
-      { p: '¿Qué es la orientación sexual?', o: ['El sentimiento interno sobre el propio género', 'Las características biológicas de una persona', 'Los roles que la sociedad atribuye según el sexo', 'La atracción emocional, romántica o sexual hacia otras personas'], c: 3, e: 'La orientación sexual es la atracción hacia otras personas; el sentimiento interno sobre el propio género es la identidad de género.', t: 'diversidad-sexual' },
-      { p: '“El enojo es hereditario”: ¿verdadero o falso?', o: ['Falso: la forma de expresarlo se aprende', 'Verdadero: viene en los genes', 'Verdadero, pero solo en los varones', 'Depende de la edad'], c: 0, e: 'Es un mito: la expresión del enojo se aprende observando a la familia y los amigos, y por eso se pueden aprender formas más sanas.', t: 'entendimiento-de-la-ira' },
-      { p: 'En la escala del enojo, ¿qué significa el 10?', o: ['Calma total', 'Un enojo leve', 'Una pérdida de control explosiva', 'Un enojo justificado'], c: 2, e: 'La escala va de 1 (calma total) a 10 (pérdida de control explosiva con consecuencias negativas).', t: 'entendimiento-de-la-ira' },
-      { p: 'Según el ABC de Albert Ellis, ¿qué causa realmente la reacción emocional?', o: ['El acontecimiento (A)', 'Lo que creemos sobre el acontecimiento (B)', 'La reacción de los demás', 'El azar'], c: 1, e: 'No es el acontecimiento lo que causa la emoción, sino lo que creemos sobre él: el sistema de creencias (B).', t: 'pensar-correctamente' },
-      { p: '¿Qué es la asertividad?', o: ['Ceder para evitar conflictos', 'Imponer lo que uno quiere', 'Callar lo que uno siente', 'Decir lo que sentimos o pensamos de forma amable, teniendo en cuenta a los demás'], c: 3, e: 'La asertividad permite cuidar lo propio sin pasar por encima del otro; la pasividad y la agresión dañan los vínculos.', t: 'habilidades-interpersonales' },
-      { p: 'En la respiración diafragmática, con una mano en el pecho y otra en el abdomen, ¿qué pasa al inspirar?', o: ['Sube la mano del abdomen; la del pecho casi no se mueve', 'Sube la mano del pecho', 'Suben las dos por igual', 'No se mueve ninguna'], c: 0, e: 'El aire se lleva hasta el estómago, como al llenar una cantimplora de abajo hacia arriba.', t: 'relajacion-avanzada' },
-      { p: 'Al poner un límite, ¿qué conviene hacer?', o: ['Pedir disculpas varias veces', 'Decir “no puedo porque soy torpe”', 'Decir que no sin pedir disculpas', 'Responder siempre en el momento'], c: 2, e: 'Pedir disculpas transmite que no nos creemos con derecho a cuidarnos e invita al otro a presionar más.', t: 'limites-y-negociacion' },
-    ],
+    basica,
     media: [
       { p: 'En el iceberg de la violencia, ¿cuál de estas formas está en la base, entre las más sutiles?', o: ['Agresión física', 'Lenguaje sexista', 'Amenazar', 'Insultar'], c: 1, e: 'En la base están las formas sutiles: humor y lenguaje sexista, control, invisibilización, micromachismos. Sostienen a las que se ven.', t: 'violencia-de-genero' },
       { p: 'Para que haya violencia doméstica según la Ley 26.485, ¿hace falta convivir?', o: ['Sí, siempre', 'Solo si hay matrimonio', 'Solo si la relación sigue vigente', 'No: incluye noviazgos y parejas, vigentes o terminadas, sin convivencia'], c: 3, e: 'La modalidad doméstica no exige convivencia e incluye parejas y noviazgos vigentes o finalizados (art. 6).', t: 'violencia-de-genero' },
