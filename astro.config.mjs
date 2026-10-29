@@ -3,6 +3,8 @@ import { defineConfig } from 'astro/config';
 
 // https://astro.build/config
 export default defineConfig({
-  // Cuando tengamos el dominio final, lo ponemos acá (sirve para RSS y SEO):
-  // site: 'https://habilidades-para-la-vida.vercel.app',
+  // Obligatorio para Open Graph: las etiquetas og: piden URLs ABSOLUTAS, y
+  // Astro las arma con new URL(..., Astro.site). Sin esto, el preview al
+  // compartir queda sin imagen.
+  site: 'https://habilidades-para-la-vida.vercel.app',
 });
