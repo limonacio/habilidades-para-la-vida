@@ -1,13 +1,13 @@
-# Habilidades para la Vida — Plan de frontend (borrador v1)
+# Habilidades para la Vida — Plan de frontend
 
-Estado: **en diseño**. No se programa ni se sube nada hasta aprobar este plan.
+Estado: **publicada** en https://tallerhabilidades.vercel.app — Etapa 1 casi completa (ver Hoja de ruta). Las reglas de trabajo para agentes están en `AGENTS.md`.
 
 ## 1. Stack
 - **Astro** (sitio de contenido, genera HTML estático, casi sin JavaScript).
 - Estilos con **CSS propio** (variables de color + estilos por componente de Astro). Se decidió no usar Tailwind en v1 para mantener el proyecto simple; se puede sumar después.
 - **Islas de React** solo para los ejercicios interactivos.
 - Contenido en **Markdown** (una "content collection" con un archivo `.md` por tema).
-- Deploy: Vercel (igual que el portfolio), recién cuando aprobemos.
+- Deploy: Vercel, conectado a GitHub (cada push a main se publica solo).
 
 ## 2. Mapa del sitio
 ```
@@ -154,8 +154,16 @@ Para v2: test de mitos irracionales (Nro. 15) e iceberg de la violencia interact
 - [x] 1.12 Deploy en Vercel → https://tallerhabilidades.vercel.app (principal; habilidades-para-la-vida.vercel.app redirige)
 - [x] 1.14 Menú hamburguesa (modo e idioma) y traducción completa al inglés y al portugués de Brasil (leyes con aviso de traducción no oficial)
 - [x] 1.15 Nuevo tema "El ciclo de la violencia" (Walker), gráfico del iceberg (Amnistía Internacional), video de violencia simbólica y "Recursos destacados" en el inicio
+- [x] 1.13 Enlazar desde el portfolio (limonacio.com, sección Lab)
+- [x] 1.17 Volver a la sección desde un tema (etiqueta de color, tema resaltado) y lista de temas del mismo eje
+- [x] 1.18 Video «Llegué viva» (Colectivas Deseantes) sobre acoso en el espacio público, en Violencia de género
+- [x] 1.19 Más espacio entre secciones (que no quede abarrotado)
+- [x] 1.20 Buscador inteligente: índice /buscar.json armado al construir, resultados debajo del campo con enlace directo, busca por palabras (sin tildes ni palabras vacías) en destacados, títulos, subtítulos y texto
+- [x] 1.21 Destacados sin artículo ("Iceberg de la violencia", "Ciclo de la violencia") y al final en el celular
+- [x] 1.22 Logo en SVG con contorno fino que sigue el color del texto (claro/oscuro); favicon igual
+- [x] 1.23 Ruta de navegación invisible (BreadcrumbList en JSON-LD, solo para buscadores)
 - [ ] 1.16 Tema "Relajación I": el PDF llegó vacío (0 bytes), falta volver a copiarlo
-- [ ] 1.13 Enlazar desde la sección Misceláneos del portfolio
+- [ ] 1.24 Pasada de simplificación general (propuesta: que el sitio no quede recargado)
 
 ### Etapa 2 — Ejercicios interactivos
 - [ ] 2.1 Respiración guiada
@@ -185,4 +193,4 @@ Para v2: test de mitos irracionales (Nro. 15) e iceberg de la violencia interact
 ### Pendientes de decisión
 - ¿Aprobación previa en los temas de violencia?
 - ¿Avisos por email? ¿A quién y cuándo?
-- Dominio o subdominio final
+- ~~Dominio o subdominio final~~ → resuelto: tallerhabilidades.vercel.app
