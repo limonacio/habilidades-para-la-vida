@@ -162,6 +162,7 @@ Para v2: test de mitos irracionales (Nro. 15) e iceberg de la violencia interact
 - [x] 1.21 Destacados sin artículo ("Iceberg de la violencia", "Ciclo de la violencia") y al final en el celular
 - [x] 1.22 Logo en SVG con contorno fino que sigue el color del texto (claro/oscuro); favicon igual
 - [x] 1.23 Ruta de navegación invisible (BreadcrumbList en JSON-LD, solo para buscadores)
+- [x] 1.25 Quiz /quiz/ con tres niveles (Básica, Media, Instruida): 100 preguntas por nivel, partidas sorteadas, revisión sociológica, psicológica y lingüística, control automático de largo de opciones. Falta: traducir al inglés y portugués; sumar preguntas de los 6 temas nuevos
 - [ ] 1.16 Tema "Relajación I": el PDF llegó vacío (0 bytes), falta volver a copiarlo
 - [ ] 1.24 Pasada de simplificación general (propuesta: que el sitio no quede recargado)
 

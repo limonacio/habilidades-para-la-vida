@@ -72,3 +72,22 @@ Requiere Node.js 22.12 o superior. Astro 6 (Astro 7 pide un Node más nuevo).
 3. Usar `##` para las secciones: arman el índice lateral y entran al buscador.
 4. Si el frontmatter lleva comillas dentro de un texto, usar comillas tipográficas “ ” para no romper el YAML.
 5. Agregar las obras nuevas en `fuentes` y marcar el avance en `PLAN.md`.
+
+## Quiz (`/quiz/`)
+
+- Bancos en `src/data/quiz/` (un archivo por idioma y nivel: `es-basica.ts`, `es-media.ts`, `es-instruida.ts`). Cada partida sortea 10, 15 o 20 preguntas del banco y mezcla las opciones.
+- Convención: la **primera opción es siempre la correcta** (en pantalla se mezclan). Cada pregunta lleva explicación (`e`) y tema (`t`, el nombre del archivo del tema) para el "Leer más".
+- Al construir el sitio se avisa si la correcta es bastante más larga que las demás.
+- Cuando se suma un tema nuevo a la guía, se agregan unas 6 preguntas de ese tema en cada nivel.
+
+### Reglas de redacción de preguntas
+
+1. El enunciado se entiende solo: nada de "ese", "estas" o "el ejemplo de…" sin contexto, y con el agente explícito (quién hace qué).
+2. Enunciado + opción deben formar una frase correcta (leerlo en voz alta; evitar "a" + "El…" = "a el").
+3. Nada de preguntas de sí/no ni de opciones espejo (más/menos). Mejor preguntar el porqué, el alcance o un caso concreto.
+4. Los distractores son conceptos reales de la guía del mismo tipo que la correcta (otra fase, otro inciso, otro autor, otro estilo). Sin relleno absurdo.
+5. Mezclar la valencia: la correcta no puede ser la única opción "buena" o la única "mala".
+6. Los absolutos ("solo", "siempre", "nunca") no se concentran en los distractores.
+7. Las cuatro opciones con la misma estructura y largo parecido; la correcta no repite palabras clave del enunciado. Las negaciones van en MAYÚSCULAS, o mejor se reformula en positivo.
+8. La explicación dice por qué la correcta es correcta y de dónde salen los distractores fuertes.
+9. Encuadre: no individualizar lo que la guía presenta como social, no culpar a las víctimas, respetar la terminología de la guía (tipos ≠ modalidades de la Ley 26.485; femicidio, travesticidio, transfemicidio; "estilo" de personalidad).
