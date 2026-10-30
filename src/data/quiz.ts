@@ -18,15 +18,20 @@ export type Pregunta = { p: string; o: [string, string, string, string]; c?: num
 
 type QuizIdioma = {
   titulo: string;
+  menu: string;
   bajada: string;
+  tarjeta: { insignia: string; titulo: string; texto: string; boton: string };
   niveles: Record<Nivel, { nombre: string; texto: string; cantidad: number }>;
   preguntas: Record<Nivel, Pregunta[]>;
   textos: { pregunta: string; de: string; correcto: string; incorrecto: string; leerMas: string; siguiente: string; resultado: string; otraVez: string; otroNivel: string; finales: [string, string, string] };
 };
 
 const es: QuizIdioma = {
-  titulo: 'Quiz',
-  bajada: 'Probá lo que sabés. Cada respuesta trae una explicación y el tema donde leer más.',
+  titulo: 'Preguntero de autoevaluación',
+  menu: 'Autoevaluación',
+  bajada: 'Repasá lo que aprendiste. Cada respuesta trae una explicación y el tema donde leer más.',
+  // Tarjeta de invitación al final del inicio
+  tarjeta: { insignia: '3 niveles', titulo: '¿Cuánto aprendiste?', texto: 'Un preguntero para repasar los temas, con niveles básico, medio e instruido. Cada respuesta trae su explicación.', boton: 'Empezar' },
   niveles: {
     basica: { nombre: 'Básica', texto: '10 preguntas para empezar', cantidad: 10 },
     media: { nombre: 'Media', texto: '15 preguntas para afinar', cantidad: 15 },

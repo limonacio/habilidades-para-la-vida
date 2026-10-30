@@ -100,7 +100,7 @@ const OG_LOCALE: Record<Lang, string> = { es: 'es_AR', en: 'en_US', pt: 'pt_BR' 
         <nav class="nav-desktop" aria-label={t.sitio}>
           <a href={`${base}/#temas`}>{t.nav.temas}</a>
           <a href={`${base}/#ejercicios`}>{t.nav.ejercicios}</a>
-          {QUIZ[lang] && <a href={`${base}/quiz/`}>{QUIZ[lang].titulo}</a>}
+          {QUIZ[lang] && <a href={`${base}/autoevaluacion/`}>{QUIZ[lang].menu}</a>}
           <a href={`${base}/acerca/`}>{t.nav.acerca}</a>
         </nav>
 
@@ -114,7 +114,7 @@ const OG_LOCALE: Record<Lang, string> = { es: 'es_AR', en: 'en_US', pt: 'pt_BR' 
             <nav class="nav-movil" aria-label={t.sitio}>
               <a href={`${base}/#temas`}>{t.nav.temas}</a>
               <a href={`${base}/#ejercicios`}>{t.nav.ejercicios}</a>
-              {QUIZ[lang] && <a href={`${base}/quiz/`}>{QUIZ[lang].titulo}</a>}
+              {QUIZ[lang] && <a href={`${base}/autoevaluacion/`}>{QUIZ[lang].menu}</a>}
               <a href={`${base}/acerca/`}>{t.nav.acerca}</a>
             </nav>
             <p class="grupo">{t.menu.modo}</p>

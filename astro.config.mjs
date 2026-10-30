@@ -7,4 +7,6 @@ export default defineConfig({
   // Astro las arma con new URL(..., Astro.site). Sin esto, el preview al
   // compartir queda sin imagen.
   site: 'https://tallerhabilidades.vercel.app',
+  // La sección se llamaba /quiz/: quien tenga el enlace viejo llega igual
+  redirects: { '/quiz': '/autoevaluacion' },
 });
