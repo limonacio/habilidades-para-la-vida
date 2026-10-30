@@ -55,7 +55,10 @@ for (const [n, lista] of Object.entries(q.preguntas)) {
       <div id="respuestas" class="respuestas"></div>
       <div id="feedback" class="feedback" hidden>
         <p><b id="veredicto"></b> <span id="explicacion"></span></p>
-        <a id="leer" class="leer"></a>
+        <div class="enlaces">
+          <a id="leer" class="leer"></a>
+          <button id="guardar" class="guardar" type="button">📷 {q.textos.guardar}</button>
+        </div>
       </div>
       <button id="siguiente" class="boton" hidden></button>
     </section>
@@ -68,66 +71,100 @@ for (const [n, lista] of Object.entries(q.preguntas)) {
         <button id="repetir" class="boton">{q.textos.otraVez}</button>
         <button id="volver" class="boton secundario">{q.textos.otroNivel}</button>
       </div>
+      <div class="repaso">
+        <h2>{q.textos.repaso}</h2>
+        <p id="repaso-vacio" hidden>{q.textos.sinErrores}</p>
+        <ol id="repaso-lista"></ol>
+      </div>
     </section>
   </div>
-  <script type="application/json" id="quiz-datos" set:html={JSON.stringify({ preguntas: datos, textos: q.textos, cantidad })} />
+  <script type="application/json" id="quiz-datos" set:html={JSON.stringify({ preguntas: datos, textos: q.textos, cantidad, nombres: Object.fromEntries(niveles.map(([n, v]) => [n, v.nombre])) })} />
 </Base>
 
 <script>
+  // ── Autoevaluación ────────────────────────────────────────────────────
+  // La partida se guarda en sessionStorage (dura mientras la pestaña esté abierta y no
+  // sale del dispositivo). Así se puede ir a "Leer más", volver y seguir donde estaba.
   type P = { p: string; o: string[]; c?: number; e: string; tt: string; tu: string };
-  const { preguntas, textos, cantidad } = JSON.parse(document.getElementById('quiz-datos')!.textContent!) as { preguntas: Record<string, P[]>; textos: Record<string, any>; cantidad: Record<string, number> };
+  type Estado = {
+    nivel: string; ids: number[]; i: number; aciertos: number;
+    orden: number[];            // orden en que se muestran las opciones de la pregunta actual
+    elegida: number | null;     // opción elegida (índice original) o null si todavía no respondió
+    errores: { id: number; elegida: number }[];
+    url: string; terminado: boolean;
+  };
+  const { preguntas, textos, cantidad, nombres } = JSON.parse(document.getElementById('quiz-datos')!.textContent!) as { preguntas: Record<string, P[]>; textos: Record<string, any>; cantidad: Record<string, number>; nombres: Record<string, string> };
   const $ = (id: string) => document.getElementById(id)!;
+  const CLAVE = 'autoevaluacion';
 
-  // Mezcla al azar (algoritmo de Fisher-Yates): cada orden posible tiene la misma probabilidad.
+  // Mezcla al azar (Fisher-Yates)
   const mezclar = <T,>(a: T[]) => { a = [...a]; for (let i = a.length - 1; i > 0; i--) { const j = Math.floor(Math.random() * (i + 1)); [a[i], a[j]] = [a[j], a[i]]; } return a; };
+  const correctaDe = (x: P) => x.c ?? 0;
 
-  let nivel = '', ronda: P[] = [], i = 0, aciertos = 0;
+  // Leer y guardar el estado. try/catch: en algunos modos privados el almacenamiento falla,
+  // y en ese caso el quiz funciona igual, solo que sin recordar la partida.
+  const guardar = (e: Estado | null) => { try { e ? sessionStorage.setItem(CLAVE, JSON.stringify(e)) : sessionStorage.removeItem(CLAVE); } catch {} };
+  const leer = (): Estado | null => { try { return JSON.parse(sessionStorage.getItem(CLAVE) ?? 'null'); } catch { return null; } };
 
-  // Volver a la lista de niveles. "desdeHistorial" = lo pidió el botón Atrás del navegador o del celular.
-  function aNiveles(desdeHistorial = false) {
-    $('juego').hidden = true; $('final').hidden = true; $('niveles').hidden = false;
-    if (!desdeHistorial && history.state?.quiz) history.back();
+  let st: Estado | null = null;
+  let empujado = false; // ¿agregamos un paso al historial en esta visita?
+  const actual = () => preguntas[st!.nivel][st!.ids[st!.i]];
+
+  function mostrarPantalla(cual: 'niveles' | 'juego' | 'final') {
+    $('niveles').hidden = cual !== 'niveles';
+    $('juego').hidden = cual !== 'juego';
+    $('final').hidden = cual !== 'final';
   }
 
   function empezar(n: string) {
-    // Guardamos un paso en el historial: así el botón Atrás vuelve a los niveles en vez de salir del quiz
-    if (!history.state?.quiz) history.pushState({ quiz: true }, '');
-    nivel = n; i = 0; aciertos = 0;
+    // Un paso en el historial: así el botón Atrás vuelve a los niveles en vez de salir
+    if (!empujado) { history.pushState({ quiz: true }, ''); empujado = true; }
     // Del banco del nivel se sortean solo las que se juegan en esta partida
-    ronda = mezclar(preguntas[n]).slice(0, cantidad[n]);
-    $('niveles').hidden = true; $('final').hidden = true; $('juego').hidden = false;
+    const ids = mezclar(preguntas[n].map((_, k) => k)).slice(0, cantidad[n]);
+    st = { nivel: n, ids, i: 0, aciertos: 0, orden: mezclar([0, 1, 2, 3]), elegida: null, errores: [], url: location.pathname, terminado: false };
+    guardar(st);
+    mostrarPantalla('juego');
     mostrar();
   }
 
   function mostrar() {
-    const x = ronda[i];
-    $('num').textContent = `${textos.pregunta} ${i + 1} ${textos.de} ${ronda.length}`;
-    ($('avance') as HTMLElement).style.width = `${(i / ronda.length) * 100}%`;
+    const x = actual();
+    $('num').textContent = `${textos.pregunta} ${st!.i + 1} ${textos.de} ${st!.ids.length}`;
+    ($('avance') as HTMLElement).style.width = `${(st!.i / st!.ids.length) * 100}%`;
     $('pregunta').textContent = x.p;
     $('feedback').hidden = true; $('siguiente').hidden = true;
-    // Mezclamos las opciones, pero recordamos cuál era la correcta
-    const ops = mezclar(x.o.map((texto, k) => ({ texto, ok: k === (x.c ?? 0) })));
-    $('respuestas').replaceChildren(...ops.map(({ texto, ok }) => {
+    $('respuestas').replaceChildren(...st!.orden.map((k) => {
       const b = document.createElement('button');
       b.className = 'respuesta';
-      b.textContent = texto;
-      b.dataset.ok = String(ok);
-      b.addEventListener('click', () => responder(b));
+      b.textContent = x.o[k];
+      b.dataset.k = String(k);
+      b.addEventListener('click', () => responder(k));
       return b;
     }));
-    $('pregunta').focus();
+    if (st!.elegida !== null) marcar(); // volvimos de "Leer más": la pregunta ya estaba respondida
+    else $('pregunta').focus();
   }
 
-  function responder(elegida: HTMLButtonElement) {
-    const x = ronda[i];
-    const ok = elegida.dataset.ok === 'true';
-    if (ok) aciertos++;
-    // Bloqueamos las opciones y marcamos la correcta (y la elegida, si estaba mal)
+  function responder(k: number) {
+    if (st!.elegida !== null) return;
+    const x = actual();
+    st!.elegida = k;
+    if (k === correctaDe(x)) st!.aciertos++;
+    else st!.errores.push({ id: st!.ids[st!.i], elegida: k });
+    guardar(st);
+    marcar();
+    $('siguiente').focus();
+  }
+
+  // Muestra la respuesta: bloquea opciones, marca correcta e incorrecta, explicación y enlaces
+  function marcar() {
+    const x = actual();
+    const ok = st!.elegida === correctaDe(x);
     $('respuestas').querySelectorAll<HTMLButtonElement>('.respuesta').forEach((b) => {
       b.disabled = true;
-      if (b.dataset.ok === 'true') b.classList.add('bien');
+      if (Number(b.dataset.k) === correctaDe(x)) b.classList.add('bien');
+      if (!ok && Number(b.dataset.k) === st!.elegida) b.classList.add('mal');
     });
-    if (!ok) elegida.classList.add('mal');
     $('veredicto').textContent = ok ? textos.correcto : textos.incorrecto;
     $('veredicto').className = ok ? 'bien' : 'mal';
     $('explicacion').textContent = x.e;
@@ -135,24 +172,111 @@ for (const [n, lista] of Object.entries(q.preguntas)) {
     a.href = x.tu; a.textContent = `${textos.leerMas}: ${x.tt} →`;
     $('feedback').hidden = false;
     const s = $('siguiente');
-    s.textContent = i === ronda.length - 1 ? textos.resultado : textos.siguiente;
+    s.textContent = st!.i === st!.ids.length - 1 ? textos.resultado : textos.siguiente;
     s.hidden = false;
-    s.focus();
+  }
+
+  function siguiente() {
+    st!.i++;
+    if (st!.i < st!.ids.length) { st!.orden = mezclar([0, 1, 2, 3]); st!.elegida = null; guardar(st); mostrar(); }
+    else { st!.terminado = true; guardar(st); terminar(); }
   }
 
   function terminar() {
-    $('juego').hidden = true; $('final').hidden = false;
-    $('puntaje').textContent = `${aciertos} / ${ronda.length}`;
-    const r = aciertos / ronda.length;
+    mostrarPantalla('final');
+    const total = st!.ids.length;
+    $('puntaje').textContent = `${st!.aciertos} / ${total}`;
+    const r = st!.aciertos / total;
     $('mensaje').textContent = textos.finales[r < 0.5 ? 0 : r < 0.8 ? 1 : 2];
+    // Repaso de errores: cada pregunta fallada con la respuesta correcta, la explicación y el tema
+    const lista = $('repaso-lista');
+    $('repaso-vacio').hidden = st!.errores.length > 0;
+    lista.replaceChildren(...st!.errores.map(({ id }) => {
+      const x = preguntas[st!.nivel][id];
+      const li = document.createElement('li');
+      const p = document.createElement('p'); p.className = 'rp'; p.textContent = x.p;
+      const c = document.createElement('p'); c.className = 'rc'; c.textContent = `${textos.correcta}: ${x.o[correctaDe(x)]}`;
+      const e = document.createElement('p'); e.className = 're'; e.textContent = x.e;
+      const a = document.createElement('a'); a.href = x.tu; a.textContent = `${textos.leerMas}: ${x.tt} →`;
+      li.append(p, c, e, a);
+      return li;
+    }));
   }
 
+  function aNiveles(desdeHistorial = false) {
+    st = null; guardar(null);
+    mostrarPantalla('niveles');
+    if (empujado) { empujado = false; if (!desdeHistorial) history.back(); }
+  }
+
+  // ── Guardar la pregunta como imagen (para el celular: galería o WhatsApp) ──
+  // Dibujamos una tarjeta limpia en un <canvas> y la compartimos o descargamos.
+  function partirEnLineas(ctx: CanvasRenderingContext2D, texto: string, ancho: number) {
+    const lineas: string[] = []; let linea = '';
+    for (const palabra of texto.split(' ')) {
+      const prueba = linea ? `${linea} ${palabra}` : palabra;
+      if (ctx.measureText(prueba).width > ancho && linea) { lineas.push(linea); linea = palabra; } else linea = prueba;
+    }
+    if (linea) lineas.push(linea);
+    return lineas;
+  }
+
+  async function guardarImagen() {
+    const x = actual();
+    await document.fonts.ready;
+    const W = 1080, M = 90, ANCHO = W - M * 2;
+    const c = document.createElement('canvas');
+    const ctx = c.getContext('2d')!;
+    // Primero medimos los bloques para saber qué alto necesita la imagen
+    const bloques: [string, string, string, number][] = [ // [texto, fuente, color, espacio después]
+      [`${textos.nivel} ${nombres[st!.nivel]}`, '700 30px "Atkinson Hyperlegible", sans-serif', '#553886', 30],
+      [x.p, '700 50px Fraunces, Georgia, serif', '#231D18', 44],
+      [`${textos.correcta}:`, '700 30px "Atkinson Hyperlegible", sans-serif', '#43653F', 10],
+      [x.o[correctaDe(x)], '700 40px "Atkinson Hyperlegible", sans-serif', '#231D18', 40],
+      [x.e, '400 34px "Atkinson Hyperlegible", sans-serif', '#524840', 50],
+      [`${textos.leerMas}: ${x.tt}`, '700 32px "Atkinson Hyperlegible", sans-serif', '#9A4524', 8],
+      [`${location.host}${x.tu}`, '400 26px "Atkinson Hyperlegible", sans-serif', '#524840', 0],
+    ];
+    const altoLinea = (f: string) => Number(f.match(/(\d+)px/)![1]) * 1.3;
+    const medidos = bloques.map(([t, f, col, esp]) => { ctx.font = f; return { lineas: partirEnLineas(ctx, t, ANCHO), f, col, esp }; });
+    const H = M * 2 + 90 + medidos.reduce((s, b) => s + b.lineas.length * altoLinea(b.f) + b.esp, 0);
+    c.width = W; c.height = Math.ceil(H);
+    // Fondo crema con borde y una franja con los colores de los tres ejes
+    ctx.fillStyle = '#F1E6D2'; ctx.fillRect(0, 0, W, H);
+    ['#7650C2', '#D86A3F', '#579B54'].forEach((col, k) => { ctx.fillStyle = col; ctx.fillRect((W / 3) * k, 0, W / 3 + 1, 14); });
+    ctx.fillStyle = '#231D18'; ctx.font = '700 34px Fraunces, Georgia, serif'; ctx.textBaseline = 'top';
+    ctx.fillText('Habilidades para la Vida', M, M - 10);
+    let y = M + 80;
+    for (const b of medidos) {
+      ctx.font = b.f; ctx.fillStyle = b.col;
+      for (const l of b.lineas) { ctx.fillText(l, M, y); y += altoLinea(b.f); }
+      y += b.esp;
+    }
+    const blob: Blob = await new Promise((ok) => c.toBlob((b) => ok(b!), 'image/png'));
+    const archivo = new File([blob], `autoevaluacion-${st!.nivel}-${st!.i + 1}.png`, { type: 'image/png' });
+    // En el celular: menú de compartir del sistema (guardar en galería, WhatsApp…). En la compu: descarga.
+    if (navigator.canShare?.({ files: [archivo] })) {
+      try { await navigator.share({ files: [archivo], title: x.p }); return; } catch (err) { if ((err as Error).name === 'AbortError') return; }
+    }
+    const a = document.createElement('a');
+    a.href = URL.createObjectURL(archivo); a.download = archivo.name; a.click();
+    setTimeout(() => URL.revokeObjectURL(a.href), 1000);
+  }
+
+  // ── Eventos ──
   document.querySelectorAll<HTMLButtonElement>('.nivel').forEach((b) => b.addEventListener('click', () => empezar(b.dataset.nivel!)));
-  $('siguiente').addEventListener('click', () => { i++; if (i < ronda.length) mostrar(); else terminar(); });
-  $('repetir').addEventListener('click', () => empezar(nivel));
+  $('siguiente').addEventListener('click', siguiente);
+  $('repetir').addEventListener('click', () => empezar(st!.nivel));
   $('volver').addEventListener('click', () => aNiveles());
   $('salir').addEventListener('click', () => aNiveles());
-  window.addEventListener('popstate', () => aNiveles(true));
+  $('guardar').addEventListener('click', guardarImagen);
+  window.addEventListener('popstate', () => { if (empujado) aNiveles(true); });
+
+  // ── Al cargar: si hay una partida guardada (por ejemplo, al volver de "Leer más"), la retomamos ──
+  st = leer();
+  if (st && preguntas[st.nivel]) {
+    if (st.terminado) terminar(); else { mostrarPantalla('juego'); mostrar(); }
+  } else st = null;
 </script>
 
 <style>
@@ -186,6 +310,19 @@ for (const [n, lista] of Object.entries(q.preguntas)) {
   .feedback .bien { color: var(--salvia); }
   .feedback .mal { color: var(--terracota); }
   .leer { font-weight: 600; }
+  .enlaces { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 12px; }
+  .guardar { font: inherit; font-size: .9rem; font-weight: 700; color: var(--text); background: transparent; border: 2px solid var(--line); border-radius: 10px; padding: 6px 12px; cursor: pointer; }
+  .guardar:hover { border-color: var(--text); }
+
+  /* Repaso de errores al final de la partida */
+  .repaso { text-align: left; margin-top: 48px; }
+  .repaso h2 { font-size: 1.4rem; }
+  .repaso ol { padding-left: 20px; display: grid; gap: 18px; }
+  .repaso :global(li) { background: var(--surface); border: 1px solid var(--line); border-radius: 12px; padding: 16px 18px; }
+  .repaso :global(.rp) { font-weight: 700; margin: 0 0 8px; }
+  .repaso :global(.rc) { color: var(--salvia); font-weight: 700; margin: 0 0 6px; }
+  .repaso :global(.re) { color: var(--muted); margin: 0 0 8px; }
+  .repaso :global(a) { font-weight: 600; }
 
   .boton { margin-top: 24px; font: inherit; font-weight: 700; color: var(--bg); background: var(--text); border: 0; border-radius: 12px; padding: 12px 22px; cursor: pointer; }
   .boton.secundario { color: var(--text); background: transparent; border: 2px solid var(--line); }

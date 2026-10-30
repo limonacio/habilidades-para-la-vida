@@ -23,7 +23,7 @@ type QuizIdioma = {
   tarjeta: { insignia: string; titulo: string; texto: string; boton: string };
   niveles: Record<Nivel, { nombre: string; texto: string; cantidad: number }>;
   preguntas: Record<Nivel, Pregunta[]>;
-  textos: { pregunta: string; de: string; correcto: string; incorrecto: string; leerMas: string; siguiente: string; resultado: string; otraVez: string; otroNivel: string; finales: [string, string, string] };
+  textos: { pregunta: string; de: string; correcto: string; incorrecto: string; leerMas: string; siguiente: string; resultado: string; otraVez: string; otroNivel: string; finales: [string, string, string]; guardar: string; volverA: string; repaso: string; sinErrores: string; correcta: string; nivel: string };
 };
 
 const es: QuizIdioma = {
@@ -42,6 +42,7 @@ const es: QuizIdioma = {
     correcto: '¡Correcto!', incorrecto: 'No es esa.',
     leerMas: 'Leer más', siguiente: 'Siguiente', resultado: 'Ver resultado',
     otraVez: 'Repetir', otroNivel: 'Elegir otro nivel',
+    guardar: 'Guardar', volverA: 'Volver a la autoevaluación', repaso: 'Repaso de tus errores', sinErrores: '¡Sin errores! No hay nada que repasar en esta partida.', correcta: 'Respuesta correcta', nivel: 'Nivel',
     finales: ['Buen comienzo: los temas te esperan para seguir aprendiendo.', '¡Muy bien! Ya tenés una base sólida.', '¡Excelente! Dominás este nivel.'],
   },
   preguntas: {

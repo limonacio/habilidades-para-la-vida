@@ -3,6 +3,7 @@ import { getCollection, render } from 'astro:content';
 import Base from '../../../layouts/Base.astro';
 import Ayuda144 from '../../../components/Ayuda144.astro';
 import { UI, LOCALES, DEFAULT_LANG, prefijo, type Lang } from '../../../i18n/ui';
+import { QUIZ } from '../../../data/quiz';
 
 // getStaticPaths le dice a Astro qué páginas generar: una por tema y por idioma.
 export async function getStaticPaths() {
@@ -85,9 +86,27 @@ const ruta = {
       </article>
     </div>
   </div>
+  <!-- Si hay una autoevaluación en curso (se fue a "Leer más"), botón para volver a la misma pregunta -->
+  {QUIZ[lang] && (
+    <a id="volver-autoeval" class="volver-autoeval" hidden
+      data-texto={QUIZ[lang]!.textos.volverA}></a>
+  )}
 </Base>
 
 <script>
+  // Botón "Volver a la autoevaluación": lee la partida guardada en sessionStorage
+  {
+    const a = document.getElementById('volver-autoeval') as HTMLAnchorElement | null;
+    let st: { url: string; i: number; ids: number[]; terminado: boolean } | null = null;
+    try { st = JSON.parse(sessionStorage.getItem('autoevaluacion') ?? 'null'); } catch {}
+    if (a && st?.url) {
+      a.href = st.url;
+      a.textContent = st.terminado ? `← ${a.dataset.texto}` : `← ${a.dataset.texto} · ${st.i + 1}/${st.ids.length}`;
+      a.hidden = false;
+      document.body.style.paddingBottom = '80px'; // que el botón no tape el final de la página
+    }
+  }
+
   // Resalta en el índice la sección que se está leyendo.
   const links = document.querySelectorAll<HTMLAnchorElement>('.toc a');
   const obs = new IntersectionObserver(
@@ -102,6 +121,9 @@ const ruta = {
 </script>
 
 <style>
+  /* Botón flotante para volver a la autoevaluación */
+  .volver-autoeval { position: fixed; left: 50%; bottom: 20px; transform: translateX(-50%); z-index: 20; max-width: calc(100% - 32px); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; font-size: .92rem; font-weight: 700; text-decoration: none; color: var(--bg); background: var(--violeta); padding: 10px 18px; border-radius: 999px; box-shadow: 0 6px 20px rgba(0,0,0,.25); }
+  .volver-autoeval[hidden] { display: none; }
   .tema-head { margin-top: 40px; }
   a.tag { text-decoration: none; }
   a.tag:hover { outline: 2px solid var(--c); }
