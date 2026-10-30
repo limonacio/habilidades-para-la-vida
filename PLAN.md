@@ -164,6 +164,10 @@ Para v2: test de mitos irracionales (Nro. 15) e iceberg de la violencia interact
 - [x] 1.23 Ruta de navegación invisible (BreadcrumbList en JSON-LD, solo para buscadores)
 - [x] 1.25 Quiz /quiz/ con tres niveles (Básica, Media, Instruida): 100 preguntas por nivel, partidas sorteadas, revisión sociológica, psicológica y lingüística, control automático de largo de opciones. Falta: traducir al inglés y portugués; sumar preguntas de los 6 temas nuevos
 - [ ] 1.16 Tema "Relajación I": el PDF llegó vacío (0 bytes), falta volver a copiarlo
+- [ ] 1.26 Relajación: agregar videos guiados de Chi Kung (los elige Limonacio; tarjeta de video con crédito del canal)
+- [ ] 1.27 Mejoras de la guía señaladas en la revisión psicológica: unificar "estilo" (no "trastorno") en Personalidad y completar el estilo pasivo-agresivo; aviso de acompañamiento profesional en los ejercicios de IFS; explicar la D del ABC de Ellis
+- [ ] 1.28 Sumar los 6 temas de los PDF que faltan (cuando lleguen), con unas 6 preguntas por tema en cada nivel del quiz
+- [ ] 1.29 Traducir el quiz al inglés y al portugués (cuando estén aprobadas las preguntas en español)
 - [ ] 1.24 Pasada de simplificación general (propuesta: que el sitio no quede recargado)
 
 ### Etapa 2 — Ejercicios interactivos
