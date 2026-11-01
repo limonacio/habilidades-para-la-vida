@@ -79,17 +79,18 @@ const ejes: Eje[] = ['g', 'e', 'h'];
         );
       })}
 
-      <section class="ejercicios" id="ejercicios">
-        <h2>{t.ejercicios.titulo}</h2>
-        <p class="sub">{t.ejercicios.bajada} <b>{t.ejercicios.pronto}</b></p>
-        <div class="ej-grid">
-          {t.ejercicios.items.map(([titulo, texto], i) => (
-            <div class={`ej ${i === 0 ? 'h' : 'e'}`}><span aria-hidden="true">{['🌬️', '🌡️', '📓'][i]}</span><b>{titulo}</b>{texto}</div>
-          ))}
-        </div>
-      </section>
     </div>
 
+    <!-- La práctica, separada de la teoría: debajo de todos los temas -->
+    <section class="ejercicios" id="ejercicios">
+      <h2>{t.ejercicios.titulo}</h2>
+      <p class="sub">{t.ejercicios.bajada} <b>{t.ejercicios.pronto}</b></p>
+      <div class="ej-grid">
+        {t.ejercicios.items.map(([titulo, texto], i) => (
+          <div class={`ej ${i === 0 ? 'h' : 'e'}`}><span aria-hidden="true">{['🌬️', '🌡️', '📓'][i]}</span><b>{titulo}</b>{texto}</div>
+        ))}
+      </div>
+    </section>
 
     <!-- Invitación a la autoevaluación: al final, después de recorrer los temas -->
     {QUIZ[lang] && (
@@ -280,12 +281,15 @@ const ejes: Eje[] = ['g', 'e', 'h'];
   .ej-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 16px; margin-top: 16px; }
   .ej { background: var(--cbg); border-radius: 14px; padding: 20px; }
   .ej b { display: block; font-family: Fraunces, serif; font-size: 1.1rem; margin: 8px 0 4px; }
-  /* Escritorio: tablero de 2 x 2 → Género | Emociones / Habilidades | Ejercicios */
+  /* Escritorio: Género a la izquierda (es el eje más largo); Emociones y Habilidades apiladas a la derecha.
+     Los ejercicios van aparte, debajo de toda la teoría, con sus tres tarjetas en fila. */
   @media (min-width: 1000px) {
-    #temas { display: grid; grid-template-columns: repeat(2, 1fr); gap: 36px; align-items: start; margin: 64px 0 72px; }
-    .eje, .ejercicios { margin: 0; }
+    #temas { display: grid; grid-template-columns: repeat(2, 1fr); grid-template-areas: "g e" "g h"; gap: 36px; align-items: start; margin: 64px 0 56px; }
+    #eje-g { grid-area: g; } #eje-e { grid-area: e; } #eje-h { grid-area: h; }
+    .eje { margin: 0; }
     .lista { grid-template-columns: 1fr; }
-    .ej-grid { grid-template-columns: 1fr; }
+    .ejercicios { margin: 0 0 56px; }
+    .ej-grid { grid-template-columns: repeat(3, 1fr); }
   }
   @media (max-width: 600px) {
     .autoeval { flex-wrap: wrap; padding: 26px 20px 20px; }
