@@ -88,5 +88,7 @@ a { color: inherit; }
 .video b { display: block; font-family: Fraunces, serif; font-size: 1.05rem; margin-bottom: 4px; }
 .video span { color: var(--c, var(--violeta)); font-weight: 700; font-size: .92rem; }
 .video .video-icono { width: 180px; aspect-ratio: 16 / 9; flex: none; display: grid; place-items: center; font-size: 3rem; background: var(--cbg, var(--violeta-bg)); border-radius: 10px; }
+/* Si la miniatura externa no carga, se muestra el ícono en su lugar */
+.video img[hidden], .video .video-icono[hidden] { display: none; }
 .video:hover { border-color: var(--c, var(--violeta)); }
 @media (max-width: 480px) { .video { flex-direction: column; align-items: stretch; } .video img, .video .video-icono { width: 100%; } }

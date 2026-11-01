@@ -22,7 +22,7 @@ fuentes:
 >
 > Cada respiración profunda le envía al cerebro el mensaje de que todo va bien.
 
-<a class="video" id="video-respiracion" href="https://choc.org/videos/psychology/respiracion-abdominal/" target="_blank" rel="noopener"><span class="video-icono" aria-hidden="true">🌬️</span><span><b>Respiración abdominal: video guiado</b>▶ Rady Children's Health · Ver el video</span></a>
+<a class="video" id="video-respiracion" href="https://choc.org/videos/psychology/respiracion-abdominal/" target="_blank" rel="noopener"><img src="https://choc.org/wp-content/uploads/2024/10/xe1czals-720.jpg" alt="" loading="lazy" referrerpolicy="no-referrer" width="720" height="405" onerror="this.hidden=true;this.nextElementSibling.hidden=false"><span class="video-icono" aria-hidden="true" hidden>🌬️</span><span><b>Respiración abdominal: video guiado</b>▶ Rady Children's Health · Ver el video</span></a>
 
 ## Respiración con escenas de estrés
 

@@ -22,7 +22,7 @@ fuentes:
 >
 > Each deep breath sends your brain the message that everything is okay.
 
-<a class="video" id="video-respiracion" href="https://choc.org/videos/psychology/coping-skills-belly-breathing/" target="_blank" rel="noopener"><span class="video-icono" aria-hidden="true">🌬️</span><span><b>Belly breathing: guided video</b>▶ Rady Children's Health · Watch the video</span></a>
+<a class="video" id="video-respiracion" href="https://choc.org/videos/psychology/coping-skills-belly-breathing/" target="_blank" rel="noopener"><img src="https://choc.org/wp-content/uploads/2024/10/xe1czals-720.jpg" alt="" loading="lazy" referrerpolicy="no-referrer" width="720" height="405" onerror="this.hidden=true;this.nextElementSibling.hidden=false"><span class="video-icono" aria-hidden="true" hidden>🌬️</span><span><b>Belly breathing: guided video</b>▶ Rady Children's Health · Watch the video</span></a>
 
 ## Breathing with stressful scenes
 

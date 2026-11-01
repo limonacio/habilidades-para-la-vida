@@ -56,11 +56,11 @@ Violencia contra las mujeres es toda conducta, por acción u omisión, basada en
 Algunas formas de violencia son explícitas y otras son menos evidentes o no se reconocen como violencia. Las formas extremas son las más penalizadas; con las demás hay mayor permisividad, aunque forman parte del mismo sistema de valores y mandatos. Amnistía Internacional lo representa como un iceberg:
 
 <figure class="iceberg" id="iceberg">
-<div class="ice-punta"><h4>Visible · formas explícitas</h4><ul><li>Asesinato</li><li>Agresión física</li><li>Violación</li><li>Abuso sexual</li><li>Gritar</li><li>Insultar</li><li>Amenazar</li></ul></div>
+<div class="ice-punta"><h4>Visible · formas explícitas</h4><ul><li>Femicidio</li><li>Asesinato</li><li>Agresión física</li><li>Violación</li><li>Abuso sexual</li><li>Gritar</li><li>Insultar</li><li>Amenazar</li></ul></div>
 <div class="ice-agua"></div>
 <div class="ice-medio"><h4>Bajo la superficie · formas explícitas que no se ven</h4><ul><li>Humillar</li><li>Desvalorizar</li><li>Despreciar</li><li>Ignorar</li><li>Culpabilizar</li><li>Chantaje emocional</li></ul></div>
 <div class="ice-base"><h4>En la base · formas sutiles</h4><ul><li>Humor sexista</li><li>Controlar</li><li>Publicidad sexista</li><li>Invisibilización</li><li>Lenguaje sexista</li><li>Anulación</li><li>Micromachismos</li></ul></div>
-<figcaption>Gráfico basado en el iceberg de la violencia de género de Amnistía Internacional España.</figcaption>
+<figcaption>Gráfico basado en el iceberg de la violencia de género de Amnistía Internacional España; en la punta se agrega el femicidio.</figcaption>
 </figure>
 
 Lo que está bajo el agua sostiene a lo que se ve: por eso prevenir implica trabajar también sobre las formas sutiles.

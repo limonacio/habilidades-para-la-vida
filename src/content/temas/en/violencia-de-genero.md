@@ -56,11 +56,11 @@ fuentes:
 Some forms of violence are explicit, while others are less obvious or not recognized as violence. The most extreme forms are the most punished; there is more tolerance for the rest, even though they are part of the same system of values and mandates. Amnesty International represents this as an iceberg:
 
 <figure class="iceberg" id="iceberg">
-<div class="ice-punta"><h4>Visible · explicit forms</h4><ul><li>Murder</li><li>Physical assault</li><li>Rape</li><li>Sexual abuse</li><li>Shouting</li><li>Insulting</li><li>Threatening</li></ul></div>
+<div class="ice-punta"><h4>Visible · explicit forms</h4><ul><li>Femicide</li><li>Murder</li><li>Physical assault</li><li>Rape</li><li>Sexual abuse</li><li>Shouting</li><li>Insulting</li><li>Threatening</li></ul></div>
 <div class="ice-agua"></div>
 <div class="ice-medio"><h4>Below the surface · explicit forms that go unseen</h4><ul><li>Humiliating</li><li>Devaluing</li><li>Belittling</li><li>Ignoring</li><li>Blaming</li><li>Emotional blackmail</li></ul></div>
 <div class="ice-base"><h4>At the base · subtle forms</h4><ul><li>Sexist humor</li><li>Controlling</li><li>Sexist advertising</li><li>Making women invisible</li><li>Sexist language</li><li>Putting someone down</li><li>Micro-machismos</li></ul></div>
-<figcaption>Graphic based on the iceberg of gender-based violence by Amnesty International Spain.</figcaption>
+<figcaption>Graphic based on the iceberg of gender-based violence by Amnesty International Spain; femicide is added at the tip.</figcaption>
 </figure>
 
 What lies under the water holds up what we can see: that is why prevention also means working on the subtle forms.
