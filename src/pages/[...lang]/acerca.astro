@@ -11,7 +11,8 @@ const t = UI[lang].acerca;
 // Bibliografía general: juntamos las fuentes de los temas de este idioma, sin repetir, en orden alfabético.
 const temas = await getCollection('temas', (e) => e.id.startsWith(`${lang}/`));
 const biblio = [...new Set(temas.flatMap((x) => x.data.fuentes))].sort((a, b) => a.localeCompare(b, lang));
-const cursiva = (s: string) => s.replace(/\*(.+?)\*/g, '<i>$1</i>');
+// *texto* = cursiva y [texto](url) = enlace
+const cursiva = (s: string) => s.replace(/\*(.+?)\*/g, '<i>$1</i>').replace(/\[(.+?)\]\((https?:\/\/[^)\s]+)\)/g, '<a href="$2" target="_blank" rel="noopener">$1</a>');
 ---
 <Base lang={lang} title={t.titulo} description={t.meta}>
   <div class="wrap acerca">

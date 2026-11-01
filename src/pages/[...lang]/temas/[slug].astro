@@ -26,6 +26,8 @@ const { Content, headings } = await render(tema);
 const indice = headings.filter((h) => h.depth === 2); // solo los títulos "##"
 const eje = t.ejes[tema.data.eje as 'g' | 'e' | 'h'];
 // Enlace de vuelta a la sección en el inicio; "desde" sirve para dejar abierto el tema del que venís
+// Fuentes: *texto* = cursiva y [texto](url) = enlace
+const formatoFuente = (f: string) => f.replace(/\*(.+?)\*/g, '<i>$1</i>').replace(/\[(.+?)\]\((https?:\/\/[^)\s]+)\)/g, '<a href="$2" target="_blank" rel="noopener">$1</a>');
 const volver = `${base}/?desde=${slug(tema.id)}#eje-${tema.data.eje}`;
 
 // Ruta "Inicio › Sección › Tema" invisible: no se ve en la página, pero Google la lee
@@ -68,7 +70,7 @@ const ruta = {
 
         <section class="fuentes" aria-labelledby="fuentes-t">
           <h2 id="fuentes-t">{t.tema.fuentes}</h2>
-          <ul>{tema.data.fuentes.map((f) => <li set:html={f.replace(/\*(.+?)\*/g, '<i>$1</i>')} />)}</ul>
+          <ul>{tema.data.fuentes.map((f) => <li set:html={formatoFuente(f)} />)}</ul>
         </section>
 
         {tema.data.eje === 'g' && <Ayuda144 lang={lang} />}

@@ -9,6 +9,7 @@ fecha: 2026-10-28
 fuentes:
   - "Jacobson, E. (1938). *Progressive Relaxation*. University of Chicago Press."
   - "Davis, M., McKay, M. y Eshelman, E. R. *Técnicas de autocontrol emocional*. Martínez Roca (ed. en español de *The Relaxation and Stress Reduction Workbook*)."
+  - "Children's Hospital of Orange County (Rady Children's Health). *Respiración abdominal* (video). [choc.org](https://choc.org/videos/psychology/respiracion-abdominal/)"
 ---
 
 ## Respiración profunda (diafragmática)
@@ -20,6 +21,8 @@ fuentes:
 > **Idea clave**
 >
 > Cada respiración profunda le envía al cerebro el mensaje de que todo va bien.
+
+<a class="video" id="video-respiracion" href="https://choc.org/videos/psychology/respiracion-abdominal/" target="_blank" rel="noopener"><span class="video-icono" aria-hidden="true">🌬️</span><span><b>Respiración abdominal: video guiado</b>▶ Rady Children's Health · Ver el video</span></a>
 
 ## Respiración con escenas de estrés
 

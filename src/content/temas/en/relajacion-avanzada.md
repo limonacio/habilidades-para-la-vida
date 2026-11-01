@@ -9,6 +9,7 @@ fecha: 2026-10-28
 fuentes:
   - "Jacobson, E. (1938). *Progressive Relaxation*. University of Chicago Press."
   - "Davis, M., McKay, M. y Eshelman, E. R. *Técnicas de autocontrol emocional*. Martínez Roca (ed. en español de *The Relaxation and Stress Reduction Workbook*)."
+  - "Children's Hospital of Orange County (Rady Children's Health). *Coping Skills: Belly Breathing* (video). [choc.org](https://choc.org/videos/psychology/coping-skills-belly-breathing/)"
 ---
 
 ## Deep (diaphragmatic) breathing
@@ -20,6 +21,8 @@ fuentes:
 > **Key idea**
 >
 > Each deep breath sends your brain the message that everything is okay.
+
+<a class="video" id="video-respiracion" href="https://choc.org/videos/psychology/coping-skills-belly-breathing/" target="_blank" rel="noopener"><span class="video-icono" aria-hidden="true">🌬️</span><span><b>Belly breathing: guided video</b>▶ Rady Children's Health · Watch the video</span></a>
 
 ## Breathing with stressful scenes
 

@@ -87,5 +87,6 @@ a { color: inherit; }
 .video em { display: block; font-style: normal; color: var(--muted); font-weight: 400; margin-bottom: 6px; }
 .video b { display: block; font-family: Fraunces, serif; font-size: 1.05rem; margin-bottom: 4px; }
 .video span { color: var(--c, var(--violeta)); font-weight: 700; font-size: .92rem; }
+.video .video-icono { width: 180px; aspect-ratio: 16 / 9; flex: none; display: grid; place-items: center; font-size: 3rem; background: var(--cbg, var(--violeta-bg)); border-radius: 10px; }
 .video:hover { border-color: var(--c, var(--violeta)); }
-@media (max-width: 480px) { .video { flex-direction: column; align-items: stretch; } .video img { width: 100%; } }
+@media (max-width: 480px) { .video { flex-direction: column; align-items: stretch; } .video img, .video .video-icono { width: 100%; } }
