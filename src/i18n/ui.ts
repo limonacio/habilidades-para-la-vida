@@ -29,8 +29,8 @@ export const UI = {
       items: [
         ['iceberg', 'Iceberg de la violencia', 'Lo que se ve y lo que queda oculto bajo la superficie.', '/temas/violencia-de-genero/#iceberg'],
         ['🔄', 'Ciclo de la violencia', 'Las cuatro fases que se repiten en una pareja violenta.', '/temas/ciclo-de-la-violencia/'],
-        ['▶️', 'Violencia simbólica en las canciones', 'Un ejemplo en las letras que escuchamos todos los días.', '/temas/violencia-de-genero/#video'],
-        ['🎬', 'Acoso en el espacio público', '«Llegué viva»: el miedo cotidiano de volver a casa.', '/temas/violencia-de-genero/#video-acoso'],
+        ['yt:4P1VktEk0vc', 'Violencia simbólica en las canciones', 'Un ejemplo en las letras que escuchamos todos los días.', '/temas/violencia-de-genero/#video'],
+        ['yt:zc400b3_Y60', 'Acoso en el espacio público', '«Llegué viva»: el miedo cotidiano de volver a casa.', '/temas/violencia-de-genero/#video-acoso'],
       ],
     },
     ejercicios: {
@@ -82,8 +82,8 @@ export const UI = {
       items: [
         ['iceberg', 'Iceberg of violence', 'What we can see, and what stays hidden below the surface.', '/temas/violencia-de-genero/#iceberg'],
         ['🔄', 'Cycle of violence', 'The four phases that repeat in a violent relationship.', '/temas/ciclo-de-la-violencia/'],
-        ['▶️', 'Symbolic violence in songs', 'An example in the lyrics we hear every day.', '/temas/violencia-de-genero/#video'],
-        ['🎬', 'Harassment in public spaces', '“Llegué viva”: the everyday fear of getting home.', '/temas/violencia-de-genero/#video-acoso'],
+        ['yt:4P1VktEk0vc', 'Symbolic violence in songs', 'An example in the lyrics we hear every day.', '/temas/violencia-de-genero/#video'],
+        ['yt:zc400b3_Y60', 'Harassment in public spaces', '“Llegué viva”: the everyday fear of getting home.', '/temas/violencia-de-genero/#video-acoso'],
       ],
     },
     ejercicios: {
@@ -135,8 +135,8 @@ export const UI = {
       items: [
         ['iceberg', 'Iceberg da violência', 'O que se vê e o que fica escondido debaixo da superfície.', '/temas/violencia-de-genero/#iceberg'],
         ['🔄', 'Ciclo da violência', 'As quatro fases que se repetem num relacionamento violento.', '/temas/ciclo-de-la-violencia/'],
-        ['▶️', 'Violência simbólica nas canções', 'Um exemplo nas letras que ouvimos todos os dias.', '/temas/violencia-de-genero/#video'],
-        ['🎬', 'Assédio no espaço público', '“Llegué viva”: o medo cotidiano de voltar para casa.', '/temas/violencia-de-genero/#video-acoso'],
+        ['yt:4P1VktEk0vc', 'Violência simbólica nas canções', 'Um exemplo nas letras que ouvimos todos os dias.', '/temas/violencia-de-genero/#video'],
+        ['yt:zc400b3_Y60', 'Assédio no espaço público', '“Llegué viva”: o medo cotidiano de voltar para casa.', '/temas/violencia-de-genero/#video-acoso'],
       ],
     },
     ejercicios: {
