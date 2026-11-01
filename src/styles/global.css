@@ -39,22 +39,36 @@ a { color: inherit; }
 /* ===== Gráficos dentro de los temas (se escriben como HTML dentro del .md) ===== */
 
 /* Iceberg de la violencia: punta visible, línea de agua y parte sumergida */
-.iceberg { margin: 44px 0; display: grid; gap: 0; text-align: center; }
+/* ── Iceberg ──────────────────────────────────────────────────────────
+   Cielo arriba, mar abajo y el hielo dibujado con clip-path (polígonos irregulares),
+   como en la infografía de Amnistía. El texto va encima, así se traduce y se busca. */
+.iceberg { --cielo: #e6eff4; --mar: #b7d0df; --hielo: #ffffff; --hielo-sombra: #d8e3ea; --sumergido: #5b7d9c; --profundo: #3f5c78;
+  margin: 44px 0; display: grid; gap: 0; text-align: center; border-radius: 18px; overflow: hidden; }
 .iceberg h4 { margin: 0 0 6px; font-size: .72rem; letter-spacing: .08em; text-transform: uppercase; }
 .iceberg ul { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; justify-content: center; gap: 6px 14px; font-weight: 700; font-size: .92rem; }
 .iceberg li { margin: 0 !important; }
-.ice-punta { background: var(--surface); color: var(--text); padding: 22px 0 16px; clip-path: polygon(30% 0, 70% 0, 90% 100%, 10% 100%); }
-.ice-punta > * { max-width: 42%; margin-left: auto !important; margin-right: auto !important; }
-.ice-agua { height: 6px; background: linear-gradient(90deg, #3d8fa8, #6fb7c9, #3d8fa8); border-radius: 3px; }
-.ice-medio, .ice-base { color: #fff; }
-.ice-medio { background: #5b7d9c; padding: 18px 10% 16px; clip-path: polygon(0 0, 100% 0, 94% 100%, 6% 100%); }
-.ice-base { background: #3f5c78; padding: 16px 0 56px; clip-path: polygon(6% 0, 94% 0, 68% 100%, 32% 100%); }
-.ice-base > * { max-width: 62%; margin-left: auto !important; margin-right: auto !important; }
-@media (max-width: 560px) { .ice-base { padding-bottom: 70px; } .ice-base > * { max-width: 52%; } .iceberg ul { font-size: .85rem; } }
-.ice-medio h4, .ice-base h4 { color: #dce9f2; }
-.iceberg figcaption { margin-top: 10px; font-size: .82rem; color: var(--muted); }
-:root[data-theme="dark"] .ice-medio { background: #4a6a88; }
-:root[data-theme="dark"] .ice-base { background: #33506b; }
+.ice-punta, .ice-medio, .ice-base { position: relative; isolation: isolate; }
+.ice-punta::before, .ice-punta::after, .ice-medio::before, .ice-medio::after, .ice-base::before, .ice-base::after { content: ""; position: absolute; inset: 0; z-index: -1; }
+/* Punta: pico blanco irregular sobre el cielo, con una cara en sombra */
+.ice-punta { background: var(--cielo); color: #231D18; padding: 80px 0 18px; }
+.ice-punta::before { background: var(--hielo); clip-path: polygon(6% 100%, 15% 66%, 22% 72%, 32% 34%, 40% 42%, 50% 6%, 58% 28%, 66% 20%, 76% 56%, 83% 50%, 94% 100%); }
+.ice-punta::after { background: var(--hielo-sombra); clip-path: polygon(50% 6%, 58% 28%, 66% 20%, 76% 56%, 83% 50%, 94% 100%, 64% 100%, 56% 52%); opacity: .7; }
+.ice-punta > * { max-width: 48%; margin-left: auto !important; margin-right: auto !important; }
+/* Línea del agua */
+.ice-agua { height: 6px; background: #2aa59b; }
+/* Bajo el agua: el mismo bloque de hielo, cada vez más oscuro y angosto */
+.ice-medio, .ice-base { background: var(--mar); color: #fff; }
+.ice-medio { padding: 20px 12% 18px; }
+.ice-medio::before { background: var(--sumergido); clip-path: polygon(5% 0, 95% 0, 98% 50%, 97% 100%, 3% 100%, 2% 46%); }
+.ice-medio::after { background: #4f7090; clip-path: polygon(62% 0, 95% 0, 98% 50%, 97% 100%, 72% 100%, 80% 45%); opacity: .8; }
+.ice-base { padding: 18px 0 72px; }
+.ice-base::before { background: var(--profundo); clip-path: polygon(3% 0, 97% 0, 88% 34%, 80% 68%, 62% 100%, 42% 94%, 22% 68%, 12% 36%); }
+.ice-base::after { background: #34506b; clip-path: polygon(55% 0, 97% 0, 88% 34%, 80% 68%, 62% 100%, 58% 60%); opacity: .8; }
+.ice-base > * { max-width: 60%; margin-left: auto !important; margin-right: auto !important; }
+@media (max-width: 560px) { .ice-punta { padding-top: 66px; } .ice-punta > * { max-width: 56%; } .ice-base { padding-bottom: 80px; } .ice-base > * { max-width: 54%; } .iceberg ul { font-size: .85rem; } }
+.ice-medio h4, .ice-base h4 { color: #e3eef6; }
+.iceberg figcaption { padding: 10px 12px 0; font-size: .82rem; color: var(--muted); background: var(--bg); }
+:root[data-theme="dark"] .iceberg { --cielo: #3a4350; --mar: #2c3f52; --hielo: #f3f6f8; --hielo-sombra: #cfd9e0; --sumergido: #4a6a88; --profundo: #33506b; }
 
 /* Ciclo de la violencia: cuatro fases en círculo (2 x 2), con flechas en sentido horario */
 .ciclo { margin: 44px 0; }
