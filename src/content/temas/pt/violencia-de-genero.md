@@ -56,7 +56,7 @@ fuentes:
 Algumas formas de violência são explícitas e outras são menos evidentes ou não são reconhecidas como violência. As formas extremas são as mais punidas; com as demais há mais tolerância, embora façam parte do mesmo sistema de valores e mandatos. A Anistia Internacional representa isso como um iceberg:
 
 <figure class="iceberg" id="iceberg">
-<div class="ice-punta"><h4>Visível · formas explícitas</h4><ul><li>Feminicídio</li><li>Assassinato</li><li>Agressão física</li><li>Estupro</li><li>Abuso sexual</li><li>Gritar</li><li>Insultar</li><li>Ameaçar</li></ul></div>
+<div class="ice-punta"><h4>Visível · formas explícitas</h4><ul><li>Feminicídio</li><li>Assassinato</li><li>Estupro</li><li>Abuso sexual</li><li>Agressão física</li><li>Gritar</li><li>Insultar</li><li>Ameaçar</li></ul></div>
 <div class="ice-agua"></div>
 <div class="ice-medio"><h4>Abaixo da superfície · formas explícitas que não se veem</h4><ul><li>Humilhar</li><li>Desvalorizar</li><li>Desprezar</li><li>Ignorar</li><li>Culpabilizar</li><li>Chantagem emocional</li></ul></div>
 <div class="ice-base"><h4>Na base · formas sutis</h4><ul><li>Humor sexista</li><li>Controlar</li><li>Publicidade sexista</li><li>Invisibilização</li><li>Linguagem sexista</li><li>Anulação</li><li>Micromachismos</li></ul></div>
