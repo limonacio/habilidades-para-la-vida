@@ -16,7 +16,7 @@ export const UI = {
     saltar: 'Saltar al contenido',
     nav: { temas: 'Temas', ejercicios: 'Ejercicios', acerca: 'Acerca' },
     menu: { abrir: 'Abrir menú', cerrar: 'Cerrar menú', modo: 'Modo', claro: 'Claro', oscuro: 'Oscuro', idioma: 'Idioma' },
-    hero: { titulo: 'Herramientas para vivir y convivir mejor', bajada: 'Una guía abierta sobre emociones, vínculos, género y derechos, explicada en simple y con las fuentes de cada idea.' },
+    hero: { titulo: 'Herramientas para vivir y convivir mejor', bajada: 'Una guía abierta sobre emociones, vínculos, género y derechos, explicada de manera simple y con las fuentes de cada idea.' },
     buscar: { label: 'Buscar un tema', placeholder: 'Buscar un tema…', vacio: 'No hay temas con esa búsqueda.' },
     leer: 'Leer el tema',
     ejes: {
