@@ -35,7 +35,18 @@ const ejes: Eje[] = ['g', 'e', 'h'];
       <h2 id="destacados-t">{t.destacados.titulo}</h2>
       <div class="dest-grid">
         {t.destacados.items.map(([icono, titulo, texto, ruta]) => (
-          <a class="dest g" href={`${base}${ruta}`}><span aria-hidden="true">{icono}</span><b>{titulo}</b>{texto}</a>
+          <a class="dest g" href={`${base}${ruta}`}><span aria-hidden="true">{icono === 'iceberg' ? (
+            // No existe un emoji de iceberg: lo dibujamos (punta blanca, línea del agua y la parte sumergida)
+            <svg class="ico-iceberg" viewBox="0 0 32 32" width="30" height="30">
+              <rect x="0" y="0" width="32" height="13" rx="3" fill="#e6eff4" />
+              <rect x="0" y="13" width="32" height="19" rx="3" fill="#b7d0df" />
+              <path d="M5 13 L10 7 L12 8.5 L16 2 L19 6 L21 5 L27 13 Z" fill="#fff" stroke="#9fb6c4" stroke-width=".6" stroke-linejoin="round" />
+              <path d="M16 2 L19 6 L21 5 L27 13 L20 13 Z" fill="#d8e3ea" />
+              <path d="M4 13 L28 13 L26 20 L21 28 L14 30 L8 23 Z" fill="#5b7d9c" />
+              <path d="M17 13 L28 13 L26 20 L21 28 L15 30 Z" fill="#3f5c78" />
+              <rect x="0" y="12.3" width="32" height="1.4" fill="#2aa59b" />
+            </svg>
+          ) : icono}</span><b>{titulo}</b>{texto}</a>
         ))}
       </div>
     </section>
@@ -257,6 +268,7 @@ const ejes: Eje[] = ['g', 'e', 'h'];
     color: var(--muted); font-size: .9rem; box-shadow: var(--shadow); transition: transform .15s; }
   .dest:hover { transform: translateY(-2px); border-color: var(--c); }
   .dest span { grid-row: span 2; font-size: 1.6rem; line-height: 1.2; }
+  .ico-iceberg { display: block; width: 1.25em; height: 1.25em; border-radius: 6px; }
   .dest b { color: var(--text); font-family: Fraunces, serif; font-size: 1.05rem; }
   @media (max-width: 760px) { .dest-grid { grid-template-columns: 1fr; } }
   .ejercicios { background: var(--surface); border: 1px solid var(--line); border-radius: 20px; padding: 32px; margin: 56px 0; }
