@@ -1,0 +1,143 @@
+---
+// PRUEBA (tarea 1.30): la rueda de los tres ejes como forma de entrar a la teoría.
+// Página oculta: no está en el menú y no se indexa. Si se aprueba, pasa al inicio.
+import { getCollection } from 'astro:content';
+import Base from '../../layouts/Base.astro';
+import { UI, prefijo, type Lang, type Eje } from '../../i18n/ui';
+
+export function getStaticPaths() {
+  return [{ params: { lang: undefined }, props: { lang: 'es' } }]; // por ahora solo en español
+}
+const { lang } = Astro.props as { lang: Lang };
+const t = UI[lang];
+const base = prefijo(lang);
+const temas = (await getCollection('temas', (e) => e.id.startsWith(`${lang}/`))).sort((a, b) => a.data.orden - b.data.orden);
+
+// Cada eje es una porción de la rueda (igual que el logo). "centro" = dónde cae el medio
+// de la porción, en grados desde arriba y en sentido horario: se usa para girar la rueda.
+const ejes: { k: Eje; centro: number; d: string; sombra: string }[] = [
+  { k: 'g', centro: 30, d: 'M16 16 L8.25 2.58 A15.5 15.5 0 0 1 31.5 16 Z', sombra: '#5c3d99' },
+  { k: 'e', centro: 150, d: 'M16 16 L31.5 16 A15.5 15.5 0 0 1 8.25 29.42 Z', sombra: '#b8532c' },
+  { k: 'h', centro: 270, d: 'M16 16 L8.25 29.42 A15.5 15.5 0 0 1 8.25 2.58 Z', sombra: '#447a42' },
+];
+const relleno = { g: '#7650C2', e: '#D86A3F', h: '#579B54' };
+const porEje = (k: Eje) => temas.filter((x) => x.data.eje === k);
+---
+<Base lang={lang} title="Elegí por dónde empezar" noindex>
+  <div class="wrap rueda-pag">
+    <h1>Elegí por dónde empezar</h1>
+    <p class="bajada">Tocá un color de la rueda para ver sus temas.</p>
+
+    <div class="escenario">
+      <!-- La rueda: un SVG que gira; cada porción se puede tocar o elegir con el teclado -->
+      <div class="rueda-caja">
+        <svg id="rueda" class="rueda" viewBox="0 0 32 32" role="group" aria-label="Ejes de la guía">
+          <defs>
+            <radialGradient id="rueda-brillo" cx="30%" cy="28%" r="50%">
+              <stop offset="0" stop-color="#fff" stop-opacity=".25" />
+              <stop offset="1" stop-color="#fff" stop-opacity="0" />
+            </radialGradient>
+          </defs>
+          <g id="giro">
+            {ejes.map(({ k, d, centro }) => (
+              <path class="porcion" data-eje={k} d={d} fill={relleno[k]} tabindex="0" role="button" aria-label={t.ejes[k]}
+                style={`--dx:${Math.sin((centro * Math.PI) / 180).toFixed(3)};--dy:${(-Math.cos((centro * Math.PI) / 180)).toFixed(3)}`} />
+            ))}
+            <circle cx="16" cy="16" r="15.5" fill="url(#rueda-brillo)" pointer-events="none" />
+          </g>
+          <!-- Flechita fija arriba: marca el eje elegido -->
+          <path d="M14.6 -.2 L17.4 -.2 L16 1.9 Z" fill="currentColor" />
+        </svg>
+        <!-- Los mismos ejes como botones de texto: más fáciles de leer y de usar -->
+        <div class="leyenda">
+          {ejes.map(({ k }) => (
+            <button type="button" class={`chip ${k}`} data-eje={k}><span class="punto"></span>{t.ejes[k]}</button>
+          ))}
+        </div>
+      </div>
+
+      <!-- Panel con los temas del eje elegido -->
+      <div class="panel" aria-live="polite">
+        <p id="inicio" class="inicio">Empezá por cualquier color: cada uno es un eje de la guía.</p>
+        {ejes.map(({ k }) => (
+          <section class={`grupo ${k}`} id={`grupo-${k}`} hidden>
+            <h2>{t.ejes[k]}</h2>
+            <ul>
+              {porEje(k).map((tema) => (
+                <li><a href={`${base}/temas/${tema.id.split('/')[1]}/`}><b>{tema.data.title}</b><span>{tema.data.descripcion}</span></a></li>
+              ))}
+            </ul>
+          </section>
+        ))}
+      </div>
+    </div>
+    <noscript><p>La rueda necesita JavaScript. Todos los temas están en <a href={`${base}/#temas`}>el inicio</a>.</p></noscript>
+  </div>
+  <script type="application/json" id="rueda-datos" set:html={JSON.stringify(Object.fromEntries(ejes.map((e) => [e.k, e.centro])))} />
+</Base>
+
+<script>
+  const centros = JSON.parse(document.getElementById('rueda-datos')!.textContent!) as Record<string, number>;
+  const giro = document.getElementById('giro')!;
+  let angulo = 0; // ángulo acumulado: así la rueda gira siempre por el camino más corto
+
+  function elegir(eje: string) {
+    // Queremos que el centro de la porción quede arriba (0°): giramos -centro, por el camino corto
+    const destino = -centros[eje];
+    let delta = (((destino - angulo) % 360) + 540) % 360 - 180;
+    angulo += delta;
+    giro.style.transform = `rotate(${angulo}deg)`;
+    document.querySelectorAll<HTMLElement>('.porcion, .chip').forEach((el) => el.classList.toggle('activa', el.dataset.eje === eje));
+    document.querySelectorAll<HTMLElement>('.chip').forEach((el) => el.setAttribute('aria-pressed', String(el.dataset.eje === eje)));
+    document.getElementById('inicio')!.hidden = true;
+    document.querySelectorAll<HTMLElement>('.grupo').forEach((g) => (g.hidden = g.id !== `grupo-${eje}`));
+  }
+
+  document.querySelectorAll<HTMLElement>('.porcion, .chip').forEach((el) => {
+    el.addEventListener('click', () => elegir(el.dataset.eje!));
+    el.addEventListener('keydown', (ev) => {
+      if (el.tagName !== 'BUTTON' && (ev.key === 'Enter' || ev.key === ' ')) { ev.preventDefault(); elegir(el.dataset.eje!); }
+    });
+  });
+</script>
+
+<style>
+  .rueda-pag { padding-top: 48px; padding-bottom: 72px; text-align: center; }
+  .rueda-pag h1 { font-size: clamp(2rem, 4.5vw, 3rem); }
+  .bajada { color: var(--muted); font-size: 1.1rem; margin-bottom: 40px; }
+
+  .escenario { display: grid; grid-template-columns: minmax(280px, 380px) 1fr; gap: 56px; align-items: center; text-align: left; }
+  .rueda-caja { display: flex; flex-direction: column; align-items: center; gap: 24px; }
+  .rueda { width: 100%; max-width: 340px; overflow: visible; color: var(--text); }
+  #giro { transform-origin: 16px 16px; transition: transform .7s cubic-bezier(.3, 1.3, .5, 1); }
+  /* Cada porción lleva su propio contorno y, al elegirla, se separa un poco hacia afuera
+     (--dx y --dy = dirección del centro de la porción) */
+  .porcion { cursor: pointer; stroke: currentColor; stroke-width: .35; stroke-linejoin: round; transition: transform .25s, filter .25s; outline: none; }
+  .porcion:hover, .porcion:focus-visible { transform: translate(calc(var(--dx) * .6px), calc(var(--dy) * .6px)); filter: brightness(1.08); }
+  .porcion.activa { transform: translate(calc(var(--dx) * 1.2px), calc(var(--dy) * 1.2px)); }
+
+  .leyenda { display: flex; flex-wrap: wrap; justify-content: center; gap: 8px; }
+  .chip { font: inherit; font-size: .9rem; font-weight: 700; color: var(--c); background: var(--cbg); border: 2px solid transparent; border-radius: 999px; padding: 6px 14px; cursor: pointer; display: inline-flex; align-items: center; gap: 8px; }
+  .chip .punto { width: 10px; height: 10px; border-radius: 50%; background: var(--c); }
+  .chip.activa { border-color: var(--c); }
+
+  .panel { min-height: 320px; }
+  .inicio { color: var(--muted); font-size: 1.1rem; }
+  .grupo h2 { color: var(--c); font-size: 1.5rem; }
+  .grupo ul { list-style: none; padding: 0; margin: 0; display: grid; gap: 10px; animation: aparecer .35s ease; }
+  .grupo a { display: block; text-decoration: none; color: var(--text); background: var(--surface); border: 1px solid var(--line); border-left: 4px solid var(--c); border-radius: 12px; padding: 12px 16px; }
+  .grupo a:hover { border-color: var(--c); }
+  .grupo b { display: block; font-family: Fraunces, serif; }
+  .grupo span { color: var(--muted); font-size: .92rem; }
+  @keyframes aparecer { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: none; } }
+
+  @media (max-width: 860px) {
+    .escenario { grid-template-columns: 1fr; gap: 32px; }
+    .rueda { max-width: 260px; }
+    .inicio { text-align: center; }
+  }
+  /* Quien pidió "reducir movimiento" en su dispositivo: sin giros ni animaciones */
+  @media (prefers-reduced-motion: reduce) {
+    #giro, .porcion, .grupo ul { transition: none; animation: none; }
+  }
+</style>
