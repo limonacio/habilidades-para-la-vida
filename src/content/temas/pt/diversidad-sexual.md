@@ -45,6 +45,7 @@ fuentes:
 - **Cisgênero:** a identidade de gênero coincide com o sexo designado ao nascer.
 - **Transgênero (trans):** a identidade de gênero é diferente do sexo designado ao nascer.
 - **Não binário:** a identidade não se encaixa nas categorias de homem ou mulher.
+- **Transexual:** pessoa trans que deseja transitar para o gênero com o qual se identifica por meio de atenção médica (por exemplo, terapia hormonal ou cirurgia). Na Argentina, a Lei 26.743 não exige nenhuma intervenção médica para reconhecer a identidade de gênero.
 
 ## Por que os direitos LGBTI+ são importantes
 
@@ -63,7 +64,7 @@ fuentes:
 - **2012:** Lei 26.743 de Identidade de Gênero: as pessoas trans podem registrar em seus documentos o nome e o sexo com que se identificam.
 - **2012:** a Lei 26.791 modifica o art. 80, inciso 4, do Código Penal e pune com prisão perpétua os crimes de ódio por orientação sexual, identidade de gênero ou sua expressão.
 - **2015:** o novo Código Civil e Comercial iguala o acesso dos casais do mesmo sexo ou de sexos diferentes às figuras legais.
-- **2015 e 2019:** a província de Buenos Aires sanciona a Lei 14.783, conhecida como Lei Diana Sacayán (2015), que fixa uma cota de emprego de pelo menos 1% na administração pública provincial para pessoas travestis, transexuais e transgênero. Foi regulamentada em 2019.
+- **2015 e 2019:** a província de Buenos Aires sanciona a Lei 14.783, conhecida como Lei Diana Sacayán (2015), que fixa uma cota de emprego de pelo menos 1% na administração pública provincial para pessoas travestis, transexuais e transgênero. Foi fruto de uma luta histórica das organizações travestis e trans, e foi regulamentada em 2019, pelo Decreto 1473/2019.
 
 ## Situação atual: violência e crimes de ódio
 

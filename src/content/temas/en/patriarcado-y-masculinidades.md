@@ -12,7 +12,20 @@ fuentes:
   - "Holloway, K. (2015). Toxic masculinity is killing men: The roots of male trauma. *AlterNet* / *Salon*."
   - "Duarte, K. (citado en Rivera)."
   - "Coontz, S.; Allen, M. (citados en Holloway)."
+  - "Ministerio de las Mujeres, Políticas de Género y Diversidad Sexual de la Provincia de Buenos Aires. *Armado de dispositivos o espacios que trabajan con varones*."
+  - "Ley 27.499 (2018), Ley Micaela: mandatory gender training for everyone working in the three branches of the national government."
 ---
+
+## What patriarchy is
+
+Patriarchy is the social, political, cultural and economic system based on the supremacy of hegemonic masculinity and its use of power as authority. It places men in positions of privilege over women and other gender identities, and that imbalance underlies the many forms of violence against women and LGBTI+ people.
+
+- With the rise of modern states, the power of the head of the family passed to the state and to public and private institutions, which created rules, laws, values and practices that reproduce that logic.
+- Naming the system made the structural nature of violence visible: it stopped being seen as individual experiences or isolated incidents.
+- **Machismo:** the everyday expression of patriarchy; sexist ideas, attitudes and behaviors that aim to keep men dominant, in public and private life. Both men and women reproduce it, because it has a strong cultural and educational component; that is why families and schools should teach non-sexist values.
+- **Sexism:** attitudes and behaviors that discriminate against people because of their sex; it shows up in language, symbols and customs. It goes hand in hand with **androcentrism**, which treats the masculine as the measure of "the human" (for example, using the masculine plural in Spanish for a mixed group).
+- **Gender inequality:** the social gap between men, women and gender-diverse people in access to wealth, education, decision-making positions and equally paid work. It is measured through **gender gaps**.
+- **Micaela Law (27,499, passed in 2018):** makes gender and violence-against-women training mandatory for everyone working in the three branches of the national government in Argentina.
 
 ## Male privilege and learning machismo
 

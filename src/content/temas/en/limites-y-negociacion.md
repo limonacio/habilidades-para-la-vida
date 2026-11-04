@@ -33,6 +33,20 @@ Three basic guidelines:
 - **Delay your answer:** if you tend to say "yes" automatically, buy time: "I'll let you know later." Without pressure, you think more clearly.
 - **Be specific:** make clear what you are willing to do and what you aren't. E.g., "I'm willing to review your project, but I won't take part in producing it."
 
+## How to respond to criticism
+
+Criticism triggers negative emotions because we tend to experience it as an attack, especially when our self-esteem depends on other people's approval. The usual reactions (rejecting the criticism without thinking it through, changing the subject, answering with an even harsher criticism, or saying "yes, but…") make communication harder and damage the relationship.
+
+A constructive response:
+
+- **Listen carefully**, without interrupting or getting defensive.
+- **Think it over:** who is saying it, with what intention, and whether it is valid or just an opinion.
+- **Don't take it personally:** it may be about an action or a decision, not about your worth as a person.
+- **Thank the person for the feedback**, even if you disagree, to keep the conversation open.
+- **Reflect and respond:** if it is valid, use it to improve; if not, let it go without letting it affect you.
+- **Ask for professional help** if a criticism hurts a lot or is hard to handle.
+- **Tell criticism apart from mistreatment:** criticism is about an action or a decision. Repeatedly humiliating, belittling or showing contempt is not criticism: it is psychological violence (see [Gender-based violence](/en/temas/violencia-de-genero/)).
+
 ## Negotiation as a way to reduce problems
 
 - It is a method that helps reduce conflicts of interest.

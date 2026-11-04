@@ -12,7 +12,20 @@ fuentes:
   - "Holloway, K. (2015). Toxic masculinity is killing men: The roots of male trauma. *AlterNet* / *Salon*."
   - "Duarte, K. (citado en Rivera)."
   - "Coontz, S.; Allen, M. (citados en Holloway)."
+  - "Ministerio de las Mujeres, Políticas de Género y Diversidad Sexual de la Provincia de Buenos Aires. *Armado de dispositivos o espacios que trabajan con varones*."
+  - "Lei 27.499 (2018), Lei Micaela: capacitação obrigatória em gênero para todas as pessoas que trabalham nos três poderes do Estado nacional."
 ---
+
+## O que é o patriarcado
+
+O patriarcado é o sistema social, político, cultural e econômico baseado na supremacia da masculinidade hegemônica e no uso do poder como autoridade. Coloca os homens em posição de privilégio sobre as mulheres e outras identidades de gênero, e essa desigualdade está na base das diversas formas de violência contra mulheres e pessoas LGBTI+.
+
+- Com o surgimento dos Estados modernos, o poder do chefe de família passou ao Estado e às instituições públicas e privadas, que criaram normas, leis, valores e práticas que reproduzem essa lógica.
+- Dar nome ao sistema tornou visível o caráter estrutural da violência: ela deixou de ser vista como experiências individuais ou fatos isolados.
+- **Machismo:** a expressão cotidiana do patriarcado; ideias, atitudes e condutas sexistas que buscam manter o domínio dos homens, na vida pública e na privada. Homens e mulheres o reproduzem, porque tem um forte componente cultural e educativo; por isso a família e a escola devem educar em valores não sexistas.
+- **Sexismo:** atitudes e condutas que discriminam as pessoas por seu sexo; aparece na linguagem, nos símbolos e nos costumes. Vem junto com o **androcentrismo**, que toma o masculino como medida do "humano" (por exemplo, usar o masculino plural para um grupo misto).
+- **Desigualdade de gênero:** a distância social entre homens, mulheres e pessoas de gênero diverso no acesso à riqueza, à educação, aos cargos de decisão e ao trabalho com salário igual. É medida pelas **brechas de gênero**.
+- **Lei Micaela (27.499, sancionada em 2018):** torna obrigatória a capacitação em gênero e violência contra as mulheres para todas as pessoas que trabalham nos três poderes do Estado nacional na Argentina.
 
 ## Privilégios masculinos e aprendizado do machismo
 

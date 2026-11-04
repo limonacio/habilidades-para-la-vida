@@ -12,7 +12,20 @@ fuentes:
   - "Holloway, K. (2015). Toxic masculinity is killing men: The roots of male trauma. *AlterNet* / *Salon*."
   - "Duarte, K. (citado en Rivera)."
   - "Coontz, S.; Allen, M. (citados en Holloway)."
+  - "Ministerio de las Mujeres, Políticas de Género y Diversidad Sexual de la Provincia de Buenos Aires. *Armado de dispositivos o espacios que trabajan con varones*."
+  - "Ley 27.499 (2018), Ley Micaela de capacitación obligatoria en género para todas las personas que integran los tres poderes del Estado nacional."
 ---
+
+## Qué es el patriarcado
+
+Es el sistema social, político, cultural y económico basado en la supremacía de la masculinidad hegemónica y en su ejercicio del poder como autoridad. Ubica a los varones en posiciones de privilegio respecto de las mujeres y otras identidades de género, y esa asimetría está en la base de las distintas formas de violencia contra mujeres y personas LGBTI+.
+
+- Con la formación de los Estados modernos, el poder del padre de familia pasó al Estado y a instituciones públicas y privadas, que produjeron normas, leyes, valores y prácticas que reproducen esa lógica.
+- Ponerle nombre al sistema permitió ver el carácter estructural de las violencias: dejaron de verse como vivencias individuales o hechos anecdóticos.
+- **Machismo:** la expresión cotidiana del patriarcado; ideas, actitudes y conductas sexistas que buscan mantener el predominio de los varones, en lo público y en lo privado. Lo reproducen varones y mujeres, porque tiene un fuerte componente cultural y educativo; por eso la familia y la escuela deben educar en valores no sexistas.
+- **Sexismo:** actitudes y comportamientos que discriminan a las personas por su sexo; se expresa en el lenguaje, los símbolos y las costumbres. Se complementa con el **androcentrismo**, que toma lo masculino como medida de "lo humano" (por ejemplo, decir "todos nosotros" cuando hay varones y mujeres).
+- **Desigualdad de género:** la distancia social entre varones, mujeres y diversidades en el acceso a la riqueza, al estudio, a cargos de decisión y a un empleo pago en igualdad. Se mide con las **brechas de género**.
+- **Ley Micaela (27.499, sancionada en 2018):** establece la capacitación obligatoria en género y violencia contra las mujeres para todas las personas que trabajan en los tres poderes del Estado nacional.
 
 ## Privilegios masculinos y aprendizaje del machismo
 

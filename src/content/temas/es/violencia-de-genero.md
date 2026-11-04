@@ -36,6 +36,8 @@ Violencia contra las mujeres es toda conducta, por acción u omisión, basada en
 - **Simbólica:** patrones estereotipados, mensajes, valores o signos que reproducen dominación y naturalizan la subordinación.
 - **Política:** menoscaba o impide la participación política en condiciones de igualdad.
 
+En la música, la violencia simbólica aparece en letras, imágenes y videoclips que reproducen estereotipos, justifican desigualdades y normalizan el dominio y la sumisión, sobre todo hacia las mujeres.
+
 <a class="video" id="video" href="https://www.youtube.com/watch?v=4P1VktEk0vc" target="_blank" rel="noopener"><img src="https://i.ytimg.com/vi/4P1VktEk0vc/hqdefault.jpg" alt="" loading="lazy" width="480" height="360"><span><b>Violencia simbólica en las canciones</b>▶ Ver el video en YouTube</span></a>
 
 ## Modalidades (art. 6)
@@ -48,6 +50,7 @@ Violencia contra las mujeres es toda conducta, por acción u omisión, basada en
 - **Mediática:** difusión de mensajes e imágenes estereotipadas que injurian, discriminan, humillan o legitiman la desigualdad.
 - **En el espacio público:** conductas o expresiones con connotación sexual en lugares públicos o de acceso público que dañan la dignidad y generan un ambiente hostil.
 - **Pública-política:** intimidación, hostigamiento, descrédito o amenazas que impiden o limitan la vida política.
+- **Digital o telemática:** la que se comete, instiga o agrava con el uso de tecnologías de la información y la comunicación: difundir sin consentimiento material íntimo (real o editado), reproducir discursos de odio misóginos, acosar o usar datos personales sin permiso, entre otras. La incorporó la Ley 27.736 (2023), conocida como **Ley Olimpia**, en homenaje a Olimpia Coral Melo, que impulsó en México una ley contra la violencia digital después de que su novio difundiera un video íntimo sin su consentimiento.
 
 <a class="video" id="video-acoso" href="https://www.youtube.com/watch?v=zc400b3_Y60" target="_blank" rel="noopener"><img src="https://i.ytimg.com/vi/zc400b3_Y60/hqdefault.jpg" alt="" loading="lazy" width="480" height="360"><span><b>Acoso y violencia en el espacio público: «Llegué viva»</b>▶ Colectivas Deseantes · Ver el video en YouTube</span></a>
 

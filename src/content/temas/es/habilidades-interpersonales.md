@@ -32,7 +32,18 @@ fuentes:
 
 - **Pasiva:** ceder y renunciar a las propias necesidades genera frustración y resentimiento; a corto plazo parece proteger la relación, pero a la larga la vuelve insostenible (se estalla, se deprime o se aleja).
 - **Agresiva:** destruye las relaciones. Surge de un fuerte sentido de "cómo deberían ser las cosas" y de la necesidad de controlar.
-- **Asertividad:** es la herramienta para resolver ambas.
+- **Pasivo-agresiva:** combina ira intensa, resentimiento y dolor interior que se expresan de forma indirecta (por ejemplo, "ya me la vas a pagar").
+- **Asertividad:** es la herramienta para resolver las tres. Parte de que todas las personas tienen derecho a expresar sus necesidades, y permite decir lo que se quiere y poner límites sin vulnerar los derechos del otro.
+
+## Cómo armar un mensaje asertivo
+
+Tiene tres partes:
+
+1. **Hechos:** describir lo que se ve o se escucha, sin juicios, sin culpar y sin adivinar intenciones. Ej.: "La cocina está llena de platos sucios de anoche".
+2. **Sentimientos:** decir cómo nos afecta, sin acusar. Ej.: "Cuando llego y veo los platos sucios, me molesta".
+3. **Pedido:** expresar lo que se quiere, un pedido por vez, de forma específica y posible de cumplir.
+
+Si el pedido no alcanza, se pueden plantear **consecuencias**: lo que uno va a hacer si la conducta se repite (por ejemplo, "si me llamás varias veces por día, voy a filtrar las llamadas"). No son un castigo ni una forma de controlar al otro. Tienen cuatro reglas: que sean **específicas** (qué conducta las activa), **razonables** (nunca amenazas de violencia ni humillación), **consistentes** (cumplirlas cada vez) y **posibles de sostener**: que le resulten problemáticas al otro, no a quien las pone. Las amenazas de separación o de suicidio no son consecuencias: suelen perjudicar a quien las dice. Y si hay violencia, la herramienta no es negociar consecuencias sino pedir ayuda (ver [El ciclo de la violencia](/temas/ciclo-de-la-violencia/)).
 
 ## Los dos equilibrios de una relación
 

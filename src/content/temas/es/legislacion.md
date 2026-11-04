@@ -17,6 +17,7 @@ fuentes:
 
 ## CEDAW (1979/1981)
 
+- Fue aprobada por la Asamblea General de las Naciones Unidas el 18 de diciembre de 1979 y entró en vigor el 3 de septiembre de 1981. Se la conoce como la "Carta Internacional de los Derechos de la Mujer": es un instrumento vinculante que también protege los derechos de las niñas.
 - La Convención sobre la eliminación de todas las formas de discriminación contra la mujer reúne normas y obligaciones básicas (derechos humanos) que fijan derechos y libertades mínimas que los gobiernos deben cumplir.
 - Estas normas son interdependientes e indivisibles: no se pueden garantizar unos derechos a costa de otros.
 - Su preámbulo expresa preocupación porque, en la pobreza, la mujer tiene acceso mínimo a alimentación, salud, enseñanza, capacitación y empleo; y sostiene que un orden económico basado en la equidad y la eliminación del racismo, el colonialismo y la dominación extranjera son indispensables para la igualdad.

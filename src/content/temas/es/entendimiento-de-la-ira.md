@@ -28,7 +28,7 @@ fuentes:
 1. **"El enojo es hereditario":** falso: la expresión del enojo es una conducta aprendida (por observación de padres, familia y amigos), y por eso pueden aprenderse formas más apropiadas.
 2. **"El enojo conduce automáticamente a la agresión":** falso: el manejo eficaz consiste justamente en controlar la intensificación.
 3. **"Hay que ser agresivo para conseguir lo que se quiere":** se confunde agresión con asertividad. La agresión busca dominar, intimidar o dañar; la asertividad expresa el enojo con respeto, sin culpar ni amenazar.
-4. **"Siempre es deseable expresar el enojo":** antes se creía que gritar o pegarle a la almohada era terapéutico; las investigaciones encontraron otra cosa.
+4. **"Siempre es deseable expresar el enojo":** antes se creía que gritar o pegarle a la almohada era terapéutico; las investigaciones encontraron que quienes expresan su enojo de manera agresiva solo se vuelven más "expertos" en enojarse (Berkowitz, 1970; Murray, 1985; Straus, Gelles y Steinmetz, 1980): expresarlo de manera agresiva refuerza la agresión. Lo que conviene no es callarlo, sino expresarlo de forma asertiva.
 
 ## La escala del enojo
 
@@ -36,7 +36,7 @@ Técnica para tomar conciencia del enojo: 1 es calma total; 10 es una pérdida d
 
 ## El ciclo de agresión
 
-1. **Intensificación:** aparecen señales de que el enojo se inicia: fisiológicas, conductuales, emocionales o cognitivas.
+1. **Intensificación:** aparecen señales de que el enojo se inicia: fisiológicas, conductuales, emocionales o cognitivas. Las señales son respuestas; los **eventos** son las situaciones que las disparan. Las **alertas de peligro** son eventos propios de cada persona, a los que es especialmente sensible porque se relacionan con su pasado. Pueden ser internos (recordar situaciones que daban enojo) o externos (algo que pasa aquí y ahora).
 2. **Explosión:** descarga descontrolada en forma de agresión física o verbal; equivale al 10 de la escala.
 3. **Post-explosión:** consecuencias negativas: cárcel, restituciones, despido, expulsión de un tratamiento, pérdida de seres queridos, culpa, vergüenza y arrepentimiento.
 

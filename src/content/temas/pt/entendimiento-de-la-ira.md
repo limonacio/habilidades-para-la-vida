@@ -28,7 +28,7 @@ fuentes:
 1. **"A raiva é hereditária":** falso. A expressão da raiva é um comportamento aprendido (observando pais, família e amigos), e por isso é possível aprender formas mais adequadas.
 2. **"A raiva leva automaticamente à agressão":** falso. Manejar bem a raiva consiste justamente em controlar sua intensificação.
 3. **"É preciso ser agressivo para conseguir o que se quer":** confunde-se agressão com assertividade. A agressão busca dominar, intimidar ou ferir; a assertividade expressa a raiva com respeito, sem culpar nem ameaçar.
-4. **"Sempre é bom pôr a raiva para fora":** antes se acreditava que gritar ou bater num travesseiro era terapêutico; as pesquisas encontraram outra coisa.
+4. **"Sempre é bom pôr a raiva para fora":** antes se acreditava que gritar ou bater num travesseiro era terapêutico; as pesquisas mostraram que quem expressa a raiva de forma agressiva só fica "melhor" em sentir raiva (Berkowitz, 1970; Murray, 1985; Straus, Gelles e Steinmetz, 1980): expressá-la de forma agressiva reforça a agressão. A saída não é guardá-la, e sim expressá-la de forma assertiva.
 
 ## A escala da raiva
 
@@ -36,7 +36,7 @@ Técnica para tomar consciência da raiva: 1 é calma total; 10 é uma perda de 
 
 ## O ciclo da agressão
 
-1. **Intensificação:** aparecem sinais de que a raiva está começando: fisiológicos, comportamentais, emocionais ou cognitivos.
+1. **Intensificação:** aparecem sinais de que a raiva está começando: fisiológicos, comportamentais, emocionais ou cognitivos. Os sinais são respostas; os **eventos** são as situações que os provocam. Os **alertas de perigo** são eventos próprios de cada pessoa, aos quais ela é especialmente sensível porque se conectam com seu passado. Podem ser internos (lembrar situações que antes a irritavam) ou externos (algo que acontece aqui e agora).
 2. **Explosão:** descarga descontrolada em forma de agressão física ou verbal; equivale ao 10 da escala.
 3. **Pós-explosão:** consequências negativas: prisão, indenizações, demissão, expulsão de um tratamento, perda de entes queridos, culpa, vergonha e arrependimento.
 

@@ -45,6 +45,7 @@ It is each person's inner, personal sense of their own gender. It may or may not
 - **Cisgender:** gender identity matches the sex assigned at birth.
 - **Transgender (trans):** gender identity is different from the sex assigned at birth.
 - **Non-binary:** gender identity does not fit the categories of man or woman.
+- **Transsexual:** a trans person who wishes to transition to the gender they identify with through medical care (for example, hormone therapy or surgery). In Argentina, Law 26,743 does not require any medical procedure to recognize a person's gender identity.
 
 ## Why LGBTI+ rights matter
 
@@ -63,7 +64,7 @@ It is each person's inner, personal sense of their own gender. It may or may not
 - **2012:** Gender Identity Law 26,743: trans people can register the name and sex they identify with on their documents.
 - **2012:** Law 26,791 amends art. 80, paragraph 4 of the Penal Code, punishing hate crimes based on sexual orientation, gender identity or its expression with life imprisonment.
 - **2015:** the new Civil and Commercial Code gives same-sex and different-sex couples equal access to legal forms of union.
-- **2015 and 2019:** the province of Buenos Aires passes Law 14,783, known as the Diana Sacayán Law (2015), which sets a job quota of at least 1% in the provincial public administration for travesti, transsexual and transgender people. It was put into effect in 2019.
+- **2015 and 2019:** the province of Buenos Aires passes Law 14,783, known as the Diana Sacayán Law (2015), which sets a job quota of at least 1% in the provincial public administration for travesti, transsexual and transgender people. It came out of a long struggle by travesti and trans organizations and was put into effect in 2019 through Decree 1473/2019.
 
 ## Today: violence and hate crimes
 

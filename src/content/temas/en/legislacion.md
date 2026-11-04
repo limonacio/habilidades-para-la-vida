@@ -21,6 +21,7 @@ fuentes:
 
 ## CEDAW (1979/1981)
 
+- It was adopted by the United Nations General Assembly on December 18, 1979, and entered into force on September 3, 1981. It is known as the "International Bill of Rights for Women": a binding instrument that also protects the rights of girls.
 - The Convention on the Elimination of All Forms of Discrimination against Women sets out basic norms and obligations (human rights) that establish the minimum rights and freedoms governments must uphold.
 - These norms are interdependent and indivisible: some rights cannot be guaranteed at the expense of others.
 - Its preamble expresses concern that, in situations of poverty, women have the least access to food, health, education, training and employment; and it states that an economic order based on equity, and the elimination of racism, colonialism and foreign domination, are essential for equality.

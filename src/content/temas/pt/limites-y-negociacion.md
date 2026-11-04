@@ -33,6 +33,20 @@ Três orientações básicas:
 - **Adiar a resposta:** se você tende a dizer "sim" automaticamente, ganhe tempo: "te respondo mais tarde". Sem pressão, pensa-se com mais clareza.
 - **Ser específico:** deixar claro o que você está disposto a fazer e o que não. Ex.: "Estou disposto a revisar seu projeto, mas não vou participar da produção".
 
+## Como responder às críticas
+
+As críticas despertam emoções negativas porque costumamos vivê-las como um ataque, sobretudo quando a autoestima depende da aprovação dos outros. As reações habituais (rejeitar a crítica sem pensar, mudar de assunto, responder com uma crítica mais dura ou dizer "sim, mas…") dificultam a comunicação e prejudicam a relação.
+
+Uma resposta construtiva:
+
+- **Escutar com atenção**, sem interromper nem ficar na defensiva.
+- **Analisar:** quem diz, com que intenção, e se é válida ou é só uma opinião.
+- **Não levar para o lado pessoal:** pode se referir a uma ação ou decisão, não ao seu valor como pessoa.
+- **Agradecer o retorno**, mesmo sem concordar, para manter a conversa aberta.
+- **Refletir e responder:** se for válida, usá-la para melhorar; se não, deixá-la passar sem que o afete.
+- **Pedir ajuda profissional** se uma crítica doer muito ou for difícil de lidar.
+- **Distinguir crítica de maus-tratos:** a crítica se refere a uma ação ou decisão. Humilhar, desqualificar ou desprezar de forma repetida não é crítica: é violência psicológica (ver [Violência de gênero](/pt/temas/violencia-de-genero/)).
+
 ## A negociação como forma de reduzir problemas
 
 - É um método que ajuda a reduzir o conflito de interesses.

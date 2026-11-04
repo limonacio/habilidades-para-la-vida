@@ -28,7 +28,7 @@ fuentes:
 1. **"Anger is hereditary":** false. Expressing anger is a learned behavior (by watching parents, family and friends), so more appropriate ways can be learned too.
 2. **"Anger automatically leads to aggression":** false. Managing anger well means precisely controlling its escalation.
 3. **"You have to be aggressive to get what you want":** this confuses aggression with assertiveness. Aggression seeks to dominate, intimidate or hurt; assertiveness expresses anger respectfully, without blaming or threatening.
-4. **"It is always good to let your anger out":** people used to believe that shouting or hitting a pillow was therapeutic; research found otherwise.
+4. **"It is always good to let your anger out":** people used to believe that shouting or hitting a pillow was therapeutic; research found that people who express anger aggressively just get "better" at being angry (Berkowitz, 1970; Murray, 1985; Straus, Gelles and Steinmetz, 1980): expressing it aggressively reinforces aggression. The answer is not to hold it in, but to express it assertively.
 
 ## The anger meter
 
@@ -36,7 +36,7 @@ A technique to become aware of anger: 1 is complete calm; 10 is an explosive los
 
 ## The aggression cycle
 
-1. **Escalation:** signs appear that anger is starting: physical, behavioral, emotional or cognitive.
+1. **Escalation:** signs appear that anger is starting: physical, behavioral, emotional or cognitive. Signs are responses; **events** are the situations that trigger them. **Danger alerts** are events specific to each person, who is especially sensitive to them because they connect to their past. They can be internal (remembering situations that used to make them angry) or external (something happening here and now).
 2. **Explosion:** an uncontrolled discharge of physical or verbal aggression; it equals 10 on the meter.
 3. **Post-explosion:** negative consequences: jail, paying damages, losing a job, being expelled from a treatment program, losing loved ones, guilt, shame and regret.
 

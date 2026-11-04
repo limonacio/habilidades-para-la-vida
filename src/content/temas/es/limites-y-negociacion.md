@@ -33,6 +33,20 @@ Tres pautas básicas:
 - **Retrasar la respuesta:** si se tiende a decir "sí" automáticamente, ganar tiempo: "te lo diré más tarde". Sin presión se piensa con más claridad.
 - **Ser específico:** aclarar qué se está dispuesto a hacer y qué no. Ej.: "Estoy dispuesto a revisar tu proyecto, pero no participaré en la producción".
 
+## Cómo responder a las críticas
+
+Las críticas activan emociones negativas porque solemos vivirlas como un ataque, sobre todo cuando la autoestima depende de la aprobación ajena. Las reacciones habituales (negar la crítica sin analizarla, cambiar de tema, responder con otra crítica más hostil o decir "sí, pero…") dificultan la comunicación y dañan la relación.
+
+Una respuesta constructiva:
+
+- **Escuchar con atención**, sin interrumpir ni ponerse a la defensiva.
+- **Analizarla:** quién la hace, con qué intención y si es válida o solo una opinión.
+- **No tomarla como algo personal:** puede referirse a una acción o una decisión, no al valor de la persona.
+- **Agradecer la devolución**, aunque no se esté de acuerdo, para mantener la conversación abierta.
+- **Reflexionar y responder:** si es válida, usarla para mejorar; si no, dejarla ir sin que nos afecte.
+- **Pedir ayuda** profesional si una crítica afecta mucho o cuesta manejarla.
+- **Distinguir crítica de maltrato:** una crítica se refiere a una acción o una decisión. Humillar, desvalorizar o despreciar de forma reiterada no es una crítica: es violencia psicológica (ver [Violencia de género](/temas/violencia-de-genero/)).
+
 ## La negociación como medio de minimizar los problemas
 
 - Es un método que ayuda a reducir el conflicto de intereses.

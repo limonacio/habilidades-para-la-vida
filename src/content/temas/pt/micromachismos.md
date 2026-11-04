@@ -34,6 +34,8 @@ fuentes:
 
 São exercícios "pequenos" e cotidianos do poder de dominação: comportamentos sutis, repetitivos e quase invisíveis, de "baixíssima intensidade", que permitem ao homem fazer o que quer e impedem a mulher de fazer o mesmo. Buscam menos subjugar do que se opor à mudança feminina.
 
+São incorporados e automatizados pela criação e pela socialização. Muitos não envolvem intenção nem má vontade: são formas aprendidas de ver o mundo e de viver as relações. Isso não os torna inofensivos nem tira a responsabilidade: seu dano passa despercebido no início e se torna visível com o tempo.
+
 ## As quatro categorias
 
 - **Utilitários:** forçam a disponibilidade feminina aproveitando os aspectos domésticos e de cuidado do papel tradicional.
@@ -45,7 +47,9 @@ São exercícios "pequenos" e cotidianos do poder de dominação: comportamentos
 
 - São estratégias de sobrecarga por evitação de responsabilidades: sua eficácia está no que se deixa de fazer e se delega à mulher, que perde energia vital para si mesma.
 - São os mais naturalizados e invisibilizados, e uma das formas mais eficazes de resistência masculina à mudança.
-- Há pelo menos dois grupos; o primeiro é a não responsabilização pelas tarefas domésticas.
+- Há pelo menos dois grupos:
+  1. **Não se responsabilizar pelas tarefas domésticas:** o homem não se envolve, ou se coloca como "ajudante", o que obriga a mulher a ser a "gerente do lar": planejar e dizer o que é preciso fazer.
+  2. **Aproveitar a capacidade "feminina" de servir:** o homem se apoia nos papéis tradicionais (ele provê, ela cuida) para não cuidar dos outros, e se aproveita de uma capacidade de serviço que as mulheres aprendem pela socialização de gênero.
 
 ## Micromachismos encobertos
 

@@ -34,6 +34,8 @@ fuentes:
 
 They are "small", everyday uses of the power of domination: subtle, repeated and almost invisible behaviors of "very low intensity" that let men do what they want and prevent women from doing the same. Their aim is less to subjugate than to resist women's change.
 
+They are absorbed and become automatic through upbringing and socialization. Many involve no intention or ill will: they are learned ways of seeing the world and experiencing relationships. That doesn't make them harmless or remove responsibility: their damage goes unnoticed at first and becomes visible over time.
+
 ## The four categories
 
 - **Utilitarian:** they force women's availability by taking advantage of the domestic and caregiving aspects of the traditional role.
@@ -45,7 +47,9 @@ They are "small", everyday uses of the power of domination: subtle, repeated and
 
 - They are strategies of overloading the woman by avoiding responsibilities: they work through what is left undone and delegated to her, so she loses vital energy for herself.
 - They are the most normalized and invisible ones, and one of the most effective forms of male resistance to change.
-- There are at least two groups; the first is not taking responsibility for domestic tasks.
+- There are at least two groups:
+  1. **Not taking responsibility for domestic tasks:** the man doesn't get involved, or calls himself a "helper," which forces the woman to act as the "manager of the home": planning and telling others what needs to be done.
+  2. **Taking advantage of the "feminine" capacity to serve:** the man settles into traditional roles (he provides, she cares) to avoid caring for others, and takes advantage of a capacity to serve that women learn through gender socialization.
 
 ## Covert micro-machismos
 

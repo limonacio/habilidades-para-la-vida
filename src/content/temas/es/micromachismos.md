@@ -34,6 +34,8 @@ fuentes:
 
 Son "pequeños" y cotidianos ejercicios del poder de dominio: comportamientos sutiles, reiterativos y casi invisibles, de "bajísima intensidad", que permiten al varón hacer lo que quiere e impiden que la mujer haga lo mismo. Buscan no tanto sojuzgar como oponerse al cambio femenino.
 
+Se incorporan y automatizan en la educación y la socialización. Muchos no suponen intención ni mala voluntad: son formas aprendidas de pensar el mundo y sentir las relaciones. Eso no les quita efecto ni responsabilidad: producen daños que al principio no se notan y se hacen visibles a largo plazo.
+
 ## Las cuatro categorías
 
 - **Utilitarios:** fuerzan la disponibilidad femenina aprovechando los aspectos domésticos y de cuidado del rol tradicional.
@@ -45,7 +47,9 @@ Son "pequeños" y cotidianos ejercicios del poder de dominio: comportamientos su
 
 - Son estrategias de sobrecarga por evitación de responsabilidades: su eficacia está en lo que se deja de hacer y se delega en la mujer, que pierde energía vital para sí.
 - Son los más naturalizados e invisibilizados, y una de las formas más eficaces de resistencia masculina al cambio.
-- Se distinguen al menos dos grupos; el primero es la no responsabilización sobre lo doméstico.
+- Se distinguen al menos dos grupos:
+  1. **No responsabilización sobre lo doméstico:** el varón no se implica, o se define como "ayudante", y eso obliga a la mujer a ejercer la "gerencia del hogar": organizar e indicar qué hay que hacer.
+  2. **Aprovechamiento de la capacidad "femenina" de servicio:** el varón se acomoda a los roles tradicionales (él proveedor, ella cuidadora) para no ocuparse del cuidado de otras personas, y se aprovecha de una capacidad de servicio que las mujeres aprenden por su socialización de género.
 
 ## Micromachismos encubiertos
 

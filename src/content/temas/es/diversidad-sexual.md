@@ -45,6 +45,7 @@ Es el sentimiento interno y personal de cada individuo sobre cuál es su género
 - **Cisgénero:** la identidad de género coincide con el sexo asignado al nacer.
 - **Transgénero (trans):** la identidad de género es diferente al sexo asignado al nacer.
 - **No binario:** la identidad no se ajusta a las categorías de hombre o mujer.
+- **Transexual:** persona trans que desea hacer una transición al género con el que se identifica con asistencia médica (por ejemplo, terapia hormonal o cirugías). En Argentina, la Ley 26.743 no exige ninguna intervención médica para reconocer la identidad de género.
 
 ## Por qué son importantes los derechos LGBTI+
 
@@ -63,7 +64,7 @@ Es el sentimiento interno y personal de cada individuo sobre cuál es su género
 - **2012:** Ley 26.743 de Identidad de Género: las personas trans pueden registrar en sus documentos el nombre y el sexo con que se identifican.
 - **2012:** Ley 26.791: modifica el art. 80 inc. 4 del Código Penal y agrava con prisión perpetua los crímenes de odio por orientación sexual, identidad de género o su expresión.
 - **2015:** el nuevo Código Civil y Comercial iguala el acceso de las parejas del mismo o distinto sexo a las figuras legales.
-- **2015 y 2019:** la provincia de Buenos Aires sanciona la Ley 14.783, conocida como Ley Diana Sacayán (2015), que fija un cupo laboral de al menos el 1 % en la administración pública provincial para personas travestis, transexuales y transgénero. Se reglamentó en 2019.
+- **2015 y 2019:** la provincia de Buenos Aires sanciona la Ley 14.783, conocida como Ley Diana Sacayán (2015), que fija un cupo laboral de al menos el 1 % en la administración pública provincial para personas travestis, transexuales y transgénero. Fue fruto de una histórica lucha de las organizaciones travestis y trans, y se reglamentó en 2019, con el Decreto 1473/2019.
 
 ## Situación actual: violencia y crímenes de odio
 

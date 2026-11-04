@@ -36,6 +36,8 @@ fuentes:
 - **Simbólica:** padrões estereotipados, mensagens, valores ou signos que reproduzem a dominação e naturalizam a subordinação.
 - **Política:** prejudica ou impede a participação política em condições de igualdade.
 
+Na música, a violência simbólica aparece em letras, imagens e videoclipes que reproduzem estereótipos, justificam a desigualdade e naturalizam relações de dominação e submissão, especialmente em relação às mulheres.
+
 <a class="video" id="video" href="https://www.youtube.com/watch?v=4P1VktEk0vc" target="_blank" rel="noopener"><img src="https://i.ytimg.com/vi/4P1VktEk0vc/hqdefault.jpg" alt="" loading="lazy" width="480" height="360"><span><b>Violência simbólica nas canções</b>▶ Ver o vídeo no YouTube (em espanhol)</span></a>
 
 ## Modalidades (art. 6)
@@ -48,6 +50,7 @@ fuentes:
 - **Midiática:** difusão de mensagens e imagens estereotipadas que injuriam, discriminam, humilham ou legitimam a desigualdade.
 - **No espaço público:** condutas ou expressões de conotação sexual em lugares públicos ou de acesso público que ferem a dignidade e geram um ambiente hostil.
 - **Pública-política:** intimidação, assédio, descrédito ou ameaças que impedem ou limitam a vida política.
+- **Digital ou telemática:** violência exercida, incentivada ou agravada por meio das tecnologias da informação e da comunicação: divulgar material íntimo (real ou editado) sem consentimento, espalhar discursos de ódio misóginos, assédio ou uso indevido de dados pessoais, entre outras. Foi incorporada pela Lei 27.736 (2023), conhecida como **Lei Olimpia**, em homenagem a Olimpia Coral Melo, que impulsionou uma lei contra a violência digital no México depois que seu namorado divulgou um vídeo íntimo dela sem seu consentimento.
 
 <a class="video" id="video-acoso" href="https://www.youtube.com/watch?v=zc400b3_Y60" target="_blank" rel="noopener"><img src="https://i.ytimg.com/vi/zc400b3_Y60/hqdefault.jpg" alt="" loading="lazy" width="480" height="360"><span><b>Assédio e violência no espaço público: “Llegué viva” (Cheguei viva)</b>▶ Colectivas Deseantes · Ver o vídeo no YouTube (em espanhol)</span></a>
 

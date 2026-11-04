@@ -32,7 +32,18 @@ fuentes:
 
 - **Passive:** giving in and giving up your own needs creates frustration and resentment; in the short term it seems to protect the relationship, but in the long run it makes it unsustainable (you explode, get depressed or pull away).
 - **Aggressive:** it destroys relationships. It comes from a strong sense of "how things should be" and a need to control.
-- **Assertiveness:** the tool for resolving both.
+- **Passive-aggressive:** combines intense anger, resentment and inner pain that come out indirectly (for example, "you'll pay for this").
+- **Assertiveness:** the tool for resolving all three. It starts from the idea that everyone has the right to express their needs, and lets you say what you want and set limits without violating the other person's rights.
+
+## How to build an assertive message
+
+It has three parts:
+
+1. **Facts:** describe what you see or hear, without judging, blaming or guessing intentions. E.g.: "The kitchen is full of dirty dishes from last night."
+2. **Feelings:** say how it affects you, without accusing. E.g.: "When I come home and see the dirty dishes, it bothers me."
+3. **Request:** say what you want, one request at a time, in a specific and doable way.
+
+If the request isn't enough, you can set **consequences**: what you will do if the behavior happens again (for example, "if you call me several times a day, I'll screen your calls"). They are not a punishment or a way to control the other person. There are four rules: they should be **specific** (which behavior triggers them), **reasonable** (never threats of violence or humiliation), **consistent** (carried out every time) and **sustainable**: a problem for the other person, not for the one setting them. Threats of separation or suicide are not consequences: they usually backfire on whoever makes them. And if there is violence, the tool is not negotiating consequences but asking for help (see [The cycle of violence](/en/temas/ciclo-de-la-violencia/)).
 
 ## The two balances in a relationship
 

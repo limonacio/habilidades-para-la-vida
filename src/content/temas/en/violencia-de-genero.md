@@ -36,6 +36,8 @@ fuentes:
 - **Symbolic:** stereotyped patterns, messages, values or signs that reproduce domination and normalize subordination.
 - **Political:** undermines or prevents political participation on equal terms.
 
+In music, symbolic violence appears in lyrics, images and music videos that reproduce stereotypes, justify inequality and normalize domination and submission, especially toward women.
+
 <a class="video" id="video" href="https://www.youtube.com/watch?v=4P1VktEk0vc" target="_blank" rel="noopener"><img src="https://i.ytimg.com/vi/4P1VktEk0vc/hqdefault.jpg" alt="" loading="lazy" width="480" height="360"><span><b>Symbolic violence in songs</b>▶ Watch the video on YouTube (in Spanish)</span></a>
 
 ## Forms or settings (art. 6)
@@ -48,6 +50,7 @@ fuentes:
 - **Media:** spreading stereotyped messages and images that insult, discriminate, humiliate or legitimize inequality.
 - **In public spaces:** sexual conduct or remarks in public places, or places open to the public, that harm dignity and create a hostile environment.
 - **Public-political:** intimidation, harassment, discrediting or threats that prevent or limit political life.
+- **Digital or online:** violence committed, encouraged or made worse through information and communication technologies: sharing intimate material (real or edited) without consent, spreading misogynistic hate speech, harassment or misuse of personal data, among others. It was added by Law 27,736 (2023), known as the **Olimpia Law**, in honor of Olimpia Coral Melo, who pushed for a law against digital violence in Mexico after her boyfriend shared an intimate video of her without her consent.
 
 <a class="video" id="video-acoso" href="https://www.youtube.com/watch?v=zc400b3_Y60" target="_blank" rel="noopener"><img src="https://i.ytimg.com/vi/zc400b3_Y60/hqdefault.jpg" alt="" loading="lazy" width="480" height="360"><span><b>Harassment and violence in public spaces: “Llegué viva” (I made it home alive)</b>▶ Colectivas Deseantes · Watch the video on YouTube (in Spanish)</span></a>
 
