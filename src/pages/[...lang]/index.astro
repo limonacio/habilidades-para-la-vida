@@ -86,7 +86,7 @@ const rad = (g: number) => (g * Math.PI) / 180;
         </svg>
         <div class="leyenda">
           {ejes.map((k) => (
-            <button type="button" class={`chip ${k}`} data-eje={k} aria-pressed="false"><span class="punto"></span>{t.ejes[k]}</button>
+            <button type="button" class={`chip ${k}`} data-eje={k} aria-pressed="false"><span class="punto"></span><span class="largo">{t.ejes[k]}</span><span class="corto">{t.rueda.cortos[k]}</span></button>
           ))}
         </div>
       </div>
@@ -269,6 +269,8 @@ const rad = (g: number) => (g * Math.PI) / 180;
   if (ejeInicial) {
     elegirEje(ejeInicial);
     temasCaja.scrollIntoView({ block: 'start' });
+  } else if (matchMedia('(max-width: 860px)').matches) {
+    elegirEje('g'); // en el celular son pestañas: siempre hay una elegida
   }
   if (d) { d.open = true; d.classList.add('resaltado'); setTimeout(() => d.classList.remove('resaltado'), 2000); }
   window.addEventListener('hashchange', () => { const m = location.hash.match(/^#eje-([geh])$/); if (m) elegirEje(m[1]); });
@@ -372,11 +374,17 @@ const rad = (g: number) => (g * Math.PI) / 180;
   .chip .punto { width: 10px; height: 10px; border-radius: 50%; background: var(--c); }
   .chip.activa { border-color: var(--c); }
   @keyframes aparecer { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: none; } }
+  .chip .corto { display: none; }
+  /* Celular: sin rueda. Los ejes son tres pestañas de color en una sola fila,
+     que quedan pegadas arriba (debajo del encabezado) mientras se bajan los temas. */
   @media (max-width: 860px) {
-    .con-rueda { grid-template-columns: 1fr; gap: 28px; margin-top: 40px; }
-    .con-rueda .rueda-caja { position: static; }
-    .rueda { max-width: 240px; }
-    .con-rueda .rueda-inicio { margin-top: 0; text-align: center; }
+    .con-rueda { grid-template-columns: 1fr; gap: 16px; margin-top: 32px; }
+    .con-rueda .rueda-caja { position: sticky; top: 65px; z-index: 5; gap: 0; padding: 10px 0; background: var(--bg); }
+    .rueda-titulo, .rueda, .con-rueda .rueda-inicio { display: none !important; }
+    .leyenda { flex-wrap: nowrap; width: 100%; gap: 6px; }
+    .chip { flex: 1; justify-content: center; padding: 8px 6px; font-size: .85rem; }
+    .chip .largo { display: none; }
+    .chip .corto { display: inline; }
   }
   /* Quien pidió "reducir movimiento" en su dispositivo: sin giros ni animaciones */
   @media (prefers-reduced-motion: reduce) {

@@ -19,7 +19,7 @@ export const UI = {
     hero: { titulo: 'Herramientas para vivir y convivir mejor', bajada: 'Una guía abierta sobre emociones, vínculos, género y derechos, explicada de manera simple y con las fuentes de cada idea.' },
     buscar: { label: 'Buscar un tema', placeholder: 'Buscar un tema…', vacio: 'No hay temas con esa búsqueda.' },
     leer: 'Leer el tema',
-    rueda: { titulo: 'Elegí por dónde empezar', inicio: 'Tocá un color de la rueda: cada uno es un eje de la guía.', aria: 'Ejes de la guía' },
+    rueda: { titulo: 'Elegí por dónde empezar', inicio: 'Tocá un color de la rueda: cada uno es un eje de la guía.', aria: 'Ejes de la guía', cortos: { g: 'Género', e: 'Emociones', h: 'Habilidades' } },
     ejes: {
       g: 'Género, violencia y derechos',
       e: 'Emociones y pensamiento',
@@ -73,7 +73,7 @@ export const UI = {
     hero: { titulo: 'Tools to live and get along better', bajada: 'An open guide to emotions, relationships, gender and rights, explained simply and with the sources behind every idea.' },
     buscar: { label: 'Search for a topic', placeholder: 'Search for a topic…', vacio: 'No topics match your search.' },
     leer: 'Read the topic',
-    rueda: { titulo: 'Choose where to start', inicio: 'Tap a color on the wheel: each one is a part of the guide.', aria: 'Parts of the guide' },
+    rueda: { titulo: 'Choose where to start', inicio: 'Tap a color on the wheel: each one is a part of the guide.', aria: 'Parts of the guide', cortos: { g: 'Gender', e: 'Emotions', h: 'Skills' } },
     ejes: {
       g: 'Gender, violence and rights',
       e: 'Emotions and thinking',
@@ -127,7 +127,7 @@ export const UI = {
     hero: { titulo: 'Ferramentas para viver e conviver melhor', bajada: 'Um guia aberto sobre emoções, vínculos, gênero e direitos, explicado de forma simples e com as fontes de cada ideia.' },
     buscar: { label: 'Buscar um tema', placeholder: 'Buscar um tema…', vacio: 'Nenhum tema corresponde à sua busca.' },
     leer: 'Ler o tema',
-    rueda: { titulo: 'Escolha por onde começar', inicio: 'Toque uma cor da roda: cada uma é um eixo do guia.', aria: 'Eixos do guia' },
+    rueda: { titulo: 'Escolha por onde começar', inicio: 'Toque uma cor da roda: cada uma é um eixo do guia.', aria: 'Eixos do guia', cortos: { g: 'Gênero', e: 'Emoções', h: 'Habilidades' } },
     ejes: {
       g: 'Gênero, violência e direitos',
       e: 'Emoções e pensamento',
