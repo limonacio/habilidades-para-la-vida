@@ -2,7 +2,7 @@
 title: "Relajación avanzada"
 eje: "h"
 orden: 16
-descripcion: "Respiración diafragmática, relajación sin tensión y palabra clave."
+descripcion: "Respiración diafragmática, relajación sin tensión, palabra clave y Chi Kung."
 autores: "Jacobson · Davis"
 lectura: 2
 fecha: 2026-10-28
@@ -10,6 +10,7 @@ fuentes:
   - "Jacobson, E. (1938). *Progressive Relaxation*. University of Chicago Press."
   - "Davis, M., McKay, M. y Eshelman, E. R. *Técnicas de autocontrol emocional*. Martínez Roca (ed. en español de *The Relaxation and Stress Reduction Workbook*)."
   - "Children's Hospital of Orange County (Rady Children's Health). *Respiración abdominal* (video). [choc.org](https://choc.org/videos/psychology/respiracion-abdominal/)"
+  - "Escuela Zoreda. *Chi Kung: 18 ejercicios para la salud (Shi Ba Shi)*, partes 1 a 3 (videos). [YouTube](https://www.youtube.com/@escuelazoreda)"
 ---
 
 ## Respiración profunda (diafragmática)
@@ -46,3 +47,15 @@ Hasta aquí se usó la relajación progresiva aumentando la tensión; ahora se e
 ## Enfrentarse a una situación estresante real
 
 Una vez aprendidos los elementos, practicar con una situación cotidiana: repasar la escena sin relajación para detectar qué parte del cuerpo acumula más tensión y luego concentrar la relajación en esos grupos musculares.
+
+## Chi Kung: práctica guiada
+
+El **Chi Kung** (o *Qigong*) es una práctica de origen chino que combina movimientos lentos, respiración y atención. El **Shi Ba Shi** es una serie de 18 ejercicios sencillos, que se pueden hacer de pie y sin experiencia previa. Es una buena forma de practicar en movimiento la respiración diafragmática y la relajación de esta página.
+
+Seguí la serie en orden, a tu ritmo y sin forzar ningún movimiento. Si tenés alguna lesión o problema de salud, consultá antes con un profesional.
+
+<div class="videos">
+<a class="video" href="https://www.youtube.com/watch?v=t3bPeZBz0nE" target="_blank" rel="noopener"><img src="https://i.ytimg.com/vi/t3bPeZBz0nE/hqdefault.jpg" alt="" loading="lazy" width="480" height="360"><span><b>Shi Ba Shi: parte 1/3</b>▶ Escuela Zoreda · Ver el video en YouTube</span></a>
+<a class="video" href="https://www.youtube.com/watch?v=TQkNjUYSs_8" target="_blank" rel="noopener"><img src="https://i.ytimg.com/vi/TQkNjUYSs_8/hqdefault.jpg" alt="" loading="lazy" width="480" height="360"><span><b>Shi Ba Shi: parte 2/3</b>▶ Escuela Zoreda · Ver el video en YouTube</span></a>
+<a class="video" href="https://www.youtube.com/watch?v=atDKESW5Dzc" target="_blank" rel="noopener"><img src="https://i.ytimg.com/vi/atDKESW5Dzc/hqdefault.jpg" alt="" loading="lazy" width="480" height="360"><span><b>Shi Ba Shi: parte 3/3</b>▶ Escuela Zoreda · Ver el video en YouTube</span></a>
+</div>

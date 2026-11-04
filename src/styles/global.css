@@ -105,4 +105,7 @@ a { color: inherit; }
 /* Si la miniatura externa no carga, se muestra el ícono en su lugar */
 .video img[hidden], .video .video-icono[hidden] { display: none; }
 .video:hover { border-color: var(--c, var(--violeta)); }
+/* Varios videos seguidos (una serie): menos espacio entre tarjetas. */
+.videos { margin: 32px 0 40px; display: grid; gap: 12px; }
+.videos .video { margin: 0; }
 @media (max-width: 480px) { .video { flex-direction: column; align-items: stretch; } .video img, .video .video-icono { width: 100%; } }

@@ -2,7 +2,7 @@
 title: "Advanced relaxation"
 eje: "h"
 orden: 16
-descripcion: "Diaphragmatic breathing, relaxation without tension, and a cue word."
+descripcion: "Diaphragmatic breathing, relaxation without tension, a cue word, and Chi Kung."
 autores: "Jacobson · Davis"
 lectura: 2
 fecha: 2026-10-28
@@ -10,6 +10,7 @@ fuentes:
   - "Jacobson, E. (1938). *Progressive Relaxation*. University of Chicago Press."
   - "Davis, M., McKay, M. y Eshelman, E. R. *Técnicas de autocontrol emocional*. Martínez Roca (ed. en español de *The Relaxation and Stress Reduction Workbook*)."
   - "Children's Hospital of Orange County (Rady Children's Health). *Coping Skills: Belly Breathing* (video). [choc.org](https://choc.org/videos/psychology/coping-skills-belly-breathing/)"
+  - "Escuela Zoreda. *Chi Kung: 18 ejercicios para la salud (Shi Ba Shi)*, parts 1-3 (videos, in Spanish). [YouTube](https://www.youtube.com/@escuelazoreda)"
 ---
 
 ## Deep (diaphragmatic) breathing
@@ -46,3 +47,15 @@ So far, progressive relaxation has been practiced by first increasing tension; n
 ## Facing a real stressful situation
 
 Once you've learned the elements, practice with an everyday situation: go over the scene without relaxing to find which part of your body holds the most tension, and then focus the relaxation on those muscle groups.
+
+## Chi Kung: guided practice
+
+**Chi Kung** (or *Qigong*) is a practice of Chinese origin that combines slow movements, breathing and attention. **Shi Ba Shi** is a series of 18 simple exercises that can be done standing up and with no previous experience. It is a good way to practice the diaphragmatic breathing and relaxation on this page while moving.
+
+Follow the series in order, at your own pace, without forcing any movement. If you have an injury or a health problem, check with a professional first.
+
+<div class="videos">
+<a class="video" href="https://www.youtube.com/watch?v=t3bPeZBz0nE" target="_blank" rel="noopener"><img src="https://i.ytimg.com/vi/t3bPeZBz0nE/hqdefault.jpg" alt="" loading="lazy" width="480" height="360"><span><b>Shi Ba Shi: part 1/3</b>▶ Escuela Zoreda · Watch on YouTube (in Spanish)</span></a>
+<a class="video" href="https://www.youtube.com/watch?v=TQkNjUYSs_8" target="_blank" rel="noopener"><img src="https://i.ytimg.com/vi/TQkNjUYSs_8/hqdefault.jpg" alt="" loading="lazy" width="480" height="360"><span><b>Shi Ba Shi: part 2/3</b>▶ Escuela Zoreda · Watch on YouTube (in Spanish)</span></a>
+<a class="video" href="https://www.youtube.com/watch?v=atDKESW5Dzc" target="_blank" rel="noopener"><img src="https://i.ytimg.com/vi/atDKESW5Dzc/hqdefault.jpg" alt="" loading="lazy" width="480" height="360"><span><b>Shi Ba Shi: part 3/3</b>▶ Escuela Zoreda · Watch on YouTube (in Spanish)</span></a>
+</div>
