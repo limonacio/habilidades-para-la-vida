@@ -15,6 +15,15 @@ const base = prefijo(lang);
 const temas = (await getCollection('temas', (e) => e.id.startsWith(`${lang}/`))).sort((a, b) => a.data.orden - b.data.orden);
 const slug = (id: string) => id.split('/')[1];
 const ejes: Eje[] = ['g', 'e', 'h'];
+
+// La rueda: cada eje es una porción (igual que el logo). "centro" = dónde cae el medio de la
+// porción, en grados desde arriba y en sentido horario; se usa para girarla hasta dejarla arriba.
+const rueda: Record<Eje, { centro: number; d: string; color: string }> = {
+  g: { centro: 30, d: 'M16 16 L8.25 2.58 A15.5 15.5 0 0 1 31.5 16 Z', color: '#7650C2' },
+  e: { centro: 150, d: 'M16 16 L31.5 16 A15.5 15.5 0 0 1 8.25 29.42 Z', color: '#D86A3F' },
+  h: { centro: 270, d: 'M16 16 L8.25 29.42 A15.5 15.5 0 0 1 8.25 2.58 Z', color: '#579B54' },
+};
+const rad = (g: number) => (g * Math.PI) / 180;
 ---
 <Base lang={lang} title={t.sitio}>
   <div class="wrap">
@@ -54,7 +63,36 @@ const ejes: Eje[] = ['g', 'e', 'h'];
       </div>
     </section>
 
-    <div id="temas">
+    <!-- Temas: la rueda elige el eje y el panel muestra sus temas.
+         Sin JavaScript (o para Google) se ven los tres ejes completos, uno debajo del otro. -->
+    <div id="temas" class="temas">
+      <div class="rueda-caja">
+        <h2 class="rueda-titulo">{t.rueda.titulo}</h2>
+        <svg class="rueda" viewBox="0 0 32 32" role="group" aria-label={t.rueda.aria}>
+          <defs>
+            <radialGradient id="rueda-brillo" cx="30%" cy="28%" r="50%">
+              <stop offset="0" stop-color="#fff" stop-opacity=".25" />
+              <stop offset="1" stop-color="#fff" stop-opacity="0" />
+            </radialGradient>
+          </defs>
+          <g id="giro">
+            {ejes.map((k) => (
+              <path class="porcion" data-eje={k} d={rueda[k].d} fill={rueda[k].color} tabindex="0" role="button" aria-label={t.ejes[k]}
+                style={`--dx:${Math.sin(rad(rueda[k].centro)).toFixed(3)};--dy:${(-Math.cos(rad(rueda[k].centro))).toFixed(3)}`} />
+            ))}
+            <circle cx="16" cy="16" r="15.5" fill="url(#rueda-brillo)" pointer-events="none" />
+          </g>
+          <path d="M14.6 -.2 L17.4 -.2 L16 1.9 Z" fill="currentColor" /><!-- flechita fija: marca el eje elegido -->
+        </svg>
+        <div class="leyenda">
+          {ejes.map((k) => (
+            <button type="button" class={`chip ${k}`} data-eje={k} aria-pressed="false"><span class="punto"></span>{t.ejes[k]}</button>
+          ))}
+        </div>
+      </div>
+
+      <div class="panel" aria-live="polite">
+        <p class="rueda-inicio">{t.rueda.inicio}</p>
       {ejes.map((k) => {
         const lista = temas.filter((x) => x.data.eje === k);
         return (
@@ -78,8 +116,10 @@ const ejes: Eje[] = ['g', 'e', 'h'];
           </section>
         );
       })}
-
+      </div>
     </div>
+
+    <script type="application/json" id="rueda-datos" set:html={JSON.stringify(Object.fromEntries(ejes.map((k) => [k, rueda[k].centro])))} />
 
     <!-- La práctica, separada de la teoría: debajo de todos los temas -->
     <section class="ejercicios" id="ejercicios">
@@ -196,12 +236,42 @@ const ejes: Eje[] = ['g', 'e', 'h'];
     if (ev.key === 'Escape') { q.value = ''; res.hidden = true; }
   });
 
-  // Si venís desde un tema (?desde=slug), dejamos ese tema abierto y resaltado en su sección
-  const desde = new URLSearchParams(location.search).get('desde');
-  if (desde) {
-    const d = document.querySelector<HTMLDetailsElement>(`details.tema[data-slug="${CSS.escape(desde)}"]`);
-    if (d) { d.open = true; d.classList.add('resaltado'); setTimeout(() => d.classList.remove('resaltado'), 2000); }
+  // ── La rueda ─────────────────────────────────────────────────────────
+  // Con JavaScript, #temas pasa a "modo rueda": se ve un eje por vez.
+  const temasCaja = document.getElementById('temas')!;
+  const centros = JSON.parse(document.getElementById('rueda-datos')!.textContent!) as Record<string, number>;
+  const giro = document.getElementById('giro')!;
+  let angulo = 0; // acumulado: así gira siempre por el camino más corto
+  temasCaja.classList.add('con-rueda');
+
+  function elegirEje(eje: string) {
+    const delta = ((((-centros[eje] - angulo) % 360) + 540) % 360) - 180;
+    angulo += delta;
+    giro.style.transform = `rotate(${angulo}deg)`;
+    document.querySelectorAll<HTMLElement>('.porcion, .chip').forEach((el) => {
+      el.classList.toggle('activa', el.dataset.eje === eje);
+      if (el.tagName === 'BUTTON') el.setAttribute('aria-pressed', String(el.dataset.eje === eje));
+    });
+    document.querySelectorAll<HTMLElement>('.eje').forEach((sec) => sec.classList.toggle('activa', sec.id === `eje-${eje}`));
+    temasCaja.classList.add('elegido');
   }
+  document.querySelectorAll<HTMLElement>('.porcion, .chip').forEach((el) => {
+    el.addEventListener('click', () => elegirEje(el.dataset.eje!));
+    el.addEventListener('keydown', (ev) => {
+      if (el.tagName !== 'BUTTON' && (ev.key === 'Enter' || ev.key === ' ')) { ev.preventDefault(); elegirEje(el.dataset.eje!); }
+    });
+  });
+
+  // Si venís desde un tema (?desde=slug) o con un enlace a un eje (#eje-g), abrimos ese eje
+  const desde = new URLSearchParams(location.search).get('desde');
+  const d = desde ? document.querySelector<HTMLDetailsElement>(`details.tema[data-slug="${CSS.escape(desde)}"]`) : null;
+  const ejeInicial = d?.closest('.eje')?.id.slice(4) ?? (location.hash.match(/^#eje-([geh])$/)?.[1]);
+  if (ejeInicial) {
+    elegirEje(ejeInicial);
+    temasCaja.scrollIntoView({ block: 'start' });
+  }
+  if (d) { d.open = true; d.classList.add('resaltado'); setTimeout(() => d.classList.remove('resaltado'), 2000); }
+  window.addEventListener('hashchange', () => { const m = location.hash.match(/^#eje-([geh])$/); if (m) elegirEje(m[1]); });
 </script>
 
 <style>
@@ -281,13 +351,41 @@ const ejes: Eje[] = ['g', 'e', 'h'];
   .ej-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 16px; margin-top: 16px; }
   .ej { background: var(--cbg); border-radius: 14px; padding: 20px; }
   .ej b { display: block; font-family: Fraunces, serif; font-size: 1.1rem; margin: 8px 0 4px; }
-  /* Escritorio: Género a la izquierda (es el eje más largo); Emociones y Habilidades apiladas a la derecha.
-     Los ejercicios van aparte, debajo de toda la teoría, con sus tres tarjetas en fila. */
+  /* ── La rueda ── (sin JavaScript se oculta y quedan los tres ejes a la vista) */
+  .rueda-caja, .rueda-inicio { display: none; }
+  .con-rueda { display: grid; grid-template-columns: minmax(260px, 360px) 1fr; gap: 48px; align-items: start; margin: 64px 0 56px; scroll-margin-top: 84px; }
+  .con-rueda .rueda-caja { display: flex; flex-direction: column; align-items: center; gap: 20px; position: sticky; top: 90px; }
+  .con-rueda .rueda-inicio { display: block; color: var(--muted); font-size: 1.1rem; margin-top: 120px; }
+  .con-rueda.elegido .rueda-inicio { display: none; }
+  .con-rueda .eje { display: none; margin: 0; }
+  .con-rueda .eje.activa { display: block; animation: aparecer .35s ease; }
+  .con-rueda .lista { grid-template-columns: 1fr; }
+  .rueda-titulo { font-size: 1.4rem; margin: 0; text-align: center; }
+  .rueda { width: 100%; max-width: 320px; overflow: visible; color: var(--text); }
+  #giro { transform-origin: 16px 16px; transition: transform .7s cubic-bezier(.3, 1.3, .5, 1); }
+  /* Cada porción lleva su contorno y, al elegirla, se separa un poco hacia afuera (--dx, --dy) */
+  .porcion { cursor: pointer; stroke: currentColor; stroke-width: .35; stroke-linejoin: round; transition: transform .25s, filter .25s; outline: none; }
+  .porcion:hover, .porcion:focus-visible { transform: translate(calc(var(--dx) * .6px), calc(var(--dy) * .6px)); filter: brightness(1.08); }
+  .porcion.activa { transform: translate(calc(var(--dx) * 1.2px), calc(var(--dy) * 1.2px)); }
+  .leyenda { display: flex; flex-wrap: wrap; justify-content: center; gap: 8px; }
+  .chip { font: inherit; font-size: .88rem; font-weight: 700; color: var(--c); background: var(--cbg); border: 2px solid transparent; border-radius: 999px; padding: 6px 14px; cursor: pointer; display: inline-flex; align-items: center; gap: 8px; }
+  .chip .punto { width: 10px; height: 10px; border-radius: 50%; background: var(--c); }
+  .chip.activa { border-color: var(--c); }
+  @keyframes aparecer { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: none; } }
+  @media (max-width: 860px) {
+    .con-rueda { grid-template-columns: 1fr; gap: 28px; margin-top: 40px; }
+    .con-rueda .rueda-caja { position: static; }
+    .rueda { max-width: 240px; }
+    .con-rueda .rueda-inicio { margin-top: 0; text-align: center; }
+  }
+  /* Quien pidió "reducir movimiento" en su dispositivo: sin giros ni animaciones */
+  @media (prefers-reduced-motion: reduce) {
+    #giro, .porcion { transition: none; }
+    .con-rueda .eje.activa { animation: none; }
+  }
+
+  /* Escritorio: los ejercicios van aparte, debajo de toda la teoría, con sus tres tarjetas en fila. */
   @media (min-width: 1000px) {
-    #temas { display: grid; grid-template-columns: repeat(2, 1fr); grid-template-areas: "g e" "g h"; gap: 36px; align-items: start; margin: 64px 0 56px; }
-    #eje-g { grid-area: g; } #eje-e { grid-area: e; } #eje-h { grid-area: h; }
-    .eje { margin: 0; }
-    .lista { grid-template-columns: 1fr; }
     .ejercicios { margin: 0 0 56px; }
     .ej-grid { grid-template-columns: repeat(3, 1fr); }
   }

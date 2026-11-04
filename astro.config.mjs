@@ -8,5 +8,5 @@ export default defineConfig({
   // compartir queda sin imagen.
   site: 'https://tallerhabilidades.vercel.app',
   // La sección se llamaba /quiz/: quien tenga el enlace viejo llega igual
-  redirects: { '/quiz': '/autoevaluacion' },
+  redirects: { '/quiz': '/autoevaluacion', '/rueda': '/#temas' },
 });

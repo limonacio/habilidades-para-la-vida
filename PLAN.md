@@ -168,7 +168,7 @@ Para v2: test de mitos irracionales (Nro. 15) e iceberg de la violencia interact
 - [ ] 1.27 Mejoras de la guía señaladas en la revisión psicológica: unificar "estilo" (no "trastorno") en Personalidad y completar el estilo pasivo-agresivo; aviso de acompañamiento profesional en los ejercicios de IFS; explicar la D del ABC de Ellis
 - [ ] 1.28 Sumar los 6 temas de los PDF que faltan (cuando lleguen), con unas 6 preguntas por tema en cada nivel del quiz
 - [ ] 1.29 Traducir el quiz al inglés y al portugués (cuando estén aprobadas las preguntas en español)
-- [ ] 1.30 (próxima semana) Rueda interactiva en el centro del inicio: el logo grande de tres colores como presentación; al tocar un color, gira y muestra los temas de ese eje. Minimalista, accesible con teclado y lector de pantalla, y la lista de temas sigue disponible sin JavaScript
+- [x] 1.30 Rueda interactiva en el centro del inicio: el logo grande de tres colores como presentación; al tocar un color, gira y muestra los temas de ese eje. Minimalista, accesible con teclado y lector de pantalla, y la lista de temas sigue disponible sin JavaScript
 - [ ] 1.24 Pasada de simplificación general (propuesta: que el sitio no quede recargado)
 
 ### Etapa 2 — Ejercicios interactivos
