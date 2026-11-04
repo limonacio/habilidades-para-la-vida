@@ -170,7 +170,7 @@ Para v2: test de mitos irracionales (Nro. 15) e iceberg de la violencia interact
 - [ ] 1.29 Traducir el quiz al inglés y al portugués (cuando estén aprobadas las preguntas en español)
 - [x] 1.30 Rueda interactiva en el centro del inicio: el logo grande de tres colores como presentación; al tocar un color, gira y muestra los temas de ese eje. Minimalista, accesible con teclado y lector de pantalla, y la lista de temas sigue disponible sin JavaScript
 - [x] 1.31 Material nuevo, tanda 1: completar 8 temas existentes (violencia digital y Ley Olimpia, qué es el patriarcado y Ley Micaela, micromachismos utilitarios, mensaje asertivo y consecuencias, responder a las críticas, mito de la ira y alertas de peligro, transexual, CEDAW), en es, en y pt
-- [ ] 1.32 Material nuevo, tanda 2: temas nuevos. Género: Efectos de la violencia de género en las infancias; Mitos del amor romántico y celos; Violencia en el fútbol. Emociones: Teoría del apego; Distorsiones cognitivas; Duelo. Habilidades: Nuevas familias
+- [x] 1.32 Material nuevo, tanda 2 (es, en, pt; revisión sociológica, psicológica y lingüística): temas nuevos. Género: Efectos de la violencia de género en las infancias; Mitos del amor romántico y celos; Violencia en el fútbol. Emociones: Teoría del apego; Distorsiones cognitivas; Duelo. Habilidades: Nuevas familias
 - [ ] 1.33 Material nuevo, tanda 3: unas 6 preguntas por tema nuevo en cada nivel de la autoevaluación
 - [ ] 1.24 Pasada de simplificación general (propuesta: que el sitio no quede recargado)
 
