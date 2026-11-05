@@ -9,6 +9,7 @@ fecha: 2026-11-04
 fuentes:
   - "Beck, A. T., Rush, A. J., Shaw, B. F. y Emery, G. (1979). *Cognitive Therapy of Depression*. Guilford Press. (En español: *Terapia cognitiva de la depresión*, Desclée de Brouwer.)"
   - "McKay, M., Davis, M. y Fanning, P. (1981). *Técnicas cognitivas para el tratamiento del estrés*. Martínez Roca (ed. en español)."
+  - "Illustrations: [いらすとや (Irasutoya)](https://www.irasutoya.com/), free non-commercial use."
 ---
 
 ## What they are
@@ -21,14 +22,18 @@ Cognitive distortions are **mistaken or biased interpretations of reality** that
 
 ## The most common types
 
-- **Arbitrary inference:** drawing a conclusion without enough evidence. E.g.: "They should have been here an hour ago; they must be seeing someone else."
-- **Overgeneralization:** building a general rule from a single event. E.g.: "My partner doesn't understand me; nobody understands me; everyone is against me."
-- **Selective abstraction:** focusing on one detail out of context and judging the whole situation by it. E.g.: the boss frowned once during the meeting, so "it all went wrong."
-- **Filtering:** a form of selective abstraction (the name comes from McKay, Davis and Fanning): keeping only the negative, which confirms our fears, and discarding everything positive. It is common in depression, where people only see what reinforces their sense of loss or defeat.
-- **Magnification and minimization:** exaggerating or shrinking the importance of an event. Example of magnification: "They were late: they don't care about me at all." Example of minimization: "I didn't hit her, I just grabbed her hard," which denies the real impact of a violent behavior and the responsibility for it.
-- **Dichotomous (all-or-nothing) thinking:** seeing everything in extremes, with no middle ground. E.g.: after a criticism, "I'm the worst; I'll never do anything again."
-- **Personalization:** believing that what happens around us is about us. E.g.: seeing other people talking and assuming they are talking about you.
-- **Heaven's reward fallacy:** expecting sacrifice and self-denial to be rewarded someday, as if someone were keeping score. When the reward doesn't come, bitterness and resentment appear (McKay, Davis and Fanning).
+<div class="dist-grid">
+<div class="dist"><img src="/img/distorsiones/conclusion-arbitraria.webp" alt="" loading="lazy" width="360" height="265"><p><b>Arbitrary inference:</b> drawing a conclusion without enough evidence. E.g.: "They should have been here an hour ago; they must be seeing someone else."</p></div>
+<div class="dist"><img src="/img/distorsiones/generalizacion.webp" alt="" loading="lazy" width="337" height="360"><p><b>Overgeneralization:</b> building a general rule from a single event. E.g.: "My partner doesn't understand me; nobody understands me; everyone is against me."</p></div>
+<div class="dist"><img src="/img/distorsiones/abstraccion-selectiva.webp" alt="" loading="lazy" width="295" height="360"><p><b>Selective abstraction:</b> focusing on one detail out of context and judging the whole situation by it. E.g.: the boss frowned once during the meeting, so "it all went wrong."</p></div>
+<div class="dist"><img src="/img/distorsiones/filtraje.webp" alt="" loading="lazy" width="360" height="350"><p><b>Filtering:</b> a form of selective abstraction (the name comes from McKay, Davis and Fanning): keeping only the negative, which confirms our fears, and discarding everything positive. It is common in depression, where people only see what reinforces their sense of loss or defeat.</p></div>
+<div class="dist"><img src="/img/distorsiones/maximizacion.webp" alt="" loading="lazy" width="360" height="174"><p><b>Magnification and minimization:</b> exaggerating or shrinking the importance of an event. Example of magnification: "They were late: they don't care about me at all." Example of minimization: "I didn't hit her, I just grabbed her hard," which denies the real impact of a violent behavior and the responsibility for it.</p></div>
+<div class="dist"><img src="/img/distorsiones/dicotomico.webp" alt="" loading="lazy" width="334" height="360"><p><b>Dichotomous (all-or-nothing) thinking:</b> seeing everything in extremes, with no middle ground. E.g.: after a criticism, "I'm the worst; I'll never do anything again."</p></div>
+<div class="dist"><img src="/img/distorsiones/personalizacion.webp" alt="" loading="lazy" width="360" height="338"><p><b>Personalization:</b> believing that what happens around us is about us. E.g.: seeing other people talking and assuming they are talking about you.</p></div>
+<div class="dist"><p><b>Heaven's reward fallacy:</b> expecting sacrifice and self-denial to be rewarded someday, as if someone were keeping score. When the reward doesn't come, bitterness and resentment appear (McKay, Davis and Fanning).</p></div>
+</div>
+
+<p class="dist-credito">Illustrations: <a href="https://www.irasutoya.com/">いらすとや (Irasutoya)</a>.</p>
 
 ## How to work on them
 

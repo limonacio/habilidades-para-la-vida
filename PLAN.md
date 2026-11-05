@@ -172,6 +172,7 @@ Para v2: test de mitos irracionales (Nro. 15) e iceberg de la violencia interact
 - [x] 1.31 Material nuevo, tanda 1: completar 8 temas existentes (violencia digital y Ley Olimpia, qué es el patriarcado y Ley Micaela, micromachismos utilitarios, mensaje asertivo y consecuencias, responder a las críticas, mito de la ira y alertas de peligro, transexual, CEDAW), en es, en y pt
 - [x] 1.32 Material nuevo, tanda 2 (es, en, pt; revisión sociológica, psicológica y lingüística): temas nuevos. Género: Efectos de la violencia de género en las infancias; Mitos del amor romántico y celos; Violencia en el fútbol. Emociones: Teoría del apego; Distorsiones cognitivas; Duelo. Habilidades: Nuevas familias
 - [x] 1.33 Material nuevo, tanda 3: 6 preguntas por tema nuevo en cada nivel de la autoevaluación (42 por nivel; ahora 142 por nivel), revisadas por los 3 agentes
+- [ ] 1.34 Gráficos por tema: imágenes con licencia libre (Irasutoya, Wikimedia Commons) y gráficos propios. Hecho: Distorsiones (7 ilustraciones de Irasutoya). Falta: fotos de Apego (habilitar commons.wikimedia.org y upload.wikimedia.org) y el resto de los temas
 - [ ] 1.24 Pasada de simplificación general (propuesta: que el sitio no quede recargado)
 
 ### Etapa 2 — Ejercicios interactivos
