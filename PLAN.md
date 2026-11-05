@@ -162,7 +162,7 @@ Para v2: test de mitos irracionales (Nro. 15) e iceberg de la violencia interact
 - [x] 1.21 Destacados sin artículo ("Iceberg de la violencia", "Ciclo de la violencia") y al final en el celular
 - [x] 1.22 Logo en SVG con contorno fino que sigue el color del texto (claro/oscuro); favicon igual
 - [x] 1.23 Ruta de navegación invisible (BreadcrumbList en JSON-LD, solo para buscadores)
-- [x] 1.25 Quiz /quiz/ con tres niveles (Básica, Media, Instruida): 100 preguntas por nivel, partidas sorteadas, revisión sociológica, psicológica y lingüística, control automático de largo de opciones. Falta: traducir al inglés y portugués; sumar preguntas de los 6 temas nuevos
+- [x] 1.25 Quiz /quiz/ con tres niveles (Básica, Media, Instruida): 142 preguntas por nivel, partidas sorteadas, revisión sociológica, psicológica y lingüística, control automático de largo de opciones. Falta: traducir al inglés y portugués
 - [ ] 1.16 Tema "Relajación I": el PDF llegó vacío (0 bytes), falta volver a copiarlo
 - [x] 1.26 Relajación: agregar videos guiados de Chi Kung (Shi Ba Shi, Escuela Zoreda, 3 partes) (los elige Limonacio; tarjeta de video con crédito del canal)
 - [ ] 1.27 Mejoras de la guía señaladas en la revisión psicológica: unificar "estilo" (no "trastorno") en Personalidad y completar el estilo pasivo-agresivo; aviso de acompañamiento profesional en los ejercicios de IFS; explicar la D del ABC de Ellis
@@ -171,7 +171,7 @@ Para v2: test de mitos irracionales (Nro. 15) e iceberg de la violencia interact
 - [x] 1.30 Rueda interactiva en el centro del inicio: el logo grande de tres colores como presentación; al tocar un color, gira y muestra los temas de ese eje. Minimalista, accesible con teclado y lector de pantalla, y la lista de temas sigue disponible sin JavaScript
 - [x] 1.31 Material nuevo, tanda 1: completar 8 temas existentes (violencia digital y Ley Olimpia, qué es el patriarcado y Ley Micaela, micromachismos utilitarios, mensaje asertivo y consecuencias, responder a las críticas, mito de la ira y alertas de peligro, transexual, CEDAW), en es, en y pt
 - [x] 1.32 Material nuevo, tanda 2 (es, en, pt; revisión sociológica, psicológica y lingüística): temas nuevos. Género: Efectos de la violencia de género en las infancias; Mitos del amor romántico y celos; Violencia en el fútbol. Emociones: Teoría del apego; Distorsiones cognitivas; Duelo. Habilidades: Nuevas familias
-- [ ] 1.33 Material nuevo, tanda 3: unas 6 preguntas por tema nuevo en cada nivel de la autoevaluación
+- [x] 1.33 Material nuevo, tanda 3: 6 preguntas por tema nuevo en cada nivel de la autoevaluación (42 por nivel; ahora 142 por nivel), revisadas por los 3 agentes
 - [ ] 1.24 Pasada de simplificación general (propuesta: que el sitio no quede recargado)
 
 ### Etapa 2 — Ejercicios interactivos
