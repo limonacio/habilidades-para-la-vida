@@ -175,6 +175,7 @@ Para v2: test de mitos irracionales (Nro. 15) e iceberg de la violencia interact
 - [ ] 1.24 Pasada de simplificación general (propuesta: que el sitio no quede recargado)
 
 ### Etapa 2 — Ejercicios interactivos
+- [x] 2.0 Tarjeta "Chi Kung guiado" en Ejercicios para practicar (lleva a la serie en Relajación avanzada); las demás muestran "Próximamente"
 - [ ] 2.1 Respiración guiada
 - [ ] 2.2 Escala del enojo
 - [ ] 2.3 Diario de pensamientos (se guarda solo en el navegador)

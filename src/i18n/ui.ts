@@ -37,7 +37,8 @@ export const UI = {
     ejercicios: {
       titulo: 'Ejercicios para practicar',
       bajada: 'Herramientas interactivas. Lo que escribas va a quedar solo en tu navegador.',
-      pronto: 'Próximamente.',
+      pronto: 'Próximamente',
+      chikung: { titulo: 'Chi Kung guiado', texto: 'Una serie de 18 movimientos suaves, en video, para respirar en movimiento.', boton: 'Practicar ahora', ancla: 'chi-kung-práctica-guiada' },
       items: [
         ['Respiración guiada', 'Seguí el círculo para respirar con el diafragma.'],
         ['Escala del enojo', 'Ubicá tu enojo del 1 al 10 y mirá qué podés hacer.'],
@@ -91,7 +92,8 @@ export const UI = {
     ejercicios: {
       titulo: 'Exercises to practice',
       bajada: 'Interactive tools. Whatever you write will stay only in your browser.',
-      pronto: 'Coming soon.',
+      pronto: 'Coming soon',
+      chikung: { titulo: 'Guided Chi Kung', texto: 'A series of 18 gentle movements, on video, to breathe while you move.', boton: 'Practice now', ancla: 'chi-kung-guided-practice' },
       items: [
         ['Guided breathing', 'Follow the circle to breathe with your diaphragm.'],
         ['Anger meter', 'Rate your anger from 1 to 10 and see what you can do.'],
@@ -145,7 +147,8 @@ export const UI = {
     ejercicios: {
       titulo: 'Exercícios para praticar',
       bajada: 'Ferramentas interativas. O que você escrever ficará apenas no seu navegador.',
-      pronto: 'Em breve.',
+      pronto: 'Em breve',
+      chikung: { titulo: 'Chi Kung guiado', texto: 'Uma série de 18 movimentos suaves, em vídeo, para respirar em movimento.', boton: 'Praticar agora', ancla: 'chi-kung-prática-guiada' },
       items: [
         ['Respiração guiada', 'Siga o círculo para respirar com o diafragma.'],
         ['Escala da raiva', 'Avalie sua raiva de 1 a 10 e veja o que você pode fazer.'],

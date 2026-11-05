@@ -124,10 +124,15 @@ const rad = (g: number) => (g * Math.PI) / 180;
     <!-- La práctica, separada de la teoría: debajo de todos los temas -->
     <section class="ejercicios" id="ejercicios">
       <h2>{t.ejercicios.titulo}</h2>
-      <p class="sub">{t.ejercicios.bajada} <b>{t.ejercicios.pronto}</b></p>
+      <p class="sub">{t.ejercicios.bajada}</p>
       <div class="ej-grid">
+        <!-- Ya disponible: la serie de Chi Kung en video (vive en el tema de relajación) -->
+        <a class="ej h ej-link" href={`${base}/temas/relajacion-avanzada/#${t.ejercicios.chikung.ancla}`}>
+          <span aria-hidden="true">🧘</span><b>{t.ejercicios.chikung.titulo}</b>{t.ejercicios.chikung.texto}
+          <em>{t.ejercicios.chikung.boton} →</em>
+        </a>
         {t.ejercicios.items.map(([titulo, texto], i) => (
-          <div class={`ej ${i === 0 ? 'h' : 'e'}`}><span aria-hidden="true">{['🌬️', '🌡️', '📓'][i]}</span><b>{titulo}</b>{texto}</div>
+          <div class={`ej ${i === 0 ? 'h' : 'e'}`}><span aria-hidden="true">{['🌬️', '🌡️', '📓'][i]}</span><b>{titulo}</b>{texto}<small class="pronto">{t.ejercicios.pronto}</small></div>
         ))}
       </div>
     </section>
@@ -353,6 +358,10 @@ const rad = (g: number) => (g * Math.PI) / 180;
   .ej-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 16px; margin-top: 16px; }
   .ej { background: var(--cbg); border-radius: 14px; padding: 20px; }
   .ej b { display: block; font-family: Fraunces, serif; font-size: 1.1rem; margin: 8px 0 4px; }
+  .ej-link { display: block; color: var(--text); text-decoration: none; border: 2px solid transparent; transition: border-color .2s; }
+  .ej-link:hover, .ej-link:focus-visible { border-color: var(--c); }
+  .ej-link em { display: block; margin-top: 10px; font-style: normal; font-weight: 700; color: var(--c); }
+  .ej .pronto { display: table; margin-top: 10px; padding: 2px 10px; border-radius: 99px; background: var(--surface); color: var(--muted); font-size: .8rem; font-weight: 600; }
   /* ── La rueda ── (sin JavaScript se oculta y quedan los tres ejes a la vista) */
   .rueda-caja, .rueda-inicio { display: none; }
   .con-rueda { display: grid; grid-template-columns: minmax(260px, 360px) 1fr; gap: 48px; align-items: start; margin: 64px 0 56px; scroll-margin-top: 84px; }
@@ -392,10 +401,10 @@ const rad = (g: number) => (g * Math.PI) / 180;
     .con-rueda .eje.activa { animation: none; }
   }
 
-  /* Escritorio: los ejercicios van aparte, debajo de toda la teoría, con sus tres tarjetas en fila. */
+  /* Escritorio: los ejercicios van aparte, debajo de toda la teoría, con sus cuatro tarjetas en fila. */
   @media (min-width: 1000px) {
     .ejercicios { margin: 0 0 56px; }
-    .ej-grid { grid-template-columns: repeat(3, 1fr); }
+    .ej-grid { grid-template-columns: repeat(4, 1fr); }
   }
   @media (max-width: 600px) {
     .autoeval { flex-wrap: wrap; padding: 26px 20px 20px; }
