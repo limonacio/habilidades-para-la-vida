@@ -63,7 +63,7 @@ Algunas formas de violencia son explícitas y otras son menos evidentes o no se 
 <div class="ice-agua"></div>
 <div class="ice-medio"><h4>Bajo la superficie · formas explícitas que no se ven</h4><ul><li>Humillar</li><li>Desvalorizar</li><li>Despreciar</li><li>Ignorar</li><li>Culpabilizar</li><li>Chantaje emocional</li></ul></div>
 <div class="ice-base"><h4>En la base · formas sutiles</h4><ul><li>Humor sexista</li><li>Controlar</li><li>Publicidad sexista</li><li>Invisibilización</li><li>Lenguaje sexista</li><li>Anulación</li><li>Micromachismos</li></ul></div>
-<figcaption>Gráfico basado en el iceberg de la violencia de género de Amnistía Internacional España; en la punta se agrega el femicidio.</figcaption>
+<figcaption>Gráfico basado en el iceberg de la violencia de género de Amnistía Internacional España.</figcaption>
 </figure>
 
 Lo que está bajo el agua sostiene a lo que se ve: por eso prevenir implica trabajar también sobre las formas sutiles.

@@ -63,7 +63,7 @@ Some forms of violence are explicit, while others are less obvious or not recogn
 <div class="ice-agua"></div>
 <div class="ice-medio"><h4>Below the surface · explicit forms that go unseen</h4><ul><li>Humiliating</li><li>Devaluing</li><li>Belittling</li><li>Ignoring</li><li>Blaming</li><li>Emotional blackmail</li></ul></div>
 <div class="ice-base"><h4>At the base · subtle forms</h4><ul><li>Sexist humor</li><li>Controlling</li><li>Sexist advertising</li><li>Making women invisible</li><li>Sexist language</li><li>Putting someone down</li><li>Micro-machismos</li></ul></div>
-<figcaption>Graphic based on the iceberg of gender-based violence by Amnesty International Spain; femicide is added at the tip.</figcaption>
+<figcaption>Graphic based on the iceberg of gender-based violence by Amnesty International Spain.</figcaption>
 </figure>
 
 What lies under the water holds up what we can see: that is why prevention also means working on the subtle forms.

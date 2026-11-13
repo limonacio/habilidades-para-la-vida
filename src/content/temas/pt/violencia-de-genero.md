@@ -63,7 +63,7 @@ Algumas formas de violência são explícitas e outras são menos evidentes ou n
 <div class="ice-agua"></div>
 <div class="ice-medio"><h4>Abaixo da superfície · formas explícitas que não se veem</h4><ul><li>Humilhar</li><li>Desvalorizar</li><li>Desprezar</li><li>Ignorar</li><li>Culpabilizar</li><li>Chantagem emocional</li></ul></div>
 <div class="ice-base"><h4>Na base · formas sutis</h4><ul><li>Humor sexista</li><li>Controlar</li><li>Publicidade sexista</li><li>Invisibilização</li><li>Linguagem sexista</li><li>Anulação</li><li>Micromachismos</li></ul></div>
-<figcaption>Gráfico baseado no iceberg da violência de gênero da Anistia Internacional Espanha; na ponta, acrescenta-se o feminicídio.</figcaption>
+<figcaption>Gráfico baseado no iceberg da violência de gênero da Anistia Internacional Espanha.</figcaption>
 </figure>
 
 O que está debaixo d'água sustenta o que se vê: por isso, prevenir implica trabalhar também as formas sutis.
