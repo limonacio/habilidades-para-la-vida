@@ -4,8 +4,8 @@ eje: "e"
 orden: 13.5
 descripcion: "Las fases del duelo, cuándo se complica y para qué sirven los rituales."
 autores: "John Bowlby"
-lectura: 3
-fecha: 2026-11-04
+lectura: 9
+fecha: 2026-11-19
 fuentes:
   - "Bowlby, J. (1980). *Attachment and Loss, Vol. 3: Loss: Sadness and Depression*. Basic Books. (En español: *La pérdida afectiva: tristeza y depresión*, Paidós.)"
   - "Firth, R. (1951). *Elements of Social Organization*. Watts. (Citado por Bowlby.)"
@@ -16,13 +16,27 @@ fuentes:
   - "Trivers, R. L. (1971). The evolution of reciprocal altruism. *The Quarterly Review of Biology*, 46(1), 35-57."
 ---
 
+<aside class="resumen">
+<p class="resumen-titulo">En pocas palabras</p>
+<ul>
+<li>El <b>duelo</b> es la reacción natural ante la pérdida de alguien que queremos. Duele porque el vínculo era importante.</li>
+<li>Según John Bowlby, pasa por <b>cuatro fases</b>: embotamiento, anhelo y búsqueda, desorganización y desesperanza, y reorganización. No son una escalera: se va y se vuelve.</li>
+<li>El <b>enojo</b>, la tristeza intensa y hasta sentir la presencia de quien murió son <b>parte de un duelo esperable</b>.</li>
+<li>El duelo <b>se complica</b> cuando el dolor no cede con el tiempo o la pérdida no se puede aceptar. Ahí conviene pedir ayuda.</li>
+<li>Los <b>rituales</b> y el acompañamiento de otros ayudan a atravesarlo.</li>
+</ul>
+</aside>
+
+
 ## Perder un vínculo
 
 Según John Bowlby, el ser humano viene al mundo preparado para formar vínculos, amar y comprometerse, y por eso también para sufrir cuando los pierde. Nuestras relaciones son a la vez nuestra mayor fuerza y nuestra mayor fragilidad (ver [Teoría del apego](/temas/teoria-del-apego/)).
 
-Bowlby (1980) señala que la pérdida es una de las experiencias más dolorosas que puede vivir un ser humano, y que también es doloroso presenciarla, porque nos sentimos impotentes para ayudar.
+Bowlby estudió sobre todo el duelo por la muerte de un ser querido, que es del que habla este tema. Pero también se hace duelo por otras pérdidas importantes: una separación, un trabajo, la salud, una mascota o dejar el propio país.
 
-Cómo se vive un duelo depende de la personalidad de quien lo atraviesa, del tipo de vínculo, de cómo fue la muerte, de la historia personal de quien lo atraviesa y del entorno. Por eso es importante que la persona pueda **expresar libremente** lo que siente.
+En palabras del propio Bowlby (1980), la pérdida es una de las experiencias más dolorosas que puede vivir un ser humano, y que también es doloroso presenciarla, porque nos sentimos impotentes para ayudar.
+
+Cómo se vive un duelo depende de la personalidad y la historia de quien lo atraviesa, del tipo de vínculo, de cómo fue la muerte y del entorno. Por eso es importante que la persona pueda **expresar libremente** lo que siente.
 
 ## Las cuatro fases
 
@@ -52,6 +66,18 @@ En general, alrededor del año la persona empieza a mostrar señales de recupera
 Desear reencontrarse con la persona que murió es frecuente en el duelo. Pero **si aparecen ideas de quitarse la vida, o ese deseo se vuelve un plan, hay que pedir ayuda enseguida**: en la Argentina, la línea 135 (gratuita) o el (011) 5275-1135 y el 0800 345 1435 desde todo el país, del Centro de Asistencia al Suicida; o el 911 si hay riesgo inmediato. Si acompañás a alguien, preguntarle directamente si pensó en morir no le pone la idea en la cabeza: lo ayuda a hablar (OMS, 2014).
 
 Algunas cosas ayudan a prevenir que el duelo se complique: acompañar especialmente a quien cuidó a la persona durante una enfermedad, contar lo que pasó a toda la familia (también a niñas y niños, con palabras acordes a su edad) y evitar culpabilizar o culpabilizarse.
+
+## Cómo acompañar a alguien en duelo
+
+Muchas veces no sabemos qué decir frente a alguien que perdió a un ser querido, y por miedo a equivocarnos nos alejamos. Algunas pautas que ayudan:
+
+- **Estar, más que hablar.** No hace falta tener las palabras justas. Acompañar, escuchar y ofrecer ayuda concreta (cocinar, hacer un trámite, cuidar a los chicos) suele valer más que cualquier frase.
+- **Dejar que exprese lo que siente**, incluido el enojo o la culpa, sin corregirlo ni apurarlo.
+- **Evitar las frases que cierran la conversación**, como "tenés que ser fuerte", "ya pasó", "está en un lugar mejor" o "al menos…". Aunque se digan con cariño, pueden hacer sentir que el dolor molesta.
+- **Nombrar a la persona que murió.** Recordarla con quien está de duelo suele ser un alivio, no una herida.
+- **Seguir presente después.** Las primeras semanas suele haber mucha compañía; después, la persona se queda sola justo cuando el duelo se vuelve más duro.
+
+**Con niñas y niños.** También hacen duelo, a su manera y según su edad: a veces parecen no estar afectados y de pronto se angustian, juegan a la muerte o vuelven a conductas de más chicos. Conviene contarles lo que pasó con palabras simples y verdaderas (decir "murió", no "se fue de viaje" o "se quedó dormido"), dejarlos participar de los rituales si quieren, y responder sus preguntas, aunque se repitan. También conviene decirles que no es su culpa (los más chicos a veces creen que algo que pensaron o hicieron causó la muerte) y avisar en la escuela.
 
 ## Para qué sirven los rituales
 

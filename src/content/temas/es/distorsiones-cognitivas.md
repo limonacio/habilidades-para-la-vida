@@ -4,21 +4,40 @@ eje: "e"
 orden: 11.5
 descripcion: "Los errores de pensamiento más comunes y cómo reconocerlos."
 autores: "Aaron Beck · McKay, Davis y Fanning"
-lectura: 3
-fecha: 2026-11-04
+lectura: 6
+fecha: 2026-11-19
 fuentes:
   - "Beck, A. T., Rush, A. J., Shaw, B. F. y Emery, G. (1979). *Cognitive Therapy of Depression*. Guilford Press. (En español: *Terapia cognitiva de la depresión*, Desclée de Brouwer.)"
   - "McKay, M., Davis, M. y Fanning, P. (1981). *Técnicas cognitivas para el tratamiento del estrés*. Martínez Roca (ed. en español)."
   - "Ilustraciones: [いらすとや (Irasutoya)](https://www.irasutoya.com/), uso libre no comercial."
 ---
 
+<aside class="resumen">
+<p class="resumen-titulo">En pocas palabras</p>
+<ul>
+<li>Las <b>distorsiones cognitivas</b> son errores de pensamiento que hacemos sin darnos cuenta y que nos hacen sentir peor de lo que la situación justifica.</li>
+<li>Algunas de las más comunes: <b>sacar conclusiones sin pruebas</b>, <b>generalizar</b> a partir de un hecho, quedarse <b>solo con lo negativo</b>, ver todo en <b>blanco o negro</b> y creer que <b>todo tiene que ver con uno</b>.</li>
+<li>Aparecen sobre todo con estrés, ansiedad o tristeza, y se vuelven un círculo: el malestar las alimenta y ellas alimentan el malestar.</li>
+<li>El primer paso para trabajarlas es <b>reconocerlas y ponerles nombre</b>, con un registro.</li>
+</ul>
+</aside>
+
+
 ## Qué son
 
-Las distorsiones cognitivas son **interpretaciones equivocadas o sesgadas de la realidad** que hacemos de forma automática y que influyen de manera negativa en lo que sentimos y hacemos. Son más frecuentes con estrés, ansiedad o depresión, y afectan cómo vemos los hechos y cómo nos relacionamos. El psiquiatra Aaron Beck las describió como parte de su terapia cognitiva; aparecen dentro de los [pensamientos automáticos](/temas/pensamientos-automaticos/).
+Las distorsiones cognitivas son **interpretaciones equivocadas o sesgadas de la realidad** que hacemos de forma automática y que influyen de manera negativa en lo que sentimos y hacemos. Afectan cómo vemos los hechos y cómo nos relacionamos. El psiquiatra Aaron Beck las describió como parte de su terapia cognitiva; aparecen dentro de los [pensamientos automáticos](/temas/pensamientos-automaticos/).
 
 > **Idea clave**
 >
 > Una distorsión no es una mentira: es una interpretación automática que se vive como un hecho, aunque no se ajuste a lo que pasó.
+
+## Por qué aparecen
+
+Todas las personas hacemos distorsiones alguna vez: el cerebro busca atajos para entender rápido lo que pasa, y a veces esos atajos fallan. El problema es cuando se vuelven **habituales** y siempre van en la misma dirección, hacia lo negativo.
+
+Cuando estamos tristes, ansiosos o enojados, las distorsiones son más frecuentes, y a la vez hacen que nos sintamos peor. Se arma un círculo: el malestar nos hace pensar de forma distorsionada, y esos pensamientos aumentan el malestar. Reconocerlas es la manera de cortar ese círculo.
+
+Algunas distorsiones, además, se usan para **justificar la violencia**: la minimización ("no fue para tanto"), la conclusión arbitraria ("seguro me engaña") o culpar a la otra persona ("ella me provocó"), que le pasa la responsabilidad a la víctima (McKay, Davis y Fanning la llaman "culpabilización"). Reconocerlas no excusa la violencia: ayuda a hacerse cargo de lo que se hizo. Y la violencia no se explica solo por cómo se piensa: se basa en una relación desigual de poder.
 
 ## Los tipos más comunes
 
@@ -42,5 +61,13 @@ El primer paso es identificarlas. Cuando aparece una emoción intensa, se puede 
 | Contexto | Situación | Emoción | Pensamiento | Distorsión |
 |---|---|---|---|---|
 | Día, hora y qué estaba haciendo | El hecho que cortó la tranquilidad | Miedo, ira, celos, tristeza… | Lo que me dije en ese momento | Cuál de las de arriba aparece |
+
+**Un ejemplo completo:**
+
+| Contexto | Situación | Emoción | Pensamiento | Distorsión |
+|---|---|---|---|---|
+| Domingo, 20 h, mirando una serie tranquilo | Mi hermana no me saludó por mi cumpleaños | Tristeza, enojo | "A nadie le importo. Seguro lo hizo a propósito" | Generalización excesiva, conclusión arbitraria |
+
+Después de anotarlo, conviene preguntarse: ¿hay otra explicación posible? (quizás se olvidó, o tuvo un problema). ¿Es verdad que "a nadie" le importo? ¿Quiénes sí me saludaron?
 
 Con el tiempo, este registro ayuda a ver los patrones que se repiten y a buscar interpretaciones más ajustadas a los hechos. Se complementa con el [diario de pensamientos](/temas/pensamientos-automaticos/) y con el ABC de [Pensar correctamente](/temas/pensar-correctamente/).
