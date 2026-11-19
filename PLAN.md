@@ -165,7 +165,7 @@ Para v2: test de mitos irracionales (Nro. 15) e iceberg de la violencia interact
 - [x] 1.25 Quiz /quiz/ con tres niveles (Básica, Media, Instruida): 142 preguntas por nivel, partidas sorteadas, revisión sociológica, psicológica y lingüística, control automático de largo de opciones. Falta: traducir al inglés y portugués
 - [ ] 1.16 Tema "Relajación I": el PDF llegó vacío (0 bytes), falta volver a copiarlo
 - [x] 1.26 Relajación: agregar videos guiados de Chi Kung (Shi Ba Shi, Escuela Zoreda, 3 partes) (los elige Limonacio; tarjeta de video con crédito del canal)
-- [ ] 1.27 Mejoras de la guía señaladas en la revisión psicológica: unificar "estilo" (no "trastorno") en Personalidad y completar el estilo pasivo-agresivo; aviso de acompañamiento profesional en los ejercicios de IFS; explicar la D del ABC de Ellis
+- [ ] 1.27 Mejoras de la guía señaladas en la revisión psicológica: unificar "estilo" (no "trastorno") en Personalidad y completar el estilo pasivo-agresivo; ~~aviso de acompañamiento profesional en los ejercicios de IFS~~ (hecho); explicar la D del ABC de Ellis
 - [ ] 1.28 Sumar los 6 temas de los PDF que faltan (cuando lleguen), con unas 6 preguntas por tema en cada nivel del quiz
 - [ ] 1.29 Traducir el quiz al inglés y al portugués (cuando estén aprobadas las preguntas en español)
 - [x] 1.30 Rueda interactiva en el centro del inicio: el logo grande de tres colores como presentación; al tocar un color, gira y muestra los temas de ese eje. Minimalista, accesible con teclado y lector de pantalla, y la lista de temas sigue disponible sin JavaScript
