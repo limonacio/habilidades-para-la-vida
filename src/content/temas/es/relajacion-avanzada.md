@@ -30,7 +30,7 @@ Cuando algo nos estresa, nos enoja o nos asusta, el cuerpo reacciona como si hub
 
 La relajación hace el camino contrario: le manda al cuerpo la señal de que **puede bajar la guardia**. No es algo que se logre "por fuerza de voluntad", sino una **habilidad que se entrena**, como un músculo. Por eso las técnicas de este tema conviene practicarlas todos los días durante algunas semanas, primero en momentos tranquilos, para después poder usarlas cuando hacen falta.
 
-Las técnicas de este tema vienen del trabajo del médico estadounidense **Edmund Jacobson**, que creó la relajación progresiva en los años 20 (la publicó en 1929), y del manual de **Davis, McKay y Eshelman** sobre técnicas de autocontrol emocional.
+Estas técnicas vienen del trabajo del médico estadounidense **Edmund Jacobson**, que creó la relajación progresiva en los años 20 (la publicó en 1929), y del manual de **Davis, McKay y Eshelman** sobre técnicas de autocontrol emocional.
 
 ## Respiración profunda (diafragmática)
 
@@ -42,13 +42,13 @@ Cuando estamos tensos, respiramos con la parte de arriba del pecho, rápido y po
 4. **Soltá el aire despacio**, por la boca o por la nariz, y sentí cómo baja la panza.
 5. Dejá que cada respiración estire y afloje los músculos del abdomen.
 
-Con cada respiración, notando cómo sube y baja la panza, vas a sentir una sensación de relajación. Es como enviarle al cerebro el mensaje de que **todo va bien**.
+Respirá sin forzar: si te mareás, volvé a respirar normal un rato. Con la práctica, notando cómo sube y baja la panza, vas a notar que te relajás. Es como enviarle al cerebro el mensaje de que **todo va bien**.
 
 Si al principio te cuesta, probá acostado boca arriba con un libro apoyado en la panza: tiene que subir al inspirar y bajar al soltar el aire.
 
 > **Idea clave**
 >
-> Cada respiración profunda le envía al cerebro el mensaje de que todo va bien.
+> Relajarse es una habilidad que se entrena: se practica en calma para poder usarla cuando hace falta.
 
 <a class="video" id="video-respiracion" href="https://choc.org/videos/psychology/respiracion-abdominal/" target="_blank" rel="noopener"><img src="https://choc.org/wp-content/uploads/2024/10/xe1czals-720.jpg" alt="" loading="lazy" referrerpolicy="no-referrer" width="720" height="405" onerror="this.hidden=true;this.nextElementSibling.hidden=false"><span class="video-icono" aria-hidden="true" hidden>🌬️</span><span><b>Respiración abdominal: video guiado</b>▶ Rady Children's Health · Ver el video</span></a>
 
@@ -56,7 +56,7 @@ Si al principio te cuesta, probá acostado boca arriba con un libro apoyado en l
 
 Una vez que la respiración diafragmática sale con facilidad, el siguiente paso es usarla con situaciones que nos alteran, primero en la imaginación:
 
-1. **Elegí dos escenas** que te generen un enojo o un estrés moderado, y escribilas. Puntuá cada una del 1 al 10 (10 es lo más perturbador): tienen que estar entre 5 y 7, no más.
+1. **Elegí dos escenas** que te generen un enojo o un estrés moderado, y escribilas. Puntuá cada una del 1 al 10 (10 es lo más perturbador): tienen que estar entre 5 y 7, no más. No elijas situaciones de violencia o traumáticas que hayas vivido: para trabajarlas conviene contar con acompañamiento profesional.
 2. **Dividí cada escena en tres partes**, y al final de cada parte anotá un recordatorio: "respirar".
 3. **Imaginá la primera escena**, parte por parte, y al final de cada parte respirá profundo con el diafragma. Notá cómo baja la tensión. Repetila dos o tres veces.
 4. **Imaginá la segunda escena una vez sin respirar profundo**, lo más real posible, y anotá cuánto estrés sentiste. Después repetila al menos dos veces, ahora respirando profundo al final de cada parte, y compará cómo te sentís.

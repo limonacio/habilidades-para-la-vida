@@ -101,4 +101,4 @@ Más allá de la separación, ambos progenitores siguen siendo responsables de c
 - **Progenitor afín** (arts. 672 a 676): en las familias ensambladas, la nueva pareja de la madre o del padre que convive con los hijos debe colaborar en su crianza y su cuidado, sin reemplazar a los progenitores.
 - **Ser escuchados** (art. 707): en los procesos de familia que los afectan, niñas, niños y adolescentes tienen derecho a ser oídos y a que su opinión se tenga en cuenta según su edad y su grado de discernimiento.
 
-En pocas palabras: **la pareja termina; la responsabilidad de criar, no**.
+En resumen: **la pareja termina; la responsabilidad de criar, no**.

@@ -21,7 +21,7 @@ fuentes:
 <li>Para cuidar un vínculo hay que <b>prestar atención</b>: a lo que siente el otro, a lo que sentimos nosotros y a cómo nos decimos las cosas.</li>
 <li>Hay tres estilos que dañan: el <b>pasivo</b> (callar y ceder), el <b>agresivo</b> (imponerse) y el <b>pasivo-agresivo</b> (castigar de forma indirecta). La alternativa es la <b>asertividad</b>.</li>
 <li>Un <b>mensaje asertivo</b> tiene tres partes: los hechos, lo que sentimos y un pedido concreto.</li>
-<li>Para resolver un problema sirve un <b>esquema de cinco pasos</b>: reconocerlo, pensar opciones, elegir, ponerlo en práctica y evaluar.</li>
+<li>Para resolver un problema sirve un <b>esquema de cinco pasos</b>: reconocerlo, pensar opciones, elegir, aplicar la opción elegida y evaluar.</li>
 </ul>
 </aside>
 
@@ -62,7 +62,7 @@ Frente a un conflicto, cada persona tiende a reaccionar de una manera. Hay cuatr
 
 > **Idea clave**
 >
-> Tanto la pasividad como la agresión dañan los vínculos; la asertividad permite cuidar lo propio sin pasar por encima del otro.
+> Tanto la pasividad como la agresión, directa o indirecta, dañan los vínculos; la asertividad permite cuidar lo propio sin pasar por encima del otro.
 
 La comunicación asertiva es clara, directa y tranquila. Permite llegar a acuerdos en los que las dos partes ganan algo, y protegerse sin culpar al otro. En niñas, niños y adolescentes es especialmente importante para **resistir la presión del grupo**: poder decir "no, gracias" sin sentir que se pierde a los amigos.
 
@@ -74,16 +74,16 @@ Un mensaje asertivo tiene tres partes:
 2. **Lo que sentimos.** Decir cómo nos afecta, hablando en primera persona y sin acusar. *Ejemplo: "Cuando llego a casa y veo los platos sucios, me molesta, porque estoy cansada y quiero descansar".*
 3. **El pedido.** Decir lo que queremos, **de a un pedido por vez**, de forma concreta y posible de cumplir. *Ejemplo: "Te pido que los laves antes de irte a dormir".*
 
-Juntas: *"La cocina está llena de platos sucios de anoche. Cuando llego y la veo así, me molesta, porque quiero descansar. Te pido que los laves antes de irte a dormir"*.
+Todo junto: *"La cocina está llena de platos sucios de anoche. Cuando llego y la veo así, me molesta, porque quiero descansar. Te pido que los laves antes de irte a dormir"*.
 
 **Cuando el pedido no alcanza: las consecuencias.** A veces la otra persona no tiene motivos para cambiar. Entonces se pueden plantear **consecuencias**: lo que uno va a hacer si la conducta se repite. Por ejemplo: "Si me seguís llamando varias veces por día, voy a dejar de atender y te voy a llamar yo a la noche". No son un castigo ni una forma de controlar al otro, sino una manera de cuidarse. Tienen cuatro reglas:
 
 - **Específicas:** decir exactamente qué conducta las activa. "Si no dejás de molestarme, te vas a arrepentir" es una amenaza vaga y no sirve.
 - **Razonables:** nunca amenazas de violencia ni de humillación.
 - **Consistentes:** si se dicen, se cumplen, cada vez.
-- **Posibles de sostener:** que le resulten un problema al otro, no a quien las pone.
+- **Posibles de sostener:** que quien las pone pueda cumplirlas sin perjudicarse.
 
-Las amenazas de separación o de suicidio no son consecuencias: suelen perjudicar a quien las dice. Y **si hay violencia, la herramienta no es negociar consecuencias, sino pedir ayuda** (ver [El ciclo de la violencia](/temas/ciclo-de-la-violencia/) y la Línea 144).
+Las amenazas de separación o de suicidio no son consecuencias: suelen perjudicar a quien las dice. Si alguien amenaza con quitarse la vida, tomalo en serio y pedí ayuda: **Línea 135** (desde CABA y GBA), **(011) 5275-1135** o **0800 345 1435** desde todo el país. Y **si hay violencia, la herramienta no es negociar consecuencias, sino pedir ayuda** (ver [El ciclo de la violencia](/temas/ciclo-de-la-violencia/) y la Línea 144).
 
 ## Los dos equilibrios de una relación
 
@@ -103,7 +103,7 @@ Según las habilidades de efectividad interpersonal de la terapia dialéctico co
 
 ## Un esquema para resolver problemas
 
-Los psicólogos **D'Zurilla y Goldfried** (1971) propusieron un esquema simple para enfrentar un problema paso a paso, en lugar de reaccionar en caliente:
+Los psicólogos **D'Zurilla y Goldfried** (1971) propusieron un esquema para enfrentar un problema paso a paso, en lugar de reaccionar en caliente. Esta es una versión simplificada:
 
 1. **Reconocer el problema.** Decir con claridad qué es lo que pasa. *Ejemplo: "Discutimos todas las noches por quién lava los platos".*
 2. **Pensar opciones.** Anotar todas las alternativas posibles, sin descartar ninguna de entrada, y analizar para cada una qué se gana, qué se pierde y qué consecuencias tiene.

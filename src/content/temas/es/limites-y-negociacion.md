@@ -45,8 +45,8 @@ Para poner un límite hay tres pasos básicos:
 - **No descalificarse.** Frases como "no puedo porque soy un desastre para eso" no son un límite: el otro va a intentar convencernos de que sí podemos. Es mejor decir "no lo voy a hacer" o "no quiero", que dejan menos lugar a la discusión.
 - **Cuidar la voz y el cuerpo.** Mirar a los ojos y hablar con un tono firme y tranquilo hace que el "no" se tome en serio.
 - **Darse tiempo.** Si te sale decir "sí" de forma automática, ganá tiempo: *"Dejame pensarlo y te digo más tarde"*. Sin presión se piensa con más claridad.
-- **Ser específico.** Aclarar qué sí estás dispuesto a hacer y qué no. *"Puedo revisar tu proyecto, pero no voy a participar en hacerlo."*
-- **No hace falta justificarse de más.** Dar una razón ayuda, pero no estás obligado a convencer al otro de que tu límite es válido.
+- **Ser específico.** Aclarar qué sí estás dispuesto a hacer y qué no. *"Puedo revisar tu proyecto, pero no voy a ayudarte a hacerlo."*
+- **No justificarse de más.** Dar una razón ayuda, pero no estás obligado a convencer al otro de que tu límite es válido.
 
 ## Cómo responder a las críticas
 
@@ -93,4 +93,4 @@ En una buena negociación nadie pierde: todos ganan algo.
 
 ## Cuándo no se negocia
 
-Negociar sirve cuando ninguna de las dos personas le tiene miedo a la otra ni puede imponerse por la fuerza. **Cuando hay violencia, no**: no hay negociación posible entre quien ejerce poder y miedo y quien los sufre. Por eso la Ley 26.485 no admite modelos de mediación o negociación en casos de violencia contra las mujeres y prohíbe las audiencias de mediación o conciliación (art. 9, inc. e, y art. 28). En esas situaciones, lo que corresponde es protegerse y pedir ayuda: en la Argentina, la **Línea 144** (gratuita, las 24 horas) o el **911** en una emergencia.
+Negociar sirve cuando ninguna de las dos personas le tiene miedo a la otra ni puede imponerse por la fuerza. **Cuando hay violencia, no**: no hay negociación posible entre quien ejerce violencia y quien la sufre. Por eso la Ley 26.485 no admite modelos de mediación o negociación en casos de violencia contra las mujeres y prohíbe las audiencias de mediación o conciliación (art. 9, inc. e, y art. 28). En esas situaciones, lo que corresponde es protegerse y pedir ayuda: en la Argentina, la **Línea 144** (gratuita, las 24 horas) o el **911** en una emergencia.
