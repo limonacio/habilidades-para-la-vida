@@ -43,7 +43,7 @@ for (const [n, lista] of Object.entries(q.preguntas)) {
     <!-- 1. Elegir nivel -->
     <div id="niveles" class="niveles">
       {niveles.map(([n, { nombre, texto }], i) => (
-        <button class={`nivel ${['h', 'e', 'g'][i]}`} data-nivel={n}><b>{nombre}</b>{texto}</button>
+        <button class={`nivel ${['h', 'e', 'g'][i]}`} data-nivel={n} data-eje={['h', 'e', 'g'][i]}><b>{nombre}</b>{texto}</button>
       ))}
     </div>
 
@@ -110,6 +110,12 @@ for (const [n, lista] of Object.entries(q.preguntas)) {
   let empujado = false; // ¿agregamos un paso al historial en esta visita?
   const actual = () => preguntas[st!.nivel][st!.ids[st!.i]];
 
+  // Color del nivel: la partida toma el color del nivel elegido (Básica salvia, Media terracota,
+  // Instruida violeta). Se pone la clase del eje (g/e/h) en el juego y en el resultado, y el CSS usa --c y --cbg.
+  const EJE_DE_NIVEL = Object.fromEntries([...document.querySelectorAll<HTMLElement>('.nivel')].map((b) => [b.dataset.nivel!, b.dataset.eje!]));
+  const tenir = () => ['juego', 'final'].forEach((id) => { $(id).classList.remove('g', 'e', 'h'); $(id).classList.add(EJE_DE_NIVEL[st!.nivel] ?? 'g'); });
+  const LETRAS = ['A', 'B', 'C', 'D'];
+
   function mostrarPantalla(cual: 'niveles' | 'juego' | 'final') {
     $('niveles').hidden = cual !== 'niveles';
     $('juego').hidden = cual !== 'juego';
@@ -129,14 +135,18 @@ for (const [n, lista] of Object.entries(q.preguntas)) {
 
   function mostrar() {
     const x = actual();
+    tenir();
     $('num').textContent = `${textos.pregunta} ${st!.i + 1} ${textos.de} ${st!.ids.length}`;
     ($('avance') as HTMLElement).style.width = `${(st!.i / st!.ids.length) * 100}%`;
     $('pregunta').textContent = x.p;
     $('feedback').hidden = true; $('siguiente').hidden = true;
-    $('respuestas').replaceChildren(...st!.orden.map((k) => {
+    $('respuestas').replaceChildren(...st!.orden.map((k, pos) => {
       const b = document.createElement('button');
       b.className = 'respuesta';
-      b.textContent = x.o[k];
+      // Letra en un círculo (A, B, C, D) + el texto de la opción
+      const letra = document.createElement('span'); letra.className = 'letra'; letra.setAttribute('aria-hidden', 'true'); letra.textContent = LETRAS[pos];
+      const txt = document.createElement('span'); txt.textContent = x.o[k];
+      b.append(letra, txt);
       b.dataset.k = String(k);
       b.addEventListener('click', () => responder(k));
       return b;
@@ -162,10 +172,11 @@ for (const [n, lista] of Object.entries(q.preguntas)) {
     const ok = st!.elegida === correctaDe(x);
     $('respuestas').querySelectorAll<HTMLButtonElement>('.respuesta').forEach((b) => {
       b.disabled = true;
-      if (Number(b.dataset.k) === correctaDe(x)) b.classList.add('bien');
-      if (!ok && Number(b.dataset.k) === st!.elegida) b.classList.add('mal');
+      // Correcta e incorrecta no dependen solo del color (que puede coincidir con el del nivel): llevan ✓ y ✗
+      if (Number(b.dataset.k) === correctaDe(x)) { b.classList.add('bien'); b.querySelector('.letra')!.textContent = '✓'; }
+      if (!ok && Number(b.dataset.k) === st!.elegida) { b.classList.add('mal'); b.querySelector('.letra')!.textContent = '✗'; }
     });
-    $('veredicto').textContent = ok ? textos.correcto : textos.incorrecto;
+    $('veredicto').textContent = (ok ? '✓ ' : '✗ ') + (ok ? textos.correcto : textos.incorrecto);
     $('veredicto').className = ok ? 'bien' : 'mal';
     $('explicacion').textContent = x.e;
     const a = $('leer') as HTMLAnchorElement;
@@ -184,6 +195,7 @@ for (const [n, lista] of Object.entries(q.preguntas)) {
 
   function terminar() {
     mostrarPantalla('final');
+    tenir();
     const total = st!.ids.length;
     $('puntaje').textContent = `${st!.aciertos} / ${total}`;
     const r = st!.aciertos / total;
@@ -229,22 +241,22 @@ for (const [n, lista] of Object.entries(q.preguntas)) {
     const ctx = c.getContext('2d')!;
     // Primero medimos los bloques para saber qué alto necesita la imagen
     const bloques: [string, string, string, number][] = [ // [texto, fuente, color, espacio después]
-      [`${textos.nivel} ${nombres[st!.nivel]}`, '700 30px "Atkinson Hyperlegible", sans-serif', '#553886', 30],
-      [x.p, '700 50px var(--display)', '#231D18', 44],
-      [`${textos.correcta}:`, '700 30px "Atkinson Hyperlegible", sans-serif', '#43653F', 10],
-      [x.o[correctaDe(x)], '700 40px "Atkinson Hyperlegible", sans-serif', '#231D18', 40],
-      [x.e, '400 34px "Atkinson Hyperlegible", sans-serif', '#524840', 50],
-      [`${textos.leerMas}: ${x.tt}`, '700 32px "Atkinson Hyperlegible", sans-serif', '#9A4524', 8],
-      [`${location.host}${x.tu}`, '400 26px "Atkinson Hyperlegible", sans-serif', '#524840', 0],
+      [`${textos.nivel} ${nombres[st!.nivel]}`, '700 30px "Atkinson Hyperlegible", sans-serif', '#5B21B6', 30],
+      [x.p, '700 50px "Bricolage Grotesque", sans-serif', '#2B2A28', 44],
+      [`${textos.correcta}:`, '700 30px "Atkinson Hyperlegible", sans-serif', '#3E6A3B', 10],
+      [x.o[correctaDe(x)], '700 40px "Atkinson Hyperlegible", sans-serif', '#2B2A28', 40],
+      [x.e, '400 34px "Atkinson Hyperlegible", sans-serif', '#57534E', 50],
+      [`${textos.leerMas}: ${x.tt}`, '700 32px "Atkinson Hyperlegible", sans-serif', '#A8461F', 8],
+      [`${location.host}${x.tu}`, '400 26px "Atkinson Hyperlegible", sans-serif', '#57534E', 0],
     ];
     const altoLinea = (f: string) => Number(f.match(/(\d+)px/)![1]) * 1.3;
     const medidos = bloques.map(([t, f, col, esp]) => { ctx.font = f; return { lineas: partirEnLineas(ctx, t, ANCHO), f, col, esp }; });
     const H = M * 2 + 90 + medidos.reduce((s, b) => s + b.lineas.length * altoLinea(b.f) + b.esp, 0);
     c.width = W; c.height = Math.ceil(H);
     // Fondo crema con borde y una franja con los colores de los tres ejes
-    ctx.fillStyle = '#F1E6D2'; ctx.fillRect(0, 0, W, H);
-    ['#7650C2', '#D86A3F', '#579B54'].forEach((col, k) => { ctx.fillStyle = col; ctx.fillRect((W / 3) * k, 0, W / 3 + 1, 14); });
-    ctx.fillStyle = '#231D18'; ctx.font = '700 34px var(--display)'; ctx.textBaseline = 'top';
+    ctx.fillStyle = '#F7F7F5'; ctx.fillRect(0, 0, W, H);
+    ['#5B21B6', '#A8461F', '#3E6A3B'].forEach((col, k) => { ctx.fillStyle = col; ctx.fillRect((W / 3) * k, 0, W / 3 + 1, 14); });
+    ctx.fillStyle = '#2B2A28'; ctx.font = '700 34px "Bricolage Grotesque", sans-serif'; ctx.textBaseline = 'top';
     ctx.fillText('Habilidades para la Vida', M, M - 10);
     let y = M + 80;
     for (const b of medidos) {
@@ -286,26 +298,32 @@ for (const [n, lista] of Object.entries(q.preguntas)) {
   [hidden] { display: none !important; }
 
   .niveles { display: grid; gap: 16px; }
-  .nivel { text-align: left; font: inherit; color: var(--text); background: var(--cbg); border: 1px solid color-mix(in srgb, var(--c) 35%, transparent); border-radius: 16px; padding: 20px 22px; cursor: pointer; }
-  .nivel b { display: block; font-family: var(--display); font-size: 1.3rem; color: var(--c); margin-bottom: 4px; }
+  .nivel { text-align: left; font: inherit; color: var(--text); background: var(--cbg); border: 2px solid color-mix(in srgb, var(--c) 45%, transparent); border-radius: 20px; padding: 20px 22px; cursor: pointer; }
+  .nivel b { display: block; font-family: var(--display); font-weight: 800; font-size: 1.5rem; color: var(--c); margin-bottom: 4px; }
   .nivel:hover { outline: 2px solid var(--c); }
 
   .salir { font: inherit; font-size: .9rem; font-weight: 600; color: var(--muted); background: none; border: 0; padding: 0; margin-bottom: 16px; cursor: pointer; }
   .salir:hover { color: var(--text); }
   .progreso { display: flex; align-items: center; gap: 14px; color: var(--muted); font-size: .9rem; }
-  .barra { flex: 1; height: 6px; background: var(--line); border-radius: 99px; overflow: hidden; }
-  .barra span { display: block; height: 100%; background: var(--violeta); transition: width .3s; }
-  .juego h2 { font-size: 1.4rem; line-height: 1.35; margin: 20px 0 24px; outline: none; }
+  /* "Pregunta 1 de 10" en una pastilla del color del nivel */
+  #num { flex: none; background: var(--cbg); color: var(--c); font-weight: 700; padding: 4px 12px; border-radius: 999px; }
+  .barra { flex: 1; height: 8px; background: var(--line); border-radius: 99px; overflow: hidden; }
+  .barra span { display: block; height: 100%; background: var(--c, var(--violeta)); border-radius: 99px; transition: width .3s; }
+  .juego h2 { font-size: clamp(1.5rem, 4vw, 2rem); line-height: 1.15; margin: 24px 0 24px; outline: none; }
 
   .respuestas { display: grid; gap: 12px; }
   /* Las respuestas se crean con JavaScript: por eso van con :global (si no, Astro no les aplica el estilo) */
-  .respuestas :global(.respuesta) { text-align: left; font: inherit; color: var(--text); background: var(--surface); border: 2px solid var(--line); border-radius: 12px; padding: 14px 16px; cursor: pointer; }
-  .respuestas :global(.respuesta:hover:not(:disabled)) { border-color: var(--text); }
+  .respuestas :global(.respuesta) { display: flex; align-items: center; gap: 14px; text-align: left; font: inherit; color: var(--text); background: var(--surface); border: 2px solid var(--line); border-radius: 16px; padding: 12px 16px; cursor: pointer; }
+  .respuestas :global(.letra) { flex: none; display: grid; place-items: center; width: 34px; height: 34px; border-radius: 50%; border: 2px solid var(--c); color: var(--c); font-family: var(--display); font-weight: 800; font-size: 1rem; }
+  .respuestas :global(.respuesta.bien .letra) { background: var(--salvia); border-color: var(--salvia); color: var(--surface); }
+  .respuestas :global(.respuesta.mal .letra) { background: var(--terracota); border-color: var(--terracota); color: var(--surface); }
+  .respuestas :global(.respuesta:hover:not(:disabled)) { border-color: var(--c); background: var(--cbg); }
   .respuestas :global(.respuesta:disabled) { cursor: default; opacity: .7; }
   .respuestas :global(.respuesta.bien) { border-color: var(--salvia); background: var(--salvia-bg); opacity: 1; }
   .respuestas :global(.respuesta.mal) { border-color: var(--terracota); background: var(--terracota-bg); opacity: 1; }
 
-  .feedback { margin-top: 24px; padding: 18px 20px; background: var(--surface); border: 1px solid var(--line); border-radius: 12px; }
+  .feedback { margin-top: 24px; padding: 18px 20px; background: var(--surface); border: 1px solid var(--line); border-radius: 16px; }
+  #veredicto { font-family: var(--display); font-size: 1.15rem; }
   .feedback p { margin: 0 0 10px; }
   .feedback .bien { color: var(--salvia); }
   .feedback .mal { color: var(--terracota); }
@@ -324,9 +342,11 @@ for (const [n, lista] of Object.entries(q.preguntas)) {
   .repaso :global(.re) { color: var(--muted); margin: 0 0 8px; }
   .repaso :global(a) { font-weight: 600; }
 
-  .boton { margin-top: 24px; font: inherit; font-weight: 700; color: var(--bg); background: var(--text); border: 0; border-radius: 12px; padding: 12px 22px; cursor: pointer; }
+  /* El botón principal toma el color del nivel */
+  .boton { margin-top: 24px; font: inherit; font-weight: 700; color: var(--sobre-color); background: var(--c, var(--text)); border: 0; border-radius: 999px; padding: 12px 24px; cursor: pointer; }
   .boton.secundario { color: var(--text); background: transparent; border: 2px solid var(--line); }
+  .boton.secundario:hover { border-color: var(--c); }
   .final { text-align: center; padding: 40px 0; }
-  .puntaje { font-family: var(--display); font-size: 3.5rem; font-weight: 700; margin: 0; }
+  .puntaje { font-family: var(--display); font-size: clamp(4rem, 12vw, 6rem); font-weight: 800; letter-spacing: -0.04em; line-height: 1; color: var(--c); margin: 0 0 12px; }
   .acciones { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
 </style>
