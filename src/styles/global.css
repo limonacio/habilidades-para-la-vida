@@ -81,11 +81,16 @@ a { color: inherit; }
 /* Ciclo de la violencia: cuatro fases en círculo (2 x 2), con flechas en sentido horario */
 .ciclo { margin: 44px 0; }
 .ciclo ol { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: 1fr 1fr; gap: 34px; counter-reset: fase; }
-.ciclo li { counter-increment: fase; position: relative; margin: 0 !important; border-radius: 16px; padding: 16px 18px 18px; color: #fff; min-height: 150px; }
-.ciclo li::before { content: counter(fase); position: absolute; right: 14px; top: 6px; font: 700 2.6rem/1 var(--display); opacity: .35; }
-.ciclo li b { display: block; font-family: var(--display); font-size: 1.1rem; margin-bottom: 4px; padding-right: 36px; }
-.ciclo li:nth-child(1) { background: #3f7d46; } .ciclo li:nth-child(2) { background: #b8611f; }
-.ciclo li:nth-child(3) { background: #a23a32; } .ciclo li:nth-child(4) { background: #66398a; }
+.ciclo li { counter-increment: fase; position: relative; margin: 0 !important; border-radius: 20px; padding: 16px 20px 18px; min-height: 150px;
+  background: var(--fb); border: 2px solid var(--fc); color: var(--text); font-size: 1rem; line-height: 1.55; }
+.ciclo li::before { content: counter(fase, decimal-leading-zero); display: block; font: 800 2.4rem/1 var(--display); color: var(--fc); margin-bottom: 8px; }
+.ciclo li b { display: block; font-family: var(--display); font-weight: 800; font-size: 1.2rem; line-height: 1.15; color: var(--titulo); margin-bottom: 4px; }
+/* Rediseño: fondo suave + borde del color de la fase (se lee mejor que texto blanco sobre color fuerte).
+   Calma (verde) → tensión (ámbar) → violencia (rojo) → arrepentimiento (violeta). */
+.ciclo li:nth-child(1) { --fb: #E3EDDF; --fc: #3E6A3B; } .ciclo li:nth-child(2) { --fb: #F8EBD3; --fc: #8A5A0B; }
+.ciclo li:nth-child(3) { --fb: #F6DEDA; --fc: #A2302A; } .ciclo li:nth-child(4) { --fb: #EFEAFB; --fc: #5B21B6; }
+:root[data-theme="dark"] .ciclo li:nth-child(1) { --fb: #252E25; --fc: #A9C9A0; } :root[data-theme="dark"] .ciclo li:nth-child(2) { --fb: #33291A; --fc: #E2B66A; }
+:root[data-theme="dark"] .ciclo li:nth-child(3) { --fb: #3A2321; --fc: #F09A90; } :root[data-theme="dark"] .ciclo li:nth-child(4) { --fb: #2A2536; --fc: #C2B0F0; }
 /* orden visual horario: 1 arriba izq, 2 arriba der, 3 abajo der, 4 abajo izq */
 .ciclo li:nth-child(1) { grid-area: 1 / 1; } .ciclo li:nth-child(2) { grid-area: 1 / 2; }
 .ciclo li:nth-child(3) { grid-area: 2 / 2; } .ciclo li:nth-child(4) { grid-area: 2 / 1; }
@@ -104,12 +109,13 @@ a { color: inherit; }
 }
 
 /* Tarjeta de video: miniatura + enlace (no carga YouTube hasta que se hace clic) */
-.video { display: flex; gap: 16px; align-items: center; margin: 40px 0; padding: 12px; background: var(--surface); border: 1px solid var(--line); border-radius: 14px; text-decoration: none; color: var(--text); box-shadow: var(--shadow); }
-.video img { width: 180px; height: auto; aspect-ratio: 16 / 9; object-fit: cover; border-radius: 10px; flex: none; }
+.video { display: flex; gap: 16px; align-items: center; margin: 40px 0; padding: 12px; background: var(--surface); border: 2px solid var(--text); border-radius: 20px; text-decoration: none; color: var(--text); }
+:root[data-theme="dark"] .video { border-color: var(--line); }
+.video img { width: 180px; height: auto; aspect-ratio: 16 / 9; object-fit: cover; border-radius: 14px; flex: none; }
 .video em { display: block; font-style: normal; color: var(--muted); font-weight: 400; margin-bottom: 6px; }
-.video b { display: block; font-family: var(--display); font-size: 1.05rem; margin-bottom: 4px; }
+.video b { display: block; font-family: var(--display); font-weight: 800; font-size: 1.2rem; line-height: 1.2; color: var(--titulo); margin-bottom: 4px; }
 .video span { color: var(--c, var(--violeta)); font-weight: 700; font-size: .92rem; }
-.video .video-icono { width: 180px; aspect-ratio: 16 / 9; flex: none; display: grid; place-items: center; font-size: 3rem; background: var(--cbg, var(--violeta-bg)); border-radius: 10px; }
+.video .video-icono { width: 180px; aspect-ratio: 16 / 9; flex: none; display: grid; place-items: center; font-size: 3rem; background: var(--cbg, var(--violeta-bg)); border-radius: 14px; }
 /* Si la miniatura externa no carga, se muestra el ícono en su lugar */
 .video img[hidden], .video .video-icono[hidden] { display: none; }
 .video:hover { border-color: var(--c, var(--violeta)); }
@@ -127,8 +133,12 @@ a { color: inherit; }
 
 /* Modelo ecológico: círculos concéntricos */
 .eco { margin: 28px auto; max-width: 440px; text-align: center; }
-.eco-n { box-sizing: border-box; aspect-ratio: 1; width: 100%; margin: 0 auto; border-radius: 50%; border: 1.5px solid var(--c, #6b4a9b); background: color-mix(in srgb, var(--c, #6b4a9b) 9%, transparent); display: flex; flex-direction: column; align-items: center; padding-top: 4.5%; }
-.eco-n .eco-n { width: 76%; margin-top: 2%; }
-.eco-n > b { font-size: .82rem; letter-spacing: .04em; text-transform: uppercase; }
+/* Rediseño: cada nivel un poco más intenso hacia el centro; el individual va lleno */
+.eco-n { box-sizing: border-box; aspect-ratio: 1; width: 100%; margin: 0 auto; border-radius: 50%; border: 2px solid color-mix(in srgb, var(--c, #5B21B6) 45%, transparent); background: color-mix(in srgb, var(--c, #5B21B6) 6%, var(--bg)); display: flex; flex-direction: column; align-items: center; padding-top: 4.5%; }
+.eco-n .eco-n { width: 76%; margin-top: 2%; background: color-mix(in srgb, var(--c, #5B21B6) 13%, var(--bg)); }
+.eco-n .eco-n .eco-n { background: color-mix(in srgb, var(--c, #5B21B6) 22%, var(--bg)); }
+.eco-n .eco-n .eco-n .eco-n { background: var(--c, #5B21B6); border-color: var(--c, #5B21B6); }
+.eco-n .eco-n .eco-n .eco-n > b { color: var(--sobre-color); }
+.eco-n > b { font-family: var(--display); font-weight: 800; font-size: 1.05rem; color: var(--c, #5B21B6); }
 .eco-n .eco-n .eco-n .eco-n { justify-content: center; padding-top: 0; }
 .eco figcaption { margin-top: 10px; font-size: .85rem; opacity: .8; }
