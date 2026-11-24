@@ -126,12 +126,21 @@ const ruta = {
   /* Botón flotante para volver a la autoevaluación */
   .volver-autoeval { position: fixed; left: 50%; bottom: 20px; transform: translateX(-50%); z-index: 20; max-width: calc(100% - 32px); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; font-size: .92rem; font-weight: 700; text-decoration: none; color: var(--bg); background: var(--violeta); padding: 10px 18px; border-radius: 999px; box-shadow: 0 6px 20px rgba(0,0,0,.25); }
   .volver-autoeval[hidden] { display: none; }
-  .tema-head { margin-top: 40px; }
+  /* Encabezado del tema. Fino por defecto (fondo neutro y una línea del color del eje).
+     En modo claro, Emociones y Habilidades llevan el bloque de color lleno; Género queda fino
+     a propósito: quien llega a un tema de violencia no tiene que recibir un golpe de color.
+     El fondo ocupa todo el ancho con el truco box-shadow + clip-path, sin cambiar el HTML. */
+  .tema-head { padding: 36px 0 40px; border-bottom: 4px solid var(--c); box-shadow: 0 0 0 100vmax var(--surface); clip-path: inset(0 -100vmax); background: var(--surface); }
+  :global(:root:not([data-theme="dark"])) .e .tema-head, :global(:root:not([data-theme="dark"])) .h .tema-head {
+    background: var(--c); box-shadow: 0 0 0 100vmax var(--c); border-bottom: 0; color: var(--sobre-color); }
+  :global(:root:not([data-theme="dark"])) .e .tema-head h1, :global(:root:not([data-theme="dark"])) .h .tema-head h1,
+  :global(:root:not([data-theme="dark"])) .e .tema-head p, :global(:root:not([data-theme="dark"])) .h .tema-head p { color: var(--sobre-color); }
+  :global(:root:not([data-theme="dark"])) .e .tag, :global(:root:not([data-theme="dark"])) .h .tag { background: var(--sobre-color); }
   a.tag { text-decoration: none; }
   a.tag:hover { outline: 2px solid var(--c); }
-  .tag { display: inline-block; background: var(--cbg); color: var(--c); font-weight: 700; font-size: .8rem; border-radius: 999px; padding: 4px 12px; margin-bottom: 10px; }
-  .tema-head h1 { font-size: clamp(2rem, 4.5vw, 3rem); }
-  .tema-head p { color: var(--muted); font-size: 1.1rem; max-width: 680px; margin-top: 14px; }
+  .tag { display: inline-block; background: var(--cbg); color: var(--c); font-weight: 700; font-size: .9rem; border-radius: 999px; padding: 6px 14px; margin-bottom: 16px; }
+  .tema-head h1 { font-size: clamp(2.6rem, 7vw, 5.5rem); line-height: .95; letter-spacing: -0.045em; margin: 0; }
+  .tema-head p { color: var(--muted); font-size: 1.2rem; line-height: 1.5; max-width: 680px; margin: 14px 0 0; }
   .tema-head .trad { font-size: .85rem; font-style: italic; margin-top: -6px; }
   .layout { display: grid; grid-template-columns: 240px 1fr; gap: 72px; margin: 48px 0 72px; }
   .lateral { position: sticky; top: 88px; align-self: start; max-height: calc(100vh - 110px); overflow: auto; display: grid; gap: 44px; padding-bottom: 8px; }
@@ -148,8 +157,9 @@ const ruta = {
   .toc a { line-height: 1.4; }
   .toc b { display: block; text-transform: uppercase; letter-spacing: .06em; font-size: .75rem; color: var(--muted); margin-bottom: 8px; }
   .toc a { display: block; padding: 5px 0 5px 12px; border-left: 2px solid var(--line); text-decoration: none; color: var(--muted); }
-  .toc a.on { border-color: var(--c); color: var(--text); font-weight: 700; }
-  article { max-width: 720px; min-width: 0; }
+  .toc a.on { border-color: var(--c); color: var(--titulo); font-weight: 700; }
+  /* Lectura cómoda: letra de 18 px, más interlineado y renglones de ~70 caracteres */
+  article { max-width: 690px; min-width: 0; font-size: 18px; line-height: 1.75; }
   .fuentes { border: 1px dashed var(--line); border-radius: 14px; padding: 20px 24px; font-size: .92rem; margin-top: 64px; }
   .fuentes li { margin-bottom: 6px; }
   .fuentes h2 { font-size: 1.1rem; margin: 0 0 8px; }
@@ -159,7 +169,7 @@ const ruta = {
   .pager a b { display: block; color: var(--text); }
   .pager .der { text-align: right; }
   /* Estilos del contenido Markdown (usamos :global porque el HTML lo genera <Content />) */
-  .prosa :global(h2) { font-size: 1.6rem; margin: 2.4em 0 .7em; color: var(--text); }
+  .prosa :global(h2) { font-size: 2.1rem; margin: 2em 0 .5em; }
   .prosa :global(h2:first-child) { margin-top: 0; }
   .prosa :global(p) { margin: 0 0 1.1em; }
   .prosa :global(ul), .prosa :global(ol) { margin: 0 0 1.4em; padding-left: 1.4em; }
@@ -171,12 +181,15 @@ const ruta = {
   .prosa :global(th) { background: var(--cbg); }
   .prosa :global(a) { color: var(--c); }
   /* Destacado "Idea clave": se escribe en Markdown como una cita (>) */
-  .prosa :global(blockquote) { background: var(--cbg); border-left: 5px solid var(--c); border-radius: 12px; margin: 36px 0; padding: 18px 24px; }
+  .prosa :global(blockquote) { background: var(--cbg); border-radius: 20px; margin: 36px 0; padding: 20px 26px; }
   .prosa :global(blockquote p) { margin: 0; font-size: 1.05rem; color: var(--text); }
   .prosa :global(blockquote p:first-child) { margin-bottom: 4px; }
   /* Recuadro "En pocas palabras": resumen para repasar, arriba del tema desarrollado. */
-  .prosa :global(.resumen) { background: var(--surface); border: 1px solid var(--line); border-radius: 14px; padding: 18px 24px 8px; margin: 0 0 40px; }
-  .prosa :global(.resumen-titulo) { margin: 0 0 8px; color: var(--c); text-transform: uppercase; letter-spacing: .06em; font-size: .78rem; font-weight: 700; }
+  /* Recuadro con la personalidad del afiche: borde y sombra corrida, pero suaves (nada de negro duro) */
+  .prosa :global(.resumen) { background: var(--surface); border: 2px solid var(--text); border-radius: 20px; padding: 22px 28px 10px; margin: 0 0 44px; box-shadow: 6px 6px 0 color-mix(in srgb, var(--c) 28%, transparent); font-size: 17px; line-height: 1.65; }
+  /* En oscuro, borde fino y sin sombra: el contraste fuerte cansa al leer */
+  :global([data-theme="dark"]) .prosa :global(.resumen) { border: 1px solid var(--line); box-shadow: none; }
+  .prosa :global(.resumen-titulo) { margin: 0 0 8px; color: var(--c); font-family: var(--display); font-size: 1.45rem; font-weight: 800; letter-spacing: -0.01em; }
   .prosa :global(.resumen ul) { margin: 0 0 10px; padding-left: 20px; }
   .prosa :global(.resumen li) { margin: 6px 0; }
   .prosa :global(blockquote p:first-child strong) { color: var(--c); text-transform: uppercase; letter-spacing: .06em; font-size: .78rem; }

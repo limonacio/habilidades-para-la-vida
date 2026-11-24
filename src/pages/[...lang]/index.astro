@@ -19,9 +19,9 @@ const ejes: Eje[] = ['g', 'e', 'h'];
 // La rueda: cada eje es una porción (igual que el logo). "centro" = dónde cae el medio de la
 // porción, en grados desde arriba y en sentido horario; se usa para girarla hasta dejarla arriba.
 const rueda: Record<Eje, { centro: number; d: string; color: string }> = {
-  g: { centro: 30, d: 'M16 16 L8.25 2.58 A15.5 15.5 0 0 1 31.5 16 Z', color: '#7650C2' },
-  e: { centro: 150, d: 'M16 16 L31.5 16 A15.5 15.5 0 0 1 8.25 29.42 Z', color: '#D86A3F' },
-  h: { centro: 270, d: 'M16 16 L8.25 29.42 A15.5 15.5 0 0 1 8.25 2.58 Z', color: '#579B54' },
+  g: { centro: 30, d: 'M16 16 L8.25 2.58 A15.5 15.5 0 0 1 31.5 16 Z', color: '#5B21B6' },
+  e: { centro: 150, d: 'M16 16 L31.5 16 A15.5 15.5 0 0 1 8.25 29.42 Z', color: '#A8461F' },
+  h: { centro: 270, d: 'M16 16 L8.25 29.42 A15.5 15.5 0 0 1 8.25 2.58 Z', color: '#3E6A3B' },
 };
 const rad = (g: number) => (g * Math.PI) / 180;
 ---
@@ -69,20 +69,22 @@ const rad = (g: number) => (g * Math.PI) / 180;
       <div class="rueda-caja">
         <h2 class="rueda-titulo">{t.rueda.titulo}</h2>
         <svg class="rueda" viewBox="0 0 32 32" role="group" aria-label={t.rueda.aria}>
-          <defs>
-            <radialGradient id="rueda-brillo" cx="30%" cy="28%" r="50%">
-              <stop offset="0" stop-color="#fff" stop-opacity=".25" />
-              <stop offset="1" stop-color="#fff" stop-opacity="0" />
-            </radialGradient>
-          </defs>
+          <!-- Presentación (solo escritorio, una vez por visita): los tres círculos del logo
+               se cruzan, se juntan en el centro y se transforman en la rueda. -->
+          {ejes.map((k) => (
+            <circle class="venn" cx={(16 + 6.2 * Math.sin(rad(rueda[k].centro))).toFixed(2)} cy={(16 - 6.2 * Math.cos(rad(rueda[k].centro))).toFixed(2)} r="8.8"
+              fill={({ g: '#9C86E0', e: '#E39A78', h: '#9CBF91' } as Record<Eje, string>)[k]} aria-hidden="true"
+              style={`--dx:${Math.sin(rad(rueda[k].centro)).toFixed(3)};--dy:${(-Math.cos(rad(rueda[k].centro))).toFixed(3)}`} />
+          ))}
+          <g class="torta">
           <g id="giro">
             {ejes.map((k) => (
               <path class="porcion" data-eje={k} d={rueda[k].d} fill={rueda[k].color} tabindex="0" role="button" aria-label={t.ejes[k]}
                 style={`--dx:${Math.sin(rad(rueda[k].centro)).toFixed(3)};--dy:${(-Math.cos(rad(rueda[k].centro))).toFixed(3)}`} />
             ))}
-            <circle cx="16" cy="16" r="15.5" fill="url(#rueda-brillo)" pointer-events="none" />
           </g>
           <path d="M14.6 -.2 L17.4 -.2 L16 1.9 Z" fill="currentColor" /><!-- flechita fija: marca el eje elegido -->
+          </g>
         </svg>
         <div class="leyenda">
           {ejes.map((k) => (
@@ -249,6 +251,21 @@ const rad = (g: number) => (g * Math.PI) / 180;
   let angulo = 0; // acumulado: así gira siempre por el camino más corto
   temasCaja.classList.add('con-rueda');
 
+  // Presentación de la rueda: solo en escritorio, una vez por visita y nunca con "reducir movimiento".
+  // Arranca cuando la rueda entra en pantalla (si no, se la perdería quien no bajó todavía).
+  const ruedaSvg = document.querySelector<SVGSVGElement>('.rueda')!;
+  let vista = false;
+  try { vista = sessionStorage.getItem('rueda-intro') === '1'; } catch {}
+  if (!vista && matchMedia('(min-width: 861px) and (prefers-reduced-motion: no-preference)').matches) {
+    ruedaSvg.classList.add('espera');
+    new IntersectionObserver((entradas, o) => {
+      if (!entradas[0].isIntersecting) return;
+      o.disconnect();
+      ruedaSvg.classList.replace('espera', 'intro');
+      try { sessionStorage.setItem('rueda-intro', '1'); } catch {}
+    }, { threshold: 0.5 }).observe(ruedaSvg);
+  }
+
   function elegirEje(eje: string) {
     const delta = ((((-centros[eje] - angulo) % 360) + 540) % 360) - 180;
     angulo += delta;
@@ -282,22 +299,23 @@ const rad = (g: number) => (g * Math.PI) / 180;
 </script>
 
 <style>
-  .hero { padding: 64px 0 24px; text-align: center; }
-  .hero h1 { font-size: clamp(2.2rem, 5vw, 3.4rem); }
-  .hero p { max-width: 640px; margin: 0 auto 28px; color: var(--muted); font-size: 1.1rem; }
+  /* Portada estilo afiche: título enorme alineado a la izquierda */
+  .hero { padding: 56px 0 32px; }
+  .hero h1 { font-size: clamp(2.6rem, 8vw, 6rem); line-height: .95; letter-spacing: -0.045em; max-width: 14ch; }
+  .hero p { max-width: 600px; margin: 0 0 28px; color: var(--muted); font-size: 1.2rem; line-height: 1.55; }
 
   /* Buscador: borde marcado para que se lea claramente como "lugar para escribir" */
   .search {
-    max-width: 520px; margin: 0 auto; display: flex; align-items: center; gap: 10px;
-    background: var(--surface); border: 2px solid color-mix(in srgb, var(--text) 45%, transparent);
-    border-radius: 12px; padding: 4px 14px; color: var(--muted); cursor: text;
+    max-width: 560px; margin: 0; display: flex; align-items: center; gap: 10px;
+    background: var(--surface); border: 2px solid var(--text);
+    border-radius: 999px; padding: 4px 20px; color: var(--muted); cursor: text;
   }
   .search:focus-within { border-color: var(--text); outline: 3px solid color-mix(in srgb, var(--violeta) 45%, transparent); outline-offset: 2px; }
   .search input { flex: 1; border: 0; background: transparent; color: var(--text); font: inherit; font-size: 1.05rem; padding: 10px 0; outline: none; min-width: 0; }
   .search input::placeholder { color: var(--muted); }
 
   /* Lista de resultados: sobria, una línea de título y una de contexto */
-  .res { max-width: 520px; margin: 10px auto 0; padding: 6px; list-style: none; text-align: left; background: var(--surface); border: 1px solid var(--line); border-radius: 12px; }
+  .res { max-width: 560px; margin: 10px 0 0; padding: 6px; list-style: none; text-align: left; background: var(--surface); border: 1px solid var(--line); border-radius: 12px; }
   .res[hidden] { display: none; }
   .res :global(a) { display: block; padding: 10px 12px; border-radius: 8px; color: var(--text); text-decoration: none; }
   .res :global(a:hover), .res :global(a:focus-visible) { background: color-mix(in srgb, var(--violeta) 12%, transparent); }
@@ -307,16 +325,16 @@ const rad = (g: number) => (g * Math.PI) / 180;
   .res :global(.nada) { padding: 10px 12px; color: var(--muted); text-align: center; }
 
   /* Cada eje es un bloque con fondo propio y aire alrededor, para que no se vea "un solo edificio" */
-  .eje { background: var(--cbg); border: 1px solid color-mix(in srgb, var(--c) 30%, transparent); border-radius: 20px; padding: 24px; margin: 56px 0; }
-  .eje h2 { font-size: 1.45rem; color: var(--c); margin: 0 0 20px; }
+  .eje { background: var(--cbg); border-radius: 24px; padding: 24px; margin: 56px 0; }
+  .eje h2 { font-size: 1.9rem; color: var(--c); margin: 0 0 20px; }
   .lista { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 12px; align-items: start; }
 
   /* Tema plegable: se ve solo el título; al tocarlo se despliega la descripción */
-  .tema { background: var(--surface); border-radius: 12px; border: 1px solid color-mix(in srgb, var(--c) 35%, transparent); border-left: 5px solid var(--c); box-shadow: var(--shadow); }
+  .tema { background: var(--surface); border-radius: 16px; border: 2px solid color-mix(in srgb, var(--c) 45%, transparent); }
   .tema summary:hover { color: var(--c); }
   .tema summary {
     list-style: none; cursor: pointer; display: flex; align-items: center; justify-content: space-between; gap: 12px;
-    padding: 14px 16px; font-family: Fraunces, Georgia, serif; font-weight: 700; font-size: 1.08rem;
+    padding: 14px 16px; font-family: var(--display); font-weight: 700; font-size: 1.08rem;
   }
   .tema summary::-webkit-details-marker { display: none; }
   .eje { scroll-margin-top: 84px; }
@@ -337,7 +355,7 @@ const rad = (g: number) => (g * Math.PI) / 180;
   .autoeval .insignia { position: absolute; top: -12px; left: 24px; background: var(--violeta); color: var(--bg); font-size: .78rem; font-weight: 700; letter-spacing: .03em; padding: 3px 12px; border-radius: 999px; }
   .autoeval .icono { font-size: 2rem; flex: none; }
   .autoeval .txt { flex: 1; display: flex; flex-direction: column; gap: 4px; }
-  .autoeval .txt b { font-family: Fraunces, serif; font-size: 1.35rem; color: var(--violeta); }
+  .autoeval .txt b { font-family: var(--display); font-size: 1.35rem; color: var(--violeta); }
   .autoeval .txt span { color: var(--muted); }
   .autoeval .boton { flex: none; font-weight: 700; color: var(--bg); background: var(--violeta); padding: 12px 20px; border-radius: 12px; transition: transform .2s; }
   .destacados h2 { margin-bottom: 16px !important; }
@@ -351,13 +369,13 @@ const rad = (g: number) => (g * Math.PI) / 180;
   .dest span { grid-row: span 2; font-size: 1.6rem; line-height: 1.2; }
   .ico-video { display: block; width: 64px; height: 40px; object-fit: cover; border-radius: 6px; margin-top: 2px; }
   .ico-iceberg { display: block; width: 1.25em; height: 1.25em; border-radius: 6px; }
-  .dest b { color: var(--text); font-family: Fraunces, serif; font-size: 1.05rem; }
+  .dest b { color: var(--text); font-family: var(--display); font-size: 1.05rem; }
   @media (max-width: 760px) { .dest-grid { grid-template-columns: 1fr; } }
   .ejercicios { background: var(--surface); border: 1px solid var(--line); border-radius: 20px; padding: 32px; margin: 56px 0; }
   .sub { color: var(--muted); margin: 0; }
   .ej-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 16px; margin-top: 16px; }
   .ej { background: var(--cbg); border-radius: 14px; padding: 20px; }
-  .ej b { display: block; font-family: Fraunces, serif; font-size: 1.1rem; margin: 8px 0 4px; }
+  .ej b { display: block; font-family: var(--display); font-size: 1.1rem; margin: 8px 0 4px; }
   .ej-link { display: block; color: var(--text); text-decoration: none; border: 2px solid transparent; transition: border-color .2s; }
   .ej-link:hover, .ej-link:focus-visible { border-color: var(--c); }
   .ej-link em { display: block; margin-top: 10px; font-style: normal; font-weight: 700; color: var(--c); }
@@ -371,11 +389,25 @@ const rad = (g: number) => (g * Math.PI) / 180;
   .con-rueda .eje { display: none; margin: 0; }
   .con-rueda .eje.activa { display: block; animation: aparecer .35s ease; }
   .con-rueda .lista { grid-template-columns: 1fr; }
-  .rueda-titulo { font-size: 1.4rem; margin: 0; text-align: center; }
+  .rueda-titulo { font-size: 2rem; margin: 0; text-align: center; }
   .rueda { width: 100%; max-width: 320px; overflow: visible; color: var(--text); }
   #giro { transform-origin: 16px 16px; transition: transform .7s cubic-bezier(.3, 1.3, .5, 1); }
   /* Cada porción lleva su contorno y, al elegirla, se separa un poco hacia afuera (--dx, --dy) */
-  .porcion { cursor: pointer; stroke: currentColor; stroke-width: .35; stroke-linejoin: round; transition: transform .25s, filter .25s; outline: none; }
+  /* Presentación: sin la clase .intro los círculos no se ven y la rueda está quieta */
+  .venn { display: none; }
+  .rueda.espera .venn, .rueda.intro .venn { display: block; transform-box: fill-box; transform-origin: center; mix-blend-mode: multiply; opacity: 0; }
+  :global([data-theme="dark"]) .rueda .venn { mix-blend-mode: screen; }
+  .rueda.espera .torta { opacity: 0; }
+  .torta { transform-box: view-box; transform-origin: 16px 16px; }
+  .rueda.intro .venn { animation: venn 2.6s cubic-bezier(.5, 0, .2, 1) forwards; }
+  .rueda.intro .torta { animation: torta 2.6s ease-out forwards; }
+  @keyframes venn {
+    0% { opacity: 0; transform: translate(calc(var(--dx) * 4px), calc(var(--dy) * 4px)) scale(.6); }
+    28%, 55% { opacity: .92; transform: none; }
+    88%, 100% { opacity: 0; transform: translate(calc(var(--dx) * -6.2px), calc(var(--dy) * -6.2px)) scale(1.75); }
+  }
+  @keyframes torta { 0%, 62% { opacity: 0; transform: scale(.7); } 90%, 100% { opacity: 1; transform: none; } }
+  .porcion { cursor: pointer; stroke: currentColor; stroke-width: .5; stroke-linejoin: round; transition: transform .25s, filter .25s; outline: none; }
   .porcion:hover, .porcion:focus-visible { transform: translate(calc(var(--dx) * .6px), calc(var(--dy) * .6px)); filter: brightness(1.08); }
   .porcion.activa { transform: translate(calc(var(--dx) * 1.2px), calc(var(--dy) * 1.2px)); }
   .leyenda { display: flex; flex-wrap: wrap; justify-content: center; gap: 8px; }

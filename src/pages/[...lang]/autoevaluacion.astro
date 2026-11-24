@@ -230,7 +230,7 @@ for (const [n, lista] of Object.entries(q.preguntas)) {
     // Primero medimos los bloques para saber qué alto necesita la imagen
     const bloques: [string, string, string, number][] = [ // [texto, fuente, color, espacio después]
       [`${textos.nivel} ${nombres[st!.nivel]}`, '700 30px "Atkinson Hyperlegible", sans-serif', '#553886', 30],
-      [x.p, '700 50px Fraunces, Georgia, serif', '#231D18', 44],
+      [x.p, '700 50px var(--display)', '#231D18', 44],
       [`${textos.correcta}:`, '700 30px "Atkinson Hyperlegible", sans-serif', '#43653F', 10],
       [x.o[correctaDe(x)], '700 40px "Atkinson Hyperlegible", sans-serif', '#231D18', 40],
       [x.e, '400 34px "Atkinson Hyperlegible", sans-serif', '#524840', 50],
@@ -244,7 +244,7 @@ for (const [n, lista] of Object.entries(q.preguntas)) {
     // Fondo crema con borde y una franja con los colores de los tres ejes
     ctx.fillStyle = '#F1E6D2'; ctx.fillRect(0, 0, W, H);
     ['#7650C2', '#D86A3F', '#579B54'].forEach((col, k) => { ctx.fillStyle = col; ctx.fillRect((W / 3) * k, 0, W / 3 + 1, 14); });
-    ctx.fillStyle = '#231D18'; ctx.font = '700 34px Fraunces, Georgia, serif'; ctx.textBaseline = 'top';
+    ctx.fillStyle = '#231D18'; ctx.font = '700 34px var(--display)'; ctx.textBaseline = 'top';
     ctx.fillText('Habilidades para la Vida', M, M - 10);
     let y = M + 80;
     for (const b of medidos) {
@@ -287,7 +287,7 @@ for (const [n, lista] of Object.entries(q.preguntas)) {
 
   .niveles { display: grid; gap: 16px; }
   .nivel { text-align: left; font: inherit; color: var(--text); background: var(--cbg); border: 1px solid color-mix(in srgb, var(--c) 35%, transparent); border-radius: 16px; padding: 20px 22px; cursor: pointer; }
-  .nivel b { display: block; font-family: Fraunces, serif; font-size: 1.3rem; color: var(--c); margin-bottom: 4px; }
+  .nivel b { display: block; font-family: var(--display); font-size: 1.3rem; color: var(--c); margin-bottom: 4px; }
   .nivel:hover { outline: 2px solid var(--c); }
 
   .salir { font: inherit; font-size: .9rem; font-weight: 600; color: var(--muted); background: none; border: 0; padding: 0; margin-bottom: 16px; cursor: pointer; }
@@ -327,6 +327,6 @@ for (const [n, lista] of Object.entries(q.preguntas)) {
   .boton { margin-top: 24px; font: inherit; font-weight: 700; color: var(--bg); background: var(--text); border: 0; border-radius: 12px; padding: 12px 22px; cursor: pointer; }
   .boton.secundario { color: var(--text); background: transparent; border: 2px solid var(--line); }
   .final { text-align: center; padding: 40px 0; }
-  .puntaje { font-family: Fraunces, serif; font-size: 3.5rem; font-weight: 700; margin: 0; }
+  .puntaje { font-family: var(--display); font-size: 3.5rem; font-weight: 700; margin: 0; }
   .acciones { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
 </style>

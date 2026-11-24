@@ -1,18 +1,25 @@
 /* ===== Tokens de diseño (colores) =====
    Modo claro por defecto; [data-theme="dark"] los reemplaza. */
+/* Rediseño "Afiche" (nov 2026). Regla de lectura: nada de negro puro sobre blanco puro.
+   El texto principal ronda 13:1 de contraste (la norma pide 4,5:1): se lee bien y cansa menos. */
 :root {
-  /* Modo claro: fondo crema y tarjetas color manteca, con texto más oscuro para más contraste */
-  --bg: #F1E6D2; --surface: #FFF8EB; --text: #231D18; --muted: #524840; --line: #D3C3AA;
-  --violeta: #553886; --terracota: #9A4524; --salvia: #43653F;
-  --violeta-bg: #E2D5EE; --terracota-bg: #F3D7C4; --salvia-bg: #D6E4CF;
-  --shadow: 0 1px 2px rgba(60,45,30,.10), 0 4px 14px rgba(60,45,30,.10);
+  /* Modo claro: blanco apenas grisáceo (no crema) y texto casi negro */
+  --bg: #F7F7F5; --surface: #FFFFFF; --text: #2B2A28; --muted: #57534E; --line: #DEDCD6;
+  --titulo: #1F1E1C;
+  --violeta: #5B21B6; --terracota: #A8461F; --salvia: #3E6A3B;
+  --violeta-bg: #EFEAFB; --terracota-bg: #F8E6DC; --salvia-bg: #E3EDDF;
+  --sobre-color: #FFF6F1; /* texto encima de un bloque de color lleno */
+  --shadow: 0 1px 2px rgba(30,30,28,.06), 0 4px 14px rgba(30,30,28,.06);
+  --display: "Bricolage Grotesque", system-ui, sans-serif; /* títulos */
   color-scheme: light;
 }
 :root[data-theme="dark"] {
-  /* Modo oscuro suavizado: gris cálido en lugar de casi negro */
-  --bg: #2A2730; --surface: #37333E; --text: #F0EBE4; --muted: #BDB5AC; --line: #4A4552;
-  --violeta: #C4AEEA; --terracota: #F0A886; --salvia: #A9D0A6;
-  --violeta-bg: #3E3552; --terracota-bg: #4A3630; --salvia-bg: #334234;
+  /* Modo oscuro "para leer": gris muy oscuro y blanco roto, el color va en detalles */
+  --bg: #1C1B20; --surface: #26252C; --text: #E7E3DC; --muted: #B4AEA5; --line: #3A3842;
+  --titulo: #F1EDE6;
+  --violeta: #C2B0F0; --terracota: #E5A17F; --salvia: #A9C9A0;
+  --violeta-bg: #2A2536; --terracota-bg: #33251F; --salvia-bg: #252E25;
+  --sobre-color: #1C1B20;
   --shadow: 0 1px 2px rgba(0,0,0,.25), 0 4px 14px rgba(0,0,0,.2);
   color-scheme: dark;
 }
@@ -26,10 +33,11 @@
 html { scroll-padding-top: 88px; }
 body {
   margin: 0; background: var(--bg); color: var(--text);
-  font: 17px/1.65 "Atkinson Hyperlegible", system-ui, sans-serif;
+  font: 17px/1.7 "Atkinson Hyperlegible", system-ui, sans-serif;
   transition: background .2s, color .2s;
 }
-h1, h2, h3 { font-family: Fraunces, Georgia, serif; line-height: 1.2; margin: 0 0 .5em; text-wrap: balance; }
+h1, h2, h3 { font-family: var(--display); font-weight: 800; letter-spacing: -0.02em; line-height: 1.1; color: var(--titulo); margin: 0 0 .5em; text-wrap: balance; }
+h1 { letter-spacing: -0.035em; }
 a { color: inherit; }
 :focus-visible { outline: 3px solid var(--violeta); outline-offset: 2px; border-radius: 4px; }
 .wrap { max-width: 1120px; margin: 0 auto; padding: 0 20px; }
@@ -74,8 +82,8 @@ a { color: inherit; }
 .ciclo { margin: 44px 0; }
 .ciclo ol { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: 1fr 1fr; gap: 34px; counter-reset: fase; }
 .ciclo li { counter-increment: fase; position: relative; margin: 0 !important; border-radius: 16px; padding: 16px 18px 18px; color: #fff; min-height: 150px; }
-.ciclo li::before { content: counter(fase); position: absolute; right: 14px; top: 6px; font: 700 2.6rem/1 Fraunces, serif; opacity: .35; }
-.ciclo li b { display: block; font-family: Fraunces, serif; font-size: 1.1rem; margin-bottom: 4px; padding-right: 36px; }
+.ciclo li::before { content: counter(fase); position: absolute; right: 14px; top: 6px; font: 700 2.6rem/1 var(--display); opacity: .35; }
+.ciclo li b { display: block; font-family: var(--display); font-size: 1.1rem; margin-bottom: 4px; padding-right: 36px; }
 .ciclo li:nth-child(1) { background: #3f7d46; } .ciclo li:nth-child(2) { background: #b8611f; }
 .ciclo li:nth-child(3) { background: #a23a32; } .ciclo li:nth-child(4) { background: #66398a; }
 /* orden visual horario: 1 arriba izq, 2 arriba der, 3 abajo der, 4 abajo izq */
@@ -99,7 +107,7 @@ a { color: inherit; }
 .video { display: flex; gap: 16px; align-items: center; margin: 40px 0; padding: 12px; background: var(--surface); border: 1px solid var(--line); border-radius: 14px; text-decoration: none; color: var(--text); box-shadow: var(--shadow); }
 .video img { width: 180px; height: auto; aspect-ratio: 16 / 9; object-fit: cover; border-radius: 10px; flex: none; }
 .video em { display: block; font-style: normal; color: var(--muted); font-weight: 400; margin-bottom: 6px; }
-.video b { display: block; font-family: Fraunces, serif; font-size: 1.05rem; margin-bottom: 4px; }
+.video b { display: block; font-family: var(--display); font-size: 1.05rem; margin-bottom: 4px; }
 .video span { color: var(--c, var(--violeta)); font-weight: 700; font-size: .92rem; }
 .video .video-icono { width: 180px; aspect-ratio: 16 / 9; flex: none; display: grid; place-items: center; font-size: 3rem; background: var(--cbg, var(--violeta-bg)); border-radius: 10px; }
 /* Si la miniatura externa no carga, se muestra el ícono en su lugar */
