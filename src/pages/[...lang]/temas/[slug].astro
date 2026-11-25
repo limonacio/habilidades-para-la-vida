@@ -96,6 +96,9 @@ const ruta = {
 </Base>
 
 <script>
+  // Color del marcador elegido en el quiz: lo usa la regla ::target-text de global.css
+  try { const m = localStorage.getItem('marcador-color'); if (m) document.documentElement.style.setProperty('--marcador', m); } catch {}
+
   // Botón "Volver a la autoevaluación": lee la partida guardada en sessionStorage
   {
     const a = document.getElementById('volver-autoeval') as HTMLAnchorElement | null;
@@ -104,7 +107,8 @@ const ruta = {
     // Si el tema se abrió en una pestaña nueva desde "Leer más", la pestaña del quiz sigue abierta:
     // ahí el botón sobra (y abriría una segunda partida). Una pestaña nueva arranca con un historial
     // de 1 paso, así que el botón aparece solo si se llegó al tema en la misma pestaña.
-    const mismaPestana = history.length > 1;
+    // Además, los enlaces del quiz llevan ?quiz=1 cuando abren el tema en otra pestaña: ahí tampoco va.
+    const mismaPestana = history.length > 1 && !new URLSearchParams(location.search).has('quiz');
     if (a && st?.url && mismaPestana) {
       a.href = st.url;
       // El botón toma el color del nivel que se está jugando (Básica salvia, Media terracota, Instruida violeta)

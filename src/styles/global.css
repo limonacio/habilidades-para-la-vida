@@ -45,8 +45,12 @@ body {
   transition: background .2s, color .2s;
 }
 h1, h2, h3 { font-family: var(--display); font-weight: 800; letter-spacing: -0.02em; line-height: 1.1; color: var(--titulo); margin: 0 0 .5em; text-wrap: balance; }
-h1 { letter-spacing: -0.035em; }
+/* Con letras tan juntas, en tamaños grandes las palabras se pegan ("delaira"): les damos aire */
+h1 { letter-spacing: -0.035em; word-spacing: .1em; }
 a { color: inherit; }
+/* Frase resaltada al llegar desde "Leer más" del quiz (#:~:text=). El color lo elige la persona
+   en el quiz (--marcador); el texto va siempre oscuro para que se lea también en modo oscuro. */
+::target-text { background-color: var(--marcador, #FFE45C); color: #1C1B20; }
 :focus-visible { outline: 3px solid var(--violeta); outline-offset: 2px; border-radius: 4px; }
 .wrap { max-width: 1120px; margin: 0 auto; padding: 0 20px; }
 .sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
