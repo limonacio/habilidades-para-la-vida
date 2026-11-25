@@ -328,7 +328,7 @@ for (const [n, lista] of Object.entries(q.preguntas)) {
     const H = M * 2 + 90 + medidos.reduce((s, b) => s + b.lineas.length * altoLinea(b.f) + b.esp, 0);
     c.width = W; c.height = Math.ceil(H);
     // Fondo crema con borde y una franja con los colores de los tres ejes
-    ctx.fillStyle = '#F7F7F5'; ctx.fillRect(0, 0, W, H);
+    ctx.fillStyle = '#F7F1E3'; ctx.fillRect(0, 0, W, H);
     ['#5B21B6', '#A8461F', '#3E6A3B'].forEach((col, k) => { ctx.fillStyle = col; ctx.fillRect((W / 3) * k, 0, W / 3 + 1, 14); });
     ctx.fillStyle = '#2B2A28'; ctx.font = '700 34px "Bricolage Grotesque", sans-serif'; ctx.textBaseline = 'top';
     ctx.fillText('Habilidades para la Vida', M, M - 10);

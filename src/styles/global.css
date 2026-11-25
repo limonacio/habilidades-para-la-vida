@@ -3,8 +3,9 @@
 /* Rediseño "Afiche" (nov 2026). Regla de lectura: nada de negro puro sobre blanco puro.
    El texto principal ronda 13:1 de contraste (la norma pide 4,5:1): se lee bien y cansa menos. */
 :root {
-  /* Modo claro: blanco apenas grisáceo (no crema) y texto casi negro */
-  --bg: #F7F7F5; --surface: #FFFFFF; --text: #2B2A28; --muted: #57534E; --line: #DEDCD6;
+  /* Modo claro: fondo marfil (cálido, más blanco que el crema original) y texto casi negro.
+     Las líneas van en un gris tibio: un gris frío sobre fondo cálido se ve "sucio". */
+  --bg: #F7F1E3; --surface: #FFFFFF; --text: #2B2A28; --muted: #57534E; --line: #E3DACA;
   --titulo: #1F1E1C;
   --violeta: #5B21B6; --terracota: #A8461F; --salvia: #3E6A3B;
   --violeta-bg: #EFEAFB; --terracota-bg: #F8E6DC; --salvia-bg: #E3EDDF;
