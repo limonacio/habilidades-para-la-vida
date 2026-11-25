@@ -389,9 +389,11 @@ for (const [n, lista] of Object.entries(q.preguntas)) {
   .nivel:hover { outline: 2px solid var(--c); }
 
   /* Selector del color del marcador: pastillas con muestra de color y nombre (no solo el color) */
-  .marcador { border: 0; margin: 32px 0 0; padding: 0; }
-  .marcador legend { font-family: var(--display); font-weight: 800; font-size: 1.15rem; padding: 0; }
-  .marcador p { color: var(--muted); margin: 4px 0 12px; font-size: .95rem; }
+  /* Color del marcador: bloque aparte, bien separado de los niveles, como un "ajuste" de la partida.
+     legend con float: así el título queda adentro de la tarjeta y no "corta" el borde del fieldset. */
+  .marcador { border: 1px solid var(--line); border-radius: 20px; background: var(--surface); margin: 72px 0 0; padding: 22px 24px 24px; }
+  .marcador legend { float: left; width: 100%; font-family: var(--display); font-weight: 800; font-size: 1.15rem; padding: 0; margin: 0 0 4px; }
+  .marcador p { clear: both; color: var(--muted); margin: 0 0 16px; font-size: .95rem; }
   .pastillas { display: flex; flex-wrap: wrap; gap: 10px; }
   .pastilla { display: inline-flex; align-items: center; gap: 8px; min-height: 44px; font: inherit; font-weight: 600; color: var(--text); background: var(--surface); border: 2px solid var(--line); border-radius: 999px; padding: 6px 16px 6px 8px; cursor: pointer; }
   .pastilla:hover { border-color: var(--c, var(--violeta)); }
