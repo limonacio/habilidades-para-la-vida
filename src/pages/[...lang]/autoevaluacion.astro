@@ -1,5 +1,5 @@
 ---
-import { getCollection } from 'astro:content';
+import { getCollection, render } from 'astro:content';
 import Base from '../../layouts/Base.astro';
 import { LOCALES, DEFAULT_LANG, prefijo, type Lang } from '../../i18n/ui';
 import { QUIZ, type Nivel } from '../../data/quiz';
@@ -15,8 +15,68 @@ const base = prefijo(lang);
 // Le sumamos a cada pregunta el título y el enlace del tema, para el "Leer más".
 const temas = await getCollection('temas', (e) => e.id.startsWith(`${lang}/`));
 const titulo = Object.fromEntries(temas.map((x) => [x.id.split('/')[1], x.data.title]));
+
+// ── "Leer más" directo al pasaje ──
+// Cada pregunta puede traer f: la frase del tema donde está la respuesta. El enlace usa un
+// fragmento de texto (#:~:text=inicio,fin): el navegador baja hasta esa frase y la resalta
+// (el color lo pone la regla ::target-text). Antes va el id de la sección, para que los
+// navegadores que no entienden el fragmento abran al menos la sección correcta.
+// ?quiz=1 le avisa a la página del tema que se abrió desde el autoevaluativo, en otra pestaña.
+const plano = (t: string) => t
+  .replace(/<[^>]+>/g, ' ').replace(/\[([^\]]*)\]\([^)]*\)/g, '$1').replace(/[*_`>#]/g, ' ')
+  .replace(/[“”«»"]/g, '"').replace(/[‘’']/g, "'").toLowerCase().replace(/\s+/g, ' ').trim();
+// Cada tema: sus líneas en texto plano, cada una con el id de la sección donde está
+const lineas: Record<string, { id: string; t: string; h: boolean }[]> = {};
+for (const tema of temas) {
+  const { headings } = await render(tema);
+  const libres = [...headings];
+  let id = '';
+  lineas[tema.id.split('/')[1]] = (tema.body ?? '').split('\n').map((l) => {
+    const h = l.match(/^#{2,4}\s+(.*)$/);
+    if (h) {
+      const k = libres.findIndex((x) => plano(x.text) === plano(h[1]));
+      if (k >= 0) { id = libres[k].slug; libres.splice(k, 1); }
+    }
+    return { id, t: plano(l), h: !!h };
+  });
+}
+// Los extremos del fragmento: tramos de palabras limpias (sin comillas ni signos en el medio).
+// El inicio tiene que aparecer una sola vez en el tema; si no, el navegador resaltaría otro lugar.
+const tramos = (f: string) => f.match(/[\p{L}\p{N}]+(?: [\p{L}\p{N}]+)*/gu) ?? [];
+const cod = (t: string) => encodeURIComponent(t).replace(/-/g, '%2D');
+const esc = (t: string) => t.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+const veces = (todo: string, t: string) => (todo.match(new RegExp(`(?<![\\p{L}\\p{N}])${esc(t)}(?![\\p{L}\\p{N}])`, 'gu')) ?? []).length;
+function enlace(x: { t: string; f?: string; p: string }, n: string) {
+  const url = `${base}/temas/${x.t}/?quiz=1`;
+  if (!x.f) return url;
+  const ls = lineas[x.t] ?? [];
+  const todo = ls.map((l) => l.t).join(' ');
+  const aviso = (m: string) => { console.warn(`[quiz ${lang}/${n}] ${m} (${x.t}): "${x.p}"`); return url; };
+  // Si la frase es justo un título, alcanza con ir a esa sección
+  const titulo = ls.find((l) => l.h && l.id && l.t === plano(x.f!));
+  if (titulo) return `${url}#${titulo.id}`;
+  const tr = tramos(x.f);
+  // Inicio: el primer tramo de 1 a 6 palabras que aparezca una sola vez en el tema
+  let ini = '';
+  busqueda: for (const t of tr) {
+    const w = t.split(' ');
+    for (let k = Math.min(3, w.length); k <= Math.min(6, w.length); k++) {
+      const c = w.slice(0, k).join(' ');
+      if (veces(todo, plano(c)) === 1) { ini = c; break busqueda; }
+    }
+  }
+  if (!ini) return aviso('la frase de "Leer más" no está en el tema o su inicio se repite');
+  // Fin: las últimas palabras de la frase (si la frase es corta, el inicio ya alcanza)
+  const ultimo = tr.at(-1)!.split(' ');
+  const fin = ultimo.slice(-Math.min(4, ultimo.length)).join(' ');
+  const pos = todo.indexOf(plano(ini));
+  if (!todo.includes(plano(fin), pos)) return aviso('el final de la frase de "Leer más" no está en el tema');
+  const donde = ls.find((l) => l.t.includes(plano(ini)))!;
+  const solo = plano(ini).endsWith(plano(fin)) || x.f.split(' ').length <= 6;
+  return `${url}#${donde.id}:~:text=${solo ? cod(ini) : `${cod(ini)},${cod(fin)}`}`;
+}
 const datos = Object.fromEntries(
-  (Object.keys(q.preguntas) as Nivel[]).map((n) => [n, q.preguntas[n].map((x) => ({ ...x, tt: titulo[x.t], tu: `${base}/temas/${x.t}/` }))]),
+  (Object.keys(q.preguntas) as Nivel[]).map((n) => [n, q.preguntas[n].map((x) => ({ ...x, tt: titulo[x.t], tb: `${base}/temas/${x.t}/`, tu: enlace(x, n) }))]),
 );
 const niveles = Object.entries(q.niveles) as [Nivel, { nombre: string; texto: string; cantidad: number }][];
 const cantidad = Object.fromEntries(niveles.map(([n, v]) => [n, v.cantidad]));
@@ -47,6 +107,19 @@ for (const [n, lista] of Object.entries(q.preguntas)) {
       ))}
     </div>
 
+    <!-- Color del marcador: con qué color se resalta la respuesta al tocar "Leer más" -->
+    <fieldset id="marcador" class="marcador">
+      <legend>{q.textos.marcador}</legend>
+      <p>{q.textos.marcadorAyuda}</p>
+      <div class="pastillas">
+        {q.marcadores.map((m) => (
+          <button type="button" class="pastilla" data-m={m.id} data-color={m.color} aria-pressed="false">
+            <span class="muestra" style={`background:${m.color}`} aria-hidden="true"></span>{m.nombre}
+          </button>
+        ))}
+      </div>
+    </fieldset>
+
     <!-- 2. Pregunta (se completa con JavaScript) -->
     <section id="juego" class="juego" hidden>
       <button id="salir" class="salir">← {q.textos.otroNivel}</button>
@@ -56,7 +129,7 @@ for (const [n, lista] of Object.entries(q.preguntas)) {
       <div id="feedback" class="feedback" hidden>
         <p><b id="veredicto"></b> <span id="explicacion"></span></p>
         <div class="enlaces">
-          <a id="leer" class="leer"></a>
+          <a id="leer" class="leer" target="_blank" rel="noopener"></a>
           <button id="guardar" class="guardar" type="button">📷 {q.textos.guardar}</button>
         </div>
       </div>
@@ -85,7 +158,7 @@ for (const [n, lista] of Object.entries(q.preguntas)) {
   // ── Autoevaluación ────────────────────────────────────────────────────
   // La partida se guarda en sessionStorage (dura mientras la pestaña esté abierta y no
   // sale del dispositivo). Así se puede ir a "Leer más", volver y seguir donde estaba.
-  type P = { p: string; o: string[]; c?: number; e: string; tt: string; tu: string };
+  type P = { p: string; o: string[]; c?: number; e: string; tt: string; tu: string; tb: string };
   type Estado = {
     nivel: string; ids: number[]; i: number; aciertos: number;
     orden: number[];            // orden en que se muestran las opciones de la pregunta actual
@@ -118,6 +191,7 @@ for (const [n, lista] of Object.entries(q.preguntas)) {
 
   function mostrarPantalla(cual: 'niveles' | 'juego' | 'final') {
     $('niveles').hidden = cual !== 'niveles';
+    $('marcador').hidden = cual !== 'niveles';
     $('juego').hidden = cual !== 'juego';
     $('final').hidden = cual !== 'final';
   }
@@ -209,7 +283,7 @@ for (const [n, lista] of Object.entries(q.preguntas)) {
       const p = document.createElement('p'); p.className = 'rp'; p.textContent = x.p;
       const c = document.createElement('p'); c.className = 'rc'; c.textContent = `${textos.correcta}: ${x.o[correctaDe(x)]}`;
       const e = document.createElement('p'); e.className = 're'; e.textContent = x.e;
-      const a = document.createElement('a'); a.href = x.tu; a.textContent = `${textos.leerMas}: ${x.tt} →`;
+      const a = document.createElement('a'); a.href = x.tu; a.target = '_blank'; a.rel = 'noopener'; a.textContent = `${textos.leerMas}: ${x.tt} →`;
       li.append(p, c, e, a);
       return li;
     }));
@@ -247,7 +321,7 @@ for (const [n, lista] of Object.entries(q.preguntas)) {
       [x.o[correctaDe(x)], '700 40px "Atkinson Hyperlegible", sans-serif', '#2B2A28', 40],
       [x.e, '400 34px "Atkinson Hyperlegible", sans-serif', '#57534E', 50],
       [`${textos.leerMas}: ${x.tt}`, '700 32px "Atkinson Hyperlegible", sans-serif', '#A8461F', 8],
-      [`${location.host}${x.tu}`, '400 26px "Atkinson Hyperlegible", sans-serif', '#57534E', 0],
+      [`${location.host}${x.tb}`, '400 26px "Atkinson Hyperlegible", sans-serif', '#57534E', 0],
     ];
     const altoLinea = (f: string) => Number(f.match(/(\d+)px/)![1]) * 1.3;
     const medidos = bloques.map(([t, f, col, esp]) => { ctx.font = f; return { lineas: partirEnLineas(ctx, t, ANCHO), f, col, esp }; });
@@ -275,6 +349,18 @@ for (const [n, lista] of Object.entries(q.preguntas)) {
     setTimeout(() => URL.revokeObjectURL(a.href), 1000);
   }
 
+  // ── Color del marcador: se guarda en este navegador (localStorage) y lo usa la página del tema ──
+  // Claves: "marcador" (id elegido) y "marcador-color" (el color, para la regla ::target-text).
+  const pastillas = [...document.querySelectorAll<HTMLButtonElement>('.pastilla')];
+  const elegirMarcador = (b: HTMLButtonElement, guardarlo = true) => {
+    pastillas.forEach((x) => x.setAttribute('aria-pressed', String(x === b)));
+    if (guardarlo) try { localStorage.setItem('marcador', b.dataset.m!); localStorage.setItem('marcador-color', b.dataset.color!); } catch {}
+  };
+  let marcadorGuardado: string | null = null;
+  try { marcadorGuardado = localStorage.getItem('marcador'); } catch {}
+  elegirMarcador(pastillas.find((b) => b.dataset.m === marcadorGuardado) ?? pastillas[0], false);
+  pastillas.forEach((b) => b.addEventListener('click', () => elegirMarcador(b)));
+
   // ── Eventos ──
   document.querySelectorAll<HTMLButtonElement>('.nivel').forEach((b) => b.addEventListener('click', () => empezar(b.dataset.nivel!)));
   $('siguiente').addEventListener('click', siguiente);
@@ -301,6 +387,16 @@ for (const [n, lista] of Object.entries(q.preguntas)) {
   .nivel { text-align: left; font: inherit; color: var(--text); background: var(--cbg); border: 2px solid color-mix(in srgb, var(--c) 45%, transparent); border-radius: 20px; padding: 20px 22px; cursor: pointer; }
   .nivel b { display: block; font-family: var(--display); font-weight: 800; font-size: 1.5rem; color: var(--c); margin-bottom: 4px; }
   .nivel:hover { outline: 2px solid var(--c); }
+
+  /* Selector del color del marcador: pastillas con muestra de color y nombre (no solo el color) */
+  .marcador { border: 0; margin: 32px 0 0; padding: 0; }
+  .marcador legend { font-family: var(--display); font-weight: 800; font-size: 1.15rem; padding: 0; }
+  .marcador p { color: var(--muted); margin: 4px 0 12px; font-size: .95rem; }
+  .pastillas { display: flex; flex-wrap: wrap; gap: 10px; }
+  .pastilla { display: inline-flex; align-items: center; gap: 8px; min-height: 44px; font: inherit; font-weight: 600; color: var(--text); background: var(--surface); border: 2px solid var(--line); border-radius: 999px; padding: 6px 16px 6px 8px; cursor: pointer; }
+  .pastilla:hover { border-color: var(--c, var(--violeta)); }
+  .pastilla[aria-pressed='true'] { border-color: var(--c, var(--violeta)); outline: 2px solid var(--c, var(--violeta)); outline-offset: -4px; }
+  .muestra { width: 26px; height: 26px; border-radius: 50%; border: 1px solid rgba(0, 0, 0, .2); }
 
   .salir { font: inherit; font-size: .9rem; font-weight: 600; color: var(--muted); background: none; border: 0; padding: 0; margin-bottom: 16px; cursor: pointer; }
   .salir:hover { color: var(--text); }

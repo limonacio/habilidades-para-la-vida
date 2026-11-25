@@ -79,6 +79,8 @@ Requiere Node.js 22.12 o superior. Astro 6 (Astro 7 pide un Node más nuevo).
 - Bancos en `src/data/quiz/` (un archivo por idioma y nivel: `es-basica.ts`, `es-media.ts`, `es-instruida.ts`). Cada partida sortea 10, 15 o 20 preguntas del banco y mezcla las opciones.
 - Convención: la **primera opción es siempre la correcta** (en pantalla se mezclan). Cada pregunta lleva explicación (`e`) y tema (`t`, el nombre del archivo del tema) para el "Leer más".
 - Al construir el sitio se avisa si la correcta es bastante más larga que las demás.
+- Campo opcional `f`: la frase del tema donde está la respuesta, copiada tal como se ve en la página. El "Leer más" abre el tema en otra pestaña (`?quiz=1`) con esa frase resaltada (`#:~:text=`). El build avisa si la frase ya no está en el tema o si su inicio se repite.
+- El color del resaltado lo elige quien lee en el autoevaluativo y queda en `localStorage` (`marcador` y `marcador-color`).
 - Cuando se suma un tema nuevo a la guía, se agregan unas 6 preguntas de ese tema en cada nivel.
 
 ### Reglas de redacción de preguntas

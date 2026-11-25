@@ -144,10 +144,17 @@ const ruta = {
   a.tag { text-decoration: none; }
   a.tag:hover { outline: 2px solid var(--c); }
   .tag { display: inline-block; background: var(--cbg); color: var(--c); font-weight: 700; font-size: .9rem; border-radius: 999px; padding: 6px 14px; margin-bottom: 16px; }
-  .tema-head h1 { font-size: clamp(2.6rem, 7vw, 5.5rem); line-height: .95; letter-spacing: -0.045em; margin: 0; }
+  .tema-head h1 { font-size: clamp(2.6rem, 7vw, 5.5rem); line-height: .95; letter-spacing: -0.04em; word-spacing: .14em; margin: 0; }
   .tema-head p { color: var(--muted); font-size: 1.2rem; line-height: 1.5; max-width: 680px; margin: 14px 0 0; }
   .tema-head .trad { font-size: .85rem; font-style: italic; margin-top: -6px; }
   .layout { display: grid; grid-template-columns: 240px 1fr; gap: 72px; margin: 48px 0 72px; }
+  /* Barra de desplazamiento del índice: finita, del color del eje y visible solo al pasar el mouse
+     (o al navegar con teclado). scrollbar-* es el estándar; ::-webkit-scrollbar, para Safari. */
+  .lateral { scrollbar-width: thin; scrollbar-color: transparent transparent; }
+  .lateral:hover, .lateral:focus-within { scrollbar-color: color-mix(in srgb, var(--c) 55%, transparent) transparent; }
+  .lateral::-webkit-scrollbar { width: 6px; }
+  .lateral::-webkit-scrollbar-thumb { background: transparent; border-radius: 99px; }
+  .lateral:hover::-webkit-scrollbar-thumb, .lateral:focus-within::-webkit-scrollbar-thumb { background: color-mix(in srgb, var(--c) 55%, transparent); }
   .lateral { position: sticky; top: 88px; align-self: start; max-height: calc(100vh - 110px); overflow: auto; display: grid; gap: 44px; padding-bottom: 8px; }
   .toc { font-size: .92rem; }
   /* "Más temas" va en una tarjeta propia para que no se confunda con el índice de esta página */

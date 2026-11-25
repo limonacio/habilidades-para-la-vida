@@ -8,13 +8,14 @@ import { instruida } from './quiz/es-instruida';
 // así la explicación puede llevar a "leer más". Nada inventado: todo está en los temas.
 //
 // p = pregunta · o = opciones · e = explicación · t = tema
+// f = frase del tema donde está la respuesta (opcional): el "Leer más" abre el tema con esa frase resaltada
 // c = posición de la correcta (0 a 3). Si no está, la correcta es la PRIMERA opción
 //     (es la convención de los bancos nuevos, en la carpeta quiz/).
 // Cada nivel es un banco de preguntas: en cada partida se sortean "cantidad" de ellas
 // y se mezclan también las opciones, así casi nunca se repite una partida.
 
 export type Nivel = 'basica' | 'media' | 'instruida';
-export type Pregunta = { p: string; o: [string, string, string, string]; c?: number; e: string; t: string };
+export type Pregunta = { p: string; o: [string, string, string, string]; c?: number; e: string; t: string; f?: string };
 
 type QuizIdioma = {
   titulo: string;
@@ -23,7 +24,8 @@ type QuizIdioma = {
   tarjeta: { insignia: string; titulo: string; texto: string; boton: string };
   niveles: Record<Nivel, { nombre: string; texto: string; cantidad: number }>;
   preguntas: Record<Nivel, Pregunta[]>;
-  textos: { pregunta: string; de: string; correcto: string; incorrecto: string; leerMas: string; siguiente: string; resultado: string; otraVez: string; otroNivel: string; finales: [string, string, string]; guardar: string; volverA: string; repaso: string; sinErrores: string; correcta: string; nivel: string };
+  marcadores: { id: string; nombre: string; color: string }[];
+  textos: { marcador: string; marcadorAyuda: string; pregunta: string; de: string; correcto: string; incorrecto: string; leerMas: string; siguiente: string; resultado: string; otraVez: string; otroNivel: string; finales: [string, string, string]; guardar: string; volverA: string; repaso: string; sinErrores: string; correcta: string; nivel: string };
 };
 
 const es: QuizIdioma = {
@@ -37,7 +39,16 @@ const es: QuizIdioma = {
     media: { nombre: 'Media', texto: '15 preguntas para afinar', cantidad: 15 },
     instruida: { nombre: 'Instruida', texto: '20 preguntas con autores, leyes y fechas', cantidad: 20 },
   },
+  // Colores del marcador para resaltar la respuesta en el tema (el texto resaltado va siempre oscuro)
+  marcadores: [
+    { id: 'amarillo', nombre: 'Amarillo', color: '#FFE45C' },
+    { id: 'naranja', nombre: 'Naranja', color: '#FFB866' },
+    { id: 'verde', nombre: 'Verde', color: '#A8E6A1' },
+    { id: 'rosa', nombre: 'Rosa', color: '#FFB3D1' },
+  ],
   textos: {
+    marcador: 'Color del marcador',
+    marcadorAyuda: 'Al tocar “Leer más”, el tema se abre en otra pestaña con la respuesta resaltada en este color.',
     pregunta: 'Pregunta', de: 'de',
     correcto: '¡Correcto!', incorrecto: 'No es esa.',
     leerMas: 'Leer más', siguiente: 'Siguiente', resultado: 'Ver resultado',
