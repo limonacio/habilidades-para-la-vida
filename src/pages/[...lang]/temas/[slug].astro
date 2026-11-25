@@ -99,10 +99,16 @@ const ruta = {
   // Botón "Volver a la autoevaluación": lee la partida guardada en sessionStorage
   {
     const a = document.getElementById('volver-autoeval') as HTMLAnchorElement | null;
-    let st: { url: string; i: number; ids: number[]; terminado: boolean } | null = null;
+    let st: { url: string; nivel: string; i: number; ids: number[]; terminado: boolean } | null = null;
     try { st = JSON.parse(sessionStorage.getItem('autoevaluacion') ?? 'null'); } catch {}
-    if (a && st?.url) {
+    // Si el tema se abrió en una pestaña nueva desde "Leer más", la pestaña del quiz sigue abierta:
+    // ahí el botón sobra (y abriría una segunda partida). Una pestaña nueva arranca con un historial
+    // de 1 paso, así que el botón aparece solo si se llegó al tema en la misma pestaña.
+    const mismaPestana = history.length > 1;
+    if (a && st?.url && mismaPestana) {
       a.href = st.url;
+      // El botón toma el color del nivel que se está jugando (Básica salvia, Media terracota, Instruida violeta)
+      a.classList.add(({ basica: 'h', media: 'e', instruida: 'g' } as Record<string, string>)[st.nivel] ?? 'g');
       a.textContent = st.terminado ? `← ${a.dataset.texto}` : `← ${a.dataset.texto} · ${st.i + 1}/${st.ids.length}`;
       a.hidden = false;
       document.body.style.paddingBottom = '80px'; // que el botón no tape el final de la página
@@ -124,18 +130,17 @@ const ruta = {
 
 <style>
   /* Botón flotante para volver a la autoevaluación */
-  .volver-autoeval { position: fixed; left: 50%; bottom: 20px; transform: translateX(-50%); z-index: 20; max-width: calc(100% - 32px); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; font-size: .92rem; font-weight: 700; text-decoration: none; color: var(--bg); background: var(--violeta); padding: 10px 18px; border-radius: 999px; box-shadow: 0 6px 20px rgba(0,0,0,.25); }
+  /* Botón flotante para volver a la autoevaluación: pastilla del color del nivel.
+     bottom con env(safe-area-inset-bottom): en iPhone no queda tapado por la barra de gestos. */
+  .volver-autoeval { position: fixed; left: 50%; bottom: max(20px, env(safe-area-inset-bottom)); transform: translateX(-50%); z-index: 20; max-width: calc(100% - 32px); min-height: 48px; box-sizing: border-box; display: inline-flex; align-items: center; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; font-size: .95rem; font-weight: 700; text-decoration: none; color: var(--sobre-color); background: var(--c, var(--violeta)); padding: 12px 22px; border-radius: 999px; border: 2px solid var(--titulo); box-shadow: 4px 4px 0 color-mix(in srgb, var(--titulo) 25%, transparent); transition: transform .15s; }
+  .volver-autoeval:hover { transform: translateX(-50%) translateY(-2px); }
   .volver-autoeval[hidden] { display: none; }
-  /* Encabezado del tema. Fino por defecto (fondo neutro y una línea del color del eje).
-     En modo claro, Emociones y Habilidades llevan el bloque de color lleno; Género queda fino
-     a propósito: quien llega a un tema de violencia no tiene que recibir un golpe de color.
-     El fondo ocupa todo el ancho con el truco box-shadow + clip-path, sin cambiar el HTML. */
-  .tema-head { padding: 36px 0 40px; border-bottom: 4px solid var(--c); box-shadow: 0 0 0 100vmax var(--surface); clip-path: inset(0 -100vmax); background: var(--surface); }
-  :global(:root:not([data-theme="dark"])) .e .tema-head, :global(:root:not([data-theme="dark"])) .h .tema-head {
-    background: var(--c); box-shadow: 0 0 0 100vmax var(--c); border-bottom: 0; color: var(--sobre-color); }
-  :global(:root:not([data-theme="dark"])) .e .tema-head h1, :global(:root:not([data-theme="dark"])) .h .tema-head h1,
-  :global(:root:not([data-theme="dark"])) .e .tema-head p, :global(:root:not([data-theme="dark"])) .h .tema-head p { color: var(--sobre-color); }
-  :global(:root:not([data-theme="dark"])) .e .tag, :global(:root:not([data-theme="dark"])) .h .tag { background: var(--sobre-color); }
+  /* Encabezado del tema "estilo diario": bloque del color del eje en versión suave (lila,
+     durazno, salvia claro) con el título en casi negro. Suave a propósito: se lee cómodo y en
+     los temas de violencia no "golpea". El fondo ocupa todo el ancho con el truco
+     box-shadow + clip-path, sin cambiar el HTML. */
+  .tema-head { padding: 28px 0 44px; background: var(--chead); box-shadow: 0 0 0 100vmax var(--chead); clip-path: inset(0 -100vmax); }
+  .tema-head .tag { background: var(--surface); }
   a.tag { text-decoration: none; }
   a.tag:hover { outline: 2px solid var(--c); }
   .tag { display: inline-block; background: var(--cbg); color: var(--c); font-weight: 700; font-size: .9rem; border-radius: 999px; padding: 6px 14px; margin-bottom: 16px; }

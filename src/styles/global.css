@@ -9,6 +9,8 @@
   --violeta: #5B21B6; --terracota: #A8461F; --salvia: #3E6A3B;
   --violeta-bg: #EFEAFB; --terracota-bg: #F8E6DC; --salvia-bg: #E3EDDF;
   --sobre-color: #FFF6F1; /* texto encima de un bloque de color lleno */
+  /* Encabezados de los temas "estilo diario": el color del eje en versión suave */
+  --g-head: #E6DCF7; --e-head: #F5DCCB; --h-head: #DCE8D5;
   --shadow: 0 1px 2px rgba(30,30,28,.06), 0 4px 14px rgba(30,30,28,.06);
   --display: "Bricolage Grotesque", system-ui, sans-serif; /* títulos */
   color-scheme: light;
@@ -20,13 +22,19 @@
   --violeta: #C2B0F0; --terracota: #E5A17F; --salvia: #A9C9A0;
   --violeta-bg: #2A2536; --terracota-bg: #33251F; --salvia-bg: #252E25;
   --sobre-color: #1C1B20;
+  --g-head: #2A2536; --e-head: #33251F; --h-head: #252E25;
   --shadow: 0 1px 2px rgba(0,0,0,.25), 0 4px 14px rgba(0,0,0,.2);
   color-scheme: dark;
 }
 /* Cada eje define su color con dos variables: --c (principal) y --cbg (fondo suave) */
-.g { --c: var(--violeta); --cbg: var(--violeta-bg); }
-.e { --c: var(--terracota); --cbg: var(--terracota-bg); }
-.h { --c: var(--salvia); --cbg: var(--salvia-bg); }
+.g { --c: var(--violeta); --cbg: var(--violeta-bg); --chead: var(--g-head); }
+.e { --c: var(--terracota); --cbg: var(--terracota-bg); --chead: var(--e-head); }
+.h { --c: var(--salvia); --cbg: var(--salvia-bg); --chead: var(--h-head); }
+/* En las páginas de tema, la barra de arriba del sitio toma el mismo color suave que el
+   encabezado: todo el bloque superior queda de un solo color, como la tapa de un diario. */
+body:has(.wrap.g > .tema-head) > header { background: var(--g-head); border-bottom-color: transparent; }
+body:has(.wrap.e > .tema-head) > header { background: var(--e-head); border-bottom-color: transparent; }
+body:has(.wrap.h > .tema-head) > header { background: var(--h-head); border-bottom-color: transparent; }
 
 /* ===== Base ===== */
 *, *::before, *::after { box-sizing: border-box; }
