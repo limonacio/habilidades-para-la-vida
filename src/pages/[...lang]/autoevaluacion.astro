@@ -21,7 +21,7 @@ const titulo = Object.fromEntries(temas.map((x) => [x.id.split('/')[1], x.data.t
 // fragmento de texto (#:~:text=inicio,fin): el navegador baja hasta esa frase y la resalta
 // (el color lo pone la regla ::target-text). Antes va el id de la sección, para que los
 // navegadores que no entienden el fragmento abran al menos la sección correcta.
-// ?quiz=1 le avisa a la página del tema que se abrió desde el autoevaluativo, en otra pestaña.
+// Se abre en la misma pestaña: así queda el botón "Volver a la autoevaluación" del tema.
 const plano = (t: string) => t
   .replace(/<[^>]+>/g, ' ').replace(/\[([^\]]*)\]\([^)]*\)/g, '$1').replace(/[*_`>#]/g, ' ')
   .replace(/[“”«»"]/g, '"').replace(/[‘’']/g, "'").toLowerCase().replace(/\s+/g, ' ').trim();
@@ -47,7 +47,7 @@ const cod = (t: string) => encodeURIComponent(t).replace(/-/g, '%2D');
 const esc = (t: string) => t.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
 const veces = (todo: string, t: string) => (todo.match(new RegExp(`(?<![\\p{L}\\p{N}])${esc(t)}(?![\\p{L}\\p{N}])`, 'gu')) ?? []).length;
 function enlace(x: { t: string; f?: string; p: string }, n: string) {
-  const url = `${base}/temas/${x.t}/?quiz=1`;
+  const url = `${base}/temas/${x.t}/`;
   if (!x.f) return url;
   const ls = lineas[x.t] ?? [];
   const todo = ls.map((l) => l.t).join(' ');
@@ -129,7 +129,7 @@ for (const [n, lista] of Object.entries(q.preguntas)) {
       <div id="feedback" class="feedback" hidden>
         <p><b id="veredicto"></b> <span id="explicacion"></span></p>
         <div class="enlaces">
-          <a id="leer" class="leer" target="_blank" rel="noopener"></a>
+          <a id="leer" class="leer"></a>
           <button id="guardar" class="guardar" type="button">📷 {q.textos.guardar}</button>
         </div>
       </div>
@@ -283,7 +283,7 @@ for (const [n, lista] of Object.entries(q.preguntas)) {
       const p = document.createElement('p'); p.className = 'rp'; p.textContent = x.p;
       const c = document.createElement('p'); c.className = 'rc'; c.textContent = `${textos.correcta}: ${x.o[correctaDe(x)]}`;
       const e = document.createElement('p'); e.className = 're'; e.textContent = x.e;
-      const a = document.createElement('a'); a.href = x.tu; a.target = '_blank'; a.rel = 'noopener'; a.textContent = `${textos.leerMas}: ${x.tt} →`;
+      const a = document.createElement('a'); a.href = x.tu; a.textContent = `${textos.leerMas}: ${x.tt} →`;
       li.append(p, c, e, a);
       return li;
     }));

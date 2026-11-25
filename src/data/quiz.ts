@@ -48,7 +48,7 @@ const es: QuizIdioma = {
   ],
   textos: {
     marcador: 'Color del marcador',
-    marcadorAyuda: 'Al tocar “Leer más”, el tema se abre en otra pestaña con la respuesta resaltada en este color.',
+    marcadorAyuda: 'Al tocar “Leer más”, el tema se abre justo donde está la respuesta, resaltada en este color.',
     pregunta: 'Pregunta', de: 'de',
     correcto: '¡Correcto!', incorrecto: 'No es esa.',
     leerMas: 'Leer más', siguiente: 'Siguiente', resultado: 'Ver resultado',
